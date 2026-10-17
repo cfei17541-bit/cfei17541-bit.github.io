@@ -1,0 +1,2452 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="错题本" />
+    <meta name="application-name" content="错题本" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0BAMAAADP4xsBAAAAMFBMVEX///////7+/////v7+/v/+/v79/f3y8vLS0NTHvsKgQz1kKiggICIeHiAdHR8ZFRdB54eNAAADT0lEQVR42u2bQUgUURjH/+PoRhY2K11WKLYkAm10RTrYRU8RHiKCXFgxt0MKXQwEoY5FQQtBJ4O8bB0WzctaVwW7iILaiKReTLcgxcpm1/KwNfs6bIKCM/Pe7Dzo8O1p4S2//fPN//v+7y1vlW3IepWB0IQmNKEJTWhCE5rQ/K9y+6UfXICgOJqt1WocZDZfbfcxxW47ud60avKobrZyguiCNjHPha69WBUUKgjbmb3C+bTuP1rThGpdc6aHcakOPj57KytSkMy7pRecqjve/swK+LpwYWqL176vo6/WBQqS+5bOc7fG7uzNLH9BMguTSW50QN3JCTT6L5GOZjn+WrNTXwXI+asLJr9qzTQF2JUQQFMUEJrQhCY0oSVvggGgvM1pdbwU9J9xWaoDDxyXN9fT3lUHndGlFMRkDotKSY/RWfZGCWi27fjztpn2jv79RJ6vbziujpaCHqXxRGhCE5oSnRKdEp0SncYToQlNaEp0sURvtgxJia7OqbISvavuiykn0dXl9tOdXVISvXkRZU+fdUtIdEXvBULXZCR6xUg7oIRlJHrsEgAYjf43emBYA2CZ3hziLLoGAGY0/8eTuhwBUBiUMPkiiwCwGYPvBVH0XgBsIB/3XXXFiAZgoxP+qy46r1/3L2UiB50XMXxTrS4edJ4+5xtab5s0is5rB1AYzPsWu4GVliUe53lQHatTEkZyn/N82yyow2GEUhzOE1etxwAlYSRdnSesWj0SBhBKuTtPWLXFTA1QEgbcnCde67k+AAil/s28pI97PitqAlASqpvzPJgvNfISQCju5jwPLZMvynZ1npfxlOrbe9f/3md0Ubar8zwN1T3ZM3ppW/fDZMdNzWXmeQ6womwX53lD56NmoZsNJGUck1J9K9HV+lKPSYfLjjyEJelwt6RbTV7RpotsA/vbZVcArXw+pwlsdcZOaAK1PiayQbveIHARTDtfIcB+Y/OVh56DClXH+W/GxVtbNX40smMfhnh3Jsq0UK3RcrdnK81D7qis13MCBQGrfn4nEOcgs6GjUyws0o3Kx9tl01y3J+9dthFtfwU20zjBVeqTDRlNEM0yTVzo75/CEEQD2yZPvwRt+1ahv5gRmtCEJjShCU1oQv8f6L86/hSE6QmNqgAAAABJRU5ErkJggg==" />
+    <link rel="manifest" id="manifest" href="data:application/manifest+json,%7B%22name%22:%22%E9%94%99%E9%A2%98%E6%9C%AC%22,%22short_name%22:%22%E9%94%99%E9%A2%98%E6%9C%AC%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%23ffffff%22,%22lang%22:%22zh-CN%22,%22icons%22:%5B%7B%22src%22:%22data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0BAMAAADP4xsBAAAAMFBMVEX///////7+/////v7+/v/+/v79/f3y8vLS0NTHvsKgQz1kKiggICIeHiAdHR8ZFRdB54eNAAADT0lEQVR42u2bQUgUURjH/+PoRhY2K11WKLYkAm10RTrYRU8RHiKCXFgxt0MKXQwEoY5FQQtBJ4O8bB0WzctaVwW7iILaiKReTLcgxcpm1/KwNfs6bIKCM/Pe7Dzo8O1p4S2//fPN//v+7y1vlW3IepWB0IQmNKEJTWhCE5rQ/K9y+6UfXICgOJqt1WocZDZfbfcxxW47ud60avKobrZyguiCNjHPha69WBUUKgjbmb3C+bTuP1rThGpdc6aHcakOPj57KytSkMy7pRecqjve/swK+LpwYWqL176vo6/WBQqS+5bOc7fG7uzNLH9BMguTSW50QN3JCTT6L5GOZjn+WrNTXwXI+asLJr9qzTQF2JUQQFMUEJrQhCY0oSVvggGgvM1pdbwU9J9xWaoDDxyXN9fT3lUHndGlFMRkDotKSY/RWfZGCWi27fjztpn2jv79RJ6vbziujpaCHqXxRGhCE5oSnRKdEp0SncYToQlNaEp0sURvtgxJia7OqbISvavuiykn0dXl9tOdXVISvXkRZU+fdUtIdEXvBULXZCR6xUg7oIRlJHrsEgAYjf43emBYA2CZ3hziLLoGAGY0/8eTuhwBUBiUMPkiiwCwGYPvBVH0XgBsIB/3XXXFiAZgoxP+qy46r1/3L2UiB50XMXxTrS4edJ4+5xtab5s0is5rB1AYzPsWu4GVliUe53lQHatTEkZyn/N82yyow2GEUhzOE1etxwAlYSRdnSesWj0SBhBKuTtPWLXFTA1QEgbcnCde67k+AAil/s28pI97PitqAlASqpvzPJgvNfISQCju5jwPLZMvynZ1npfxlOrbe9f/3md0Ubar8zwN1T3ZM3ppW/fDZMdNzWXmeQ6womwX53lD56NmoZsNJGUck1J9K9HV+lKPSYfLjjyEJelwt6RbTV7RpotsA/vbZVcArXw+pwlsdcZOaAK1PiayQbveIHARTDtfIcB+Y/OVh56DClXH+W/GxVtbNX40smMfhnh3Jsq0UK3RcrdnK81D7qis13MCBQGrfn4nEOcgs6GjUyws0o3Kx9tl01y3J+9dthFtfwU20zjBVeqTDRlNEM0yTVzo75/CEEQD2yZPvwRt+1ahv5gRmtCEJjShCU1oQv8f6L86/hSE6QmNqgAAAABJRU5ErkJggg==%22,%22sizes%22:%22180x180%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22%7D%5D%7D" />
+    <title>错题本</title>
+    <link rel="stylesheet" href="hark.css" />
+    <style>
+      body { overscroll-behavior-y: none; }
+      .x-app { padding: 0 var(--gutter); padding-top: calc(env(safe-area-inset-top) + 64px); padding-bottom: calc(env(safe-area-inset-bottom) + 96px); max-width: 760px; margin: 0 auto; }
+      .x-top { position: fixed; inset: 0 0 auto 0; z-index: 20; padding: env(safe-area-inset-top) var(--gutter) 0; background: var(--mat-agent); backdrop-filter: var(--hark-blur); -webkit-backdrop-filter: var(--hark-blur); border-bottom: 1px solid var(--stroke-secondary); }
+      .x-top__in { max-width: 760px; margin: 0 auto; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+      .x-top h1 { margin: 0; font: var(--type-heading); }
+      .x-icon { width: var(--tap); height: var(--tap); border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-primary); display: grid; place-items: center; cursor: pointer; }
+      .x-icon:active { background: var(--hover-wash); }
+      .x-menu { position: absolute; right: var(--gutter); top: calc(env(safe-area-inset-top) + 52px); min-width: 180px; padding: 6px; border-radius: var(--r-m); background: var(--fill-primary-on); border: 1px solid var(--stroke-primary); box-shadow: var(--hark-shadow); display: grid; }
+      .x-menu[hidden] { display: none; }
+      .x-menu button { min-height: var(--tap); text-align: left; padding: 0 12px; border: 0; border-radius: var(--r-s); background: transparent; color: var(--text-primary); font: var(--type-body); cursor: pointer; }
+      .x-menu button:active { background: var(--hover-wash); }
+      .x-menu .x-danger { color: var(--fill-system-red); }
+      .x-banner { margin: 12px 0 0; padding: 10px 14px; border-radius: var(--r-s); background: var(--fill-tertiary); font: var(--type-small); color: var(--text-secondary); display: flex; align-items: center; gap: 10px; }
+      .x-banner[hidden] { display: none; }
+      .x-banner > span { flex: 1; }
+      .x-banner > button { flex: none; min-height: var(--tap); }
+      .x-topr { display: flex; align-items: center; gap: 6px; min-width: 0; }
+      .x-store { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); min-width: 0; padding: 0 10px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-secondary); font: var(--type-caption); cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .x-store[hidden] { display: none; }
+      .x-store::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fill-system-green); }
+      .x-store.is-warn { color: var(--text-primary); border: 1px solid var(--fill-system-orange); cursor: pointer; }
+      .x-store.is-warn::before { background: var(--fill-system-orange); }
+      .x-store > span { overflow: hidden; text-overflow: ellipsis; }
+      .x-padbar .x-save, .x-padbar .x-save:active { background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); font-weight: var(--weight-bold); padding: 0 16px; }
+      .x-savebar { position: fixed; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + 72px); z-index: 19; padding: 8px var(--gutter); background: var(--mat-agent); backdrop-filter: var(--hark-blur); -webkit-backdrop-filter: var(--hark-blur); border-top: 1px solid var(--stroke-secondary); }
+      .x-savebar .btn { display: flex; width: 100%; max-width: 760px; margin: 0 auto; min-height: 52px; font: var(--type-body); font-weight: var(--weight-bold); }
+      body.x-adding .x-app { padding-bottom: calc(env(safe-area-inset-bottom) + 170px); }
+      body.x-adding .x-toast { bottom: calc(env(safe-area-inset-bottom) + 150px); }
+      .x-tabs { position: fixed; inset: auto 0 0 0; z-index: 20; display: flex; justify-content: center; gap: 4px; padding: 8px var(--gutter) calc(env(safe-area-inset-bottom) + 8px); background: var(--mat-agent); backdrop-filter: var(--hark-blur); -webkit-backdrop-filter: var(--hark-blur); border-top: 1px solid var(--stroke-secondary); }
+      .x-tabs button { flex: 1; max-width: 200px; min-height: 48px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-secondary); font: var(--type-label); cursor: pointer; display: grid; place-items: center; gap: 2px; padding: 4px 0; }
+      .x-tabs button svg { width: 22px; height: 22px; }
+      .x-tabs button[aria-selected="true"] { color: var(--text-primary-on); background: var(--fill-primary); }
+      .x-view { display: grid; gap: 16px; padding-top: 16px; }
+      .x-view[hidden] { display: none; }
+      .x-view h2 { margin: 0; font: var(--type-title); }
+      .x-sub { margin: 0; font: var(--type-small); color: var(--text-secondary); }
+      .x-field { display: grid; gap: 6px; }
+      .x-field > span { font: var(--type-label); }
+      .x-in { width: 100%; box-sizing: border-box; min-height: var(--tap); padding: 10px 12px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: 16px/1.4 var(--sans); }
+      textarea.x-in { min-height: 96px; resize: vertical; }
+      .x-in:focus { outline: 2px solid var(--fill-primary); outline-offset: -1px; }
+      .x-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .x-panel { display: grid; gap: 14px; padding: 18px; border-radius: var(--r-l); background: var(--fill-tertiary); }
+      .x-panel .x-in { background: var(--fill-primary-on); }
+      .x-panel h3 { margin: 0; font: var(--type-heading); }
+      .x-primary { justify-content: center; min-height: var(--tap); background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); font: var(--type-label); cursor: pointer; }
+      button.btn { cursor: pointer; justify-content: center; }
+      .x-thumbs { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-thumbs img { width: 72px; height: 72px; object-fit: cover; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); }
+      .x-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+      .x-chips button { flex: none; min-height: var(--tap); min-width: var(--tap); padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-tag); cursor: pointer; }
+      .x-chips button[aria-pressed="true"] { background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); }
+      .x-list { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+      .x-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 14px 16px; border-radius: var(--r-m); border: 0; background: var(--fill-tertiary); color: var(--text-primary); font: var(--type-body); cursor: pointer; }
+      .x-card:active { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-card p { margin: 6px 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+      .x-card img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--r-s); }
+      .x-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: var(--type-caption); color: var(--text-secondary); }
+      .x-ok::before { background: var(--fill-system-green) !important; box-shadow: none !important; }
+      .x-empty { text-align: center; padding: 40px 0; color: var(--text-secondary); font: var(--type-small); }
+      .x-modal { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; justify-content: center; background: rgb(0 0 0 / 0.4); }
+      .x-modal[hidden] { display: none; }
+      .x-sheet { width: 100%; max-width: 640px; max-height: 88vh; overflow-y: auto; box-sizing: border-box; padding: 20px var(--gutter) calc(env(safe-area-inset-bottom) + 20px); border-radius: var(--r-l) var(--r-l) 0 0; background: var(--fill-primary-on); display: grid; gap: 14px; animation: x-up var(--dur-quick) var(--ease-out); }
+      @media (min-width: 700px) { .x-modal { align-items: center; } .x-sheet { border-radius: var(--r-l); } }
+      @keyframes x-up { from { transform: translateY(24px); opacity: 0; } }
+      .x-sheet h3 { margin: 0; font: var(--type-heading); }
+      .x-q { white-space: pre-wrap; font: var(--size-prose)/1.5 var(--sans); margin: 0; }
+      .x-imgs { display: grid; gap: 8px; }
+      .x-imgs img { width: 100%; max-height: 50vh; object-fit: contain; border-radius: var(--r-m); background: var(--fill-tertiary); cursor: zoom-in; }
+      .x-ans { padding: 14px 16px; border-radius: var(--r-m); background: var(--fill-tertiary); }
+      .x-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .x-actions > * { flex: 1; }
+      .x-del { color: var(--fill-system-red); }
+      .x-full { position: fixed; inset: 0; z-index: 60; background: #000; display: grid; place-items: center; }
+      .x-full[hidden] { display: none; }
+      .x-full img { max-width: 100vw; max-height: 100vh; object-fit: contain; }
+      .x-flip { perspective: 1400px; }
+      .x-flip__in { display: grid; transition: transform 500ms var(--ease-out); transform-style: preserve-3d; }
+      .x-flip.is-flipped .x-flip__in { transform: rotateY(180deg); }
+      .x-face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; min-height: 300px; padding: 22px; border-radius: var(--r-l); background: var(--fill-tertiary); display: flex; flex-direction: column; gap: 14px; box-sizing: border-box; }
+      .x-face--back { transform: rotateY(180deg); background: var(--fill-primary-on); border: 1px solid var(--stroke-primary); }
+      .x-face .x-imgs img { max-height: 36vh; }
+      .x-face .x-grow { flex: 1; }
+      @media (prefers-reduced-motion: reduce) { .x-flip__in { transition: none; } }
+      .x-rate { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .x-rate button { min-height: 56px; flex-direction: column; gap: 2px; font: var(--type-label); }
+      .x-rate small { font: var(--type-caption); color: var(--text-secondary); }
+      .x-bar { height: 4px; border-radius: var(--r-pill); background: var(--fill-tertiary); overflow: hidden; }
+      .x-bar i { display: block; height: 100%; background: var(--fill-primary); transition: width var(--dur-quick) ease; }
+      .x-toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 84px); transform: translateX(-50%); z-index: 70; padding: 10px 16px; border-radius: var(--r-pill); background: var(--fill-primary); color: var(--text-primary-on); font: var(--type-label); pointer-events: none; }
+      .x-toast[hidden] { display: none; }
+      .x-lab { font: var(--type-label); }
+      .x-tb { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+      .x-tb::-webkit-scrollbar { display: none; }
+      .x-tb button { flex: none; min-width: var(--tap); min-height: var(--tap); padding: 0 10px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-label); cursor: pointer; }
+      .x-tb button:active { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-prev { display: grid; gap: 4px; padding: 10px 12px; border-radius: var(--r-s); border: 1px dashed var(--stroke-primary); background: var(--fill-primary-on); }
+      .x-prev .x-q { font: var(--type-body); min-height: 1.4em; overflow-x: auto; }
+      .x-prev .x-q:empty::before { content: "输入后在此预览公式"; color: var(--text-secondary); }
+      .x-m { white-space: normal; }
+      .x-fb { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Times New Roman", serif; font-size: 1.08em; }
+      .x-fb i { font-style: italic; }
+      .x-up { font-style: normal; }
+      .x-fr { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; font-size: 1em; line-height: 1.2; margin: 0 0.12em; }
+      .x-fr > span { padding: 0 0.15em; }
+      .x-fr > span:first-child { border-bottom: 1px solid currentColor; }
+      .x-fr--n > span:first-child { border-bottom: 0; }
+      .x-sq { white-space: nowrap; }
+      .x-sq > span:last-child { border-top: 1px solid currentColor; padding: 0.05em 0.1em 0; margin-left: 0.05em; }
+      .x-sqn { font-size: 0.8em; margin-right: -0.25em; vertical-align: 0.9em; }
+      .x-lim { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.1; margin: 0 0.15em; }
+      .x-lim > small { font-size: 0.8em; }
+      .x-lim--sup { vertical-align: middle; }
+      .x-big { font-size: 1.35em; line-height: 1; }
+      .x-int { font-size: 1.5em; line-height: 1; vertical-align: -0.2em; }
+      .x-fb sup, .x-fb sub { font-size: 0.8em; line-height: 0; }
+      .x-ss { display: inline-flex; flex-direction: column; vertical-align: middle; font-size: 0.8em; line-height: 1.05; }
+      .x-rel { margin: 0 0.22em; }
+      .x-md { display: block; text-align: center; margin: 0.4em 0; overflow-x: auto; overflow-y: hidden; }
+      /* 手写草稿板 */
+      .x-pad { display: grid; gap: 10px; min-width: 0; }
+      .x-padbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .x-padbar button { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: var(--tap); min-height: var(--tap); padding: 0 10px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-label); cursor: pointer; }
+      .x-padbar button:active { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-padbar button[aria-pressed="true"] { background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); }
+      .x-padbar button:disabled { opacity: 0.4; cursor: default; }
+      .x-sep { width: 1px; height: 24px; background: var(--stroke-secondary); }
+      .x-sw { width: 14px; height: 14px; border-radius: 50%; box-shadow: 0 0 0 1.5px #fff; }
+      .x-pad__vp { position: relative; overflow: hidden; height: 60vh; min-height: 320px; box-sizing: border-box; border-radius: var(--r-m); border: 1px solid var(--stroke-primary); background: #fff; }
+      .x-pad__cv { display: block; width: 100%; height: 100%; background-color: #fff; transform-origin: 0 0; will-change: transform; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; cursor: crosshair; }
+      .x-pad--pencil .x-pad__cv { touch-action: pan-x pan-y pinch-zoom; }
+      .x-pad--pencil.is-zoomed .x-pad__cv { touch-action: none; }
+      .x-past > summary { min-height: var(--tap); display: flex; align-items: center; gap: 8px; cursor: pointer; font: var(--type-label); color: var(--text-primary); list-style: none; }
+      .x-past > summary::-webkit-details-marker { display: none; }
+      .x-past > summary::before { content: "›"; display: inline-block; width: 12px; transition: transform var(--dur-quick) var(--ease-out); }
+      .x-past[open] > summary::before { transform: rotate(90deg); }
+      .x-pad__cv[data-bg="grid"] { background-image: linear-gradient(rgb(0 0 0 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(0 0 0 / 0.07) 1px, transparent 1px); background-size: 24px 24px; }
+      .x-pad__cv[data-bg="lines"] { background-image: linear-gradient(transparent 31px, rgb(0 0 0 / 0.1) 31px); background-size: 100% 32px; }
+      .x-sheet--wide { max-width: 960px; }
+      .x-bad::before { background: var(--fill-system-red) !important; box-shadow: none !important; }
+      .x-mid::before { background: var(--fill-system-orange) !important; box-shadow: none !important; }
+      /* 做题记录 */
+      .x-rechead { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .x-att { list-style: none; margin: 0; padding: 0; display: grid; }
+      .x-att > li { position: relative; display: grid; gap: 8px; padding: 14px 0 14px 20px; border-bottom: 1px solid var(--stroke-secondary); }
+      .x-att > li:last-child { border-bottom: 0; }
+      .x-att > li::before { content: ""; position: absolute; left: 0; top: 32px; width: 8px; height: 8px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--text-tertiary); }
+      .x-att > li::after { content: ""; position: absolute; left: 3.5px; top: 44px; bottom: -32px; width: 1px; background: var(--stroke-secondary); }
+      .x-att > li:last-child::after { display: none; }
+      .x-att__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+      .x-att__head b { font: var(--type-label); font-weight: var(--weight-bold); }
+      .x-att__del { margin-left: auto; min-height: var(--tap); }
+      .x-att img { display: block; max-width: 100%; max-height: 240px; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); cursor: zoom-in; }
+      .x-paper { background: #fff; }
+      .x-full { touch-action: none; overflow: hidden; }
+      .x-full img { transform-origin: center; will-change: transform; -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+      .x-full .x-full__x { position: absolute; top: calc(env(safe-area-inset-top) + 12px); right: 12px; z-index: 1; color: #fff; background: rgb(255 255 255 / 0.16); font: var(--type-heading); }
+      /* 作答时置顶的题目条（竖屏） */
+      .x-qs { position: sticky; top: calc(env(safe-area-inset-top) + 57px); z-index: 2; max-height: 35vh; overflow-y: auto; overscroll-behavior: contain; display: grid; gap: 6px; padding: 8px 12px 10px; border-radius: var(--r-m); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); box-shadow: var(--hark-shadow); }
+      .x-sheet .x-qs { top: 0; }
+      .x-qs__bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      .x-qs__t { min-height: var(--tap); cursor: pointer; }
+      .x-qs.is-folded .x-qs__body { display: none; }
+      .x-qs__body { display: grid; gap: 8px; }
+      .x-qs__body .x-q { font: var(--type-body); }
+      .x-qs__th { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-qs__th img { width: 64px; height: 64px; object-fit: cover; border-radius: var(--r-s); border: 1px solid var(--stroke-primary); cursor: zoom-in; }
+      /* 两栏容器：竖屏时不参与布局 */
+      .x-colL, .x-colR, .x-lact { display: contents; }
+      .x-lact:empty { display: none; }
+      .x-late { order: 2; }
+      /* 保存作答: directly under the pad, left-aligned (portrait) */
+      .x-padsave, #dPadAct { order: 1; }
+      .x-padsave { justify-self: start; padding: 0 22px; font-weight: var(--weight-bold); }
+      /* 刷题 */
+      .x-chips button small { font: var(--type-caption); margin-left: 4px; opacity: 0.8; }
+      .x-pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--tap), 1fr)); gap: 8px; }
+      .x-pgrid button { min-height: var(--tap); border-radius: var(--r-s); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-label); cursor: pointer; }
+      .x-pgrid .is-ok { border-color: var(--fill-system-green); box-shadow: inset 0 -3px 0 var(--fill-system-green); }
+      .x-pgrid .is-bad { border-color: var(--fill-system-red); box-shadow: inset 0 -3px 0 var(--fill-system-red); }
+      .x-pgrid [aria-current="true"] { background: var(--fill-primary); color: var(--text-primary-on); border-color: var(--fill-primary); }
+      .x-opts { display: grid; gap: 8px; }
+      .x-opt { display: flex; gap: 10px; align-items: baseline; width: 100%; min-height: var(--tap); box-sizing: border-box; padding: 10px 14px; text-align: left; border-radius: var(--r-m); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-body); cursor: pointer; }
+      .x-opt:disabled { cursor: default; color: var(--text-primary); }
+      .x-opt > b { flex: none; font: var(--type-label); font-weight: var(--weight-bold); }
+      .x-opt > span { flex: 1; min-width: 0; overflow-x: auto; }
+      .x-opt.is-right { border-color: var(--fill-system-green); background: color-mix(in srgb, var(--fill-system-green) 14%, var(--fill-primary-on)); }
+      .x-opt.is-wrong { border-color: var(--fill-system-red); background: color-mix(in srgb, var(--fill-system-red) 12%, var(--fill-primary-on)); }
+      .x-pnav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      #pRun { scroll-margin-top: calc(env(safe-area-inset-top) + 64px); }
+      @media (orientation: landscape) and (min-width: 900px) {
+        .x-tabs { inset: calc(env(safe-area-inset-top) + 57px) auto 0 0; width: calc(env(safe-area-inset-left) + 84px); box-sizing: border-box; flex-direction: column; justify-content: flex-start; gap: 8px; padding: 12px 6px calc(env(safe-area-inset-bottom) + 12px) calc(env(safe-area-inset-left) + 6px); border-top: 0; border-right: 1px solid var(--stroke-secondary); }
+        .x-tabs button { flex: none; width: 100%; min-height: 64px; border-radius: var(--r-m); }
+        .x-top__in { max-width: none; }
+        .x-app { max-width: none; padding-left: calc(env(safe-area-inset-left) + 84px + var(--gutter)); padding-bottom: calc(env(safe-area-inset-bottom) + 32px); }
+        body.x-adding .x-app { padding-bottom: calc(env(safe-area-inset-bottom) + 100px); }
+        .x-savebar { left: calc(env(safe-area-inset-left) + 84px); bottom: 0; padding-bottom: calc(env(safe-area-inset-bottom) + 8px); }
+        .x-toast, body.x-adding .x-toast { left: calc(50% + 42px); bottom: calc(env(safe-area-inset-bottom) + 84px); }
+        .x-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .x-list > .x-empty { grid-column: 1 / -1; }
+        .x-card { height: 100%; }
+        #revRun { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: auto auto minmax(0, 1fr); height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 112px); }
+        #revRun > .x-meta, #revRun > .x-bar { grid-column: 1 / -1; }
+        #pRun.is-pad { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: minmax(0, 1fr); height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 112px); }
+        #revRun > .x-colL, #revRun > .x-colR, #pRun.is-pad > .x-colL, #pRun.is-pad > .x-colR, .x-sheet--wide > .x-colL, .x-sheet--wide > .x-colR { display: grid; gap: 16px; align-content: start; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+        .x-sheet--wide { max-width: 1100px; height: 92vh; max-height: 92vh; overflow: hidden; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); grid-template-rows: auto minmax(0, 1fr); }
+        .x-sheet--wide > :first-child { grid-column: 1 / -1; }
+        .x-colR .x-pad__vp { height: calc(100vh - env(safe-area-inset-top) - 57px); min-height: 0; }
+        .x-sheet--wide .x-colR .x-pad__vp { height: calc(92vh - 120px); }
+        .x-qs { display: none; }
+        /* left column: DOM order, with its action area pinned to the column's bottom */
+        .x-colL > *, .x-lact > * { order: 0; }
+        #revRun > .x-colL > .x-lact, #pRun.is-pad > .x-colL > .x-lact, .x-sheet--wide > .x-colL > .x-lact { display: grid; gap: 10px; position: sticky; bottom: 0; z-index: 1; padding: 12px 0 2px; border-top: 1px solid var(--stroke-secondary); background: var(--fill-primary-on); }
+        .x-colL > .x-lact:empty { display: none; }
+        .x-lact > .x-padsave { justify-self: stretch; min-height: 52px; font: var(--type-body); font-weight: var(--weight-bold); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top" style="padding:0;max-width:none">
+      <header class="x-top">
+        <div class="x-top__in">
+          <h1>错题本</h1>
+          <div class="x-topr">
+          <button type="button" class="x-store" id="store" hidden aria-live="polite"><span></span></button>
+          <button class="x-icon" id="gear" aria-label="设置" aria-haspopup="true" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </button>
+          </div>
+        </div>
+        <div class="x-menu" id="menu" role="menu" hidden>
+          <button role="menuitem" data-act="export">导出备份</button>
+          <button role="menuitem" data-act="import">导入备份</button>
+          <button role="menuitem" data-act="clear" class="x-danger">清空数据</button>
+        </div>
+        <input type="file" id="backupFile" accept="application/json,.json" hidden />
+      </header>
+
+      <main class="x-app">
+        <div class="x-banner" id="banner" role="status" hidden><span>当前环境不能自动保存。在 Safari 打开本页并「添加到主屏幕」即可自动保存；在此之前请用右上角「导出备份」。</span><button type="button" class="btn" id="bannerX">知道了</button></div>
+
+        <section class="x-view" id="v-lib" aria-label="错题库">
+          <div><h2>错题库</h2><p class="x-sub" id="libCount"></p></div>
+          <input class="x-in" id="search" type="search" placeholder="搜索题目、答案" aria-label="搜索" />
+          <div class="x-chips" id="libChips" role="group" aria-label="科目筛选"></div>
+          <ul class="x-list" id="list"></ul>
+        </section>
+
+        <section class="x-view" id="v-prac" aria-label="刷题" hidden>
+          <div class="x-rechead"><div><h2>刷题</h2><p class="x-sub" id="pInfo"></p></div><select class="x-in" id="pDay" aria-label="选择哪一天的题" style="width:auto"></select></div>
+          <div class="x-view" style="padding:0;gap:6px"><div class="x-meta" style="justify-content:space-between"><span>今日总进度</span><b id="pTot" style="color:var(--text-primary)"></b></div><div class="x-bar"><i id="pTotBar"></i></div></div>
+          <div class="x-chips" id="pChips" role="group" aria-label="科目"></div>
+          <div class="x-pgrid" id="pGrid" role="group" aria-label="题号"></div>
+          <div class="x-panel" id="pSum" hidden></div>
+          <div id="pRun" class="x-view" style="padding:0">
+            <div class="x-colL">
+              <div class="x-panel" id="pCard"></div>
+              <div class="x-ans x-late" id="pAns" hidden></div>
+              <details class="x-past x-late" id="pPast" hidden></details>
+              <div class="x-lact" id="pAct">
+                <div class="x-view x-late" id="pCtl" style="padding:0;gap:10px"></div>
+                <div class="x-pnav x-late"><button class="btn" id="pPrev">上一题</button><button class="btn" id="pNext">下一题</button></div>
+              </div>
+            </div>
+            <div class="x-colR"><div id="pPad"></div></div>
+          </div>
+        </section>
+
+        <section class="x-view" id="v-rev" aria-label="复习" hidden>
+          <div id="revSetup" class="x-view" style="padding:0">
+            <div><h2>复习</h2><p class="x-sub" id="revInfo"></p></div>
+            <section class="stats" id="revStats"></section>
+            <div class="x-chips" id="revChips" role="group" aria-label="复习范围" style="flex-wrap:wrap"></div>
+            <button class="btn x-primary" id="startRev">开始复习</button>
+          </div>
+          <div id="revRun" class="x-view" style="padding:0" hidden>
+            <div class="x-meta" style="justify-content:space-between"><span id="revProg"></span><span id="revMast"></span></div>
+            <div class="x-bar"><i id="revBar"></i></div>
+            <div class="x-colL">
+              <div class="x-flip" id="flip">
+                <div class="x-flip__in">
+                  <div class="x-face" id="faceFront"></div>
+                  <div class="x-face x-face--back" id="faceBack"></div>
+                </div>
+              </div>
+              <div class="x-ans x-late" id="revAns" hidden></div>
+              <details class="x-past x-late" id="revPast" hidden></details>
+              <div class="x-lact" id="revAct">
+                <button class="btn x-primary x-late" id="showAns">显示答案</button>
+                <div class="x-rate x-late" id="rate" hidden>
+                  <button class="btn" data-r="0">不会<br /><small>明天</small></button>
+                  <button class="btn" data-r="1">模糊<br /><small>3 天后</small></button>
+                  <button class="btn" data-r="2">掌握<br /><small id="mastNext">7 天后</small></button>
+                </div>
+                <button class="btn x-late" id="quitRev">结束复习</button>
+              </div>
+            </div>
+            <div class="x-colR">
+              <button class="btn" id="attBtn">开始作答</button>
+              <div id="revPad"></div>
+            </div>
+          </div>
+          <div id="revDone" class="x-view" style="padding:0" hidden></div>
+        </section>
+
+        <section class="x-view" id="v-add" aria-label="添加" hidden>
+          <h2>添加错题</h2>
+          <form class="x-panel" id="addForm">
+            <div class="x-row2">
+              <label class="x-field"><span>科目</span><select class="x-in" id="fSubj"></select></label>
+              <label class="x-field"><span>错因</span><select class="x-in" id="fCause"></select></label>
+            </div>
+            <div class="x-field">
+              <label class="x-lab" for="fQ">题目</label>
+              <div class="x-tb" data-for="fQ" role="toolbar" aria-label="题目公式符号"></div>
+              <textarea class="x-in" id="fQ" placeholder="输入题目内容，公式写在 $...$ 中"></textarea>
+              <div class="x-prev"><span class="x-sub">预览</span><div class="x-q" id="pQ" aria-live="polite"></div></div>
+            </div>
+            <label class="x-field"><span>图片（可选，可多选）</span><input class="x-in" id="fImg" type="file" accept="image/*" multiple /></label>
+            <div class="x-thumbs" id="thumbs"></div>
+            <div class="x-field">
+              <span class="x-lab">我的第一次做法（手写，可选）</span>
+              <button type="button" class="btn" id="fPadBtn">打开草稿板</button>
+              <div id="fPad"></div>
+            </div>
+            <div class="x-field">
+              <label class="x-lab" for="fA">正确答案 / 解析</label>
+              <div class="x-tb" data-for="fA" role="toolbar" aria-label="答案公式符号"></div>
+              <textarea class="x-in" id="fA" placeholder="写下正确答案和思路，独占一行的公式用 $$...$$"></textarea>
+              <div class="x-prev"><span class="x-sub">预览</span><div class="x-q" id="pA" aria-live="polite"></div></div>
+            </div>
+            <p class="fineprint" style="margin:0">只选多张照片、不填题目时，每张照片各生成一道错题。</p>
+            <div class="x-savebar"><button class="btn x-primary" type="submit">保存错题</button></div>
+          </form>
+          <div class="x-panel">
+            <h3>批量导入</h3>
+            <p class="fineprint" style="margin:0">每道题之间用单独一行 <code>---</code> 分隔，每行以“科目:”“题目:”“答案:”开头。</p>
+            <textarea class="x-in" id="bulk" style="min-height:160px" placeholder="科目: 计算机网络&#10;题目: TCP 建立连接需要几次握手？&#10;答案: 三次&#10;---&#10;科目: 操作系统&#10;题目: 产生死锁的四个必要条件？&#10;答案: 互斥、请求并保持、不可剥夺、循环等待"></textarea>
+            <button class="btn x-primary" id="bulkBtn" type="button">导入</button>
+          </div>
+        </section>
+      </main>
+
+      <nav class="x-tabs" role="tablist" aria-label="主导航">
+        <button role="tab" data-tab="lib" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h6"/></svg>错题库</button>
+        <button role="tab" data-tab="prac" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>刷题</button>
+        <button role="tab" data-tab="rev" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>复习</button>
+        <button role="tab" data-tab="add" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>添加</button>
+      </nav>
+
+      <div class="x-modal" id="modal" hidden><div class="x-sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+      <div class="x-full" id="full" hidden role="dialog" aria-label="图片全屏"></div>
+      <div class="x-toast" id="toast" hidden></div>
+    </div>
+    <script type="application/json" id="bank-day1">{
+ "date": "2026-10-18",
+ "label": "第1天",
+ "questions": [
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "真题改编",
+   "stem": "当 $x\\to 0$ 时，$x-\\tan x$ 与 $cx^k$ 是等价无穷小，则（　）",
+   "options": [
+    "A. $c=\\dfrac{1}{3},\\ k=3$",
+    "B. $c=-\\dfrac{1}{3},\\ k=3$",
+    "C. $c=\\dfrac{1}{6},\\ k=3$",
+    "D. $c=-\\dfrac{1}{6},\\ k=2$"
+   ],
+   "answer": "B",
+   "analysis": "由 $\\tan x=x+\\dfrac{x^3}{3}+o(x^3)$，得 $x-\\tan x=-\\dfrac{x^3}{3}+o(x^3)$，故 $c=-\\dfrac13,\\ k=3$，选 B。",
+   "id": "d20261018-数学一-1"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "真题改编",
+   "stem": "幂级数 $\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(x-1)^n}{n\\cdot 3^n}$ 的收敛域为（　）",
+   "options": [
+    "A. $(-2,4)$",
+    "B. $[-2,4)$",
+    "C. $(-2,4]$",
+    "D. $[-2,4]$"
+   ],
+   "answer": "B",
+   "analysis": "$\\lim\\limits_{n\\to\\infty}\\dfrac{n\\cdot3^n}{(n+1)3^{n+1}}=\\dfrac13$，收敛半径 $R=3$，收敛区间 $(-2,4)$。$x=4$ 时为调和级数 $\\sum\\dfrac1n$，发散；$x=-2$ 时为 $\\sum\\dfrac{(-1)^n}{n}$，由莱布尼茨判别法收敛。故收敛域为 $[-2,4)$，选 B。",
+   "id": "d20261018-数学一-4"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "选择",
+   "topic": "高数",
+   "stem": "函数 $f(x)=\\dfrac{x-x^{3}}{\\sin \\pi x}$ 的可去间断点的个数为（　）",
+   "options": [
+    "A. $1$",
+    "B. $2$",
+    "C. $3$",
+    "D. 无穷多个"
+   ],
+   "answer": "C",
+   "analysis": "$f(x)$ 的间断点为全体整数 $x=n$（$\\sin\\pi x=0$）。分子 $x-x^3=x(1-x)(1+x)$ 仅在 $x=0,\\pm1$ 处为零。$x=0$：$\\lim\\limits_{x\\to0}\\dfrac{x(1-x^2)}{\\sin\\pi x}=\\dfrac1\\pi$；$x=1$：令 $u=1-x$，$\\sin\\pi x=\\sin\\pi u\\sim\\pi u$，$\\lim\\limits_{x\\to1}\\dfrac{x(1+x)(1-x)}{\\sin\\pi x}=\\dfrac{2}{\\pi}$；同理 $x=-1$ 处极限为 $\\dfrac2\\pi$。其余整数点分子不为零而分母趋于零，为无穷间断点。故可去间断点恰有 $x=0,\\pm1$ 共 3 个，选 C。",
+   "id": "d20261018-数学一-11"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "选择",
+   "topic": "高数",
+   "stem": "设 $f(x,y)=\\begin{cases}\\dfrac{xy}{\\sqrt{x^{2}+y^{2}}},&(x,y)\\ne(0,0)\\\\0,&(x,y)=(0,0)\\end{cases}$，则 $f(x,y)$ 在点 $(0,0)$ 处（　）",
+   "options": [
+    "A. 不连续",
+    "B. 连续但偏导数不存在",
+    "C. 偏导数存在但不可微",
+    "D. 可微"
+   ],
+   "answer": "C",
+   "analysis": "连续性：$|f(x,y)|\\le\\dfrac{\\frac12(x^2+y^2)}{\\sqrt{x^2+y^2}}=\\dfrac12\\sqrt{x^2+y^2}\\to0$，故连续。偏导数：$f(x,0)\\equiv0$，$f(0,y)\\equiv0$，得 $f_x(0,0)=f_y(0,0)=0$，存在。可微性：需 $\\lim\\limits_{\\rho\\to0}\\dfrac{f(x,y)-0-0}{\\rho}=\\lim\\dfrac{xy}{x^2+y^2}=0$，但沿 $y=kx$ 该式为 $\\dfrac{k}{1+k^2}$，随 $k$ 变化，极限不存在，故不可微。选 C。",
+   "id": "d20261018-数学一-12"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "真题改编",
+   "stem": "设函数 $y=y(x)$ 由方程 $e^{y}+xy=e$ 确定，则 $y''(0)=$______。",
+   "answer": "$\\dfrac{1}{e^{2}}$",
+   "analysis": "$x=0$ 时 $e^y=e$，得 $y(0)=1$。两边对 $x$ 求导：$e^y y'+y+xy'=0$，代入得 $ey'(0)+1=0$，$y'(0)=-\\dfrac1e$。再求导：$e^y(y')^2+e^y y''+2y'+xy''=0$，代入 $x=0$：$e\\cdot\\dfrac{1}{e^2}+ey''(0)-\\dfrac{2}{e}=0$，故 $y''(0)=\\dfrac{1}{e^2}$。",
+   "id": "d20261018-数学一-2"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "真题改编",
+   "stem": "$\\displaystyle\\int_0^1 x\\ln(1+x)\\,dx=$______。",
+   "answer": "$\\dfrac{1}{4}$",
+   "analysis": "分部积分：$\\displaystyle\\int_0^1 x\\ln(1+x)dx=\\left.\\dfrac{x^2}{2}\\ln(1+x)\\right|_0^1-\\dfrac12\\int_0^1\\dfrac{x^2}{1+x}dx=\\dfrac{\\ln2}{2}-\\dfrac12\\int_0^1\\left(x-1+\\dfrac{1}{1+x}\\right)dx=\\dfrac{\\ln2}{2}-\\dfrac12\\left(-\\dfrac12+\\ln2\\right)=\\dfrac14$。",
+   "id": "d20261018-数学一-3"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "填空",
+   "topic": "高数",
+   "stem": "$\\lim\\limits_{x\\to 0}(\\cos x)^{\\frac{1}{\\ln(1+x^{2})}}=$______。",
+   "answer": "$e^{-\\frac{1}{2}}$",
+   "analysis": "属 $1^\\infty$ 型。原式 $=\\exp\\left(\\lim\\limits_{x\\to0}\\dfrac{\\ln\\cos x}{\\ln(1+x^2)}\\right)$。由 $\\ln\\cos x=\\ln[1+(\\cos x-1)]\\sim\\cos x-1\\sim-\\dfrac{x^2}{2}$，$\\ln(1+x^2)\\sim x^2$，得指数极限为 $-\\dfrac12$，故原式 $=e^{-\\frac12}=\\dfrac{1}{\\sqrt e}$。",
+   "id": "d20261018-数学一-13"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "填空",
+   "topic": "高数",
+   "stem": "$\\displaystyle\\int_0^1 dy\\int_y^1 \\dfrac{\\sin x}{x}\\,dx=$______。",
+   "answer": "$1-\\cos 1$",
+   "analysis": "$\\dfrac{\\sin x}{x}$ 的原函数不是初等函数，需交换积分次序。积分区域 $D=\\{(x,y)\\mid 0\\le y\\le x\\le1\\}$，于是原式 $=\\displaystyle\\int_0^1 dx\\int_0^x\\dfrac{\\sin x}{x}dy=\\int_0^1\\sin x\\,dx=1-\\cos1$。",
+   "id": "d20261018-数学一-14"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "高数",
+   "source": "真题改编",
+   "stem": "求微分方程 $y''-3y'+2y=2e^{x}$ 满足初始条件 $y(0)=0,\\ y'(0)=0$ 的特解。",
+   "answer": "$y=2e^{2x}-2e^{x}-2xe^{x}$",
+   "analysis": "(1) 齐次方程特征方程 $r^2-3r+2=0$，$r_1=1,\\ r_2=2$，齐次通解 $Y=C_1e^{x}+C_2e^{2x}$。(2) 自由项 $2e^{x}$ 中 $1$ 是特征方程的单根，设特解 $y^*=Axe^{x}$，则 $y^{*\\prime}=A(1+x)e^{x}$，$y^{*\\prime\\prime}=A(2+x)e^{x}$。代入得 $A[(2+x)-3(1+x)+2x]e^{x}=-Ae^{x}=2e^{x}$，故 $A=-2$。(3) 通解 $y=C_1e^{x}+C_2e^{2x}-2xe^{x}$，$y'=C_1e^{x}+2C_2e^{2x}-2(1+x)e^{x}$。由 $y(0)=0$：$C_1+C_2=0$；由 $y'(0)=0$：$C_1+2C_2-2=0$，解得 $C_2=2,\\ C_1=-2$。故所求特解为 $y=2e^{2x}-2e^{x}-2xe^{x}$。",
+   "id": "d20261018-数学一-8"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "大题",
+   "topic": "高数",
+   "stem": "设 $\\Sigma$ 为上半球面 $z=\\sqrt{1-x^{2}-y^{2}}$ 的上侧，计算曲面积分 $I=\\displaystyle\\iint_{\\Sigma}x^{3}\\,dy\\,dz+y^{3}\\,dz\\,dx+(z^{3}+1)\\,dx\\,dy$。",
+   "answer": "$I=\\dfrac{11\\pi}{5}$",
+   "analysis": "(1) 补面：$\\Sigma$ 不封闭，补 $\\Sigma_1:\\ z=0\\ (x^2+y^2\\le1)$，取下侧，则 $\\Sigma+\\Sigma_1$ 为封闭曲面的外侧，所围区域 $\\Omega$ 为上半单位球体。(2) 高斯公式：$P=x^3,\\ Q=y^3,\\ R=z^3+1$，$\\dfrac{\\partial P}{\\partial x}+\\dfrac{\\partial Q}{\\partial y}+\\dfrac{\\partial R}{\\partial z}=3(x^2+y^2+z^2)$。用球面坐标：$\\displaystyle\\oiint_{\\Sigma+\\Sigma_1}=\\iiint_\\Omega3(x^2+y^2+z^2)dV=3\\int_0^{2\\pi}d\\theta\\int_0^{\\frac\\pi2}\\sin\\varphi\\,d\\varphi\\int_0^1 r^4dr=3\\cdot2\\pi\\cdot1\\cdot\\dfrac15=\\dfrac{6\\pi}{5}$。(3) 计算补面：$\\Sigma_1$ 在 $yOz$、$zOx$ 面上投影为线段，前两项积分为 0；在 $\\Sigma_1$ 上 $z=0$，取下侧，$\\displaystyle\\iint_{\\Sigma_1}(z^3+1)dxdy=-\\iint_{x^2+y^2\\le1}1\\,dxdy=-\\pi$。(4) 故 $I=\\dfrac{6\\pi}{5}-(-\\pi)=\\dfrac{11\\pi}{5}$。注意：补面取下侧时符号为负，是本题易错点。",
+   "id": "d20261018-数学一-15"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "线代",
+   "source": "真题改编",
+   "stem": "设 $A=\\begin{pmatrix}1&1&a\\\\1&a&1\\\\a&1&1\\end{pmatrix}$，$\\beta=\\begin{pmatrix}1\\\\1\\\\-2\\end{pmatrix}$，若线性方程组 $Ax=\\beta$ 有无穷多解，则 $a=$（　）",
+   "options": [
+    "A. $1$",
+    "B. $-2$",
+    "C. $2$",
+    "D. $-1$"
+   ],
+   "answer": "B",
+   "analysis": "有无穷多解需 $|A|=0$。$|A|=-(a-1)^2(a+2)$，故 $a=1$ 或 $a=-2$。$a=1$ 时 $r(A)=1$，而增广矩阵第三行为 $(1,1,1,-2)$ 与第一行矛盾，$r(A,\\beta)=2$，无解；$a=-2$ 时三行之和为零向量，$r(A)=r(A,\\beta)=2<3$，有无穷多解。选 B。",
+   "id": "d20261018-数学一-6"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "选择",
+   "topic": "线代",
+   "stem": "设向量组 $\\alpha_1,\\alpha_2,\\alpha_3$ 线性无关，则下列向量组中线性无关的是（　）",
+   "options": [
+    "A. $\\alpha_1+\\alpha_2,\\ \\alpha_2+\\alpha_3,\\ \\alpha_3-\\alpha_1$",
+    "B. $\\alpha_1+\\alpha_2,\\ \\alpha_2+\\alpha_3,\\ \\alpha_3+\\alpha_1$",
+    "C. $\\alpha_1-2\\alpha_2,\\ 2\\alpha_2-3\\alpha_3,\\ 3\\alpha_3-\\alpha_1$",
+    "D. $\\alpha_1+\\alpha_2+\\alpha_3,\\ 2\\alpha_1-3\\alpha_2+22\\alpha_3,\\ 3\\alpha_1+5\\alpha_2-5\\alpha_3$"
+   ],
+   "answer": "B",
+   "analysis": "记 $(\\beta_1,\\beta_2,\\beta_3)=(\\alpha_1,\\alpha_2,\\alpha_3)K$，因 $\\alpha_1,\\alpha_2,\\alpha_3$ 线性无关，$\\beta$ 组线性无关 $\\Leftrightarrow|K|\\ne0$。A：$(\\alpha_1+\\alpha_2)-(\\alpha_2+\\alpha_3)+(\\alpha_3-\\alpha_1)=0$，相关；B：$|K|=\\begin{vmatrix}1&0&1\\\\1&1&0\\\\0&1&1\\end{vmatrix}=2\\ne0$，无关；C：三向量之和为 $0$，相关；D：$|K|=\\begin{vmatrix}1&2&3\\\\1&-3&5\\\\1&22&-5\\end{vmatrix}=0$，相关。选 B。",
+   "id": "d20261018-数学一-16"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "线代",
+   "source": "真题改编",
+   "stem": "设 3 阶矩阵 $A$ 的特征值为 $1,2,3$，$A^*$ 为 $A$ 的伴随矩阵，$E$ 为 3 阶单位矩阵，则 $|A^*+2E|=$______。",
+   "answer": "$160$",
+   "analysis": "$|A|=1\\cdot2\\cdot3=6$，$A^*=|A|A^{-1}$ 的特征值为 $\\dfrac{6}{\\lambda}$，即 $6,3,2$。$A^*+2E$ 的特征值为 $8,5,4$，故 $|A^*+2E|=8\\times5\\times4=160$。",
+   "id": "d20261018-数学一-5"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "填空",
+   "topic": "线代",
+   "stem": "若二次型 $f(x_1,x_2,x_3)=x_1^{2}+x_2^{2}+5x_3^{2}+2tx_1x_2-2x_1x_3+4x_2x_3$ 正定，则 $t$ 的取值范围是______。",
+   "answer": "$-\\dfrac{4}{5}<t<0$",
+   "analysis": "二次型矩阵 $A=\\begin{pmatrix}1&t&-1\\\\t&1&2\\\\-1&2&5\\end{pmatrix}$。正定 $\\Leftrightarrow$ 各阶顺序主子式全大于零：$\\Delta_1=1>0$；$\\Delta_2=1-t^2>0$，即 $-1<t<1$；$\\Delta_3=|A|=-5t^2-4t=-t(5t+4)>0$，即 $-\\dfrac45<t<0$。取交集得 $-\\dfrac45<t<0$。",
+   "id": "d20261018-数学一-17"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "线代",
+   "source": "真题改编",
+   "stem": "设实对称矩阵 $A=\\begin{pmatrix}2&1&1\\\\1&2&1\\\\1&1&2\\end{pmatrix}$。(1) 求 $A$ 的特征值与特征向量；(2) 求正交矩阵 $Q$，使 $Q^{T}AQ$ 为对角矩阵。",
+   "answer": "(1) 特征值 $\\lambda_1=4,\\ \\lambda_2=\\lambda_3=1$；属于 $4$ 的特征向量为 $k_1(1,1,1)^T\\ (k_1\\ne0)$，属于 $1$ 的特征向量为 $k_2(1,-1,0)^T+k_3(1,0,-1)^T$（$k_2,k_3$ 不全为零）。(2) $Q=\\begin{pmatrix}\\dfrac{1}{\\sqrt3}&\\dfrac{1}{\\sqrt2}&\\dfrac{1}{\\sqrt6}\\\\\\dfrac{1}{\\sqrt3}&-\\dfrac{1}{\\sqrt2}&\\dfrac{1}{\\sqrt6}\\\\\\dfrac{1}{\\sqrt3}&0&-\\dfrac{2}{\\sqrt6}\\end{pmatrix}$，$Q^TAQ=\\mathrm{diag}(4,1,1)$。",
+   "analysis": "(1) $A=E+J$，其中 $J$ 为全 1 矩阵。$|\\lambda E-A|=(\\lambda-4)(\\lambda-1)^2$，得 $\\lambda_1=4,\\ \\lambda_2=\\lambda_3=1$。解 $(4E-A)x=0$ 得 $\\alpha_1=(1,1,1)^T$；解 $(E-A)x=0$ 即 $x_1+x_2+x_3=0$，得 $\\alpha_2=(1,-1,0)^T,\\ \\alpha_3=(1,0,-1)^T$。(2) $\\alpha_1$ 与 $\\alpha_2,\\alpha_3$ 已正交（不同特征值）。对 $\\alpha_2,\\alpha_3$ 施密特正交化：$\\beta_2=\\alpha_2$，$\\beta_3=\\alpha_3-\\dfrac{(\\alpha_3,\\beta_2)}{(\\beta_2,\\beta_2)}\\beta_2=(1,0,-1)^T-\\dfrac12(1,-1,0)^T=\\dfrac12(1,1,-2)^T$，取 $(1,1,-2)^T$。单位化得 $\\dfrac{1}{\\sqrt3}(1,1,1)^T,\\ \\dfrac{1}{\\sqrt2}(1,-1,0)^T,\\ \\dfrac{1}{\\sqrt6}(1,1,-2)^T$，以之为列构成 $Q$，则 $Q^TAQ=\\mathrm{diag}(4,1,1)$。",
+   "id": "d20261018-数学一-9"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "选择",
+   "topic": "概率",
+   "stem": "设随机变量 $X\\sim N(\\mu,\\sigma^{2})$，则随着 $\\sigma$ 的增大，概率 $P\\{|X-\\mu|<\\sigma\\}$（　）",
+   "options": [
+    "A. 单调增大",
+    "B. 单调减小",
+    "C. 保持不变",
+    "D. 增减不定"
+   ],
+   "answer": "C",
+   "analysis": "标准化：$P\\{|X-\\mu|<\\sigma\\}=P\\left\\{\\left|\\dfrac{X-\\mu}{\\sigma}\\right|<1\\right\\}=\\Phi(1)-\\Phi(-1)=2\\Phi(1)-1\\approx0.6827$，与 $\\mu,\\sigma$ 均无关，选 C。",
+   "id": "d20261018-数学一-18"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "选择",
+   "topic": "概率",
+   "stem": "设 $X_1,X_2,X_3,X_4$ 是来自正态总体 $N(0,1)$ 的简单随机样本，则统计量 $Y=\\dfrac{X_1-X_2}{|X_3+X_4|}$ 服从（　）",
+   "options": [
+    "A. $N(0,1)$",
+    "B. $t(1)$",
+    "C. $\\chi^{2}(1)$",
+    "D. $F(1,1)$"
+   ],
+   "answer": "B",
+   "analysis": "$X_1-X_2\\sim N(0,2)$，故 $U=\\dfrac{X_1-X_2}{\\sqrt2}\\sim N(0,1)$；$X_3+X_4\\sim N(0,2)$，故 $V=\\dfrac{(X_3+X_4)^2}{2}\\sim\\chi^2(1)$，且 $U,V$ 相互独立。于是 $\\dfrac{U}{\\sqrt{V/1}}=\\dfrac{(X_1-X_2)/\\sqrt2}{|X_3+X_4|/\\sqrt2}=\\dfrac{X_1-X_2}{|X_3+X_4|}\\sim t(1)$，选 B。",
+   "id": "d20261018-数学一-19"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "概率",
+   "source": "真题改编",
+   "stem": "设随机变量 $X\\sim B(10,\\,0.4)$，$Y\\sim P(3)$（泊松分布），且 $X$ 与 $Y$ 相互独立，则 $D(2X-Y+1)=$______。",
+   "answer": "$12.6$",
+   "analysis": "$D(X)=10\\times0.4\\times0.6=2.4$，$D(Y)=3$。由独立性，$D(2X-Y+1)=4D(X)+D(Y)=9.6+3=12.6$。",
+   "id": "d20261018-数学一-7"
+  },
+  {
+   "subject": "数学一",
+   "source": "真题改编",
+   "type": "填空",
+   "topic": "概率",
+   "stem": "设随机变量 $X$ 与 $Y$ 相互独立，且均服从正态分布 $N\\left(0,\\dfrac{1}{2}\\right)$，则 $D(|X-Y|)=$______。",
+   "answer": "$1-\\dfrac{2}{\\pi}$",
+   "analysis": "令 $Z=X-Y$，由独立性 $Z\\sim N\\left(0,\\dfrac12+\\dfrac12\\right)=N(0,1)$。$E|Z|=2\\displaystyle\\int_0^{+\\infty}z\\cdot\\dfrac{1}{\\sqrt{2\\pi}}e^{-\\frac{z^2}{2}}dz=\\sqrt{\\dfrac{2}{\\pi}}$，$E(|Z|^2)=E(Z^2)=D(Z)=1$。故 $D(|X-Y|)=E(Z^2)-(E|Z|)^2=1-\\dfrac2\\pi$。",
+   "id": "d20261018-数学一-20"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "概率",
+   "source": "真题改编",
+   "stem": "设总体 $X$ 的概率密度为 $f(x;\\theta)=\\begin{cases}\\theta x^{\\theta-1},&0<x<1\\\\0,&\\text{其他}\\end{cases}$，其中 $\\theta>0$ 为未知参数，$X_1,X_2,\\cdots,X_n$ 为来自总体 $X$ 的简单随机样本。(1) 求 $\\theta$ 的矩估计量；(2) 求 $\\theta$ 的最大似然估计量。",
+   "answer": "(1) 矩估计量 $\\hat\\theta=\\dfrac{\\overline{X}}{1-\\overline{X}}$；(2) 最大似然估计量 $\\hat\\theta=-\\dfrac{n}{\\sum\\limits_{i=1}^{n}\\ln X_i}$。",
+   "analysis": "(1) $E(X)=\\displaystyle\\int_0^1 x\\cdot\\theta x^{\\theta-1}dx=\\dfrac{\\theta}{\\theta+1}$。令 $\\dfrac{\\theta}{\\theta+1}=\\overline{X}$，解得 $\\hat\\theta=\\dfrac{\\overline{X}}{1-\\overline{X}}$。(2) 似然函数 $L(\\theta)=\\theta^n\\left(\\prod\\limits_{i=1}^n x_i\\right)^{\\theta-1}$（$0<x_i<1$），$\\ln L=n\\ln\\theta+(\\theta-1)\\sum\\limits_{i=1}^n\\ln x_i$。令 $\\dfrac{d\\ln L}{d\\theta}=\\dfrac{n}{\\theta}+\\sum\\limits_{i=1}^n\\ln x_i=0$，得 $\\theta=-\\dfrac{n}{\\sum\\ln x_i}$，且 $\\dfrac{d^2\\ln L}{d\\theta^2}=-\\dfrac{n}{\\theta^2}<0$，为最大值点。故最大似然估计量 $\\hat\\theta=-\\dfrac{n}{\\sum\\limits_{i=1}^{n}\\ln X_i}$。",
+   "id": "d20261018-数学一-10"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "下列程序段的时间复杂度是（　）。\n```\nint x = 0;\nfor (int i = 1; i < n; i *= 3)\n    for (int j = 0; j < i; j++)\n        x++;\n```",
+   "options": [
+    "A. $O(\\log_3 n)$",
+    "B. $O(n)$",
+    "C. $O(n\\log_3 n)$",
+    "D. $O(n^2)$"
+   ],
+   "answer": "B",
+   "analysis": "外层 $i$ 依次取 $1,3,9,\\dots,3^{k}$（$3^k<n$），内层执行 $i$ 次。总次数 $1+3+\\dots+3^k=\\frac{3^{k+1}-1}{2}<\\frac{3n}{2}$，故为 $O(n)$。易错：误把两层循环相乘得 $O(n\\log n)$。",
+   "id": "d20261018-数据结构-1"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "元素 $1,2,3,4,5$ 依次进栈，进栈过程中允许出栈。下列序列中，不可能得到的出栈序列是（　）。",
+   "options": [
+    "A. 2, 4, 3, 5, 1",
+    "B. 3, 2, 5, 4, 1",
+    "C. 4, 5, 3, 1, 2",
+    "D. 1, 5, 4, 3, 2"
+   ],
+   "answer": "C",
+   "analysis": "C：4 出栈时栈中自底向上为 1,2,3；5 进出栈后 3 出栈，此时栈顶为 2，不可能先出 1。A：进1,2出2，进3,4出4,3，进5出5，出1，可行；B、D 同理可模拟得到。",
+   "id": "d20261018-数据结构-2"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "用数组 $Q[0..19]$（共 20 个单元）实现循环队列，front 指向队头元素，rear 指向队尾元素的下一个位置。若当前 front $=15$，rear $=6$，则队列中的元素个数为（　）。",
+   "options": [
+    "A. 12",
+    "B. 11",
+    "C. 10",
+    "D. 9"
+   ],
+   "answer": "B",
+   "analysis": "元素个数 $=(\\text{rear}-\\text{front}+M)\\bmod M=(6-15+20)\\bmod 20=11$。",
+   "id": "d20261018-数据结构-3"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "在一棵度为 4 的树 $T$ 中，有 10 个度为 4 的结点、5 个度为 3 的结点、8 个度为 2 的结点、6 个度为 1 的结点，则 $T$ 的叶结点个数是（　）。",
+   "options": [
+    "A. 47",
+    "B. 51",
+    "C. 45",
+    "D. 49"
+   ],
+   "answer": "D",
+   "analysis": "分支数 $=4\\times10+3\\times5+2\\times8+1\\times6=77$，结点总数 $n=77+1=78$；非叶结点 $10+5+8+6=29$，叶结点 $n_0=78-29=49$。也可用公式 $n_0=1+\\sum (i-1)n_i=1+30+10+8+0=49$。",
+   "id": "d20261018-数据结构-4"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "已知一棵完全二叉树的第 6 层（设根为第 1 层）有 10 个叶结点，则该完全二叉树的结点个数最多是（　）。",
+   "options": [
+    "A. 63",
+    "B. 107",
+    "C. 85",
+    "D. 117"
+   ],
+   "answer": "B",
+   "analysis": "结点最多时第 6 层为满层（$2^5=32$ 个结点），其中 10 个叶结点，其余 22 个结点各有 2 个孩子，第 7 层有 $44$ 个结点。前 6 层共 $2^6-1=63$ 个，总数 $63+44=107$。",
+   "id": "d20261018-数据结构-5"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "若无向图 $G=(V,E)$ 中含 8 个顶点，要保证图 $G$ 在任何情况下都是连通的，则需要的边数最少是（　）。",
+   "options": [
+    "A. 22",
+    "B. 21",
+    "C. 28",
+    "D. 29"
+   ],
+   "answer": "A",
+   "analysis": "最坏情况：7 个顶点构成完全图（$C_7^2=21$ 条边），第 8 个顶点孤立，此时仍不连通。再加 1 条边必然连通，故至少需 $21+1=22$ 条边。",
+   "id": "d20261018-数据结构-6"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "已知一棵二叉树的先序序列为 ABDEHCFG，中序序列为 DBHEACGF，则其后序序列为（　）。",
+   "options": [
+    "A. DHEBFGCA",
+    "B. HDEBGFCA",
+    "C. DHEBGFCA",
+    "D. DEHBGFCA"
+   ],
+   "answer": "C",
+   "analysis": "由先序知根为 A；中序中 A 左侧 DBHE 为左子树、CGF 为右子树。左子树根 B，左孩子 D，右子树 HE 根为 E、H 为 E 的左孩子；右子树根 C，无左子树，右孩子 F，G 为 F 的左孩子。后序：D H E B G F C A。",
+   "id": "d20261018-数据结构-7"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "散列表长度为 11，散列函数 $H(key)=key \\bmod 11$，用线性探测法处理冲突。依次插入关键字 $20,33,42,9,31,53,15$ 后，在等概率情况下查找成功的平均查找长度为（　）。",
+   "options": [
+    "A. 2",
+    "B. $\\frac{20}{7}$",
+    "C. 3",
+    "D. $\\frac{17}{7}$"
+   ],
+   "answer": "B",
+   "analysis": "20→9（1次）；33→0（1次）；42：9冲突→10（2次）；9：9,10,0 冲突→1（4次）；31：9,10,0,1 冲突→2（5次）；53：9,10,0,1,2 冲突→3（6次）；15→4（1次）。$ASL_{成功}=\\frac{1+1+2+4+5+6+1}{7}=\\frac{20}{7}$。",
+   "id": "d20261018-数据结构-8"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "对关键字序列 $\\{53,17,78,9,45,65,87,32\\}$ 采用筛选法（自下而上调整）建立大根堆，得到的堆序列是（　）。",
+   "options": [
+    "A. 87, 78, 53, 45, 65, 17, 32, 9",
+    "B. 87, 45, 78, 9, 17, 65, 53, 32",
+    "C. 87, 53, 78, 32, 45, 65, 17, 9",
+    "D. 87, 45, 78, 32, 17, 65, 53, 9"
+   ],
+   "answer": "D",
+   "analysis": "$n=8$，从第 $\\lfloor 8/2\\rfloor=4$ 个结点起向前调整：① 9 与孩子 32 交换 → 53,17,78,32,45,65,87,9；② 78 与孩子 87 交换 → 53,17,87,32,45,65,78,9；③ 17 与较大孩子 45 交换 → 53,45,87,32,17,65,78,9；④ 53 与 87 交换，再与 78 交换 → 87,45,78,32,17,65,53,9。",
+   "id": "d20261018-数据结构-9"
+  },
+  {
+   "subject": "数据结构",
+   "type": "大题",
+   "source": "改编自2019年408第41题",
+   "stem": "设线性表 $L=(a_1,a_2,\\dots,a_n)$（$n\\ge 1$）采用带头结点的单链表保存，结点定义如下：\n```\ntypedef struct node {\n    int data;\n    struct node *next;\n} NODE;\n```\n请设计一个空间复杂度为 $O(1)$ 且时间上尽可能高效的算法，判断 $L$ 是否“对称”（即 $a_i=a_{n+1-i}$ 对所有 $1\\le i\\le n$ 成立），要求判断结束后链表恢复原状。要求：\n(1) 给出算法的基本设计思想；\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释；\n(3) 说明你所设计算法的时间复杂度。",
+   "answer": "(1) 基本设计思想：\n① 用快慢指针找中间结点：p 每次走一步，q 每次走两步，q 到达链尾时 p 指向前半段的最后一个结点（$n$ 为奇数时为正中间结点）。\n② 将 p 之后的后半段链表原地逆置（头插法）。\n③ 用两个指针分别从前半段第一个结点和逆置后的后半段第一个结点同步向后比较，若出现不等则不对称；后半段比较完毕均相等则对称。\n④ 再次逆置后半段并接回 p 之后，使链表恢复原状。\n\n(2) 算法实现：\n```\nNODE* reverse(NODE *h) {          // 逆置以 h 开头的无头结点链表，返回新首结点\n    NODE *pre = NULL, *r;\n    while (h != NULL) {\n        r = h->next;\n        h->next = pre;\n        pre = h;\n        h = r;\n    }\n    return pre;\n}\n\nbool isSymmetric(NODE *L) {\n    NODE *p = L, *q = L;\n    while (q->next != NULL) {     // 快慢指针找中点\n        p = p->next;              // p 走一步\n        q = q->next;\n        if (q->next != NULL) q = q->next;   // q 走两步\n    }\n    NODE *second = reverse(p->next);        // 逆置后半段\n    NODE *s1 = L->next, *s2 = second;\n    bool ok = true;\n    while (s2 != NULL) {          // 后半段长度不超过前半段\n        if (s1->data != s2->data) { ok = false; break; }\n        s1 = s1->next;\n        s2 = s2->next;\n    }\n    p->next = reverse(second);    // 恢复原链表\n    return ok;\n}\n```\n\n(3) 时间复杂度：找中点 $O(n)$，两次逆置各 $O(n)$，比较 $O(n)$，总时间复杂度 $O(n)$；只用了常数个指针，空间复杂度 $O(1)$。",
+   "analysis": "分步要点：\n- 关键点在 $O(1)$ 空间限制：不能借助数组或栈存储前半段，只能原地逆置后半段后比较。\n- 快慢指针循环结束时，p 为前 $\\lceil n/2\\rceil$ 个结点的最后一个，后半段长度为 $\\lfloor n/2\\rfloor$，奇数时中间结点无需比较。\n- 题目要求恢复原状，需再次逆置并接回。\n评分要点（参考，满分 13 分）：\n- 设计思想 3 分：找中点 1 分，逆置后半段 1 分，比较并恢复 1 分。\n- 算法描述 8 分：快慢指针 2 分，逆置 2 分，比较 2 分，恢复链表 2 分；思路正确但有小错误酌情扣 1～2 分。\n- 时间复杂度 2 分：$O(n)$。\n- 若使用辅助数组/栈（空间 $O(n)$）但正确，最高给 9 分；若用双重循环暴力比较（时间 $O(n^2)$）但正确，最高给 10 分。",
+   "id": "d20261018-数据结构-10"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "已知 float 型变量 $x=-10.375$，采用 IEEE 754 单精度格式存储，则 $x$ 的机器数（十六进制）为",
+   "options": [
+    "A. C1260000H",
+    "B. C1A60000H",
+    "C. C0A60000H",
+    "D. 41260000H"
+   ],
+   "answer": "A",
+   "analysis": "$10.375=1010.011_2=1.010011\\times2^{3}$。符号位 $S=1$；阶码 $E=127+3=130=10000010_2$；尾数（去掉隐藏位）为 $0100110\\cdots0$。拼接得 $1\\,10000010\\,01001100\\cdots0$，即 $1100\\,0001\\,0010\\,0110\\,0000\\cdots$ = C1260000H。",
+   "id": "d20261018-计组-1"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某 8 位机器中，整数用补码表示。已知 $x=7AH$，$y=0CH$，执行 $z=x+y$ 后，溢出标志 OF、符号标志 SF、进位/借位标志 CF 分别为",
+   "options": [
+    "A. OF=1，SF=1，CF=0",
+    "B. OF=0，SF=1，CF=0",
+    "C. OF=1，SF=0，CF=1",
+    "D. OF=0，SF=0，CF=1"
+   ],
+   "answer": "A",
+   "analysis": "$7AH+0CH=86H=10000110_2$。按有符号数：$122+12=134>127$，两正数相加结果为负，OF=1；结果最高位为 1，SF=1；按无符号数 $122+12=134<256$，最高位无进位，CF=0。",
+   "id": "d20261018-计组-2"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某计算机主存容量 256MB，按字节编址；Cache 数据区容量 64KB，采用 4 路组相联映射，主存块大小为 64B。则主存地址中 Tag 字段的位数，以及主存地址 2345678H 所映射到的 Cache 组号分别为",
+   "options": [
+    "A. 14 位，第 89 组",
+    "B. 14 位，第 345 组",
+    "C. 12 位，第 89 组",
+    "D. 16 位，第 89 组"
+   ],
+   "answer": "A",
+   "analysis": "主存地址 $\\log_2 2^{28}=28$ 位；块内偏移 $\\log_2 64=6$ 位；Cache 行数 $64\\text{KB}/64\\text{B}=1024$，组数 $1024/4=256$，组号 8 位；Tag $=28-8-6=14$ 位。组号为地址第 6～13 位：$2345678H$ 的低 16 位 $5678H$ 右移 6 位得 $159H$，取低 8 位为 $59H=89$。",
+   "id": "d20261018-计组-3"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "假设某数组 int a[1024] 的首地址按 Cache 块对齐，int 占 4B，Cache 块大小为 32B，Cache 初始为空，采用写回、按写分配策略，且 Cache 容量足够大。执行 for(i=0;i<1024;i++) a[i]=a[i]+1; 时（只考虑对数组 a 的访问），Cache 命中率为",
+   "options": [
+    "A. 87.5%",
+    "B. 93.75%",
+    "C. 96.875%",
+    "D. 50%"
+   ],
+   "answer": "B",
+   "analysis": "每块含 $32/4=8$ 个元素。每个元素访问 2 次（先读后写），每块共 16 次访问，仅第一次读缺失，其余 15 次命中。命中率 $=15/16=93.75\\%$。",
+   "id": "d20261018-计组-4"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某页式虚拟存储系统采用一级页表，页表常驻主存，TLB 访问时间为 10ns，主存访问时间为 100ns，TLB 命中率为 90%。先查 TLB，TLB 未命中再访问主存中的页表。不考虑 Cache 和缺页，则 CPU 访问一个数据的平均时间为",
+   "options": [
+    "A. 110ns",
+    "B. 120ns",
+    "C. 129ns",
+    "D. 200ns"
+   ],
+   "answer": "B",
+   "analysis": "TLB 命中：$10+100=110$ns；TLB 未命中：$10+100(\\text{查页表})+100(\\text{取数据})=210$ns。平均 $=0.9\\times110+0.1\\times210=99+21=120$ns。",
+   "id": "d20261018-计组-5"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某计算机按字节编址，转移指令采用相对寻址，指令长 2 字节，第 1 字节为操作码，第 2 字节为相对位移量（补码表示）。CPU 每取出 1 字节指令后 PC 自动加 1。若某转移指令所在主存地址为 2008H，转移目标地址为 1FF0H，则该指令第 2 字节的内容为",
+   "options": [
+    "A. E6H",
+    "B. E8H",
+    "C. 1AH",
+    "D. E4H"
+   ],
+   "answer": "A",
+   "analysis": "取完该指令后 $PC=2008H+2=200AH$。位移量 $=1FF0H-200AH=-1AH=-26$。8 位补码：$256-26=230=E6H$。",
+   "id": "d20261018-计组-6"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某 5 段指令流水线各段时间依次为 200ps、100ps、250ps、150ps、100ps，忽略流水段寄存器延迟。若连续执行 100 条指令且无任何冲突，则所需时间约为",
+   "options": [
+    "A. 25ns",
+    "B. 26ns",
+    "C. 26.25ns",
+    "D. 80ns"
+   ],
+   "answer": "B",
+   "analysis": "流水线时钟周期取最长段 250ps。$n$ 条指令耗时 $(k+n-1)\\Delta t=(5+100-1)\\times250\\text{ps}=26000\\text{ps}=26\\text{ns}$。D 是非流水方式 $100\\times800\\text{ps}=80\\text{ns}$。",
+   "id": "d20261018-计组-7"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某同步总线数据线宽度为 64 位，总线时钟频率为 200MHz，在每个时钟周期的上升沿和下降沿各传送一次数据。则该总线的最大数据传输率（带宽）为（$1\\text{GB}=10^9\\text{B}$）",
+   "options": [
+    "A. 1.6GB/s",
+    "B. 3.2GB/s",
+    "C. 6.4GB/s",
+    "D. 12.8GB/s"
+   ],
+   "answer": "B",
+   "analysis": "每次传送 $64/8=8$B，每秒传送 $200\\text{M}\\times2=4\\times10^8$ 次。带宽 $=8\\times4\\times10^8=3.2\\times10^9\\text{B/s}=3.2\\text{GB/s}$。",
+   "id": "d20261018-计组-8"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某外设数据传输率为 0.5MB/s，采用中断方式与主机交换数据，每次中断传送 32 位数据。CPU 主频为 500MHz，每次中断服务（含中断响应）需 500 个时钟周期。则 CPU 用于该外设 I/O 的时间占整个 CPU 时间的百分比为（$1\\text{MB}=10^6\\text{B}$）",
+   "options": [
+    "A. 6.25%",
+    "B. 12.5%",
+    "C. 25%",
+    "D. 1.25%"
+   ],
+   "answer": "B",
+   "analysis": "每秒中断次数 $=0.5\\times10^6/4=1.25\\times10^5$；每秒占用周期 $=1.25\\times10^5\\times500=6.25\\times10^7$；占比 $=6.25\\times10^7/(5\\times10^8)=12.5\\%$。（若改用 DMA 且每次传 5000B、预处理+后处理共 500 周期，则每秒仅 100 次，占比 0.01%，体现 DMA 优势。）",
+   "id": "d20261018-计组-9"
+  },
+  {
+   "subject": "计组",
+   "type": "大题",
+   "source": "真题改编",
+   "stem": "某计算机主存地址空间为 32 位，按字节编址。数据 Cache 采用直接映射方式，数据区容量为 8KB，主存块大小为 64B，采用写回（Write Back）、按写分配策略，每个 Cache 行除数据和 Tag 外还设有 1 位有效位和 1 位脏位（修改位）。现有如下两个 C 程序段，数组 int a[256][256] 按行优先存放，int 占 4B，首地址为 00C80000H，变量 i、j、sum 均在寄存器中，Cache 初始为空。\\n程序 A：for(i=0;i<256;i++) for(j=0;j<256;j++) sum+=a[i][j];\\n程序 B：for(j=0;j<256;j++) for(i=0;i<256;i++) sum+=a[i][j];\\n请回答：\\n(1) 主存地址中 Tag、Cache 行号、块内地址字段各多少位？\\n(2) 该 Cache 的总容量为多少位（含有效位、脏位、Tag 和数据）？\\n(3) 数组元素 a[1][2] 的主存地址是多少？它所在的主存块映射到 Cache 的第几行（行号从 0 开始）？\\n(4) 程序 A 和程序 B 的数据 Cache 命中率各是多少？哪个程序执行更快？",
+   "answer": "(1) 块内地址 $\\log_2 64=6$ 位；行数 $8\\text{KB}/64\\text{B}=128$，行号 7 位；Tag $=32-7-6=19$ 位。\\n(2) 每行位数 $=1+1+19+64\\times8=533$ 位；总容量 $=128\\times533=68224$ 位。\\n(3) a[1][2] 地址 $=00C80000H+(1\\times256+2)\\times4=00C80000H+1032=00C80000H+408H=00C80408H$。行号为地址第 6～12 位：$00C80000H$ 对应部分为 0，$408H\\gg6=10H$，故映射到第 16 行。\\n(4) 程序 A：按行顺序访问，每块含 $64/4=16$ 个元素，每块仅第一次访问缺失，命中率 $=15/16=93.75\\%$（共 65536 次访问，缺失 4096 次）。程序 B：按列访问，相邻两次访问地址相差 $256\\times4=1024$B，即相差 16 个块；a[i][j] 与 a[i+8][j] 相差 8KB，映射到同一 Cache 行。内层循环 i 从 0 到 255，每一行被反复替换，回到同一块时早已被换出，因此每次访问都缺失，命中率为 0。程序 A 执行更快。",
+   "analysis": "要点：① 直接映射地址划分为 Tag | 行号 | 块内地址，位数分别由主存地址位数、行数、块大小决定；② 总容量计算勿漏有效位、脏位（写回策略才需要）和 Tag；③ 元素地址 = 首地址 + (行号×列数 + 列号)×元素大小，行号 = (地址 ≫ 6) mod 128；④ 程序 A 有良好空间局部性，程序 B 步长 1024B，Cache 仅能容纳 8 个“行间隔”的块，8 行之后循环冲突，导致全部缺失。",
+   "id": "d20261018-计组-10"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "下列关于线程的叙述中，正确的是（ ）。",
+   "options": [
+    "A. 同一进程中的各个线程共享该进程的用户栈",
+    "B. 用户级线程的切换必须由操作系统内核完成",
+    "C. 同一进程中的各个线程共享该进程的地址空间和已打开的文件",
+    "D. 在引入线程的操作系统中，线程是资源分配的基本单位"
+   ],
+   "answer": "C",
+   "analysis": "各线程拥有独立的栈和寄存器上下文，A错；用户级线程的切换由用户态线程库完成，无需内核参与，B错；同一进程内线程共享进程的地址空间、打开文件等资源，C对；引入线程后，进程仍是资源分配的基本单位，线程是调度的基本单位，D错。",
+   "id": "d20261018-操作系统-1"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某单CPU系统中有4个作业，到达时间和运行时间如下（单位：ms）：$P_1$：0，10；$P_2$：2，6；$P_3$：4，2；$P_4$：6，4。若采用非抢占式高响应比优先（HRRN）调度算法，则4个作业的平均周转时间是（ ）。",
+   "options": [
+    "A. 11.5 ms",
+    "B. 12 ms",
+    "C. 12.5 ms",
+    "D. 13.5 ms"
+   ],
+   "answer": "C",
+   "analysis": "响应比 $R=1+\\frac{\\text{等待时间}}{\\text{运行时间}}$。$t=0$ 只有 $P_1$，运行至 10。$t=10$：$R_2=1+8/6\\approx2.33$，$R_3=1+6/2=4$，$R_4=1+4/4=2$，选 $P_3$，运行至 12。$t=12$：$R_2=1+10/6\\approx2.67$，$R_4=1+6/4=2.5$，选 $P_2$，运行至 18；最后 $P_4$ 运行至 22。周转时间：$P_1=10$，$P_3=8$，$P_2=16$，$P_4=16$，平均 $50/4=12.5$ ms。（若用非抢占SJF得12，FCFS得13.5。）",
+   "id": "d20261018-操作系统-2"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某系统中有6个并发进程共享一类资源，该资源最多允许2个进程同时使用。若用记录型信号量 S 实现对该资源的访问控制，则 S 的取值范围是（ ）。",
+   "options": [
+    "A. $-4\\sim2$",
+    "B. $-5\\sim1$",
+    "C. $-6\\sim2$",
+    "D. $-3\\sim3$"
+   ],
+   "answer": "A",
+   "analysis": "S 初值为可同时使用的资源数 2（最大值）。最坏情况下6个进程都执行 P(S)，2个获得资源，4个阻塞，S 最小为 $2-6=-4$。故取值范围为 $[-4,2]$。",
+   "id": "d20261018-操作系统-3"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某系统有 $R_1,R_2,R_3$ 三类资源，进程 $P_0\\sim P_3$ 的资源分配情况如下（格式：已分配 Allocation / 最大需求 Max）：\n$P_0$：(1,0,1) / (4,2,2)\n$P_1$：(2,1,1) / (3,2,2)\n$P_2$：(2,1,0) / (5,3,3)\n$P_3$：(0,1,2) / (1,2,4)\n当前可用资源 Available=(1,1,2)。采用银行家算法，下列序列中属于安全序列的是（ ）。",
+   "options": [
+    "A. $P_0,P_1,P_3,P_2$",
+    "B. $P_3,P_2,P_1,P_0$",
+    "C. $P_3,P_0,P_1,P_2$",
+    "D. $P_1,P_3,P_0,P_2$"
+   ],
+   "answer": "D",
+   "analysis": "Need = Max − Allocation：$P_0$(3,2,1)，$P_1$(1,1,1)，$P_2$(3,2,3)，$P_3$(1,1,2)。A：$P_0$ 需要 3 个 $R_1$ > 1，不安全。B：$P_3$ 完成后 Available=(1,2,4)，$P_2$ 需 3 个 $R_1$，不安全。C：$P_3$ 后 (1,2,4)，$P_0$ 需 3 个 $R_1$，不安全。D：$P_1$ 完成 → (3,2,3)；$P_3$ → (3,3,5)；$P_0$ → (4,3,6)；$P_2$ 需 (3,2,3) 可满足 → (6,4,6)。D 为安全序列。",
+   "id": "d20261018-操作系统-4"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某计算机采用多级页表的分页存储管理，虚拟地址为48位，页面大小为4 KB，页表项大小为8 B。若要求每一级页表（含页目录）都恰好能装入一个页面，则至少需要的页表级数是（ ）。",
+   "options": [
+    "A. 2",
+    "B. 3",
+    "C. 4",
+    "D. 5"
+   ],
+   "answer": "C",
+   "analysis": "页内偏移 $\\log_2 4096=12$ 位，页号共 $48-12=36$ 位。一页可容纳页表项 $4\\text{KB}/8\\text{B}=2^9$ 个，每级页表索引 9 位。级数 $\\lceil 36/9\\rceil=4$。",
+   "id": "d20261018-操作系统-5"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某进程分配到3个物理页框，初始为空。进程访问的页号序列为：1, 3, 2, 4, 3, 1, 5, 3, 2, 1, 4, 3。若采用LRU页面置换算法，则缺页次数为（ ）。",
+   "options": [
+    "A. 8",
+    "B. 9",
+    "C. 10",
+    "D. 11"
+   ],
+   "answer": "C",
+   "analysis": "LRU过程（括号为访问后页框内容，F表示缺页）：1F(1)；3F(1,3)；2F(1,3,2)；4F 淘汰1→(3,2,4)；3命中；1F 淘汰2→(3,4,1)；5F 淘汰4→(3,1,5)；3命中；2F 淘汰1→(3,5,2)；1F 淘汰5→(3,2,1)；4F 淘汰3→(2,1,4)；3F 淘汰2→(1,4,3)。共命中2次，缺页 12−2=10 次。（FIFO为11次。）",
+   "id": "d20261018-操作系统-6"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某文件系统采用索引结点（inode）存放文件的物理地址，inode 中含10个直接地址项、1个一级间接地址项和1个二级间接地址项。磁盘块大小为1 KB，每个地址项占4 B。该文件系统中单个文件的最大长度是（ ）。",
+   "options": [
+    "A. 266 KB",
+    "B. 65546 KB",
+    "C. 65802 KB",
+    "D. 65792 KB"
+   ],
+   "answer": "C",
+   "analysis": "每个索引块可存 $1\\text{KB}/4\\text{B}=256$ 个地址。直接：10 块；一级间接：256 块；二级间接：$256^2=65536$ 块。最大长度 $(10+256+65536)\\times1\\text{KB}=65802$ KB。",
+   "id": "d20261018-操作系统-7"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某磁盘有200个柱面（编号0~199），磁头当前位于85号柱面。磁盘请求队列（按到达顺序）为：45, 120, 80, 190, 30, 150, 95, 10。若采用最短寻道时间优先（SSTF）算法，则磁头移动的总柱面数是（ ）。",
+   "options": [
+    "A. 285",
+    "B. 295",
+    "C. 305",
+    "D. 685"
+   ],
+   "answer": "B",
+   "analysis": "SSTF访问顺序：85→80(5)→95(15)→120(25)→150(30)→190(40)→45(145)→30(15)→10(20)，总计 5+15+25+30+40+145+15+20=295。（向大号方向的LOOK/电梯算法为 105+180=285；FCFS为685。）",
+   "id": "d20261018-操作系统-8"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某系统从磁盘把一块数据读入缓冲区用时 $T=100\\mu s$，将缓冲区数据传送到用户区用时 $M=20\\mu s$，CPU处理一块数据用时 $C=60\\mu s$。在连续处理大量数据块时，采用单缓冲区和双缓冲区时处理每块数据的平均用时分别约为（ ）。",
+   "options": [
+    "A. $120\\mu s$，$100\\mu s$",
+    "B. $180\\mu s$，$100\\mu s$",
+    "C. $120\\mu s$，$80\\mu s$",
+    "D. $180\\mu s$，$120\\mu s$"
+   ],
+   "answer": "A",
+   "analysis": "单缓冲：输入与处理可并行，但传送 M 时缓冲区被占用，每块用时 $\\max(C,T)+M=\\max(60,100)+20=120\\mu s$。双缓冲：一个缓冲区输入时另一个可传送并处理，每块用时 $\\max(T, C+M)=\\max(100,80)=100\\mu s$。",
+   "id": "d20261018-操作系统-9"
+  },
+  {
+   "subject": "操作系统",
+   "type": "大题",
+   "source": "改编自2009年408第45题",
+   "stem": "三个进程 $P_1$、$P_2$、$P_3$ 互斥使用一个包含 $N=20$ 个单元的缓冲区。$P_1$ 每次用 produce() 生成一个正整数并用 put() 送入缓冲区某一空单元；$P_2$ 每次用 getmul3() 从缓冲区中取出一个能被3整除的整数，并用 countmul3() 统计个数；$P_3$ 每次用 getother() 从缓冲区中取出一个不能被3整除的整数，并用 countother() 统计个数。请用信号量机制实现这三个进程的同步与互斥活动，并说明所定义信号量的含义（要求用伪代码描述）。",
+   "answer": "信号量定义：\nsemaphore mutex = 1;   // 缓冲区互斥访问\nsemaphore empty = 20;  // 缓冲区空单元数\nsemaphore mul3 = 0;    // 缓冲区中能被3整除的整数个数\nsemaphore other = 0;   // 缓冲区中不能被3整除的整数个数\n\nP1(){\n  while(1){\n    x = produce();\n    P(empty);\n    P(mutex);\n    put(x);\n    if (x % 3 == 0) V(mul3); else V(other);\n    V(mutex);\n  }\n}\n\nP2(){\n  while(1){\n    P(mul3);\n    P(mutex);\n    getmul3();\n    V(mutex);\n    V(empty);\n    countmul3();\n  }\n}\n\nP3(){\n  while(1){\n    P(other);\n    P(mutex);\n    getother();\n    V(mutex);\n    V(empty);\n    countother();\n  }\n}",
+   "analysis": "① 分析关系：三个进程对缓冲区互斥访问（mutex）；P1 与 P2、P3 之间是生产者—消费者同步关系，P1 需要空单元（empty），P2 需要能被3整除的数（mul3），P3 需要其余的数（other）。② 设初值：mutex=1，empty=N=20，mul3=other=0。③ 关键点：P1 先 P(empty) 再 P(mutex)，顺序不可颠倒，否则缓冲区满时 P1 持有 mutex 阻塞会导致死锁；P2、P3 同理须先 P(mul3)/P(other) 再 P(mutex)。④ P1 放入后根据 x 是否被3整除决定 V(mul3) 还是 V(other)；produce() 与 countmul3()/countother() 放在临界区外，以提高并发度。",
+   "id": "d20261018-操作系统-10"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "在 TCP/IP 体系结构中，直接为 RIP 协议提供服务的协议是（　）。",
+   "options": [
+    "A. PPP",
+    "B. IP",
+    "C. UDP",
+    "D. TCP"
+   ],
+   "answer": "C",
+   "analysis": "RIP 是应用层协议，其报文封装在 UDP 数据报中传送（端口 520），故直接为 RIP 提供服务的是 UDP。对比：OSPF 直接用 IP，BGP 用 TCP。",
+   "id": "d20261018-计网-1"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某信道带宽为 $3\\,\\text{kHz}$，信噪比为 $30\\,\\text{dB}$，根据香农定理，该信道的极限数据传输速率约为（　）。",
+   "options": [
+    "A. 30 kbps",
+    "B. 10 kbps",
+    "C. 6 kbps",
+    "D. 60 kbps"
+   ],
+   "answer": "A",
+   "analysis": "$30\\,\\text{dB}$ 对应 $S/N=10^{30/10}=1000$。$C=W\\log_2(1+S/N)=3000\\times\\log_2 1001\\approx 3000\\times 9.97\\approx 29.9\\,\\text{kbps}\\approx 30\\,\\text{kbps}$。",
+   "id": "d20261018-计网-2"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "改编自2009年408第34题",
+   "stem": "在无噪声情况下，若某通信链路的带宽为 $4\\,\\text{kHz}$，采用 8 种相位、每种相位具有 2 种振幅的 QAM 调制技术，则该通信链路的最大数据传输速率是（　）。",
+   "options": [
+    "A. 16 kbps",
+    "B. 32 kbps",
+    "C. 48 kbps",
+    "D. 64 kbps"
+   ],
+   "answer": "B",
+   "analysis": "码元状态数 $V=8\\times2=16$。由奈氏准则，最大速率 $=2W\\log_2V=2\\times4000\\times\\log_2 16=2\\times4000\\times4=32\\,\\text{kbps}$。",
+   "id": "d20261018-计网-3"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "真题改编（原型为2010年408第34题）",
+   "stem": "在一个采用 CSMA/CD 协议的网络中，传输介质是一根完整的电缆，传输速率为 $100\\,\\text{Mbps}$，电缆中信号传播速度为 $2\\times10^8\\,\\text{m/s}$。若最小数据帧长度减少 100 bit，则最远的两个站点之间的距离至少需要（　）。",
+   "options": [
+    "A. 增加 50 m",
+    "B. 增加 100 m",
+    "C. 减少 50 m",
+    "D. 减少 100 m"
+   ],
+   "answer": "D",
+   "analysis": "最短帧长满足 $L_{\\min}=2\\tau R=\\dfrac{2dR}{v}$，故 $\\Delta d=\\dfrac{\\Delta L\\cdot v}{2R}=\\dfrac{100\\times2\\times10^8}{2\\times10^8}=100\\,\\text{m}$。帧长减少，则距离须减少 100 m。",
+   "id": "d20261018-计网-4"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "改编自2009年408第35题",
+   "stem": "数据链路层采用后退 N 帧（GBN）协议，发送方已经发送了编号为 0～7 的帧。当计时器超时时，若发送方只收到 0、1、4 号帧的确认，则发送方需要重发的帧数是（　）。",
+   "options": [
+    "A. 2",
+    "B. 3",
+    "C. 4",
+    "D. 5"
+   ],
+   "answer": "B",
+   "analysis": "GBN 采用累积确认，收到 4 号帧的确认说明 0～4 号帧均已正确接收。超时后只需重发 5、6、7 号帧，共 3 帧。",
+   "id": "d20261018-计网-5"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某路由器的路由表中有 4 条到达子网的路由：202.118.33.0/24、202.118.34.0/24、202.118.36.0/24、202.118.37.0/24。若将它们聚合为一条路由，则聚合后的目的网络地址是（　）。",
+   "options": [
+    "A. 202.118.32.0/22",
+    "B. 202.118.33.0/21",
+    "C. 202.118.32.0/21",
+    "D. 202.118.36.0/22"
+   ],
+   "answer": "C",
+   "analysis": "第三字节：33=00100001，34=00100010，36=00100100，37=00100101，公共前缀为高 5 位 00100，即前缀长度 $16+5=21$，网络地址第三字节为 00100000=32，故为 202.118.32.0/21。A 的 /22 只覆盖 32～35，不含 36、37；B 不是规范网络地址；D 不含 33、34。",
+   "id": "d20261018-计网-6"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "改编自2012年408第35题",
+   "stem": "某主机的 IP 地址为 166.111.93.27，子网掩码为 255.255.248.0。若该主机向其所在子网发送广播分组，则目的地址可以是（　）。",
+   "options": [
+    "A. 166.111.95.255",
+    "B. 166.111.93.255",
+    "C. 166.111.88.255",
+    "D. 166.111.255.255"
+   ],
+   "answer": "A",
+   "analysis": "掩码 /21，第三字节掩码 11111000。93=01011101，与掩码相与得 01011000=88，子网为 166.111.88.0/21；主机号全 1 时第三字节为 01011111=95，故直接广播地址为 166.111.95.255。",
+   "id": "d20261018-计网-7"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "改编自2009年408第38题",
+   "stem": "主机甲与主机乙之间已建立一个 TCP 连接，主机甲向主机乙连续发送 3 个 TCP 段，分别包含 400 B、600 B 和 800 B 的有效载荷，第 1 个段的序号为 1200。若主机乙仅正确接收到第 1 个和第 3 个段，则主机乙发送给主机甲的确认序号是（　）。",
+   "options": [
+    "A. 1599",
+    "B. 1600",
+    "C. 2200",
+    "D. 3000"
+   ],
+   "answer": "B",
+   "analysis": "三段字节范围：第 1 段 1200～1599，第 2 段 1600～2199，第 3 段 2200～2999。第 2 段丢失，第 3 段为失序到达，TCP 累积确认只确认按序收到的数据，确认号为期望的下一个字节序号 1600。",
+   "id": "d20261018-计网-8"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "source": "真题改编",
+   "stem": "某浏览器访问一个 Web 页面，该页面由 1 个 HTML 基本文件和 5 个引用的 JPEG 图像组成，均位于同一服务器，域名解析结果已在本地缓存中。若采用 HTTP/1.1 持续连接的非流水线方式，忽略对象的发送时延，则从发起 TCP 连接请求到接收完全部对象，至少需要的时间是（　）。",
+   "options": [
+    "A. 3 RTT",
+    "B. 6 RTT",
+    "C. 7 RTT",
+    "D. 12 RTT"
+   ],
+   "answer": "C",
+   "analysis": "无需 DNS 查询。建立 TCP 连接需 1 RTT（HTTP 请求随第三次握手发出）；持续连接下复用同一连接，非流水线方式每个对象请求-响应各需 1 RTT，共 6 个对象需 6 RTT。合计 $1+6=7$ RTT。（若用非持续连接需 $6\times2=12$ RTT；持续流水线约需 $1+1+1=3$ RTT。）",
+   "id": "d20261018-计网-9"
+  },
+  {
+   "subject": "计网",
+   "type": "大题",
+   "source": "真题改编",
+   "stem": "主机甲与主机乙之间建立 TCP 连接后，甲持续向乙发送大量数据。已知：MSS 为 1000 B，甲发出的 SYN 报文段的序号 seq = 5000；乙的接收缓存足够大，通告窗口始终不小于拥塞窗口；拥塞窗口 cwnd 以 MSS 为单位，连接建立后 cwnd 初值为 1，慢开始门限 ssthresh 初值为 16。甲每轮（1 个 RTT）都按当前 cwnd 发满数据段（每段均为 1000 B），所发数据段在本轮结束时均被确认（拥塞事件发生的那一轮除外），忽略传输时延。请回答：(1) 甲发送的第 1 个数据段的序号是多少？乙对该段的确认号是多少？(2) 第几轮发送时 cwnd 首次达到 16？前 5 轮共发送了多少字节？第 6 轮发送的第 1 个数据段的序号是多少？(3) 进入拥塞避免后，若甲在 cwnd = 32 的那一轮发送时发生超时，这是第几轮？超时后 ssthresh 和 cwnd 分别变为多少？在其后第几轮 cwnd 再次达到 ssthresh？(4) 若(3)中的拥塞不是超时，而是甲收到 3 个重复 ACK，则 ssthresh 和 cwnd 分别变为多少？甲随后采用什么算法？",
+   "answer": "(1) SYN 段消耗 1 个序号，第 1 个数据段序号为 $5000+1=5001$；该段载荷 1000 B，乙的确认号为 $5001+1000=6001$。(2) 慢开始阶段每轮 cwnd 加倍：第 1～5 轮 cwnd 依次为 1、2、4、8、16，故第 5 轮 cwnd 首次达到 16。前 5 轮共发送 $1+2+4+8+16=31$ 个段，即 $31\\times1000=31000$ B；第 6 轮第 1 个数据段序号为 $5001+31000=36001$。(3) 第 5 轮后进入拥塞避免，每轮 cwnd 加 1，第 $k$ 轮 cwnd $=16+(k-5)$，cwnd $=32$ 时 $k=21$，即第 21 轮发生超时。超时后 ssthresh $=32/2=16$，cwnd $=1$。之后重新慢开始：第 22～26 轮 cwnd 依次为 1、2、4、8、16，故第 26 轮 cwnd 再次达到 ssthresh = 16，此后转入拥塞避免。(4) 收到 3 个重复 ACK 时执行快重传与快恢复：ssthresh $=32/2=16$，cwnd $=16$（新的 ssthresh），随后直接执行拥塞避免算法（每轮加 1），而不再从 1 开始慢开始。",
+   "analysis": "要点①：SYN 不携带数据但消耗 1 个序号，确认号 = 期望收到的下一字节序号。要点②：慢开始指数增长，累计段数为等比数列求和，后续序号 = 首序号 + 已发字节数。要点③：拥塞避免线性增长，从 16 到 32 需 16 轮（第 5 轮→第 21 轮）；超时：ssthresh 减半、cwnd 置 1、重新慢开始。要点④：3 个重复 ACK 触发快重传+快恢复：ssthresh 减半，cwnd = ssthresh，直接进入拥塞避免。",
+   "id": "d20261018-计网-10"
+  }
+ ]
+}</script>
+    <script>
+      // 刷题题库：每天一组，新的一天直接追加到数组末尾；第 1 天来自 day1.json（id="bank-day1"）
+      function bankDay(id) { try { return JSON.parse(document.getElementById(id).textContent); } catch (e) { return null; } }
+      const QUESTION_BANK = [bankDay("bank-day1")].filter(Boolean);
+    </script>
+    <script src="hark.js"></script>
+    <script>
+      (function () {
+        var SUBJ = ["政治", "英语一", "数学一", "数据结构", "计组", "操作系统", "计网", "其他"];
+        var ALIAS = { "计算机组成原理": "计组", "组成原理": "计组", "计算机网络": "计网", "数学": "数学一", "英语": "英语一", "思想政治": "政治", "OS": "操作系统", "DS": "数据结构" };
+        function normSubj(s) { s = String(s || "").trim(); if (ALIAS[s]) s = ALIAS[s]; return SUBJ.indexOf(s) >= 0 ? s : "其他"; }
+        var CAUSE = ["概念不清", "粗心", "计算错误", "审题错误", "不会做"];
+        var KEY = "cuotiben-v1", DAY = 864e5;
+        var $ = function (id) { return document.getElementById(id); };
+        var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+        var uid = function () { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); };
+
+        /* ---------- storage ---------- */
+        var SAMPLES = [
+          { subject: "数学一", cause: "计算错误",
+            oldQ: "求极限：lim(x→0) (x − sin x) / x³",
+            oldA: "1/6。\n泰勒展开：sin x = x − x³/6 + o(x³)，\n故 x − sin x = x³/6 + o(x³)，\n原式 = lim (x³/6) / x³ = 1/6。\n（也可连用三次洛必达：(1−cos x)/3x² → sin x/6x → 1/6）",
+            q: "求极限：$\\lim_{x\\to 0}\\frac{x-\\sin x}{x^3}$",
+            a: "$\\frac{1}{6}$。\n泰勒展开：$\\sin x = x - \\frac{x^3}{6} + o(x^3)$，\n故 $x - \\sin x = \\frac{x^3}{6} + o(x^3)$，\n$$\\lim_{x\\to 0}\\frac{x-\\sin x}{x^3} = \\lim_{x\\to 0}\\frac{\\dfrac{x^3}{6}+o(x^3)}{x^3} = \\frac{1}{6}$$\n（也可连用三次洛必达：$\\frac{1-\\cos x}{3x^2} \\to \\frac{\\sin x}{6x} \\to \\frac{1}{6}$）" },
+          { subject: "数据结构", cause: "概念不清",
+            oldQ: "一棵二叉树的先序序列为 ABDECF，中序序列为 DBEAFC，求其后序序列。",
+            oldA: "DEBFCA。\n先序首元素 A 为根；中序中 A 左侧 DBE 为左子树，右侧 FC 为右子树。\n左子树：先序 BDE → 根 B，左 D、右 E。\n右子树：先序 CF → 根 C，中序 FC 说明 F 是 C 的左孩子。\n后序（左-右-根）：D E B F C A。",
+            q: "一棵二叉树的先序序列为 ABDECF，中序序列为 DBEAFC，求其后序序列。",
+            a: "DEBFCA。\n先序首元素 A 为根；中序中 A 左侧 DBE 为左子树，右侧 FC 为右子树。\n左子树：先序 BDE $\\to$ 根 B，左 D、右 E。\n右子树：先序 CF $\\to$ 根 C，中序 FC 说明 F 是 C 的左孩子。\n后序（左-右-根）：D E B F C A。\n补充：先序 + 中序可唯一确定一棵二叉树；而 $n$ 个结点的二叉树形态共 $\\frac{1}{n+1}\\binom{2n}{n}$ 种，$n=6$ 时为 $132$ 种。" }
+        ];
+
+        /* ---------- math ---------- */
+        var SYM = { alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ϵ", varepsilon: "ε", zeta: "ζ", eta: "η", theta: "θ", vartheta: "ϑ", iota: "ι", kappa: "κ", lambda: "λ", mu: "μ", nu: "ν", xi: "ξ", omicron: "ο", pi: "π", rho: "ρ", sigma: "σ", tau: "τ", upsilon: "υ", phi: "ϕ", varphi: "φ", chi: "χ", psi: "ψ", omega: "ω", Gamma: "Γ", Delta: "Δ", Theta: "Θ", Lambda: "Λ", Xi: "Ξ", Pi: "Π", Sigma: "Σ", Phi: "Φ", Psi: "Ψ", Omega: "Ω", infty: "∞", partial: "∂", nabla: "∇", forall: "∀", exists: "∃", emptyset: "∅", cdots: "⋯", ldots: "…", dots: "…", prime: "′", angle: "∠", triangle: "△", neg: "¬", langle: "⟨", rangle: "⟩", lbrace: "{", rbrace: "}", lfloor: "⌊", rfloor: "⌋", lceil: "⌈", rceil: "⌉", "{": "{", "}": "}", "%": "%", "$": "$", "#": "#", "&": "&", "_": "_", "|": "‖", ",": "\u2009", ";": "\u2005", ":": "\u2005", "!": "", " ": " ", quad: "\u2003", qquad: "\u2003\u2003" };
+        var REL = { le: "≤", leq: "≤", ge: "≥", geq: "≥", ne: "≠", neq: "≠", to: "→", rightarrow: "→", Rightarrow: "⇒", leftarrow: "←", Leftarrow: "⇐", Leftrightarrow: "⇔", iff: "⇔", implies: "⇒", mapsto: "↦", cdot: "·", times: "×", div: "÷", pm: "±", mp: "∓", approx: "≈", sim: "∼", simeq: "≃", equiv: "≡", in: "∈", notin: "∉", subset: "⊂", subseteq: "⊆", supset: "⊃", cup: "∪", cap: "∩", circ: "∘", perp: "⊥", parallel: "∥", land: "∧", lor: "∨", mid: "|", ll: "≪", gg: "≫", propto: "∝" };
+        var BIGOP = { sum: "∑", prod: "∏", bigcup: "⋃", bigcap: "⋂", int: "∫", iint: "∬", iiint: "∭", oint: "∮" };
+        var FN = /^(sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|ln|log|lg|exp|det|dim|ker|arg|deg|gcd|lim|limsup|liminf|max|min|sup|inf)$/;
+        var UNDER = /^(lim|limsup|liminf|max|min|sup|inf)$/;
+        var BB = { R: "ℝ", N: "ℕ", Z: "ℤ", Q: "ℚ", C: "ℂ" };
+        function fallbackTex(s) {
+          var i = 0;
+          function ws() { while (i < s.length && /\s/.test(s[i])) i++; }
+          function raw() { ws(); if (s[i] !== "{") return s[i++] || ""; var d = 1, st = ++i; while (i < s.length && d) { if (s[i] === "{") d++; else if (s[i] === "}") d--; i++; } return s.slice(st, i - 1); }
+          function arg() { ws(); if (s[i] === "{") { i++; var h = seq("}"); i++; return h; } return atom().h; }
+          function seq(stop) { var out = ""; while (i < s.length && s[i] !== stop) { if (s[i] === "}" ) { i++; continue; } out += item(); } return out; }
+          function atom() {
+            var ch = s[i];
+            if (ch === "^" || ch === "_") return { h: "" };
+            if (ch === "{") { i++; var g = seq("}"); i++; return { h: g }; }
+            if (ch === "\\") {
+              i++;
+              var name = /[A-Za-z]/.test(s[i]) ? s.slice(i).match(/^[A-Za-z]+/)[0] : s[i] || "";
+              i += name.length || 1;
+              if (/^[dt]?frac$/.test(name)) { var a = arg(), b = arg(); return { h: '<span class="x-fr"><span>' + a + "</span><span>" + b + "</span></span>" }; }
+              if (name === "binom") { var n1 = arg(), k1 = arg(); return { h: '(<span class="x-fr x-fr--n"><span>' + n1 + "</span><span>" + k1 + "</span></span>)" }; }
+              if (name === "sqrt") { ws(); var r = ""; if (s[i] === "[") { i++; r = seq("]"); i++; } var x = arg(); return { h: '<span class="x-sq">' + (r ? '<span class="x-sqn">' + r + "</span>" : "") + "√<span>" + x + "</span></span>" }; }
+              if (/^(text|textrm|mathrm|operatorname|mbox)$/.test(name)) return { h: '<span class="x-up">' + esc(raw()) + "</span>" };
+              if (/^(mathbf|boldsymbol|bf)$/.test(name)) return { h: "<b>" + arg() + "</b>" };
+              if (name === "mathbb") { var t = raw(); return { h: BB[t] || esc(t) }; }
+              if (name === "left" || name === "right") { ws(); if (s[i] === ".") { i++; return { h: "" }; } return atom(); }
+              if (/^(big|Big|bigg|Bigg|bigl|bigr|Bigl|Bigr|displaystyle|textstyle|limits|nolimits)$/.test(name)) return { h: "" };
+              if (name === "\\") return { h: "<br />" };
+              if (BIGOP[name]) return /int$/.test(name) ? { h: '<span class="x-int">' + BIGOP[name] + "</span>", k: "int" } : { h: '<span class="x-big">' + BIGOP[name] + "</span>", k: "under" };
+              if (FN.test(name)) return { h: '<span class="x-up" style="margin-right:0.16em">' + name + "</span>", k: UNDER.test(name) ? "under" : "" };
+              if (REL[name]) return { h: '<span class="x-rel">' + REL[name] + "</span>" };
+              if (SYM[name] != null) return { h: '<span class="x-up">' + esc(SYM[name]) + "</span>" };
+              return { h: '<span class="x-up">' + esc(name) + "</span>" };
+            }
+            if (/[A-Za-z]/.test(ch)) { i++; return { h: "<i>" + ch + "</i>" }; }
+            if (/[0-9.]/.test(ch)) { var num = s.slice(i).match(/^[0-9.]+/)[0]; i += num.length; return { h: num }; }
+            i++;
+            if (ch === "-") return { h: '<span class="x-rel">−</span>' };
+            if (/[+=<>]/.test(ch)) return { h: '<span class="x-rel">' + esc(ch) + "</span>" };
+            if (ch === "'") return { h: "′" };
+            if (ch === "~") return { h: " " };
+            if (/\s/.test(ch)) return { h: "" };
+            return { h: esc(ch) };
+          }
+          function item() {
+            ws(); if (i >= s.length) return "";
+            var b = atom(), sup = null, sub = null;
+            ws();
+            while (s[i] === "^" || s[i] === "_") { var up = s[i++] === "^"; var g = arg(); if (up) sup = g; else sub = g; ws(); }
+            if (sup == null && sub == null) return b.h;
+            if (b.k === "under") return '<span class="x-lim' + (sup != null ? " x-lim--sup" : "") + '">' + (sup != null ? "<small>" + sup + "</small>" : "") + "<span>" + b.h + "</span>" + (sub != null ? "<small>" + sub + "</small>" : "") + "</span>";
+            if (sup != null && sub != null) return b.h + '<span class="x-ss"><span>' + sup + "</span><span>" + sub + "</span></span>";
+            return b.h + (sup != null ? "<sup>" + sup + "</sup>" : "<sub>" + sub + "</sub>");
+          }
+          try { return seq(null); } catch (e) { return esc(s); }
+        }
+        var kReady = false;
+        // display style keeps fractions' scripts readable; html output only (label carries the TeX); drop KaTeX's 1px spacer text
+        function kx(tex, display) {
+          return katex.renderToString("\\displaystyle " + tex, { displayMode: display, throwOnError: false, output: "html" })
+            .replace(/(<span class="vlist-s">)\u200b(<\/span>)/g, "$1$2");
+        }
+        function texHtml(tex, display) {
+          var cls = "x-m" + (display ? " x-md" : "");
+          if (kReady) { try { return '<span class="' + cls + '" role="math" aria-label="' + esc(tex) + '">' + kx(tex, display) + "</span>"; } catch (e) {} }
+          return '<span class="' + cls + ' x-fb" data-tex="' + esc(tex) + '">' + fallbackTex(tex) + "</span>";
+        }
+        // text with $...$ / $$...$$ → HTML; inline=true renders block math inline (previews)
+        function md(text, inline) {
+          text = String(text || ""); var out = "", last = 0, re = /\$\$([\s\S]+?)\$\$|\$((?:\\\$|[^$])+?)\$/g, m;
+          while ((m = re.exec(text))) {
+            var pre = text.slice(last, m.index), disp = m[1] != null && !inline;
+            if (disp) pre = pre.replace(/\n$/, "");
+            out += esc(pre) + texHtml(m[1] != null ? m[1] : m[2], disp);
+            last = re.lastIndex;
+            if (disp && text[last] === "\n") last++;
+          }
+          return out + esc(text.slice(last));
+        }
+        function upgradeMath() {
+          document.querySelectorAll(".x-fb").forEach(function (el) {
+            try { el.innerHTML = kx(el.getAttribute("data-tex"), el.classList.contains("x-md")); el.classList.remove("x-fb"); el.setAttribute("role", "math"); el.setAttribute("aria-label", el.getAttribute("data-tex")); } catch (e) {}
+          });
+        }
+        (function loadKatex(k) {
+          var CDN = ["https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/", "https://unpkg.com/katex@0.16.11/dist/"];
+          if (k >= CDN.length || kReady) return;
+          var base = CDN[k], left = 2, failed = false, made = [];
+          function fail() { if (failed || !left) return; failed = true; made.forEach(function (n) { n.remove(); }); loadKatex(k + 1); }
+          function ok() { if (failed) return; if (--left) return; clearTimeout(timer); if (!window.katex) { left = 1; fail(); return; } kReady = true; var a = document.createElement("script"); a.src = base + "contrib/auto-render.min.js"; document.head.appendChild(a); upgradeMath(); }
+          var timer = setTimeout(fail, 8000);
+          var l = document.createElement("link"); l.rel = "stylesheet"; l.href = base + "katex.min.css"; l.crossOrigin = "anonymous"; l.onload = ok; l.onerror = fail;
+          var sc = document.createElement("script"); sc.src = base + "katex.min.js"; sc.crossOrigin = "anonymous"; sc.onload = ok; sc.onerror = fail;
+          made = [l, sc]; document.head.appendChild(l); document.head.appendChild(sc);
+        })(0);
+
+        var canStore = false, cards = [], prac = {}; // prac: 刷题 answers keyed by question id
+        try { localStorage.setItem("__t", "1"); canStore = localStorage.getItem("__t") === "1"; localStorage.removeItem("__t"); } catch (e) { canStore = false; }
+        // cards go to localStorage and IndexedDB (whichever works); each copy carries a timestamp, the newest wins on load
+        var lsT = 0, seeded = false, memDirty = false, idbOk = false;
+        try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {}); } catch (e) {}
+        function saveFail() { toast("存储空间不足，请导出备份或删除部分图片"); }
+        function save() {
+          var t = Date.now(), lsOk = false;
+          if (canStore) { try { localStorage.setItem(KEY, JSON.stringify(cards)); localStorage.setItem(KEY + ":p", JSON.stringify(prac)); localStorage.setItem(KEY + ":t", String(t)); lsOk = true; lsT = t; } catch (e) {} }
+          if (idb && idbOk) {
+            try { var tx = idb.transaction("kv", "readwrite"); tx.objectStore("kv").put({ t: t, cards: cards, prac: prac }, KEY); tx.onerror = tx.onabort = function () { if (!lsOk) saveFail(); }; }
+            catch (e) { if (!lsOk) saveFail(); }
+          } else {
+            if (dMode === "pending") memDirty = true;
+            if (canStore && !lsOk) saveFail();
+          }
+        }
+        function load() {
+          var raw = null;
+          if (canStore) { try { raw = localStorage.getItem(KEY); lsT = +localStorage.getItem(KEY + ":t") || 0; prac = JSON.parse(localStorage.getItem(KEY + ":p") || "{}") || {}; } catch (e) {} }
+          if (raw) {
+            try {
+              cards = JSON.parse(raw) || [];
+              var changed = false;
+              cards.forEach(function (c) {
+                var s = c.subject === "数学" ? "数学一" : c.subject === "英语" ? "英语一" : SUBJ.indexOf(c.subject) >= 0 ? c.subject : "其他";
+                if (s !== c.subject) { c.subject = s; changed = true; }
+              });
+              cards.forEach(function (c) {
+                SAMPLES.forEach(function (s) {
+                  if (c.q === s.oldQ) { c.q = s.q; changed = true; }
+                  if (c.a === s.oldA || c.a === s.a.replace("\\dfrac", "\\frac")) { if (c.a !== s.a) { c.a = s.a; changed = true; } }
+                });
+              });
+              if (changed) save();
+              return;
+            } catch (e) {}
+          }
+          // samples are written once storage is known, so they never overwrite a copy that lives only in IndexedDB
+          cards = SAMPLES.map(function (s) { return mk(s); });
+          seeded = true;
+        }
+        function mk(o) {
+          return { id: uid(), subject: normSubj(o.subject), q: o.q || "", a: o.a || "", cause: o.cause || "不会做", imgs: o.imgs || [], created: Date.now(), due: Date.now(), interval: 0, mastered: false, reviews: 0, attempts: [] };
+        }
+        /* ---------- drawings store: IndexedDB → localStorage → memory ---------- */
+        var DKEY = "cuotiben-draw:", draws = {}, dMode = "pending", idb = null, dQueue = [];
+        load();
+        var bannerOff = false;
+        try { bannerOff = sessionStorage.getItem("cuotiben-tip") === "1"; } catch (e) {}
+        function showBanner() { if (!bannerOff) $("banner").hidden = false; }
+        $("bannerX").addEventListener("click", function () { bannerOff = true; $("banner").hidden = true; try { sessionStorage.setItem("cuotiben-tip", "1"); } catch (e) {} });
+        function setStatus() {
+          var ok = (dMode === "idb" && idbOk) || canStore, s = $("store");
+          s.classList.toggle("is-warn", !ok);
+          s.firstChild.textContent = ok ? "已自动保存到本机" : "⚠ 当前环境不能保存 · 点此导出备份";
+          s.setAttribute("aria-label", ok ? "已自动保存到本机" : "当前环境不能保存，点此导出备份");
+          s.hidden = false;
+        }
+        $("store").addEventListener("click", function () { if (this.classList.contains("is-warn")) exportBackup(); else toast("已自动保存到本机"); });
+
+        /* ---------- drafts: the open pads' strokes, kept across reloads ---------- */
+        var DRK = "cuotiben-drafts", drafts = {}, openPads = [], drTimer = 0;
+        if (canStore) { try { drafts = JSON.parse(localStorage.getItem(DRK) || "{}") || {}; } catch (e) { drafts = {}; } }
+        function persistDrafts() {
+          clearTimeout(drTimer); drTimer = 0;
+          if (canStore) { try { localStorage.setItem(DRK, JSON.stringify(drafts)); } catch (e) {} }
+          if (idb && idbOk) { try { idb.transaction("kv", "readwrite").objectStore("kv").put(drafts, DRK); } catch (e) {} }
+        }
+        function setDraft(k, v) { if (v) { v.t = Date.now(); drafts[k] = v; } else delete drafts[k]; if (!drTimer) drTimer = setTimeout(persistDrafts, 300); }
+        function flushPads() { openPads.forEach(function (p) { p.flush(); }); persistDrafts(); }
+        document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") flushPads(); });
+        window.addEventListener("pagehide", flushPads);
+        window.addEventListener("beforeunload", flushPads);
+        function lsPut(id, u) { if (!canStore) return false; try { localStorage.setItem(DKEY + id, u); return true; } catch (e) { return false; } }
+        function lsFail() { showBanner(); toast("手写图只保存在本次会话，请导出备份"); }
+        function putDraw(id, u) {
+          draws[id] = u;
+          if (dMode === "pending") { dQueue.push(id); return; }
+          if (dMode === "idb" && idb) {
+            var fell = false, fb = function () { if (fell) return; fell = true; if (!lsPut(id, u)) lsFail(); };
+            try { var tx = idb.transaction("d", "readwrite"); tx.objectStore("d").put(u, id); tx.onerror = fb; tx.onabort = fb; } catch (e) { fb(); }
+          } else if (dMode === "ls") { if (!lsPut(id, u)) lsFail(); }
+        }
+        function delDraw(id) {
+          delete draws[id];
+          if (idb) { try { idb.transaction("d", "readwrite").objectStore("d").delete(id); } catch (e) {} }
+          if (canStore) { try { localStorage.removeItem(DKEY + id); } catch (e) {} }
+        }
+        function clearDraws() {
+          draws = {};
+          if (idb) { try { idb.transaction("d", "readwrite").objectStore("d").clear(); } catch (e) {} }
+          if (canStore) { try { for (var i = localStorage.length - 1; i >= 0; i--) { var k = localStorage.key(i); if (k && k.indexOf(DKEY) === 0) localStorage.removeItem(k); } } catch (e) {} }
+        }
+        function initDraws() {
+          if (canStore) { try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf(DKEY) === 0) draws[k.slice(DKEY.length)] = localStorage.getItem(k); } } catch (e) {} }
+          var finished = false, rec = null, idbDrafts = null;
+          function done(mode) {
+            if (finished) return; finished = true; dMode = mode;
+            if (mode !== "idb") { idb = null; idbOk = false; }
+            // cards: take the IndexedDB copy when it is newer than localStorage's
+            if (rec && Array.isArray(rec.cards) && rec.t > lsT && !(memDirty && !canStore)) { cards = rec.cards; if (rec.prac) prac = rec.prac; if (canStore) save(); }
+            else if (seeded || idbOk) save();
+            if (idbDrafts) Object.keys(idbDrafts).forEach(function (k) { var v = idbDrafts[k]; if (v && (!drafts[k] || (v.t || 0) > (drafts[k].t || 0))) drafts[k] = v; });
+            if (mode === "mem") showBanner();
+            setStatus();
+            var q = dQueue; dQueue = []; q.forEach(function (id) { if (draws[id]) putDraw(id, draws[id]); });
+            refresh();
+            restoreAddDraft();
+          }
+          function fb() { done(canStore ? "ls" : "mem"); }
+          setTimeout(fb, 4000);
+          try {
+            var r = indexedDB.open("cuotiben-draw", 2);
+            r.onupgradeneeded = function () {
+              var db = r.result;
+              if (!db.objectStoreNames.contains("d")) db.createObjectStore("d");
+              if (!db.objectStoreNames.contains("kv")) db.createObjectStore("kv");
+            };
+            r.onerror = fb;
+            r.onblocked = fb;
+            r.onsuccess = function () {
+              if (finished) return;
+              idb = r.result;
+              try {
+                // write and read back a test key, then load drawings, cards and drafts
+                var tx = idb.transaction("kv", "readwrite"), kv = tx.objectStore("kv"), probe = String(Date.now());
+                kv.put(probe, "__test");
+                var g = kv.get("__test");
+                g.onsuccess = function () { idbOk = g.result === probe; };
+                var gc = kv.get(KEY); gc.onsuccess = function () { rec = gc.result || null; };
+                var gd = kv.get(DRK); gd.onsuccess = function () { idbDrafts = gd.result || null; };
+                tx.onerror = tx.onabort = fb;
+                tx.oncomplete = function () {
+                  if (!idbOk) { fb(); return; }
+                  try { idb.transaction("kv", "readwrite").objectStore("kv").delete("__test"); } catch (e) {}
+                  try {
+                    var cur = idb.transaction("d", "readonly").objectStore("d").openCursor();
+                    cur.onsuccess = function () { var k = cur.result; if (k) { draws[k.key] = k.value; k.continue(); } else done("idb"); };
+                    cur.onerror = fb;
+                  } catch (e) { fb(); }
+                };
+              } catch (e) { fb(); }
+            };
+          } catch (e) { fb(); }
+        }
+        function sortedAtts(c) { return (c.attempts || []).slice().sort(function (a, b) { return a.time - b.time; }); }
+        function addAttempt(c, result, d, time) {
+          var a = { id: uid(), time: time || Date.now(), result: result, note: d.note || "" };
+          if (d.img) { a.draw = true; putDraw(a.id, d.img); }
+          (c.attempts = c.attempts || []).push(a); save();
+          return a;
+        }
+        // rewrite a saved attempt in place: new result and/or the pad's latest drawing and note
+        function updateAttempt(c, a, result, d) {
+          if (result) a.result = result;
+          if (d) {
+            a.note = d.note || "";
+            if (d.img) { a.draw = true; putDraw(a.id, d.img); }
+            else if (a.draw) { a.draw = false; delDraw(a.id); }
+          }
+          save();
+          return a;
+        }
+        function findAtt(c, aid) { return aid ? (c.attempts || []).find(function (a) { return a.id === aid; }) || null : null; }
+        // the explicit 保存: first tap creates a 未评 attempt, later taps update that same one
+        function saveAttempt(c, aid, result, d) {
+          var a = findAtt(c, aid);
+          if (a) return updateAttempt(c, a, result, d);
+          return d ? addAttempt(c, result || "未评", d) : null;
+        }
+        function removeAttempt(c, aid) { c.attempts = (c.attempts || []).filter(function (a) { return a.id !== aid; }); if (!drawInUse(aid)) delDraw(aid); save(); }
+        // a 刷题 attempt's drawing is shared with its copy in the 错题本; delete it only when nothing points at it
+        function drawInUse(id) {
+          return cards.some(function (c) { return (c.attempts || []).some(function (a) { return a.id === id; }); }) ||
+            Object.keys(prac).some(function (k) { var v = prac[k] || {}; return (v.att && v.att.id === id) || (v.atts || []).some(function (a) { return a.id === id; }); });
+        }
+
+        /* ---------- 手写草稿板 ---------- */
+        var INK = [["黑", "#1d1d1f"], ["蓝", "#1f5fd6"], ["红", "#d93025"]], PEN = [2.2, 4.6], ERS = [12, 28];
+        var BGS = [["grid", "格子"], ["lines", "横线"], ["none", "空白"]];
+        var pencilOnly = false;
+        try { pencilOnly = localStorage.getItem("cuotiben-pencil") === "1"; } catch (e) {}
+        // opts.onSave(pad): the 保存 buttons; opts.draftKey: autosave the strokes and note as a draft under this key
+        function makePad(host, opts) {
+          opts = opts || {};
+          var root = document.createElement("div"); root.className = "x-pad" + (pencilOnly ? " x-pad--pencil" : "");
+          root.innerHTML = '<div class="x-padbar" role="toolbar" aria-label="草稿板工具">' +
+            (opts.onSave ? '<button type="button" class="x-save" data-a="save">保存</button><span class="x-sep"></span>' : "") +
+            '<button type="button" data-t="pen" aria-pressed="true">笔</button><button type="button" data-t="erase" aria-pressed="false">橡皮</button><button type="button" data-em title="切换橡皮方式">整笔擦</button><span class="x-sep"></span>' +
+            INK.map(function (c, i) { return '<button type="button" data-c="' + i + '" aria-pressed="' + (i === 0) + '"><i class="x-sw" style="background:' + c[1] + '"></i>' + c[0] + "</button>"; }).join("") +
+            '<span class="x-sep"></span><button type="button" data-s="0" aria-pressed="true">细</button><button type="button" data-s="1" aria-pressed="false">粗</button><span class="x-sep"></span>' +
+            '<button type="button" data-a="undo" disabled>撤销</button><button type="button" data-a="redo" disabled>重做</button><button type="button" data-a="clear">清空</button><span class="x-sep"></span>' +
+            '<button type="button" data-a="bg" title="切换背景">背景·格子</button><button type="button" data-a="pencil" aria-pressed="' + pencilOnly + '">仅 Apple Pencil 书写</button><button type="button" data-a="fit" title="恢复原始大小" disabled>1:1</button></div>' +
+            '<div class="x-pad__vp"><canvas class="x-pad__cv" data-bg="grid" role="img" aria-label="手写草稿板"></canvas></div>' +
+            '<label class="x-field"><span>文字备注</span><textarea class="x-in" style="min-height:72px" placeholder="可选，公式写在 $...$ 中"></textarea></label>' +
+            '<div class="x-prev" hidden><span class="x-sub">预览</span><div class="x-q" aria-live="polite"></div></div>' +
+            (opts.onSave && !opts.saveHost ? '<button type="button" class="btn x-primary x-padsave" data-save>' + (opts.saveLabel || "保存作答") + "</button>" : "");
+          if (opts.strip) root.insertAdjacentHTML("afterbegin", opts.strip);
+          host.appendChild(root);
+          // opts.saveHost: the 保存作答 button lives there (the left column's action area) instead of under the pad
+          var hostSave = null;
+          if (opts.onSave && opts.saveHost) {
+            hostSave = document.createElement("button"); hostSave.type = "button"; hostSave.className = "btn x-primary x-padsave"; hostSave.textContent = opts.saveLabel || "保存作答";
+            opts.saveHost.insertBefore(hostSave, opts.saveHost.firstChild);
+          }
+          var bar = root.querySelector(".x-padbar"), vp = root.querySelector(".x-pad__vp"), cv = root.querySelector("canvas"), ctx = cv.getContext("2d"), ta = root.querySelector("textarea"), pv = root.querySelector(".x-prev");
+          var fitBtn = bar.querySelector('[data-a="fit"]');
+          var tool = "pen", emode = "stroke", color = INK[0][1], sz = 0, bgi = 0, strokes = [], undo = [], redo = [];
+          var cur = null, active = null, rect = null, dpr = 1, cw = 0, ch = 0, erSnap = null, erHit = false;
+
+          function setup() {
+            var w = cv.clientWidth, h = cv.clientHeight;
+            clampZ(); schedZ();
+            if (!w || !h || (w === cw && h === ch)) return;
+            cw = w; ch = h; dpr = Math.min(window.devicePixelRatio || 1, 3);
+            cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+            redraw();
+          }
+          function redraw() {
+            ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            strokes.forEach(function (s) { paint(s, 1, true); });
+          }
+          function mid(a, b) { return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }; }
+          // quadratic smoothing through midpoints; draws segments from index `from`, plus the tail to the last point
+          function paint(s, from, tail) {
+            var p = s.pts, n = p.length;
+            ctx.globalCompositeOperation = s.erase ? "destination-out" : "source-over";
+            ctx.strokeStyle = ctx.fillStyle = s.erase ? "#000" : s.color; ctx.lineCap = ctx.lineJoin = "round";
+            if (n === 1) { if (tail) { ctx.beginPath(); ctx.arc(p[0].x, p[0].y, p[0].w / 2, 0, Math.PI * 2); ctx.fill(); } return; }
+            for (var i = Math.max(1, from); i < n; i++) {
+              var a = i === 1 ? p[0] : mid(p[i - 2], p[i - 1]), e = mid(p[i - 1], p[i]);
+              ctx.lineWidth = (p[i - 1].w + p[i].w) / 2;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.quadraticCurveTo(p[i - 1].x, p[i - 1].y, e.x, e.y); ctx.stroke();
+            }
+            if (tail) { var l = p[n - 1], m = mid(p[n - 2], l); ctx.lineWidth = l.w; ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(l.x, l.y); ctx.stroke(); }
+            ctx.globalCompositeOperation = "source-over";
+          }
+          // rect is the transformed (zoomed) box, so dividing by the scale maps back to canvas units
+          function pos(e) { return { x: (e.clientX - rect.left) / z.s, y: (e.clientY - rect.top) / z.s }; }
+          function pt(e, prev) {
+            var q = pos(e), base = cur.erase ? ERS[sz] : PEN[sz], w = base;
+            if (!cur.erase && e.pointerType === "pen") w = base * (0.35 + (e.pressure || 0.5) * 1.3);
+            if (prev) w = prev.w * 0.55 + w * 0.45;
+            q.w = w; return q;
+          }
+          function dseg(px, py, a, b) {
+            var dx = b.x - a.x, dy = b.y - a.y, L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((px - a.x) * dx + (py - a.y) * dy) / L)) : 0;
+            return Math.hypot(a.x + t * dx - px, a.y + t * dy - py);
+          }
+          function hit(s, x, y, r) {
+            if (s.erase) return false;
+            var p = s.pts;
+            if (p.length === 1) return Math.hypot(p[0].x - x, p[0].y - y) <= r + p[0].w / 2;
+            for (var i = 1; i < p.length; i++) if (dseg(x, y, p[i - 1], p[i]) <= r + p[i].w / 2) return true;
+            return false;
+          }
+          function eraseAt(q) {
+            var r = ERS[sz] / 2, keep = strokes.filter(function (s) { return !hit(s, q.x, q.y, r); });
+            if (keep.length === strokes.length) return;
+            if (!erHit) { pushUndo(erSnap); erHit = true; }
+            strokes = keep; redraw();
+          }
+          function pushUndo(prev) { undo.push(prev); if (undo.length > 100) undo.shift(); redo = []; sync(); }
+          var dirty = false, att = null;
+          function sync() { dirty = true; bar.querySelector('[data-a="undo"]').disabled = !undo.length; bar.querySelector('[data-a="redo"]').disabled = !redo.length; }
+          /* canvas zoom: CSS transform 1x–3x. Pencil-only mode: two fingers pinch, one finger pans when zoomed (with momentum); at 1x one finger scrolls the page natively */
+          var z = { s: 1, x: 0, y: 0 }, zRaf = 0, zoomed = false, g = null, inert = 0;
+          function clampZ() {
+            var w = vp.clientWidth, h = vp.clientHeight;
+            z.s = Math.max(1, Math.min(3, z.s));
+            z.x = Math.min(0, Math.max(w - w * z.s, z.x)); z.y = Math.min(0, Math.max(h - h * z.s, z.y));
+          }
+          function applyZ() {
+            zRaf = 0;
+            cv.style.transform = z.s === 1 ? "" : "translate3d(" + z.x + "px," + z.y + "px,0) scale(" + z.s + ")";
+            var on = z.s > 1;
+            if (on !== zoomed) { zoomed = on; root.classList.toggle("is-zoomed", on); fitBtn.disabled = !on; }
+          }
+          function schedZ() { if (!zRaf) zRaf = requestAnimationFrame(applyZ); }
+          function resetZ() { stopInertia(); g = null; z.s = 1; z.x = 0; z.y = 0; schedZ(); }
+          function stopInertia() { if (inert) { cancelAnimationFrame(inert); inert = 0; } }
+          function startInertia(vx, vy) {
+            if (Math.hypot(vx, vy) < 0.05) return;
+            var last = performance.now();
+            function step(now) {
+              var dt = Math.min(32, now - last), ox = z.x, oy = z.y, k = Math.pow(0.95, dt / 16);
+              last = now; z.x += vx * dt; z.y += vy * dt; clampZ();
+              if (z.x === ox) vx = 0; if (z.y === oy) vy = 0;
+              vx *= k; vy *= k; applyZ();
+              inert = Math.hypot(vx, vy) > 0.02 ? requestAnimationFrame(step) : 0;
+            }
+            inert = requestAnimationFrame(step);
+          }
+          function fingers(e) { var out = []; for (var i = 0; i < e.touches.length; i++) if (e.touches[i].touchType !== "stylus") out.push(e.touches[i]); return out; }
+          function stylus(e) { for (var i = 0; i < e.changedTouches.length; i++) if (e.changedTouches[i].touchType === "stylus") return true; return false; }
+          function local(t) { var r = vp.getBoundingClientRect(); return { x: t.clientX - r.left - vp.clientLeft, y: t.clientY - r.top - vp.clientTop }; }
+          function startG(e) {
+            var f = fingers(e);
+            if (f.length >= 2) {
+              var a = local(f[0]), b = local(f[1]), m = mid(a, b);
+              g = { pinch: true, d: Math.hypot(a.x - b.x, a.y - b.y) || 1, s0: z.s, px: (m.x - z.x) / z.s, py: (m.y - z.y) / z.s };
+            } else if (f.length === 1 && z.s > 1) {
+              var p = local(f[0]);
+              g = { pinch: false, id: f[0].identifier, lx: p.x, ly: p.y, lt: e.timeStamp, vx: 0, vy: 0 };
+            } else g = null;
+          }
+          cv.addEventListener("touchstart", function (e) {
+            if (!pencilOnly || stylus(e)) { e.preventDefault(); return; }
+            stopInertia(); startG(e);
+            if (g && g.pinch) e.preventDefault();
+          }, { passive: false });
+          cv.addEventListener("touchmove", function (e) {
+            if (!pencilOnly || stylus(e)) { e.preventDefault(); return; }
+            if (!g) return;
+            var f = fingers(e);
+            if (g.pinch) {
+              if (f.length < 2) return;
+              e.preventDefault();
+              var a = local(f[0]), b = local(f[1]), m = mid(a, b);
+              z.s = Math.max(1, Math.min(3, g.s0 * Math.hypot(a.x - b.x, a.y - b.y) / g.d));
+              z.x = m.x - g.px * z.s; z.y = m.y - g.py * z.s; clampZ(); schedZ();
+              return;
+            }
+            var t = null;
+            for (var i = 0; i < f.length; i++) if (f[i].identifier === g.id) t = f[i];
+            if (!t) return;
+            var p = local(t), dt = Math.max(1, e.timeStamp - g.lt), dx = p.x - g.lx, dy = p.y - g.ly;
+            z.x += dx; z.y += dy; clampZ(); schedZ();
+            g.vx = g.vx * 0.2 + (dx / dt) * 0.8; g.vy = g.vy * 0.2 + (dy / dt) * 0.8;
+            g.lx = p.x; g.ly = p.y; g.lt = e.timeStamp;
+          }, { passive: false });
+          function touchEnd(e) {
+            if (!pencilOnly) return;
+            var f = fingers(e);
+            if (!f.length) {
+              if (g && !g.pinch && e.timeStamp - g.lt < 80) startInertia(g.vx, g.vy);
+              g = null;
+            } else startG(e);
+          }
+          cv.addEventListener("touchend", touchEnd);
+          cv.addEventListener("touchcancel", touchEnd);
+          // Safari's own page pinch on the canvas
+          ["gesturestart", "gesturechange"].forEach(function (n) { vp.addEventListener(n, function (e) { if (pencilOnly) e.preventDefault(); }, { passive: false }); });
+
+          cv.addEventListener("pointerdown", function (e) {
+            if (pencilOnly && e.pointerType !== "pen") return;
+            if (active != null || (e.pointerType === "mouse" && e.button !== 0)) return;
+            e.preventDefault(); setup();
+            active = e.pointerId; rect = cv.getBoundingClientRect();
+            try { cv.setPointerCapture(e.pointerId); } catch (x) {}
+            if (tool === "erase" && emode === "stroke") { cur = null; erSnap = strokes; erHit = false; eraseAt(pos(e)); return; }
+            cur = { erase: tool === "erase", color: color, pts: [] };
+            cur.pts.push(pt(e, null));
+            pushUndo(strokes); strokes = strokes.concat([cur]);
+          });
+          cv.addEventListener("pointermove", function (e) {
+            if (e.pointerId !== active) return;
+            e.preventDefault();
+            var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : null;
+            if (!evs || !evs.length) evs = [e];
+            evs.forEach(function (ev) {
+              if (!cur) { eraseAt(pos(ev)); return; }
+              var last = cur.pts[cur.pts.length - 1], p = pt(ev, last);
+              if (Math.abs(p.x - last.x) + Math.abs(p.y - last.y) < 0.8) return;
+              cur.pts.push(p); paint(cur, cur.pts.length - 1, false);
+            });
+          });
+          function end(e) {
+            if (e.pointerId !== active) return;
+            active = null;
+            if (cur) { paint(cur, cur.pts.length, true); cur = null; }
+            sync();
+          }
+          cv.addEventListener("pointerup", end);
+          cv.addEventListener("pointercancel", end);
+          cv.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+
+          function press(sel, btn) { bar.querySelectorAll(sel).forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); }); }
+          function setTool(t) { tool = t; press("[data-t]", bar.querySelector('[data-t="' + t + '"]')); cv.style.cursor = t === "erase" ? "cell" : "crosshair"; }
+          bar.addEventListener("click", function (e) {
+            var b = e.target.closest("button"); if (!b) return;
+            var a = b.dataset.a;
+            if (a === "save") { if (opts.onSave) opts.onSave(api); }
+            else if (b.dataset.t) setTool(b.dataset.t);
+            else if (b.hasAttribute("data-em")) { emode = emode === "stroke" ? "pixel" : "stroke"; b.textContent = emode === "stroke" ? "整笔擦" : "局部擦"; setTool("erase"); }
+            else if (b.dataset.c) { color = INK[+b.dataset.c][1]; press("[data-c]", b); setTool("pen"); }
+            else if (b.dataset.s) { sz = +b.dataset.s; press("[data-s]", b); }
+            else if (a === "undo" && undo.length) { redo.push(strokes); strokes = undo.pop(); redraw(); sync(); }
+            else if (a === "redo" && redo.length) { undo.push(strokes); strokes = redo.pop(); redraw(); sync(); }
+            else if (a === "clear" && strokes.length) { pushUndo(strokes); strokes = []; redraw(); }
+            else if (a === "fit") resetZ();
+            else if (a === "bg") { bgi = (bgi + 1) % BGS.length; cv.dataset.bg = BGS[bgi][0]; b.textContent = "背景·" + BGS[bgi][1]; }
+            else if (a === "pencil") {
+              pencilOnly = !pencilOnly;
+              try { localStorage.setItem("cuotiben-pencil", pencilOnly ? "1" : "0"); } catch (x) {}
+              document.querySelectorAll('.x-padbar [data-a="pencil"]').forEach(function (x) { x.setAttribute("aria-pressed", String(pencilOnly)); });
+              document.querySelectorAll(".x-pad").forEach(function (x) { x.classList.toggle("x-pad--pencil", pencilOnly); });
+              toast(pencilOnly ? "仅 Apple Pencil 书写：手指滚动页面，双指缩放草稿" : "手指和笔都可书写");
+            }
+          });
+          var bottomSave = hostSave || root.querySelector("[data-save]");
+          if (bottomSave) bottomSave.addEventListener("click", function () { opts.onSave(api); });
+          ta.addEventListener("input", function () { dirty = true; var v = ta.value.trim(); pv.hidden = !v; pv.lastChild.innerHTML = v ? md(ta.value) : ""; });
+
+          // trim empty space, cap width at 1400, white paper; WebP when the browser can encode it, else PNG
+          function exportImg() {
+            if (!strokes.length || !cv.width) return null;
+            var W = cv.width, H = cv.height, d = ctx.getImageData(0, 0, W, H).data, x0 = W, y0 = H, x1 = -1, y1 = -1;
+            for (var y = 0; y < H; y++) {
+              var row = y * W * 4;
+              for (var x = 0; x < W; x++) if (d[row + x * 4 + 3] > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; y1 = y; }
+            }
+            if (x1 < 0) return null;
+            var m = Math.round(16 * dpr);
+            x0 = Math.max(0, x0 - m); y0 = Math.max(0, y0 - m); x1 = Math.min(W - 1, x1 + m); y1 = Math.min(H - 1, y1 + m);
+            var sw = x1 - x0 + 1, sh = y1 - y0 + 1, k = Math.min(1, 1400 / sw), out = document.createElement("canvas");
+            out.width = Math.max(1, Math.round(sw * k)); out.height = Math.max(1, Math.round(sh * k));
+            var o = out.getContext("2d"); o.fillStyle = "#fff"; o.fillRect(0, 0, out.width, out.height);
+            o.drawImage(cv, x0, y0, sw, sh, 0, 0, out.width, out.height);
+            var u = out.toDataURL("image/webp", 0.82);
+            return u.indexOf("data:image/webp") === 0 ? u : out.toDataURL("image/png");
+          }
+
+          var ro = window.ResizeObserver ? new ResizeObserver(setup) : null;
+          if (ro) ro.observe(vp); else window.addEventListener("resize", setup);
+          setup();
+
+          // draft: strokes (rounded) + note + background + the attempt it was saved as
+          function r1(v) { return Math.round(v * 10) / 10; }
+          function state() {
+            return { strokes: strokes.map(function (s) { return { erase: s.erase, color: s.color, pts: s.pts.map(function (p) { return { x: r1(p.x), y: r1(p.y), w: r1(p.w) }; }) }; }), note: ta.value, bg: bgi, att: att };
+          }
+          function flush() {
+            if (!opts.draftKey || !dirty) return;
+            dirty = false;
+            setDraft(opts.draftKey, strokes.length || ta.value.trim() || att ? state() : null);
+          }
+          var restored = false, dr = opts.draftKey && drafts[opts.draftKey];
+          if (dr && ((dr.strokes && dr.strokes.length) || dr.note)) {
+            strokes = (dr.strokes || []).filter(function (s) { return s && s.pts && s.pts.length; });
+            ta.value = dr.note || ""; ta.dispatchEvent(new Event("input"));
+            bgi = +dr.bg || 0; cv.dataset.bg = BGS[bgi][0]; bar.querySelector('[data-a="bg"]').textContent = "背景·" + BGS[bgi][1];
+            att = dr.att || null; restored = true; redraw();
+          }
+          dirty = false;
+          var tick = opts.draftKey ? setInterval(flush, 3000) : 0;
+          var api = {
+            restored: restored,
+            data: function () { var img = exportImg(), note = ta.value.trim(); return img || note ? { img: img, note: note } : null; },
+            att: function () { return att; },
+            setAtt: function (id) { att = id || null; dirty = true; flush(); persistDrafts(); },
+            flush: flush,
+            discard: function () { dirty = false; if (opts.draftKey) { setDraft(opts.draftKey, null); persistDrafts(); } },
+            destroy: function () { flush(); clearInterval(tick); openPads = openPads.filter(function (p) { return p !== api; }); stopInertia(); if (ro) ro.disconnect(); else window.removeEventListener("resize", setup); root.remove(); if (hostSave) hostSave.remove(); }
+          };
+          openPads.push(api);
+          return api;
+        }
+        // question strip shown above the pad (sticky in portrait)
+        function qsBody(q, imgs) { return (q ? '<div class="x-q">' + md(q) + "</div>" : "") + (imgs && imgs.length ? '<div class="x-qs__th">' + imgs.map(function (s, i) { return '<img src="' + s + '" alt="题目图片 ' + (i + 1) + '，点按放大" data-full />'; }).join("") + "</div>" : "") || '<p class="x-sub">（还没有填写题目）</p>'; }
+        function qStrip(q, imgs) { return '<div class="x-qs"><div class="x-qs__bar"><span class="x-lab">题目</span><button type="button" class="btn x-qs__t" aria-expanded="true">收起</button></div><div class="x-qs__body">' + qsBody(q, imgs) + "</div></div>"; }
+        document.addEventListener("click", function (e) {
+          var t = e.target.closest(".x-qs__t"); if (!t) return;
+          var f = t.closest(".x-qs").classList.toggle("is-folded");
+          t.textContent = f ? "展开" : "收起"; t.setAttribute("aria-expanded", String(!f));
+        });
+        function hasDraft(k) { var d = drafts[k]; return !!(d && ((d.strokes && d.strokes.length) || (d.note && d.note.trim()))); }
+
+        /* ---------- helpers ---------- */
+        var tt;
+        function toast(msg) { var t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(function () { t.hidden = true; }, 2200); }
+        function fillSelect(el, arr) { el.innerHTML = arr.map(function (s) { return "<option>" + s + "</option>"; }).join(""); }
+        fillSelect($("fSubj"), SUBJ); fillSelect($("fCause"), CAUSE);
+        $("fSubj").value = "数学一";
+        function dueText(c) {
+          var d = Math.ceil((c.due - Date.now()) / DAY);
+          return d <= 0 ? "待复习" : d + " 天后复习";
+        }
+        function statusChip(c) { return c.mastered ? '<span class="chip x-ok">已掌握</span>' : '<span class="chip">' + dueText(c) + "</span>"; }
+
+        /* ---------- tabs ---------- */
+        var tabs = document.querySelectorAll(".x-tabs button");
+        function go(name) {
+          tabs.forEach(function (b) { b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false"); });
+          ["lib", "prac", "rev", "add"].forEach(function (n) { $("v-" + n).hidden = n !== name; });
+          document.body.classList.toggle("x-adding", name === "add");
+          if (name !== "prac") flushPads();
+          if (name === "lib") renderLib();
+          if (name === "prac") renderPrac();
+          if (name === "rev" && $("revRun").hidden) renderRevSetup();
+          window.scrollTo(0, 0);
+        }
+        tabs.forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.tab); }); });
+
+        /* ---------- library ---------- */
+        var libFilter = "全部";
+        function chipRow(el, items, active, onPick) {
+          el.innerHTML = items.map(function (s) { return '<button type="button" aria-pressed="' + (s === active) + '" data-v="' + s + '">' + s + "</button>"; }).join("");
+          el.onclick = function (e) { var b = e.target.closest("button"); if (b) onPick(b.dataset.v); };
+        }
+        function usedSubjects() { return SUBJ.filter(function (s) { return cards.some(function (c) { return c.subject === s; }); }); }
+        function renderLib() {
+          var subs = usedSubjects();
+          if (libFilter !== "全部" && subs.indexOf(libFilter) < 0) libFilter = "全部";
+          chipRow($("libChips"), ["全部"].concat(subs), libFilter, function (v) { libFilter = v; renderLib(); });
+          var q = $("search").value.trim().toLowerCase();
+          var items = cards.filter(function (c) {
+            return (libFilter === "全部" || c.subject === libFilter) && (!q || (c.q + " " + c.a + " " + c.cause).toLowerCase().indexOf(q) >= 0);
+          }).sort(function (a, b) { return b.created - a.created; });
+          var m = cards.filter(function (c) { return c.mastered; }).length;
+          $("libCount").textContent = "共 " + cards.length + " 题 · 已掌握 " + m;
+          $("list").innerHTML = items.length ? items.map(function (c) {
+            return '<li><button class="x-card" data-id="' + c.id + '"><span><span class="x-meta"><b style="color:var(--text-primary)">' + c.subject + "</b> · " + esc(c.cause) + " " + statusChip(c) + ((c.attempts || []).length ? ' <span class="pill">做过 ' + c.attempts.length + " 次</span>" : "") + (c.tags && c.tags.length ? ' <span class="pill">' + esc(c.tags.join(" ")) + "</span>" : "") + (hasDraft("c:" + c.id) ? ' <span class="pill">有草稿</span>' : "") + "</span><p>" + (c.q ? md(c.q, true) : "（图片题）") + "</p></span>" + (c.imgs[0] ? '<img src="' + c.imgs[0] + '" alt="" />' : "") + "</button></li>";
+          }).join("") : '<li class="x-empty">' + (cards.length ? "没有匹配的错题" : "还没有错题，去“添加”记一道吧") + "</li>";
+        }
+        $("search").addEventListener("input", renderLib);
+        $("list").addEventListener("click", function (e) { var b = e.target.closest(".x-card"); if (b) openDetail(b.dataset.id); });
+
+        /* ---------- modal ---------- */
+        var lastFocus, detailPad = null;
+        function dropDetailPad() { if (detailPad) { detailPad.destroy(); detailPad = null; } $("sheet").classList.remove("x-sheet--wide"); }
+        function openModal(html) { dropDetailPad(); lastFocus = document.activeElement; $("sheet").innerHTML = html; $("modal").hidden = false; document.body.style.overflow = "hidden"; var f = $("sheet").querySelector("button"); if (f) f.focus(); }
+        function closeModal() { dropDetailPad(); $("modal").hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+        $("modal").addEventListener("click", function (e) { if (e.target === $("modal")) closeModal(); });
+        function confirmBox(msg, okText, cb) {
+          openModal("<h3>" + msg + '</h3><div class="x-actions"><button class="btn" id="cNo">取消</button><button class="btn x-primary" id="cYes" style="background:var(--fill-system-red);border-color:var(--fill-system-red);color:#fff">' + okText + "</button></div>");
+          $("cNo").onclick = closeModal;
+          $("cYes").onclick = function () { closeModal(); cb(); };
+        }
+        function imgsHtml(c) { return c.imgs.length ? '<div class="x-imgs">' + c.imgs.map(function (s, i) { return '<img src="' + s + '" alt="题目图片 ' + (i + 1) + '" data-full />'; }).join("") + "</div>" : ""; }
+        function resChip(r) { return '<span class="chip' + (r === "掌握" || r === "做对" ? " x-ok" : r === "不会" || r === "做错" ? " x-bad" : r === "模糊" ? " x-mid" : "") + '">' + esc(r) + "</span>"; }
+        function fmtTime(t) { var d = new Date(t), p = function (n) { return (n < 10 ? "0" : "") + n; }; return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + " " + p(d.getHours()) + ":" + p(d.getMinutes()); }
+        // newest first; numbering still counts from the first attempt
+        function attsHtml(c, readonly) {
+          var list = sortedAtts(c);
+          if (!list.length) return '<p class="x-sub">还没有做题记录，点“再做一次”开始手写作答。</p>';
+          return '<ol class="x-att">' + list.map(function (a, i) {
+            var label = "第" + (i + 1) + "次" + (i === 0 || a.result === "首次" ? "（首次）" : "");
+            var img = !a.draw ? "" : draws[a.id] ? '<img class="x-paper" src="' + draws[a.id] + '" alt="' + label + "的手写过程" + '" data-full />' : '<p class="x-sub">' + (dMode === "pending" ? "手写图加载中…" : "（手写图未找到）") + "</p>";
+            return '<li><div class="x-att__head"><b>' + label + '</b><span class="x-sub">' + fmtTime(a.time) + "</span>" + resChip(a.result) + (readonly ? "" : '<button type="button" class="btn x-del x-att__del" data-del="' + a.id + '" aria-label="删除' + label + '记录">删除</button>') + "</div>" + (a.ans ? '<p class="x-sub">' + esc(a.ans) + "</p>" : "") + img + (a.ans && !a.draw && !a.note ? '<p class="x-sub">（这次没有写草稿）</p>' : "") + (a.note ? '<div class="x-q">' + md(a.note) + "</div>" : "") + "</li>";
+          }).reverse().join("") + "</ol>";
+        }
+        function openDetail(id, toRecords) {
+          var c = cards.find(function (x) { return x.id === id; }); if (!c) return;
+          openModal('<div class="x-meta" style="justify-content:space-between"><span><b style="color:var(--text-primary)">' + c.subject + "</b> · " + esc(c.cause) + " " + statusChip(c) + '</span><button class="x-icon" id="dClose" aria-label="关闭">✕</button></div>' +
+            '<div class="x-colL">' + (c.q ? '<div class="x-q">' + md(c.q) + "</div>" : "") + imgsHtml(c) +
+            '<button class="btn x-late" id="dShow">显示答案</button><div class="x-ans x-late" id="dAns" hidden><p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div></div>" +
+            '<div class="x-lact" id="dSave"></div><div class="x-rechead x-late" id="dRec"><h3>做题记录</h3><button class="btn" id="dRedo">再做一次</button></div><div class="x-late" id="dAtts">' + attsHtml(c) + "</div>" +
+            '<p class="x-sub x-late">复习 ' + c.reviews + " 次 · 添加于 " + new Date(c.created).toLocaleDateString("zh-CN") + '</p><button class="btn x-del x-late" id="dDel">删除</button></div>' +
+            '<div class="x-colR"><div id="dPad"></div><div class="x-view" id="dPadAct" style="padding:0;gap:10px" hidden><p class="x-sub">随时点「保存」存为一次作答；写完再选结果（不影响复习计划）</p><div class="x-rate"><button type="button" class="btn" data-r="不会">不会</button><button type="button" class="btn" data-r="模糊">模糊</button><button type="button" class="btn" data-r="掌握">掌握</button></div><button type="button" class="btn" data-cancel>取消</button></div></div>');
+          $("dClose").onclick = closeModal;
+          $("dShow").onclick = function () { $("dAns").hidden = false; this.hidden = true; };
+          function stopPad() { dropDetailPad(); $("dPadAct").hidden = true; $("dRedo").hidden = false; }
+          function detailSave(pad) {
+            var d = pad.data();
+            if (!d) { toast("草稿板和备注都是空的"); return; }
+            var a = saveAttempt(c, pad.att(), null, d);
+            pad.setAtt(a.id); renderAtts(); renderLib();
+            toast("已保存 ✓");
+          }
+          function startPad(quiet) {
+            if (detailPad) return;
+            $("sheet").classList.add("x-sheet--wide");
+            detailPad = makePad($("dPad"), { draftKey: "c:" + id, onSave: detailSave, saveHost: $("dSave"), strip: qStrip(c.q, c.imgs) }); $("dPadAct").hidden = false; $("dRedo").hidden = true;
+            if (detailPad.restored) toast("已恢复上次未保存的草稿");
+            if (!quiet) $("dPad").scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          $("dRedo").onclick = function () { startPad(false); };
+          $("dPadAct").onclick = function (e) {
+            var b = e.target.closest("button"); if (!b || !detailPad) return;
+            if (b.hasAttribute("data-cancel")) { detailPad.discard(); stopPad(); renderLib(); return; }
+            var d = detailPad.data(), aid = detailPad.att();
+            if (!d && !findAtt(c, aid)) { toast("草稿板和备注都是空的"); return; }
+            saveAttempt(c, aid, b.dataset.r, d); detailPad.discard(); renderLib();
+            toast("已保存 ✓");
+            openDetail(id, true);
+          };
+          function renderAtts() {
+            $("dAtts").innerHTML = attsHtml(c);
+            $("dAtts").querySelectorAll("[data-del]").forEach(function (b) {
+              b.onclick = function () {
+                var aid = b.dataset.del;
+                confirmBox("删除这次做题记录？", "删除", function () { removeAttempt(c, aid); renderLib(); toast("已删除记录"); openDetail(id, true); });
+              };
+            });
+          }
+          renderAtts();
+          if (!toRecords && hasDraft("c:" + id)) startPad(true);
+          $("dDel").onclick = function () {
+            confirmBox("确定删除这道错题？", "删除", function () { cards = cards.filter(function (x) { return x.id !== id; }); (c.attempts || []).forEach(function (a) { if (!drawInUse(a.id)) delDraw(a.id); }); setDraft("c:" + id, null); save(); renderLib(); toast("已删除"); });
+          };
+          if (toRecords) $("dRec").scrollIntoView({ block: "start" });
+        }
+        document.addEventListener("click", function (e) {
+          var im = e.target.closest("img[data-full]"); if (!im) return;
+          var big = im.cloneNode(); big.removeAttribute("data-full"); big.alt = im.alt || "题目图片"; big.draggable = false;
+          var x = document.createElement("button"); x.className = "x-icon x-full__x"; x.type = "button"; x.setAttribute("aria-label", "关闭"); x.textContent = "✕";
+          fz = { s: 1, x: 0, y: 0 }; fptr = {}; fmoved = false;
+          $("full").replaceChildren(x, big); $("full").hidden = false;
+        });
+        // fullscreen: tap closes, pinch / wheel zooms, drag pans when zoomed
+        var fz = { s: 1, x: 0, y: 0 }, fptr = {}, fmoved = false, fbase = null;
+        function fApply() { var im = $("full").querySelector("img"); if (im) im.style.transform = "translate(" + fz.x + "px," + fz.y + "px) scale(" + fz.s + ")"; }
+        function fPts() { return Object.keys(fptr).map(function (k) { return fptr[k]; }); }
+        function fBase() {
+          var p = fPts();
+          fbase = !p.length ? null : p.length === 1 ? { mx: p[0].x, my: p[0].y, s: fz.s, x: fz.x, y: fz.y, d: 0 }
+            : { mx: (p[0].x + p[1].x) / 2, my: (p[0].y + p[1].y) / 2, d: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y) || 1, s: fz.s, x: fz.x, y: fz.y };
+        }
+        $("full").addEventListener("pointerdown", function (e) {
+          if (e.target.closest("button")) return;
+          fptr[e.pointerId] = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY };
+          var n = Object.keys(fptr).length; if (n === 1) fmoved = false; else fmoved = true;
+          try { $("full").setPointerCapture(e.pointerId); } catch (x) {}
+          fBase();
+        });
+        $("full").addEventListener("pointermove", function (e) {
+          var q = fptr[e.pointerId]; if (!q || !fbase) return;
+          q.x = e.clientX; q.y = e.clientY;
+          if (Math.hypot(q.x - q.sx, q.y - q.sy) > 6) fmoved = true;
+          var p = fPts(), cx = innerWidth / 2, cy = innerHeight / 2;
+          if (p.length >= 2) {
+            var mx = (p[0].x + p[1].x) / 2, my = (p[0].y + p[1].y) / 2, d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+            fz.s = Math.max(1, Math.min(6, fbase.s * d / fbase.d));
+            var k = fz.s / fbase.s;
+            fz.x = mx - cx - k * (fbase.mx - cx - fbase.x); fz.y = my - cy - k * (fbase.my - cy - fbase.y);
+          } else if (fz.s > 1) { fz.x = fbase.x + q.x - fbase.mx; fz.y = fbase.y + q.y - fbase.my; }
+          fApply();
+        });
+        function fUp(e) {
+          if (!fptr[e.pointerId]) return;
+          delete fptr[e.pointerId]; fBase();
+          if (fz.s <= 1.02) { fz = { s: 1, x: 0, y: 0 }; fApply(); }
+        }
+        $("full").addEventListener("pointerup", fUp);
+        $("full").addEventListener("pointercancel", fUp);
+        $("full").addEventListener("wheel", function (e) {
+          e.preventDefault();
+          fz.s = Math.max(1, Math.min(6, fz.s * (e.deltaY < 0 ? 1.12 : 0.89)));
+          if (fz.s === 1) { fz.x = 0; fz.y = 0; }
+          fApply();
+        }, { passive: false });
+        $("full").addEventListener("click", function (e) {
+          if (fmoved && !e.target.closest("button")) { fmoved = false; return; }
+          $("full").hidden = true;
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Escape") return;
+          if (!$("full").hidden) $("full").hidden = true; else if (!$("modal").hidden) closeModal(); else $("menu").hidden = true;
+        });
+
+        /* ---------- add ---------- */
+        var pending = [];
+        function downscale(file) {
+          return new Promise(function (res) {
+            var r = new FileReader();
+            r.onload = function () {
+              var img = new Image();
+              img.onload = function () {
+                var s = Math.min(1, 1200 / Math.max(img.width, img.height));
+                var cv = document.createElement("canvas");
+                cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s);
+                var cx = cv.getContext("2d"); cx.fillStyle = "#fff"; cx.fillRect(0, 0, cv.width, cv.height);
+                cx.drawImage(img, 0, 0, cv.width, cv.height);
+                res(cv.toDataURL("image/jpeg", 0.75));
+              };
+              img.onerror = function () { res(null); };
+              img.src = r.result;
+            };
+            r.onerror = function () { res(null); };
+            r.readAsDataURL(file);
+          });
+        }
+        $("fImg").addEventListener("change", function () {
+          var files = [].slice.call(this.files || []);
+          if (!files.length) return;
+          toast("正在处理图片…");
+          Promise.all(files.map(downscale)).then(function (urls) {
+            pending = pending.concat(urls.filter(Boolean));
+            $("thumbs").innerHTML = pending.map(function (u, i) { return '<img src="' + u + '" alt="待保存图片 ' + (i + 1) + '" data-full />'; }).join("");
+            refreshAddStrip();
+            $("fImg").value = "";
+          });
+        });
+        $("addForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var base = { subject: $("fSubj").value, cause: $("fCause").value, q: $("fQ").value.trim(), a: $("fA").value.trim() };
+          if (!base.q && !pending.length) { toast("请填写题目或添加图片"); return; }
+          var made = [];
+          if (!base.q && pending.length > 1) {
+            pending.forEach(function (u) { made.push(mk(Object.assign({}, base, { imgs: [u] }))); });
+          } else { made.push(mk(Object.assign({}, base, { imgs: pending.slice() }))); }
+          cards = cards.concat(made);
+          var n = made.length;
+          if (addPad) {
+            var d = addPad.data();
+            if (d) addAttempt(made[0], "首次", d, made[0].created);
+            addPad.discard(); addPad.destroy(); addPad = null; $("fPadBtn").hidden = false;
+          }
+          save();
+          pending = []; $("thumbs").innerHTML = ""; $("fQ").value = ""; $("fA").value = ""; $("pQ").innerHTML = ""; $("pA").innerHTML = "";
+          toast("已保存 ✓ 共 " + n + " 道错题");
+        });
+        var addPad = null;
+        // the pad's 保存: with a question or photo it saves the whole card; otherwise it keeps the drawing as a draft
+        function addPadSave(pad) {
+          if ($("fQ").value.trim() || pending.length) { $("addForm").requestSubmit ? $("addForm").requestSubmit() : $("addForm").dispatchEvent(new Event("submit", { cancelable: true })); return; }
+          if (!pad.data()) { toast("草稿板和备注都是空的"); return; }
+          pad.setAtt(null); persistDrafts();
+          toast("已保存 ✓ 草稿已存，填好题目后点「保存错题」");
+        }
+        function openAddPad() { if (addPad) return addPad; addPad = makePad($("fPad"), { draftKey: "add", onSave: addPadSave, strip: qStrip($("fQ").value.trim(), pending) }); $("fPadBtn").hidden = true; return addPad; }
+        $("fPadBtn").addEventListener("click", function () { openAddPad(); });
+        function restoreAddDraft() { if (!addPad && hasDraft("add")) { openAddPad(); toast("已恢复「添加」页未保存的手写草稿"); } }
+        // [label, tex inside $…$, cursor offset, tex when outside math, its cursor]
+        var TB = [["分数", "\\frac{}{}", 6, "", 0, "分数"], ["x²", "^{}", 2, "x^{}", 3, "上标"], ["xₙ", "_{}", 2, "x_{}", 3, "下标"], ["√", "\\sqrt{}", 6, "", 0, "根号"], ["∫", "\\int_{}^{}", 6, "", 0, "积分"], ["Σ", "\\sum_{}^{}", 6, "", 0, "求和"], ["lim", "\\lim_{x\\to }", 11, "", 0, "极限"], ["π", "\\pi ", 4], ["∞", "\\infty ", 7], ["≤", "\\le ", 4], ["≥", "\\ge ", 4], ["≠", "\\ne ", 4], ["→", "\\to ", 4], ["α", "\\alpha ", 7], ["β", "\\beta ", 6], ["θ", "\\theta ", 7]];
+        function insertTex(ta, t) {
+          var v = ta.value, st = ta.selectionStart, en = ta.selectionEnd, before = v.slice(0, st);
+          var inMath = (before.replace(/\\\$/g, "").replace(/\$\$/g, "$").match(/\$/g) || []).length % 2 === 1;
+          var tex = t[1], cur = t[2];
+          if (!inMath) { if (t[3]) { tex = t[3]; cur = t[4]; } tex = "$" + tex + "$"; cur += 1; }
+          ta.value = before + tex + v.slice(en);
+          ta.focus(); ta.setSelectionRange(st + cur, st + cur);
+          ta.dispatchEvent(new Event("input"));
+        }
+        document.querySelectorAll(".x-tb").forEach(function (bar) {
+          var ta = $(bar.dataset.for);
+          bar.innerHTML = TB.map(function (t, k) { return '<button type="button" data-k="' + k + '" aria-label="插入' + (t[5] || t[0]) + '">' + t[0] + "</button>"; }).join("");
+          bar.addEventListener("mousedown", function (e) { if (e.target.closest("button")) e.preventDefault(); });
+          bar.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) insertTex(ta, TB[+b.dataset.k]); });
+        });
+        [["fQ", "pQ"], ["fA", "pA"]].forEach(function (p) {
+          $(p[0]).addEventListener("input", function () { $(p[1]).innerHTML = this.value.trim() ? md(this.value) : ""; refreshAddStrip(); });
+        });
+        function refreshAddStrip() { var b = addPad && $("fPad").querySelector(".x-qs__body"); if (b) b.innerHTML = qsBody($("fQ").value.trim(), pending); }
+        function parseBulk(text) {
+          var out = [];
+          text.split(/^\s*-{3,}\s*$/m).forEach(function (block) {
+            var o = {}, last = null;
+            block.split(/\r?\n/).forEach(function (line) {
+              var m = line.match(/^\s*(科目|题目|答案|解析|错因)\s*[:：]\s*(.*)$/);
+              if (m) { last = { 科目: "subject", 题目: "q", 答案: "a", 解析: "a", 错因: "cause" }[m[1]]; o[last] = (o[last] ? o[last] + "\n" : "") + m[2]; }
+              else if (last && line.trim()) o[last] += "\n" + line;
+            });
+            if (o.q && o.q.trim()) {
+              o.subject = (o.subject || "").trim(); o.q = o.q.trim(); o.a = (o.a || "").trim();
+              if (o.cause && CAUSE.indexOf(o.cause.trim()) < 0) delete o.cause; else if (o.cause) o.cause = o.cause.trim();
+              out.push(mk(o));
+            }
+          });
+          return out;
+        }
+        $("bulkBtn").addEventListener("click", function () {
+          var list = parseBulk($("bulk").value);
+          if (!list.length) { toast("没有识别到题目，请检查格式"); return; }
+          cards = cards.concat(list); save(); $("bulk").value = "";
+          toast("已导入 " + list.length + " 道错题");
+        });
+
+        /* ---------- review ---------- */
+        var revScope = "全部", queue = [], qi = 0, sessMast = 0, sessCount = [0, 0, 0];
+        function scopeCards(s) {
+          return cards.filter(function (c) { return s === "全部" ? true : s === "仅未掌握" ? !c.mastered : c.subject === s; });
+        }
+        function renderRevSetup() {
+          $("revSetup").hidden = false; $("revRun").hidden = true; $("revDone").hidden = true;
+          var subs = usedSubjects();
+          if (["全部", "仅未掌握"].indexOf(revScope) < 0 && subs.indexOf(revScope) < 0) revScope = "全部";
+          chipRow($("revChips"), ["全部", "仅未掌握"].concat(subs), revScope, function (v) { revScope = v; renderRevSetup(); });
+          var now = Date.now(), list = scopeCards(revScope);
+          var due = list.filter(function (c) { return c.due <= now; }).length;
+          var m = cards.filter(function (c) { return c.mastered; }).length;
+          $("revStats").innerHTML = '<div class="stat"><span class="stat__fig">' + due + '</span><span class="stat__label">今日待复习</span></div><div class="stat"><span class="stat__fig">' + m + '</span><span class="stat__label">已掌握</span></div><div class="stat"><span class="stat__fig">' + cards.length + '</span><span class="stat__label">总题数</span></div>';
+          $("revInfo").textContent = list.length ? "本次范围共 " + list.length + " 题，到期的题排在前面。" : "这个范围没有错题。";
+          $("startRev").disabled = !list.length;
+        }
+        $("startRev").addEventListener("click", function () {
+          queue = scopeCards(revScope).sort(function (a, b) { return a.due - b.due; });
+          if (!queue.length) return;
+          qi = 0; sessMast = 0; sessCount = [0, 0, 0];
+          $("revSetup").hidden = true; $("revRun").hidden = false;
+          showCard();
+        });
+        function showCard() {
+          var c = queue[qi];
+          $("flip").classList.remove("is-flipped");
+          $("revProg").textContent = "第 " + (qi + 1) + " / " + queue.length + " 题";
+          $("revMast").textContent = "本轮掌握 " + sessMast;
+          $("revBar").style.width = (qi / queue.length * 100) + "%";
+          $("faceFront").innerHTML = '<span class="x-meta"><b style="color:var(--text-primary)">' + c.subject + "</b> · " + esc(c.cause) + "</span>" + (c.q ? '<div class="x-q">' + md(c.q) + "</div>" : "") + imgsHtml(c) + '<span class="x-grow"></span><span class="x-sub">轻点卡片或下方按钮查看答案</span>';
+          setTimeout(function () { $("faceBack").innerHTML = '<span class="x-meta">正确答案 / 解析</span><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div>"; }, 250);
+          $("mastNext").textContent = (c.interval >= 7 ? c.interval * 2 : 7) + " 天后";
+          $("showAns").hidden = false; $("rate").hidden = true;
+          dropRevPad(); $("attBtn").hidden = false; $("attBtn").textContent = hasDraft("c:" + c.id) ? "继续作答（有未保存的草稿）" : "开始作答"; $("revAns").hidden = true; $("revAns").innerHTML = "";
+          $("revPast").hidden = true; $("revPast").open = false; $("revPast").innerHTML = "";
+        }
+        var revPad = null;
+        function dropRevPad() { if (revPad) { revPad.destroy(); revPad = null; } }
+        function revSave(pad) {
+          var c = queue[qi], d = pad.data();
+          if (!d) { toast("草稿板和备注都是空的"); return; }
+          var a = saveAttempt(c, pad.att(), null, d);
+          pad.setAtt(a.id); renderLib();
+          toast("已保存 ✓");
+        }
+        $("attBtn").addEventListener("click", function () {
+          revPad = makePad($("revPad"), { draftKey: "c:" + queue[qi].id, onSave: revSave, saveHost: $("revAct"), strip: qStrip(queue[qi].q, queue[qi].imgs) }); this.hidden = true;
+          if (revPad.restored) toast("已恢复上次未保存的草稿");
+        });
+        // with the pad open the card stays on the question side: question, working, then the answer below for comparison
+        function flip() {
+          if ($("showAns").hidden) return;
+          if (revPad) {
+            var c = queue[qi];
+            $("revAns").innerHTML = '<p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div>";
+            $("revAns").hidden = false;
+            setTimeout(function () { $("revAns").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 30);
+          } else $("flip").classList.add("is-flipped");
+          var cc = queue[qi], n = (cc.attempts || []).length;
+          if (n) { $("revPast").innerHTML = "<summary>查看以往作答 (" + n + ")</summary>" + attsHtml(cc, true); $("revPast").hidden = false; }
+          $("attBtn").hidden = true; $("showAns").hidden = true; $("rate").hidden = false;
+        }
+        $("showAns").addEventListener("click", flip);
+        $("flip").addEventListener("click", function (e) { if (!e.target.closest("img[data-full]") && !$("flip").classList.contains("is-flipped")) flip(); });
+        $("rate").addEventListener("click", function (e) {
+          var b = e.target.closest("button"); if (!b) return;
+          var r = +b.dataset.r, c = queue[qi];
+          if (revPad) {
+            var d = revPad.data(), aid = revPad.att();
+            if (d || findAtt(c, aid)) { saveAttempt(c, aid, ["不会", "模糊", "掌握"][r], d); toast("已保存 ✓"); }
+            revPad.discard();
+            window.scrollTo(0, 0);
+          }
+          if (r === 0) { c.interval = 1; c.mastered = false; }
+          else if (r === 1) { c.interval = 3; c.mastered = false; }
+          else { c.interval = c.interval >= 7 ? c.interval * 2 : 7; c.mastered = true; sessMast++; }
+          c.due = Date.now() + c.interval * DAY; c.reviews = (c.reviews || 0) + 1;
+          sessCount[r]++; save();
+          qi++;
+          if (qi < queue.length) showCard(); else finish();
+        });
+        function finish() {
+          dropRevPad();
+          $("revRun").hidden = true; $("revDone").hidden = false;
+          var done = sessCount[0] + sessCount[1] + sessCount[2];
+          var m = cards.filter(function (c) { return c.mastered; }).length;
+          $("revDone").innerHTML = "<div><h2>" + (done === queue.length ? "复习完成" : "本轮结束") + '</h2><p class="x-sub">本轮复习 ' + done + " 题，累计已掌握 " + m + " / " + cards.length + ' 题。</p></div><section class="stats"><div class="stat"><span class="stat__fig">' + sessCount[2] + '</span><span class="stat__label">掌握</span></div><div class="stat"><span class="stat__fig">' + sessCount[1] + '</span><span class="stat__label">模糊 · 3 天后</span></div><div class="stat"><span class="stat__fig">' + sessCount[0] + '</span><span class="stat__label">不会 · 明天</span></div></section><button class="btn x-primary" id="again">返回</button>';
+          $("again").onclick = renderRevSetup;
+        }
+        $("quitRev").addEventListener("click", finish);
+
+        /* ---------- 刷题 ---------- */
+        var PSUBJ = ["数学一", "数据结构", "计组", "操作系统", "计网"];
+        var BANK = (typeof QUESTION_BANK !== "undefined" ? QUESTION_BANK : []).slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+        var pDayI = BANK.length - 1, pSubj = PSUBJ[0], pPos = {}, pPad = null, pPadQ = null;
+        // bank text → md: restore "\t" eaten by JSON (\times), literal "\n" → newline, drop ``` fences
+        function fixTxt(s) { return String(s || "").replace(/\t/g, "\\t").replace(/\\n(?![A-Za-z])/g, "\n").replace(/^```\w*\n?/gm, ""); }
+        function qText(q) { return fixTxt(q.stem) + (q.options ? "\n" + q.options.map(fixTxt).join("\n") : ""); }
+        function optKey(o, i) { var m = /^\s*([A-Z])[.．、]/.exec(o); return m ? m[1] : "ABCDEFGH"[i]; }
+        function pQs() { var d = BANK[pDayI]; return d ? d.questions : []; }
+        function pList() { return pQs().filter(function (q) { return q.subject === pSubj; }); }
+        function pKey() { return pDayI + ":" + pSubj; }
+        function pDone(q) { var r = prac[q.id]; return !!r && r.ok != null; }
+        function curQ() { return pList()[pPos[pKey()]]; }
+        // prac[id] = { pick, input, shown, ok, cur, atts, t }: atts is the question's 作答时间线 (every try, with its 草稿); cur is the 大题 attempt saved but not yet judged
+        function pNorm(r) {
+          if (!r) return r;
+          if (!Array.isArray(r.atts)) r.atts = [];
+          if (r.att) { if (!r.atts.some(function (a) { return a.id === r.att.id; })) r.atts.push(r.att); if (r.ok == null && r.att.result === "未评") r.cur = r.att.id; delete r.att; }
+          return r;
+        }
+        function migratePrac() { Object.keys(prac).forEach(function (k) { pNorm(prac[k]); }); }
+        function pR(id) { return pNorm(prac[id]) || { atts: [] }; }
+        function pSet(id, o) { prac[id] = Object.assign(pNorm(prac[id]) || { atts: [] }, o, { t: Date.now() }); save(); }
+        function writeAtt(a, d, result, extra) {
+          a = a || { id: uid(), time: Date.now(), result: "未评", note: "" };
+          if (result) { a.result = result; a.time = Date.now(); }
+          if (extra) Object.assign(a, extra);
+          if (d) { a.note = d.note || ""; if (d.img) { a.draw = true; putDraw(a.id, d.img); } else if (a.draw) { a.draw = false; delDraw(a.id); } }
+          return a;
+        }
+        function pracOut() {
+          var o = {};
+          migratePrac();
+          Object.keys(prac).forEach(function (k) {
+            var v = Object.assign({}, prac[k]);
+            v.atts = (v.atts || []).map(function (a) { var b = Object.assign({}, a); if (a.draw && draws[a.id]) b.drawing = draws[a.id]; return b; });
+            o[k] = v;
+          });
+          return o;
+        }
+        // wrong answer → one card per question id; a new card takes the question's whole 草稿 timeline, an existing one gets this attempt appended
+        function toBook(q, att) {
+          var c = cards.find(function (x) { return x.qid === q.id; });
+          if (c) {
+            if (!(c.attempts || []).some(function (a) { return a.id === att.id; })) (c.attempts = c.attempts || []).push(Object.assign({}, att));
+            toast("错题本中已有此题，已追加本次草稿记录");
+          } else {
+            c = mk({ subject: q.subject, cause: "不会做", q: qText(q), a: "答案：" + fixTxt(q.answer) + "\n\n解析：" + fixTxt(q.analysis) });
+            c.qid = q.id; c.tags = ["刷题"];
+            c.attempts = pR(q.id).atts.filter(function (a) { return a.result !== "未评"; }).map(function (a) { return Object.assign({}, a); });
+            if (!c.attempts.some(function (a) { return a.id === att.id; })) c.attempts.push(Object.assign({}, att));
+            cards.push(c);
+            toast("已加入错题本（含草稿记录）");
+          }
+          save(); renderLib();
+        }
+        // the pad is the 草稿区 of every unanswered question; 大题 keep their 保存作答 button
+        function ensurePad(q) {
+          if (pPad) return;
+          var big = q.type === "大题";
+          $("pRun").classList.add("is-pad");
+          pPad = makePad($("pPad"), { draftKey: "p:" + q.id, onSave: big ? pPadSave : null, saveHost: big ? $("pAct") : null, strip: qStrip(qText(q), []) }); pPadQ = q.id;
+          if (pPad.restored) toast("已恢复这道题未保存的草稿");
+        }
+        // judge: the current 草稿 becomes an attempt (time, answer, result) on the question's timeline; the next try starts a fresh draft
+        function pRecord(q, ok, extra, more) {
+          var r = pR(q.id), mine = pPad && pPadQ === q.id, d = mine ? pPad.data() : null;
+          var prev = r.cur ? r.atts.find(function (x) { return x.id === r.cur; }) : null;
+          var a = writeAtt(prev || null, d, ok ? "做对" : "做错", extra);
+          var atts = r.atts.filter(function (x) { return x.id !== a.id; }).concat([a]);
+          if (mine) { pPad.discard(); dropPPad(); }
+          pSet(q.id, Object.assign({ ok: ok, cur: null, atts: atts }, more || {}));
+          if (!ok) toBook(q, a);
+          return a;
+        }
+        function dropPPad() { if (pPad) { pPad.destroy(); pPad = null; pPadQ = null; } $("pRun").classList.remove("is-pad"); }
+        function renderPrac() {
+          var day = BANK[pDayI];
+          migratePrac();
+          if (!day) { $("pInfo").textContent = "题库为空"; $("pRun").hidden = true; return; }
+          $("pDay").innerHTML = BANK.map(function (d, i) { return '<option value="' + i + '"' + (i === pDayI ? " selected" : "") + ">" + esc(d.label) + " · " + esc(d.date) + "</option>"; }).reverse().join("");
+          var all = day.questions, done = all.filter(pDone).length;
+          $("pInfo").textContent = "共 " + all.length + " 题，答错的自动进错题本";
+          $("pTot").textContent = done + "/" + all.length;
+          $("pTotBar").style.width = (all.length ? done / all.length * 100 : 0) + "%";
+          var subs = PSUBJ.filter(function (s) { return all.some(function (q) { return q.subject === s; }); });
+          if (subs.indexOf(pSubj) < 0) pSubj = subs[0];
+          $("pChips").innerHTML = subs.map(function (s) {
+            var l = all.filter(function (q) { return q.subject === s; });
+            return '<button type="button" aria-pressed="' + (s === pSubj) + '" data-v="' + s + '">' + s + "<small>" + l.filter(pDone).length + "/" + l.length + "</small></button>";
+          }).join("");
+          var list = pList(), k = pKey();
+          if (pPos[k] == null) { var f = list.findIndex(function (q) { return !pDone(q); }); pPos[k] = f < 0 ? 0 : f; }
+          $("pGrid").innerHTML = list.map(function (q, j) {
+            var r = prac[q.id], cls = r && r.ok === true ? "is-ok" : r && r.ok === false ? "is-bad" : "";
+            return '<button type="button" data-i="' + j + '" class="' + cls + '" aria-current="' + (j === pPos[k]) + '" aria-label="第 ' + (j + 1) + " 题" + (cls ? (r.ok ? "，做对" : "，做错") : "") + '">' + (j + 1) + "</button>";
+          }).join("");
+          var dn = list.filter(pDone), ok = dn.filter(function (q) { return prac[q.id].ok; }).length;
+          $("pSum").hidden = dn.length < list.length;
+          if (dn.length === list.length) {
+            var ns = subs.find(function (s) { return all.some(function (q) { return q.subject === s && !pDone(q); }); });
+            $("pSum").innerHTML = "<h3>" + pSubj + " 已做完</h3>" + '<section class="stats"><div class="stat"><span class="stat__fig">' + Math.round(ok / list.length * 100) + '%</span><span class="stat__label">正确率</span></div><div class="stat"><span class="stat__fig">' + ok + '</span><span class="stat__label">做对</span></div><div class="stat"><span class="stat__fig">' + (list.length - ok) + '</span><span class="stat__label">做错 · 已进错题本</span></div></section>' +
+              (ns ? '<button type="button" class="btn x-primary" data-next="' + ns + '">下一科：' + ns + "</button>" : '<p class="x-sub">今天的 ' + all.length + " 题全部做完了。</p>");
+          }
+          showQ();
+        }
+        function showQ() {
+          var list = pList(), i = pPos[pKey()], q = list[i]; if (!q) return;
+          if (pPad && pPadQ !== q.id) { dropPPad(); persistDrafts(); }
+          var r = pR(q.id), done = r.ok != null, shown = !!(r.shown || r.pick);
+          if (done) { if (pPad) dropPPad(); } else ensurePad(q);
+          var opts = q.type === "选择" && q.options ? '<div class="x-opts" role="group" aria-label="选项">' + q.options.map(function (o, j) {
+            var key = optKey(o, j), st = r.pick ? (key === q.answer ? "is-right" : key === r.pick ? "is-wrong" : "") : "";
+            return '<button type="button" class="x-opt ' + st + '" data-k="' + key + '"' + (r.pick ? " disabled" : "") + "><span>" + md(fixTxt(o)) + "</span>" + (st ? "<b>" + (st === "is-right" ? "✓ 正确" : "✗ 你的选择") + "</b>" : "") + "</button>";
+          }).join("") + "</div>" : "";
+          $("pCard").innerHTML = '<div class="x-meta"><b style="color:var(--text-primary)">' + q.subject + " · 第 " + (i + 1) + " / " + list.length + ' 题</b><span class="pill">' + esc(q.type) + '</span><span class="pill">' + esc(q.source) + "</span>" + (q.topic ? esc(q.topic) : "") + '</div><div class="x-q">' + md(fixTxt(q.stem)) + "</div>" + opts;
+          var res = done ? '<p style="margin-bottom:12px">' + (r.ok ? '<span class="chip x-ok">做对了</span>' : '<span class="chip x-bad">做错了 · 已加入错题本</span>') + "</p>" : "";
+          $("pAns").hidden = !shown && !done;
+          $("pAns").innerHTML = shown || done ? res + '<p class="x-sub" style="margin-bottom:6px">' + (q.type === "大题" ? "参考答案" : "答案") + '</p><div class="x-q">' + md(fixTxt(q.answer)) + '</div><p class="x-sub" style="margin:12px 0 6px">解析</p><div class="x-q">' + md(fixTxt(q.analysis)) + "</div>" : "";
+          var n = r.atts.length;
+          $("pPast").hidden = !n;
+          $("pPast").innerHTML = n ? "<summary>草稿记录 (" + n + ")</summary>" + attsHtml({ attempts: r.atts }, true) : "";
+          $("pPast").open = done;
+          var ctl = "";
+          if (q.type === "填空") ctl = '<input class="x-in" id="pIn" placeholder="填写你的答案" aria-label="你的答案" value="' + esc(r.input || "") + '"' + (shown || done ? " disabled" : "") + " />";
+          if (done) ctl += '<button type="button" class="btn" data-a="redo">再做一次</button>';
+          else if (q.type === "选择") ctl += '<p class="x-sub">点选一个选项作答，草稿会和答案一起存进记录</p>';
+          else if (shown) ctl += '<div class="x-actions"><button type="button" class="btn" data-j="0">我做错了</button><button type="button" class="btn x-primary" data-j="1">我做对了</button></div>';
+          else ctl += '<button type="button" class="btn x-primary" data-a="show">查看答案</button>';
+          $("pCtl").innerHTML = ctl;
+          $("pPrev").disabled = i === 0;
+          $("pNext").textContent = i === list.length - 1 ? "完成" : "下一题";
+        }
+        function pPadSave(pad) {
+          var q = curQ(), d = pad.data();
+          if (!q) return;
+          if (!d) { toast("草稿板和备注都是空的"); return; }
+          var r = pR(q.id), prev = r.cur ? r.atts.find(function (x) { return x.id === r.cur; }) : null;
+          var a = writeAtt(prev || null, d, null);
+          pSet(q.id, { cur: a.id, atts: r.atts.filter(function (x) { return x.id !== a.id; }).concat([a]) }); pad.setAtt(a.id);
+          showQ();
+          toast("已保存 ✓ 已记入草稿记录");
+        }
+        function afterJudge() {
+          renderPrac();
+          if (!$("pSum").hidden) setTimeout(function () { $("pSum").scrollIntoView({ behavior: "smooth", block: "center" }); }, 30);
+        }
+        $("pDay").addEventListener("change", function () { pDayI = +this.value; renderPrac(); });
+        $("pChips").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { pSubj = b.dataset.v; renderPrac(); } });
+        $("pGrid").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { pPos[pKey()] = +b.dataset.i; renderPrac(); } });
+        $("pSum").addEventListener("click", function (e) { var b = e.target.closest("[data-next]"); if (b) { pSubj = b.dataset.next; renderPrac(); window.scrollTo(0, 0); } });
+        $("pCard").addEventListener("click", function (e) {
+          var b = e.target.closest(".x-opt"), q = curQ(); if (!b || b.disabled || !q) return;
+          var k = b.dataset.k, ok = k === q.answer;
+          pRecord(q, ok, { pick: k, ans: "选 " + k + " · 正确答案 " + q.answer }, { pick: k });
+          afterJudge();
+        });
+        $("pCtl").addEventListener("click", function (e) {
+          var b = e.target.closest("button"), q = curQ(); if (!b || !q) return;
+          if (b.dataset.a === "show") {
+            if (pPad) { pPad.flush(); persistDrafts(); }
+            pSet(q.id, q.type === "填空" ? { input: $("pIn").value.trim(), shown: true } : { shown: true });
+            showQ();
+            setTimeout(function () { $("pAns").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 30);
+          } else if (b.dataset.a === "redo") {
+            pSet(q.id, { pick: null, ok: null, input: "", shown: false, cur: null });
+            renderPrac();
+            toast("已开新草稿，旧记录保留在下方");
+          } else if (b.dataset.j) {
+            var ok = b.dataset.j === "1", r = pR(q.id);
+            pRecord(q, ok, q.type === "填空" ? { input: r.input || "", ans: "我的答案：" + (r.input || "（未填）") + " · 自评" + (ok ? "做对" : "做错") } : { ans: "自评" + (ok ? "做对" : "做错") });
+            afterJudge();
+          }
+        });
+        $("pPrev").addEventListener("click", function () { var k = pKey(); if (pPos[k] > 0) { pPos[k]--; renderPrac(); $("pRun").scrollIntoView({ block: "start" }); } });
+        $("pNext").addEventListener("click", function () {
+          var k = pKey(), list = pList();
+          if (pPos[k] < list.length - 1) { pPos[k]++; renderPrac(); $("pRun").scrollIntoView({ block: "start" }); return; }
+          var f = list.findIndex(function (q) { return !pDone(q); });
+          if (f < 0) { $("pSum").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+          pPos[k] = f; renderPrac(); toast("还有 " + list.filter(function (q) { return !pDone(q); }).length + " 题没做，已跳到第 " + (f + 1) + " 题");
+        });
+
+        /* ---------- gear menu ---------- */
+        var menu = $("menu");
+        $("gear").addEventListener("click", function (e) { e.stopPropagation(); menu.hidden = !menu.hidden; this.setAttribute("aria-expanded", String(!menu.hidden)); });
+        document.addEventListener("click", function (e) { if (!menu.hidden && !menu.contains(e.target)) { menu.hidden = true; $("gear").setAttribute("aria-expanded", "false"); } });
+        menu.addEventListener("click", function (e) {
+          var b = e.target.closest("button"); if (!b) return;
+          menu.hidden = true;
+          var act = b.dataset.act;
+          if (act === "export") exportBackup();
+          else if (act === "import") { $("backupFile").click(); }
+          else if (act === "clear") {
+            confirmBox("清空全部 " + cards.length + " 道错题和刷题记录？此操作无法撤销。", "清空", function () { cards = []; prac = {}; dropPPad(); clearDraws(); drafts = {}; persistDrafts(); save(); refresh(); toast("已清空"); });
+          }
+        });
+        function exportBackup() {
+          flushPads();
+          var outCards = cards.map(function (c) {
+            var o = Object.assign({}, c);
+            o.attempts = sortedAtts(c).map(function (a) { var b = Object.assign({}, a); if (a.draw && draws[a.id]) b.drawing = draws[a.id]; return b; });
+            return o;
+          });
+          var blob = new Blob([JSON.stringify({ app: "错题本", version: 3, exported: new Date().toISOString(), cards: outCards, practice: pracOut(), drafts: drafts }, null, 1)], { type: "application/json" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob); a.download = "错题本备份-" + new Date().toISOString().slice(0, 10) + ".json";
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+          toast("备份已导出");
+        }
+        // give the inline manifest this page's address, so 添加到主屏幕 opens here
+        try {
+          var man = $("manifest"), mj = JSON.parse(decodeURIComponent(man.getAttribute("href").replace(/^data:application\/manifest\+json,/, "")));
+          if (/^https?:/.test(location.protocol)) { mj.start_url = location.href.split("#")[0]; mj.scope = location.href.split("#")[0].replace(/[^/]*$/, ""); mj.id = mj.start_url; }
+          man.setAttribute("href", "data:application/manifest+json," + encodeURIComponent(JSON.stringify(mj)));
+        } catch (e) {}
+        $("backupFile").addEventListener("change", function () {
+          var f = this.files && this.files[0]; if (!f) return;
+          var r = new FileReader();
+          r.onload = function () {
+            try {
+              var d = JSON.parse(r.result), list = Array.isArray(d) ? d : d.cards;
+              if (!Array.isArray(list)) throw 0;
+              var ids = {}; cards.forEach(function (c) { ids[c.id] = 1; });
+              var added = 0;
+              list.forEach(function (o) {
+                if (!o || (!o.q && !(o.imgs && o.imgs.length))) return;
+                var c = Object.assign(mk(o), o); c.subject = normSubj(o.subject); if (!Array.isArray(c.imgs)) c.imgs = [];
+                c.attempts = (Array.isArray(o.attempts) ? o.attempts : []).filter(function (a) { return a && typeof a === "object"; }).map(function (a) {
+                  var b = { id: a.id || uid(), time: +a.time || Date.now(), result: a.result || "首次", note: a.note || "" };
+                  if (a.ans) b.ans = String(a.ans);
+                  if (typeof a.drawing === "string" && a.drawing.indexOf("data:image/") === 0) { b.draw = true; putDraw(b.id, a.drawing); }
+                  else if (a.draw && draws[b.id]) b.draw = true;
+                  return b;
+                });
+                if (ids[c.id]) cards = cards.filter(function (x) { return x.id !== c.id; }); else added++;
+                cards.push(c);
+              });
+              if (d.practice && typeof d.practice === "object") Object.keys(d.practice).forEach(function (k) {
+                var v = d.practice[k]; if (!v || typeof v !== "object") return;
+                if (v.att) { if (typeof v.att.drawing === "string" && v.att.drawing.indexOf("data:image/") === 0) { v.att.draw = true; putDraw(v.att.id, v.att.drawing); } delete v.att.drawing; }
+                pNorm(v);
+                v.atts = v.atts.filter(function (a) { return a && typeof a === "object"; }).map(function (a) {
+                  a = Object.assign({}, a); if (!a.id) a.id = uid();
+                  if (typeof a.drawing === "string" && a.drawing.indexOf("data:image/") === 0) { a.draw = true; putDraw(a.id, a.drawing); }
+                  delete a.drawing; return a;
+                });
+                var mine = pNorm(prac[k]);
+                // the newer copy wins; both keep every attempt either side has
+                if (mine && (mine.t || 0) >= (v.t || 0)) { v.atts.forEach(function (a) { if (!mine.atts.some(function (x) { return x.id === a.id; })) mine.atts.push(a); }); return; }
+                if (mine) mine.atts.forEach(function (a) { if (!v.atts.some(function (x) { return x.id === a.id; })) v.atts.push(a); });
+                prac[k] = v;
+              });
+              if (d.drafts && typeof d.drafts === "object") {
+                Object.keys(d.drafts).forEach(function (k) { var v = d.drafts[k]; if (v && typeof v === "object" && (!drafts[k] || (v.t || 0) > (drafts[k].t || 0))) drafts[k] = v; });
+                persistDrafts();
+              }
+              save(); refresh(); toast("已导入备份（新增 " + added + " 题）");
+            } catch (e) { toast("备份文件格式不正确"); }
+          };
+          r.readAsText(f); this.value = "";
+        });
+        function refresh() { renderLib(); if (!$("v-rev").hidden) renderRevSetup(); if (!$("v-prac").hidden) renderPrac(); }
+
+        renderLib();
+        initDraws();
+      })();
+    </script>
+  </body>
+</html>
