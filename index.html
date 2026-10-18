@@ -1209,7 +1209,7 @@
         var SUBJ = ["政治", "英语一", "数学一", "数据结构", "计组", "操作系统", "计网", "其他"];
         var ALIAS = { "计算机组成原理": "计组", "组成原理": "计组", "计算机网络": "计网", "数学": "数学一", "英语": "英语一", "思想政治": "政治", "OS": "操作系统", "DS": "数据结构" };
         function normSubj(s) { s = String(s || "").trim(); if (ALIAS[s]) s = ALIAS[s]; return SUBJ.indexOf(s) >= 0 ? s : "其他"; }
-        var CAUSE = ["概念不清", "粗心", "计算错误", "审题错误", "不会做"];
+        var CAUSE = ["概念不清", "粗心", "计算错误", "审题错误", "不会做", "没想明白"];
         var KEY = "cuotiben-v1", DAY = 864e5;
         var $ = function (id) { return document.getElementById(id); };
         var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
@@ -1874,7 +1874,7 @@
           var c = cards.find(function (x) { return x.id === id; }); if (!c) return;
           openModal('<div class="x-meta" style="justify-content:space-between"><span><b style="color:var(--text-primary)">' + c.subject + "</b> · " + esc(c.cause) + " " + statusChip(c) + '</span><button class="x-icon" id="dClose" aria-label="关闭">✕</button></div>' +
             '<div class="x-colL">' + (c.q ? '<div class="x-q">' + md(c.q) + "</div>" : "") + imgsHtml(c) +
-            '<button class="btn x-late" id="dShow">显示答案</button><div class="x-ans x-late" id="dAns" hidden><p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div></div>" +
+            '<button class="btn x-late" id="dShow">显示答案</button><div class="x-ans x-late" id="dAns" hidden><p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div>" + aiBox("c:" + c.id, c.q || "（题目是图片，见附图）", c.a || "（未填写）") + "</div>" +
             '<div class="x-lact" id="dSave"></div><div class="x-rechead x-late" id="dRec"><h3>做题记录</h3><button class="btn" id="dRedo">再做一次</button></div><div class="x-late" id="dAtts">' + attsHtml(c) + "</div>" +
             '<p class="x-sub x-late">复习 ' + c.reviews + " 次 · 添加于 " + new Date(c.created).toLocaleDateString("zh-CN") + '</p><button class="btn x-del x-late" id="dDel">删除</button></div>' +
             '<div class="x-colR"><div id="dPad"></div><div class="x-view" id="dPadAct" style="padding:0;gap:10px" hidden><p class="x-sub">随时点「保存」存为一次作答；写完再选结果（不影响复习计划）</p><div class="x-rate"><button type="button" class="btn" data-r="不会">不会</button><button type="button" class="btn" data-r="模糊">模糊</button><button type="button" class="btn" data-r="掌握">掌握</button></div><button type="button" class="btn" data-cancel>取消</button></div></div>');
@@ -2142,10 +2142,10 @@
           if ($("showAns").hidden) return;
           if (revPad) {
             var c = queue[qi];
-            $("revAns").innerHTML = '<p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div>";
+            $("revAns").innerHTML = '<p class="x-sub" style="margin-bottom:6px">正确答案 / 解析</p><div class="x-q">' + (c.a ? md(c.a) : "（未填写）") + "</div>" + aiBox("c:" + c.id, c.q || "（题目是图片，见附图）", c.a || "（未填写）");
             $("revAns").hidden = false;
             setTimeout(function () { $("revAns").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 30);
-          } else $("flip").classList.add("is-flipped");
+          } else { $("flip").classList.add("is-flipped"); var c0 = queue[qi]; $("revAns").innerHTML = aiBox("c:" + c0.id, c0.q || "（题目是图片，见附图）", c0.a || "（未填写）"); $("revAns").hidden = false; }
           var cc = queue[qi], n = (cc.attempts || []).length;
           if (n) { $("revPast").innerHTML = "<summary>查看以往作答 (" + n + ")</summary>" + attsHtml(cc, true); $("revPast").hidden = false; }
           $("attBtn").hidden = true; $("showAns").hidden = true; $("rate").hidden = false;
@@ -2184,6 +2184,31 @@
         var BANK = (typeof QUESTION_BANK !== "undefined" ? QUESTION_BANK : []).slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
         var pDayI = BANK.length - 1, pSubj = PSUBJ[0], pPos = {}, pPad = null, pPadQ = null;
         // bank text → md: restore "\t" eaten by JSON (\times), literal "\n" → newline, drop ``` fences
+
+        // ---- 问 AI：把题目、答案解析和我的想法拼成提问，复制后去 DeepSeek 粘贴 ----
+        var aiStore = {}, aiThought = {};
+        function aiBox(key, qtxt, atxt) {
+          aiStore[key] = { q: qtxt, a: atxt };
+          return '<div class="x-ai"><p class="x-sub" style="margin:14px 0 6px">问 AI：写下你的拓展想法，复制后去 DeepSeek 粘贴，让它帮你检查对不对</p>' +
+            '<textarea class="x-in" data-aitxt="' + esc(key) + '" rows="3" placeholder="例如：如果把条件改成……结论还成立吗？我觉得……">' + esc(aiThought[key] || "") + '</textarea>' +
+            '<div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap"><button type="button" class="btn x-primary" data-askai="' + esc(key) + '">复制给 AI</button>' +
+            '<a class="btn" href="https://chat.deepseek.com/" target="_blank" rel="noopener">打开 DeepSeek</a></div></div>';
+        }
+        function aiPrompt(key) {
+          var d = aiStore[key] || { q: "", a: "" }, t = (aiThought[key] || "").trim();
+          return "我在准备考研（11408：政治、英语一、数学一、408）。下面是一道题和它的标准答案与解析，后面是我自己的拓展想法。请你：\n1. 逐条判断我的想法对不对；\n2. 错的地方指出错在哪，并给出正确结论和理由；\n3. 必要时举一个简单的例子或反例；\n4. 如果我的想法对，再补充一个相关的易错点或考法。\n回答简洁，公式用 LaTeX。\n\n【题目】\n" + d.q + "\n\n【标准答案与解析】\n" + d.a + "\n\n【我的想法】\n" + (t || "（我还没想清楚，请先帮我从这道题出发，提出 2 个值得拓展思考的问题）");
+        }
+        function copyText(txt) {
+          function fb() { var ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} ta.remove(); return ok; }
+          if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(txt).then(function () { return true; }, function () { return fb(); });
+          return Promise.resolve(fb());
+        }
+        document.addEventListener("input", function (e) { var k = e.target.getAttribute && e.target.getAttribute("data-aitxt"); if (k != null) aiThought[k] = e.target.value; });
+        document.addEventListener("click", function (e) {
+          var b = e.target.closest && e.target.closest("[data-askai]"); if (!b) return;
+          e.stopPropagation();
+          copyText(aiPrompt(b.getAttribute("data-askai"))).then(function (ok) { toast(ok ? "已复制 ✓ 去 DeepSeek 粘贴即可" : "复制失败，请长按选择文字复制"); });
+        }, true);
         function fixTxt(s) { return String(s || "").replace(/\t/g, "\\t").replace(/\\n(?![A-Za-z])/g, "\n").replace(/^```\w*\n?/gm, ""); }
         function qText(q) { return fixTxt(q.stem) + (q.options ? "\n" + q.options.map(fixTxt).join("\n") : ""); }
         function optKey(o, i) { var m = /^\s*([A-Z])[.．、]/.exec(o); return m ? m[1] : "ABCDEFGH"[i]; }
@@ -2220,18 +2245,19 @@
           return o;
         }
         // wrong answer → one card per question id; a new card takes the question's whole 草稿 timeline, an existing one gets this attempt appended
-        function toBook(q, att) {
+        function toBook(q, att, unclear) {
           var c = cards.find(function (x) { return x.qid === q.id; });
           if (c) {
             if (!(c.attempts || []).some(function (a) { return a.id === att.id; })) (c.attempts = c.attempts || []).push(Object.assign({}, att));
-            toast("错题本中已有此题，已追加本次草稿记录");
+            if (unclear) { c.cause = "没想明白"; c.mastered = false; c.due = Date.now(); }
+            toast("错题本中已有此题，已追加本次记录");
           } else {
-            c = mk({ subject: q.subject, cause: "不会做", q: qText(q), a: "答案：" + fixTxt(q.answer) + "\n\n解析：" + fixTxt(q.analysis) });
+            c = mk({ subject: q.subject, cause: unclear ? "没想明白" : "不会做", q: qText(q), a: "答案：" + fixTxt(q.answer) + "\n\n解析：" + fixTxt(q.analysis) });
             c.qid = q.id; c.tags = ["刷题"];
             c.attempts = pR(q.id).atts.filter(function (a) { return a.result !== "未评"; }).map(function (a) { return Object.assign({}, a); });
             if (!c.attempts.some(function (a) { return a.id === att.id; })) c.attempts.push(Object.assign({}, att));
             cards.push(c);
-            toast("已加入错题本（含草稿记录）");
+            toast(unclear ? "已加入错题本（标记：没想明白）" : "已加入错题本（含草稿记录）");
           }
           save(); renderLib();
         }
@@ -2244,14 +2270,14 @@
           if (pPad.restored) toast("已恢复这道题未保存的草稿");
         }
         // judge: the current 草稿 becomes an attempt (time, answer, result) on the question's timeline; the next try starts a fresh draft
-        function pRecord(q, ok, extra, more) {
+        function pRecord(q, ok, extra, more, unclear) {
           var r = pR(q.id), mine = pPad && pPadQ === q.id, d = mine ? pPad.data() : null;
           var prev = r.cur ? r.atts.find(function (x) { return x.id === r.cur; }) : null;
-          var a = writeAtt(prev || null, d, ok ? "做对" : "做错", extra);
+          var a = writeAtt(prev || null, d, unclear ? "模糊" : ok ? "做对" : "做错", extra);
           var atts = r.atts.filter(function (x) { return x.id !== a.id; }).concat([a]);
           if (mine) { pPad.discard(); dropPPad(); }
-          pSet(q.id, Object.assign({ ok: ok, cur: null, atts: atts }, more || {}));
-          if (!ok) toBook(q, a);
+          pSet(q.id, Object.assign({ ok: ok, unclear: !!unclear, cur: null, atts: atts }, more || {}));
+          if (!ok || unclear) toBook(q, a, unclear);
           return a;
         }
         function dropPPad() { if (pPad) { pPad.destroy(); pPad = null; pPadQ = null; } $("pRun").classList.remove("is-pad"); }
@@ -2295,19 +2321,19 @@
             return '<button type="button" class="x-opt ' + st + '" data-k="' + key + '"' + (r.pick ? " disabled" : "") + "><span>" + md(fixTxt(o)) + "</span>" + (st ? "<b>" + (st === "is-right" ? "✓ 正确" : "✗ 你的选择") + "</b>" : "") + "</button>";
           }).join("") + "</div>" : "";
           $("pCard").innerHTML = '<div class="x-meta"><b style="color:var(--text-primary)">' + q.subject + " · 第 " + (i + 1) + " / " + list.length + ' 题</b><span class="pill">' + esc(q.type) + '</span><span class="pill">' + esc(q.source) + "</span>" + (q.topic ? esc(q.topic) : "") + '</div><div class="x-q">' + md(fixTxt(q.stem)) + "</div>" + opts;
-          var res = done ? '<p style="margin-bottom:12px">' + (r.ok ? '<span class="chip x-ok">做对了</span>' : '<span class="chip x-bad">做错了 · 已加入错题本</span>') + "</p>" : "";
+          var res = done ? '<p style="margin-bottom:12px">' + (r.ok && r.unclear ? '<span class="chip x-mid">做对但没想明白 · 已加入错题本</span>' : r.ok ? '<span class="chip x-ok">做对了</span>' : '<span class="chip x-bad">做错了 · 已加入错题本</span>') + "</p>" : "";
           $("pAns").hidden = !shown && !done;
-          $("pAns").innerHTML = shown || done ? res + '<p class="x-sub" style="margin-bottom:6px">' + (q.type === "大题" ? "参考答案" : "答案") + '</p><div class="x-q">' + md(fixTxt(q.answer)) + '</div><p class="x-sub" style="margin:12px 0 6px">解析</p><div class="x-q">' + md(fixTxt(q.analysis)) + "</div>" : "";
+          $("pAns").innerHTML = shown || done ? res + '<p class="x-sub" style="margin-bottom:6px">' + (q.type === "大题" ? "参考答案" : "答案") + '</p><div class="x-q">' + md(fixTxt(q.answer)) + '</div><p class="x-sub" style="margin:12px 0 6px">解析</p><div class="x-q">' + md(fixTxt(q.analysis)) + "</div>" + aiBox("p:" + q.id, qText(q), "答案：" + fixTxt(q.answer) + "\n解析：" + fixTxt(q.analysis)) : "";
           var n = r.atts.length;
           $("pPast").hidden = !n;
           $("pPast").innerHTML = n ? "<summary>草稿记录 (" + n + ")</summary>" + attsHtml({ attempts: r.atts }, true) : "";
           $("pPast").open = done;
           var ctl = "";
           if (q.type === "填空") ctl = '<input class="x-in" id="pIn" placeholder="填写你的答案" aria-label="你的答案" value="' + esc(r.input || "") + '"' + (shown || done ? " disabled" : "") + " />";
-          if (done) ctl += '<button type="button" class="btn" data-a="redo">再做一次</button>';
+          if (done) ctl += (r.ok && !r.unclear ? '<button type="button" class="btn" data-a="unclear">做对了但没想明白 · 加入错题本</button>' : "") + '<button type="button" class="btn" data-a="redo">再做一次</button>';
           else if (q.type === "选择") ctl += '<p class="x-sub">点选一个选项作答，草稿会和答案一起存进记录</p>';
-          else if (shown) ctl += '<div class="x-actions"><button type="button" class="btn" data-j="0">我做错了</button><button type="button" class="btn x-primary" data-j="1">我做对了</button></div>';
-          else ctl += '<button type="button" class="btn x-primary" data-a="show">查看答案</button>';
+          else if (shown) ctl += '<p class="x-sub">对照答案给自己判分：做错和「对了但没想明白」都会自动进错题本</p><div class="x-actions"><button type="button" class="btn" data-j="0">我做错了</button><button type="button" class="btn" data-j="2">对了但没想明白</button><button type="button" class="btn x-primary" data-j="1">我做对了</button></div>';
+          else ctl += '<p class="x-sub">写完点「查看答案」，再给自己判对错</p><button type="button" class="btn x-primary" data-a="show">查看答案</button>';
           $("pCtl").innerHTML = ctl;
           $("pPrev").disabled = i === 0;
           $("pNext").textContent = i === list.length - 1 ? "完成" : "下一题";
@@ -2344,12 +2370,18 @@
             showQ();
             setTimeout(function () { $("pAns").scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 30);
           } else if (b.dataset.a === "redo") {
-            pSet(q.id, { pick: null, ok: null, input: "", shown: false, cur: null });
+            pSet(q.id, { pick: null, ok: null, unclear: false, input: "", shown: false, cur: null });
             renderPrac();
             toast("已开新草稿，旧记录保留在下方");
+          } else if (b.dataset.a === "unclear") {
+            var r0 = pR(q.id), last = r0.atts[r0.atts.length - 1];
+            if (last) last.result = "模糊"; else { last = writeAtt(null, null, "模糊", { ans: "做对但没想明白" }); r0.atts.push(last); }
+            pSet(q.id, { unclear: true, atts: r0.atts });
+            toBook(q, last, true);
+            renderPrac();
           } else if (b.dataset.j) {
-            var ok = b.dataset.j === "1", r = pR(q.id);
-            pRecord(q, ok, q.type === "填空" ? { input: r.input || "", ans: "我的答案：" + (r.input || "（未填）") + " · 自评" + (ok ? "做对" : "做错") } : { ans: "自评" + (ok ? "做对" : "做错") });
+            var uc = b.dataset.j === "2", ok = b.dataset.j !== "0", r = pR(q.id), lab = uc ? "做对但没想明白" : ok ? "做对" : "做错";
+            pRecord(q, ok, q.type === "填空" ? { input: r.input || "", ans: "我的答案：" + (r.input || "（未填）") + " · 自评" + lab } : { ans: "自评" + lab }, null, uc);
             afterJudge();
           }
         });
