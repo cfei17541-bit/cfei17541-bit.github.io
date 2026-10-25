@@ -145,6 +145,13 @@
       .x-pad__vp { position: relative; overflow: hidden; height: 60vh; min-height: 320px; box-sizing: border-box; border-radius: var(--r-m); border: 1px solid var(--stroke-primary); background: #fff; }
       .x-pad__cv { display: block; width: 100%; height: 100%; background-color: #fff; transform-origin: 0 0; will-change: transform; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; cursor: crosshair; }
       .x-pad--pencil .x-pad__cv { touch-action: pan-x pan-y pinch-zoom; }
+      .x-pager { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+      .x-pager button { flex: none; min-width: var(--tap); min-height: var(--tap); padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--stroke-primary); background: var(--fill-primary-on); color: var(--text-primary); font: var(--type-label); cursor: pointer; }
+      .x-pager button:disabled { opacity: 0.4; cursor: default; }
+      .x-pager button:active { box-shadow: inset 0 0 0 100px var(--hover-wash); }
+      .x-pgno { font: var(--type-label); color: var(--text-secondary); min-width: 88px; text-align: center; font-variant-numeric: tabular-nums; }
+      .x-pad__cv.is-flip { animation: x-flip 0.18s ease-out; }
+      @keyframes x-flip { from { opacity: 0.25; } to { opacity: 1; } }
       .x-pad--pencil.is-zoomed .x-pad__cv { touch-action: none; }
       .x-past > summary { min-height: var(--tap); display: flex; align-items: center; gap: 8px; cursor: pointer; font: var(--type-label); color: var(--text-primary); list-style: none; }
       .x-past > summary::-webkit-details-marker { display: none; }
@@ -1195,6 +1202,166 @@
    "answer": "(1) SYN 段消耗 1 个序号，第 1 个数据段序号为 $5000+1=5001$；该段载荷 1000 B，乙的确认号为 $5001+1000=6001$。(2) 慢开始阶段每轮 cwnd 加倍：第 1～5 轮 cwnd 依次为 1、2、4、8、16，故第 5 轮 cwnd 首次达到 16。前 5 轮共发送 $1+2+4+8+16=31$ 个段，即 $31\\times1000=31000$ B；第 6 轮第 1 个数据段序号为 $5001+31000=36001$。(3) 第 5 轮后进入拥塞避免，每轮 cwnd 加 1，第 $k$ 轮 cwnd $=16+(k-5)$，cwnd $=32$ 时 $k=21$，即第 21 轮发生超时。超时后 ssthresh $=32/2=16$，cwnd $=1$。之后重新慢开始：第 22～26 轮 cwnd 依次为 1、2、4、8、16，故第 26 轮 cwnd 再次达到 ssthresh = 16，此后转入拥塞避免。(4) 收到 3 个重复 ACK 时执行快重传与快恢复：ssthresh $=32/2=16$，cwnd $=16$（新的 ssthresh），随后直接执行拥塞避免算法（每轮加 1），而不再从 1 开始慢开始。",
    "analysis": "要点①：SYN 不携带数据但消耗 1 个序号，确认号 = 期望收到的下一字节序号。要点②：慢开始指数增长，累计段数为等比数列求和，后续序号 = 首序号 + 已发字节数。要点③：拥塞避免线性增长，从 16 到 32 需 16 轮（第 5 轮→第 21 轮）；超时：ssthresh 减半、cwnd 置 1、重新慢开始。要点④：3 个重复 ACK 触发快重传+快恢复：ssthresh 减半，cwnd = ssthresh，直接进入拥塞避免。",
    "id": "d20261018-计网-10"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "马原",
+   "source": "真题改编",
+   "stem": "“物质是标志客观实在的哲学范畴”，这一定义所揭示的物质的唯一特性是（　）",
+   "options": [
+    "A. 运动性",
+    "B. 客观实在性",
+    "C. 可知性",
+    "D. 时空性"
+   ],
+   "answer": "B",
+   "analysis": "列宁的物质定义揭示物质的唯一特性是客观实在性，即不依赖于人的意识而存在并能为人的意识所反映。运动是物质的根本属性，不是“唯一特性”。",
+   "id": "d20261018-政治-1"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "马原",
+   "source": "真题改编",
+   "stem": "“纸上得来终觉浅，绝知此事要躬行。”这句诗体现的哲学道理是（　）",
+   "options": [
+    "A. 间接经验没有任何意义",
+    "B. 实践是认识的来源",
+    "C. 认识对实践具有决定作用",
+    "D. 理性认识依赖于感性认识，二者无关实践"
+   ],
+   "answer": "B",
+   "analysis": "强调亲身实践才能获得真知，体现实践是认识的来源。A 否定间接经验，错误；C 颠倒了实践与认识的关系。",
+   "id": "d20261018-政治-2"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "毛中特",
+   "source": "真题改编",
+   "stem": "新时代我国社会主要矛盾是（　）",
+   "options": [
+    "A. 人民日益增长的物质文化需要同落后的社会生产之间的矛盾",
+    "B. 人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾",
+    "C. 无产阶级和资产阶级之间的矛盾",
+    "D. 先进的社会制度同落后的生产力之间的矛盾"
+   ],
+   "answer": "B",
+   "analysis": "党的十九大作出论断：新时代我国社会主要矛盾已转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。A 是 1981 年的表述。",
+   "id": "d20261018-政治-3"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "史纲",
+   "source": "真题改编",
+   "stem": "标志着中国新民主主义革命开端的事件是（　）",
+   "options": [
+    "A. 辛亥革命",
+    "B. 新文化运动",
+    "C. 五四运动",
+    "D. 中国共产党成立"
+   ],
+   "answer": "C",
+   "analysis": "1919 年五四运动是中国旧民主主义革命走向新民主主义革命的转折点，标志着新民主主义革命的开端。",
+   "id": "d20261018-政治-4"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "思修法治",
+   "source": "真题改编",
+   "stem": "我国宪法规定，中华人民共和国的根本制度是（　）",
+   "options": [
+    "A. 人民代表大会制度",
+    "B. 社会主义制度",
+    "C. 民族区域自治制度",
+    "D. 中国共产党领导的多党合作和政治协商制度"
+   ],
+   "answer": "B",
+   "analysis": "《宪法》第一条：社会主义制度是中华人民共和国的根本制度；中国共产党领导是中国特色社会主义最本质的特征。人民代表大会制度是根本政治制度，注意区分。",
+   "id": "d20261018-政治-5"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "词汇",
+   "source": "真题改编",
+   "stem": "The new policy is intended to ______ the burden on small businesses rather than add to it.（　）",
+   "options": [
+    "A. alleviate",
+    "B. aggravate",
+    "C. accumulate",
+    "D. allocate"
+   ],
+   "answer": "A",
+   "analysis": "rather than add to it 表示“减轻而不是加重”，alleviate=减轻、缓解。aggravate 加重，accumulate 积累，allocate 分配。",
+   "id": "d20261018-英语一-1"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "完形",
+   "source": "真题改编",
+   "stem": "Scientists have long known that sleep is vital, ______ the exact reasons have remained unclear until recently.（　）",
+   "options": [
+    "A. since",
+    "B. although",
+    "C. unless",
+    "D. because"
+   ],
+   "answer": "B",
+   "analysis": "前句“早就知道睡眠很重要”，后句“确切原因直到最近仍不清楚”，前后让步转折，用 although。",
+   "id": "d20261018-英语一-2"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "完形",
+   "source": "真题改编",
+   "stem": "Rather than ______ on a single source of income, many young people now juggle several part-time jobs.（　）",
+   "options": [
+    "A. relying",
+    "B. relied",
+    "C. to rely",
+    "D. rely"
+   ],
+   "answer": "A",
+   "analysis": "rather than 后接动词时，与主句谓语形式平行或用 doing；此处置于句首，用 relying。rely on 依赖。",
+   "id": "d20261018-英语一-3"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "阅读",
+   "source": "真题改编",
+   "stem": "Passage: Remote work was once seen as a perk. Today, many firms treat it as a way to cut office costs, while employees value it mainly for flexibility. Yet studies suggest that fully remote teams can struggle with mentoring junior staff.\nQ: According to the passage, a drawback of fully remote work is that ______.（　）",
+   "options": [
+    "A. it raises office costs",
+    "B. employees dislike flexibility",
+    "C. junior staff may get less guidance",
+    "D. firms no longer offer it as a perk"
+   ],
+   "answer": "C",
+   "analysis": "末句 struggle with mentoring junior staff，即新员工得到的指导可能不足，对应 C。A 与“cut office costs”相反；B 与原文相反；D 原文未说。",
+   "id": "d20261018-英语一-4"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "阅读",
+   "source": "真题改编",
+   "stem": "Passage: The author argues that banning smartphones in schools is \"a blunt tool for a subtle problem\". Students, she notes, need to learn self-control, not simply have temptation removed.\nQ: The author's attitude toward smartphone bans is ______.（　）",
+   "options": [
+    "A. enthusiastic",
+    "B. skeptical",
+    "C. indifferent",
+    "D. ambiguous"
+   ],
+   "answer": "B",
+   "analysis": "“a blunt tool for a subtle problem”（用粗糙手段处理微妙问题）以及“需要学会自控而不是简单移除诱惑”，表明作者对禁令持怀疑态度，选 B。",
+   "id": "d20261018-英语一-5"
   }
  ]
 }</script>
@@ -1510,6 +1677,13 @@
         var BGS = [["grid", "格子"], ["lines", "横线"], ["none", "空白"]];
         var pencilOnly = false;
         try { pencilOnly = localStorage.getItem("cuotiben-pencil") === "1"; } catch (e) {}
+        function setPencil(v, msg) {
+          pencilOnly = !!v;
+          try { localStorage.setItem("cuotiben-pencil", pencilOnly ? "1" : "0"); } catch (x) {}
+          document.querySelectorAll('.x-padbar [data-a="pencil"]').forEach(function (x) { x.setAttribute("aria-pressed", String(pencilOnly)); });
+          document.querySelectorAll(".x-pad").forEach(function (x) { x.classList.toggle("x-pad--pencil", pencilOnly); });
+          toast(msg || (pencilOnly ? "仅 Apple Pencil 书写：手指滚动页面，双指缩放草稿" : "手指和笔都可书写"));
+        }
         // opts.onSave(pad): the 保存 buttons; opts.draftKey: autosave the strokes and note as a draft under this key
         function makePad(host, opts) {
           opts = opts || {};
@@ -1522,6 +1696,7 @@
             '<button type="button" data-a="undo" disabled>撤销</button><button type="button" data-a="redo" disabled>重做</button><button type="button" data-a="clear">清空</button><span class="x-sep"></span>' +
             '<button type="button" data-a="bg" title="切换背景">背景·格子</button><button type="button" data-a="pencil" aria-pressed="' + pencilOnly + '">仅 Apple Pencil 书写</button><button type="button" data-a="fit" title="恢复原始大小" disabled>1:1</button></div>' +
             '<div class="x-pad__vp"><canvas class="x-pad__cv" data-bg="grid" role="img" aria-label="手写草稿板"></canvas></div>' +
+            '<div class="x-pager" role="group" aria-label="草稿翻页"><button type="button" data-p="prev" disabled>‹ 上一页</button><span class="x-pgno">第 1 / 1 页</span><button type="button" data-p="next">+ 新一页</button><button type="button" data-p="del" disabled>删除此页</button></div>' +
             '<label class="x-field"><span>文字备注</span><textarea class="x-in" style="min-height:72px" placeholder="可选，公式写在 $...$ 中"></textarea></label>' +
             '<div class="x-prev" hidden><span class="x-sub">预览</span><div class="x-q" aria-live="polite"></div></div>' +
             (opts.onSave && !opts.saveHost ? '<button type="button" class="btn x-primary x-padsave" data-save>' + (opts.saveLabel || "保存作答") + "</button>" : "");
@@ -1536,7 +1711,24 @@
           var bar = root.querySelector(".x-padbar"), vp = root.querySelector(".x-pad__vp"), cv = root.querySelector("canvas"), ctx = cv.getContext("2d"), ta = root.querySelector("textarea"), pv = root.querySelector(".x-prev");
           var fitBtn = bar.querySelector('[data-a="fit"]');
           var tool = "pen", emode = "stroke", color = INK[0][1], sz = 0, bgi = 0, strokes = [], undo = [], redo = [];
-          var cur = null, active = null, rect = null, dpr = 1, cw = 0, ch = 0, erSnap = null, erHit = false;
+          var cur = null, active = null, activeType = "", rect = null, dpr = 1, cw = 0, ch = 0, erSnap = null, erHit = false, lastInk = 0;
+          // pages: each holds its own strokes and undo/redo; `strokes`, `undo`, `redo` always mirror the current page
+          var MAXPG = 20, pages = [{ s: strokes, u: undo, r: redo }], pi = 0, pager = root.querySelector(".x-pager"), pgno = pager.querySelector(".x-pgno");
+          function stash() { pages[pi] = { s: strokes, u: undo, r: redo }; }
+          function updPager() {
+            pgno.textContent = "第 " + (pi + 1) + " / " + pages.length + " 页";
+            pager.querySelector('[data-p="prev"]').disabled = pi === 0;
+            var nx = pager.querySelector('[data-p="next"]'), last = pi === pages.length - 1;
+            nx.textContent = last ? "+ 新一页" : "下一页 ›"; nx.disabled = last && pages.length >= MAXPG;
+            pager.querySelector('[data-p="del"]').disabled = pages.length < 2;
+          }
+          function goPage(n) {
+            if (active != null) return;
+            stash(); pi = Math.max(0, Math.min(pages.length - 1, n));
+            strokes = pages[pi].s; undo = pages[pi].u; redo = pages[pi].r;
+            resetZ(); redraw(); sync(); updPager();
+            cv.classList.remove("is-flip"); void cv.offsetWidth; cv.classList.add("is-flip");
+          }
 
           function setup() {
             var w = cv.clientWidth, h = cv.clientHeight;
@@ -1673,8 +1865,17 @@
           ["gesturestart", "gesturechange"].forEach(function (n) { vp.addEventListener(n, function (e) { if (pencilOnly) e.preventDefault(); }, { passive: false }); });
 
           cv.addEventListener("pointerdown", function (e) {
+            // first Apple Pencil touch: switch on palm rejection so a resting hand never blocks the pen
+            if (e.pointerType === "pen" && !pencilOnly) setPencil(true, "检测到 Apple Pencil，已开启防误触：手掌和手指不会再挡住笔");
             if (pencilOnly && e.pointerType !== "pen") return;
+            // a palm/finger stroke in progress gives way to the pen
+            if (active != null && e.pointerType === "pen" && activeType !== "pen") {
+              if (cur && undo.length) { strokes = undo.pop(); redraw(); }
+              try { cv.releasePointerCapture(active); } catch (x) {}
+              active = null; cur = null;
+            }
             if (active != null || (e.pointerType === "mouse" && e.button !== 0)) return;
+            activeType = e.pointerType;
             e.preventDefault(); setup();
             active = e.pointerId; rect = cv.getBoundingClientRect();
             try { cv.setPointerCapture(e.pointerId); } catch (x) {}
@@ -1697,12 +1898,13 @@
           });
           function end(e) {
             if (e.pointerId !== active) return;
-            active = null;
+            active = null; lastInk = Date.now();
             if (cur) { paint(cur, cur.pts.length, true); cur = null; }
             sync();
           }
           cv.addEventListener("pointerup", end);
           cv.addEventListener("pointercancel", end);
+          cv.addEventListener("lostpointercapture", end);
           cv.addEventListener("contextmenu", function (e) { e.preventDefault(); });
 
           function press(sel, btn) { bar.querySelectorAll(sel).forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); }); }
@@ -1720,12 +1922,18 @@
             else if (a === "clear" && strokes.length) { pushUndo(strokes); strokes = []; redraw(); }
             else if (a === "fit") resetZ();
             else if (a === "bg") { bgi = (bgi + 1) % BGS.length; cv.dataset.bg = BGS[bgi][0]; b.textContent = "背景·" + BGS[bgi][1]; }
-            else if (a === "pencil") {
-              pencilOnly = !pencilOnly;
-              try { localStorage.setItem("cuotiben-pencil", pencilOnly ? "1" : "0"); } catch (x) {}
-              document.querySelectorAll('.x-padbar [data-a="pencil"]').forEach(function (x) { x.setAttribute("aria-pressed", String(pencilOnly)); });
-              document.querySelectorAll(".x-pad").forEach(function (x) { x.classList.toggle("x-pad--pencil", pencilOnly); });
-              toast(pencilOnly ? "仅 Apple Pencil 书写：手指滚动页面，双指缩放草稿" : "手指和笔都可书写");
+            else if (a === "pencil") setPencil(!pencilOnly);
+          });
+          pager.addEventListener("click", function (e) {
+            var b = e.target.closest("button"); if (!b || b.disabled) return;
+            var a = b.dataset.p;
+            if (a === "prev") goPage(pi - 1);
+            else if (a === "next") {
+              if (pi < pages.length - 1) goPage(pi + 1);
+              else if (pages.length < MAXPG) { stash(); pages.push({ s: [], u: [], r: [] }); dirty = true; goPage(pages.length - 1); }
+            } else if (a === "del" && pages.length > 1) {
+              var gone = function () { pages.splice(pi, 1); pi = Math.min(pi, pages.length - 1); strokes = pages[pi].s; undo = pages[pi].u; redo = pages[pi].r; dirty = true; resetZ(); redraw(); sync(); updPager(); };
+              if (strokes.length) confirmBox("删除第 " + (pi + 1) + " 页的草稿？", "删除", gone); else gone();
             }
           });
           var bottomSave = hostSave || root.querySelector("[data-save]");
@@ -1733,9 +1941,13 @@
           ta.addEventListener("input", function () { dirty = true; var v = ta.value.trim(); pv.hidden = !v; pv.lastChild.innerHTML = v ? md(ta.value) : ""; });
 
           // trim empty space, cap width at 1400, white paper; WebP when the browser can encode it, else PNG
-          function exportImg() {
-            if (!strokes.length || !cv.width) return null;
-            var W = cv.width, H = cv.height, d = ctx.getImageData(0, 0, W, H).data, x0 = W, y0 = H, x1 = -1, y1 = -1;
+          // one page's strokes on an offscreen canvas, trimmed to the ink; null when the page is blank
+          function pageImg(list) {
+            if (!list.length || !cv.width) return null;
+            var W = cv.width, H = cv.height, off = document.createElement("canvas"); off.width = W; off.height = H;
+            var keep = ctx; ctx = off.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            try { list.forEach(function (s) { paint(s, 1, true); }); } finally { ctx = keep; }
+            var d = off.getContext("2d").getImageData(0, 0, W, H).data, x0 = W, y0 = H, x1 = -1, y1 = -1;
             for (var y = 0; y < H; y++) {
               var row = y * W * 4;
               for (var x = 0; x < W; x++) if (d[row + x * 4 + 3] > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; y1 = y; }
@@ -1743,10 +1955,24 @@
             if (x1 < 0) return null;
             var m = Math.round(16 * dpr);
             x0 = Math.max(0, x0 - m); y0 = Math.max(0, y0 - m); x1 = Math.min(W - 1, x1 + m); y1 = Math.min(H - 1, y1 + m);
-            var sw = x1 - x0 + 1, sh = y1 - y0 + 1, k = Math.min(1, 1400 / sw), out = document.createElement("canvas");
-            out.width = Math.max(1, Math.round(sw * k)); out.height = Math.max(1, Math.round(sh * k));
+            return { c: off, x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
+          }
+          // every page with ink, stacked top to bottom with a divider; width capped at 1400, white paper; WebP when possible, else PNG
+          function exportImg() {
+            stash();
+            var parts = pages.map(function (pg) { return pageImg(pg.s); }).filter(Boolean);
+            if (!parts.length) return null;
+            var gap = parts.length > 1 ? Math.round(28 * dpr) : 0, mw = 0, th = 0;
+            parts.forEach(function (p, i) { mw = Math.max(mw, p.w); th += p.h + (i ? gap : 0); });
+            var k = Math.min(1, 1400 / mw, Math.sqrt(14e6 / (mw * th))), out = document.createElement("canvas");
+            out.width = Math.max(1, Math.round(mw * k)); out.height = Math.max(1, Math.round(th * k));
             var o = out.getContext("2d"); o.fillStyle = "#fff"; o.fillRect(0, 0, out.width, out.height);
-            o.drawImage(cv, x0, y0, sw, sh, 0, 0, out.width, out.height);
+            var yy = 0;
+            parts.forEach(function (p, i) {
+              if (i) { o.fillStyle = "rgba(0,0,0,0.12)"; o.fillRect(0, Math.round((yy + gap / 2) * k), out.width, Math.max(1, Math.round(dpr * k))); yy += gap; }
+              o.drawImage(p.c, p.x, p.y, p.w, p.h, 0, Math.round(yy * k), Math.round(p.w * k), Math.round(p.h * k));
+              yy += p.h;
+            });
             var u = out.toDataURL("image/webp", 0.82);
             return u.indexOf("data:image/webp") === 0 ? u : out.toDataURL("image/png");
           }
@@ -1757,17 +1983,25 @@
 
           // draft: strokes (rounded) + note + background + the attempt it was saved as
           function r1(v) { return Math.round(v * 10) / 10; }
+          function packS(list) { return list.map(function (s) { return { erase: s.erase, color: s.color, pts: s.pts.map(function (p) { return { x: r1(p.x), y: r1(p.y), w: r1(p.w) }; }) }; }); }
+          function anyInk() { stash(); return pages.some(function (pg) { return pg.s.length; }); }
           function state() {
-            return { strokes: strokes.map(function (s) { return { erase: s.erase, color: s.color, pts: s.pts.map(function (p) { return { x: r1(p.x), y: r1(p.y), w: r1(p.w) }; }) }; }), note: ta.value, bg: bgi, att: att };
+            stash();
+            return { pages: pages.map(function (pg) { return packS(pg.s); }), pi: pi, note: ta.value, bg: bgi, att: att };
           }
-          function flush() {
+          // never save while the pen is down or right after a stroke: a big save blocks the page and swallows pen input
+          function flush(force) {
             if (!opts.draftKey || !dirty) return;
+            if (!force && (active != null || Date.now() - lastInk < 1500)) return;
             dirty = false;
-            setDraft(opts.draftKey, strokes.length || ta.value.trim() || att ? state() : null);
+            setDraft(opts.draftKey, anyInk() || ta.value.trim() || att ? state() : null);
           }
+          function cleanS(list) { return (list || []).filter(function (s) { return s && s.pts && s.pts.length; }); }
           var restored = false, dr = opts.draftKey && drafts[opts.draftKey];
-          if (dr && ((dr.strokes && dr.strokes.length) || dr.note)) {
-            strokes = (dr.strokes || []).filter(function (s) { return s && s.pts && s.pts.length; });
+          if (dr && ((dr.strokes && dr.strokes.length) || (dr.pages && dr.pages.some(function (l) { return l && l.length; })) || dr.note)) {
+            pages = (dr.pages && dr.pages.length ? dr.pages : [dr.strokes]).slice(0, MAXPG).map(function (l) { return { s: cleanS(l), u: [], r: [] }; });
+            pi = Math.max(0, Math.min(pages.length - 1, +dr.pi || 0));
+            strokes = pages[pi].s; undo = pages[pi].u; redo = pages[pi].r; updPager();
             ta.value = dr.note || ""; ta.dispatchEvent(new Event("input"));
             bgi = +dr.bg || 0; cv.dataset.bg = BGS[bgi][0]; bar.querySelector('[data-a="bg"]').textContent = "背景·" + BGS[bgi][1];
             att = dr.att || null; restored = true; redraw();
@@ -1779,9 +2013,9 @@
             data: function () { var img = exportImg(), note = ta.value.trim(); return img || note ? { img: img, note: note } : null; },
             att: function () { return att; },
             setAtt: function (id) { att = id || null; dirty = true; flush(); persistDrafts(); },
-            flush: flush,
+            flush: function () { flush(true); },
             discard: function () { dirty = false; if (opts.draftKey) { setDraft(opts.draftKey, null); persistDrafts(); } },
-            destroy: function () { flush(); clearInterval(tick); openPads = openPads.filter(function (p) { return p !== api; }); stopInertia(); if (ro) ro.disconnect(); else window.removeEventListener("resize", setup); root.remove(); if (hostSave) hostSave.remove(); }
+            destroy: function () { flush(true); clearInterval(tick); openPads = openPads.filter(function (p) { return p !== api; }); stopInertia(); if (ro) ro.disconnect(); else window.removeEventListener("resize", setup); root.remove(); if (hostSave) hostSave.remove(); }
           };
           openPads.push(api);
           return api;
@@ -1794,7 +2028,7 @@
           var f = t.closest(".x-qs").classList.toggle("is-folded");
           t.textContent = f ? "展开" : "收起"; t.setAttribute("aria-expanded", String(!f));
         });
-        function hasDraft(k) { var d = drafts[k]; return !!(d && ((d.strokes && d.strokes.length) || (d.note && d.note.trim()))); }
+        function hasDraft(k) { var d = drafts[k]; return !!(d && ((d.strokes && d.strokes.length) || (d.pages && d.pages.some(function (l) { return l && l.length; })) || (d.note && d.note.trim()))); }
 
         /* ---------- helpers ---------- */
         var tt;
