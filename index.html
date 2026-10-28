@@ -2114,125 +2114,275 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
    "subject": "数学一",
    "type": "选择",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "设 f(x)=x e^(-x)。下列结论正确的是（　）",
+   "source": "真题考法原创改编",
+   "stem": "设 $f(x,y)=x^{2}y+xy^{2}$，点 $P=(1,1)$，点 $Q=(4,5)$。函数 $f$ 在点 $P$ 沿从 $P$ 指向 $Q$ 的方向的方向导数为（　）",
    "options": [
-    "A. f 在 (-∞,1) 上递增，在 (1,+∞) 上递减",
-    "B. f 在全体实数上递增",
-    "C. f 在 (-∞,0) 上递减",
-    "D. f 在 x=0 处取得极大值"
-   ],
-   "answer": "A",
-   "analysis": "f'(x)=e^(-x)(1-x)。因 e^(-x)>0，故 f 在 (-∞,1) 上递增、在 (1,+∞) 上递减，并在 x=1 处取极大值 e^(-1)。",
-   "id": "d20261029-数学一-1"
-  },
-  {
-   "subject": "数学一",
-   "type": "选择",
-   "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "反常积分 ∫_1^∞ 1/x^p dx 收敛的充要条件是（　）",
-   "options": [
-    "A. p≥0",
-    "B. p>0",
-    "C. p>1",
-    "D. 对任意实数 p 均收敛"
-   ],
-   "answer": "C",
-   "analysis": "这是 p-积分判别：当 p>1 时，积分值为 1/(p-1)，有限；当 p≤1 时发散。",
-   "id": "d20261029-数学一-2"
-  },
-  {
-   "subject": "数学一",
-   "type": "选择",
-   "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "微分方程 y'=xy，满足 y(0)=1 的解为（　）",
-   "options": [
-    "A. y=e^x",
-    "B. y=e^(x²/2)",
-    "C. y=1+x²/2",
-    "D. y=e^(-x²/2)"
+    "A. $3$",
+    "B. $\\dfrac{21}{5}$",
+    "C. $6$",
+    "D. $\\dfrac{3}{\\sqrt{2}}$"
    ],
    "answer": "B",
-   "analysis": "分离变量得 dy/y=x dx，积分后 ln|y|=x²/2+C。由 y(0)=1 得 C=0，故 y=e^(x²/2)。",
-   "id": "d20261029-数学一-3"
+   "analysis": "$\\nabla f=(2xy+y^{2},x^{2}+2xy)$，故 $\\nabla f(1,1)=(3,3)$。方向 $\\overrightarrow{PQ}=(3,4)$，对应单位向量为 $(3/5,4/5)$，所以方向导数为 $(3,3)\\cdot(3/5,4/5)=21/5$。",
+   "id": "d20261029-数学一-高数-v2-01",
+   "basis_kind": "direct",
+   "basis": "2017年数学一选择题第3题考查方向导数与梯度；2025年数学一填空题第13题明确涉及梯度、方向导数及方向向量单位化。本题保留“先单位化方向、再与梯度作点积”的核心，函数与点坐标为原创改编。",
+   "basis_sources": [
+    {
+     "label": "2017 数一题目转录及解析（非官方）",
+     "url": "https://raw.githubusercontent.com/swjtuhub/SWJTU-Courses/main/%E8%80%83%E7%A0%94%E8%B5%84%E6%96%99/%E6%95%B0%E5%AD%A6/%E7%9C%9F%E9%A2%98/%E6%95%B0%E4%B8%80%E7%9C%9F%E9%A2%98%E5%8F%8A%E8%A7%A3%E6%9E%901987-2019/2017%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E4%B8%80%E7%9C%9F%E9%A2%98%E5%8F%8A%E8%A7%A3%E6%9E%90.pdf"
+    },
+    {
+     "label": "2025 数一高数逐题解析（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/14067805626"
+    }
+   ],
+   "difficulty_rationale": "中等：关键是把方向向量单位化，再计算梯度点积；运算短，主要考概念是否准确。"
   },
   {
    "subject": "数学一",
    "type": "选择",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "在约束条件 x+y=2 下，函数 f(x,y)=x²+y² 的最小值为（　）",
+   "source": "真题考法原创改编",
+   "stem": "设 $I=\\displaystyle\\int_{0}^{1}\\ln(1+x)\\,dx$，$J=\\displaystyle\\int_{0}^{1}\\dfrac{x}{1+x}\\,dx$，则 $I$ 与 $J$ 的大小关系为（　）",
    "options": [
-    "A. 0",
-    "B. 1",
-    "C. 4",
-    "D. 2"
+    "A. $I<J$",
+    "B. $I=J$",
+    "C. $I>J$",
+    "D. 由题设不能确定 $I$ 与 $J$ 的大小"
    ],
-   "answer": "D",
-   "analysis": "由 x²+y²≥(x+y)²/2=2，等号当且仅当 x=y=1 时成立，故最小值为2。",
-   "id": "d20261029-数学一-4"
+   "answer": "C",
+   "analysis": "令 $g(x)=\\ln(1+x)-\\dfrac{x}{1+x}$。有 $g(0)=0$，且 $g'(x)=\\dfrac{x}{(1+x)^{2}}>0$（$0<x\\le1$），故 $g(x)>0$。对区间积分即得 $I>J$。",
+   "id": "d20261029-数学一-高数-v2-02",
+   "basis_kind": "direct",
+   "basis": "2018年数学一选择题第4题以导数符号比较定积分大小；2022年数学一选择题第4题也考定积分比较。本题沿用“构造差函数—用导数定符号—积分比较”的结构，被积函数为原创。",
+   "basis_sources": [
+    {
+     "label": "2018 数一高数逐题解析（万学海文转载，非官方）",
+     "url": "https://edu.sina.cn/kaoyan/fxzn/2018-01-02/detail-ifyqefvx1844096.d.html?vt=4"
+    },
+    {
+     "label": "2022 数一考后逐题点评（非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/453799437"
+    }
+   ],
+   "difficulty_rationale": "中等偏易：需要先识别可比较的差函数并证明其符号，再把点态关系转成积分关系。"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "真题考法原创改编",
+   "stem": "对参数 $p$，反常积分 $I_p=\\displaystyle\\int_{1}^{+\\infty}\\dfrac{\\sin x}{x^{p}}\\,dx$ 收敛与绝对收敛的条件分别是（　）",
+   "options": [
+    "A. 收敛当且仅当 $p>1$；绝对收敛当且仅当 $p>1$",
+    "B. 收敛当且仅当 $p>0$；绝对收敛当且仅当 $p>1$",
+    "C. 收敛当且仅当 $p\\ge0$；绝对收敛当且仅当 $p\\ge1$",
+    "D. 收敛当且仅当 $p>0$；绝对收敛当且仅当 $p\\ge1$"
+   ],
+   "answer": "B",
+   "analysis": "当 $p>0$ 时，$x^{-p}$ 单调趋于 $0$，而 $\\int_{1}^{T}\\sin x\\,dx$ 有界，故由狄利克雷判别法收敛。若 $p\\le0$，被积函数不趋于 $0$，积分发散。绝对收敛性由 $\\int_{1}^{+\\infty}|\\sin x|x^{-p}dx$ 判断；在每个长度为 $\\pi$ 的周期区间上 $|\\sin x|$ 的积分相同且为正，因此它与 $\\sum n^{-p}$ 同敛散，恰在 $p>1$ 时收敛。",
+   "id": "d20261029-数学一-高数-v2-03",
+   "basis_kind": "migration",
+   "basis": "结构借鉴2016年数学一选择题第1题的反常积分敛散判断，以及2023年选择题第4题对收敛与绝对收敛的区分（该题原型是级数）。本题将两种判别视角迁移到振荡反常积分；sin x/x^p 模型及狄利克雷判敛与周期分段比较的组合为原创，不表示这些年份考过同一积分。",
+   "basis_sources": [
+    {
+     "label": "2016 数一高数解析（研招网承载，新东方来源）",
+     "url": "https://yz.chsi.com.cn/kyzx/math/201512/20151227/1515310254.html"
+    },
+    {
+     "label": "2023 数一题目转录（个人上传，非官方）",
+     "url": "https://www.scribd.com/document/941714057/2023%E5%B9%B4%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6-%E4%B8%80-%E7%9C%9F%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88%E8%A7%A3%E6%9E%90-%E9%AB%98%E6%B8%85%E5%AE%8C%E6%95%B4%E7%89%88"
+    }
+   ],
+   "difficulty_rationale": "中等偏难：要分别求普通收敛与绝对收敛的参数范围，并处理 p=0、p=1 两个边界。"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "真题考法原创改编",
+   "stem": "极坐标曲线 $r=2(1+\\cos\\theta)$（$0\\le\\theta\\le2\\pi$）所围成的面积为（　）",
+   "options": [
+    "A. $3\\pi$",
+    "B. $4\\pi$",
+    "C. $6\\pi$",
+    "D. $8\\pi$"
+   ],
+   "answer": "C",
+   "analysis": "极坐标面积公式给出 $S=\\dfrac12\\int_{0}^{2\\pi}r^{2}d\\theta=2\\int_{0}^{2\\pi}(1+2\\cos\\theta+\\cos^{2}\\theta)d\\theta$。其中余弦项积分为 $0$，且 $\\int_{0}^{2\\pi}\\cos^{2}\\theta d\\theta=\\pi$，故 $S=2(2\\pi+\\pi)=6\\pi$。",
+   "id": "d20261029-数学一-高数-v2-04",
+   "basis_kind": "migration",
+   "basis": "2016年数学一解答题第15题使用极坐标处理二重积分；2024年数学一二重积分点评也提到依据区域/被积函数选择极坐标。本题把极坐标方法迁移到曲线围面积公式；心形线设定和计算为原创，非某年原题复现。",
+   "basis_sources": [
+    {
+     "label": "2016 数一高数解析（研招网承载，新东方来源）",
+     "url": "https://yz.chsi.com.cn/kyzx/math/201512/20151227/1515310254.html"
+    },
+    {
+     "label": "2024 数一考后点评（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/676672520"
+    }
+   ],
+   "difficulty_rationale": "中等偏易：识别极坐标面积公式后，重点是展开平方并正确利用整周期积分。"
   },
   {
    "subject": "数学一",
    "type": "填空",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "设 F(x)=∫_x^(x²) e^t dt，则 F'(1)=______。",
-   "answer": "e",
-   "analysis": "由变限积分求导公式，F'(x)=e^(x²)·2x−e^x。代入 x=1 得 F'(1)=2e−e=e。",
-   "id": "d20261029-数学一-5"
+   "source": "跨卷同型考法改编",
+   "stem": "平面曲线由参数方程 $x=t^{2},\\ y=t^{3}$ 给出，则它在 $t=1$ 处的曲率 $\\kappa=$______。",
+   "answer": "$\\dfrac{6}{13\\sqrt{13}}$",
+   "analysis": "参数曲线的曲率为 $\\kappa=\\dfrac{|x'y''-y'x''|}{(x'^{2}+y'^{2})^{3/2}}$。在 $t=1$ 时，$x'=2,\\ y'=3,\\ x''=2,\\ y''=6$，所以 $\\kappa=|2\\cdot6-3\\cdot2|/(2^{2}+3^{2})^{3/2}=6/(13\\sqrt{13})$。",
+   "id": "d20261029-数学一-高数-v2-05",
+   "basis_kind": "cross_exam_same_type",
+   "basis": "同型参照为2018年考研数学（二）填空题第12题：给出参数曲线 x=cos^3 t、y=sin^3 t，在 t=π/4 处求曲率。中国教育在线刊载的万学海文逐题解析明确标出这一考点，第三方试题PDF转录可读到题干和解法。本题同样给定参数曲线并直接求某参数处曲率，核心公式与考法一致，但把三角参数式改为多项式参数式，参数点与数值也改写；它是数二同型参照，不是数一原题。2025年数学一大纲PDF转录也列有曲率概念及计算要求（该PDF为非官方托管副本）。",
+   "basis_sources": [
+    {
+     "label": "2018 数二逐题解析（中国教育在线刊载，署名万学海文；非官方）",
+     "url": "https://kaoyan.eol.cn/shiti/shuxue/201712/t20171228_1576915.shtml"
+    },
+    {
+     "label": "2018 数二试题与解析 PDF 转录（SWJTU-Courses GitHub资料库；非官方）",
+     "url": "https://raw.githubusercontent.com/swjtuhub/SWJTU-Courses/main/%E8%80%83%E7%A0%94%E8%B5%84%E6%96%99/%E6%95%B0%E5%AD%A6/%E7%9C%9F%E9%A2%98/%E6%95%B0%E4%BA%8C%E7%9C%9F%E9%A2%98%E5%8F%8A%E8%A7%A3%E6%9E%901989-2019/2018%E5%B9%B4%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E4%BA%8C%E8%AF%95%E9%A2%98%E4%B8%8E%E7%AD%94%E6%A1%88%E8%A7%A3%E6%9E%90.pdf"
+    },
+    {
+     "label": "2025 数一考试大纲 PDF 转录（聚创考研托管副本；非官方原件）",
+     "url": "https://m.juyingonline.com/upload/202409/11/202409111455369795.pdf"
+    }
+   ],
+   "difficulty_rationale": "基础至中等：与2018数二第12题一样，识别曲率公式后对参数方程求一、二阶导数并代入。本题的多项式求导比真题中的三角参数式更直接，推理链较短，计算负担低于该真题，适合作为公式巩固题。"
   },
   {
    "subject": "数学一",
    "type": "填空",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "微分方程 y'−y=e^(2x)，y(0)=0 的解为 y(x)=______。",
-   "answer": "e^(2x)−e^x",
-   "analysis": "乘积分因子 e^(−x)，得 (e^(−x)y)'=e^x。由0到x积分并用 y(0)=0，得 e^(−x)y=e^x−1，因此 y=e^(2x)−e^x。",
-   "id": "d20261029-数学一-6"
+   "source": "真题考法原创改编",
+   "stem": "函数 $f(x,y)=xy(1-x-y)$ 在闭三角形区域 $D=\\{(x,y):x\\ge0,\\ y\\ge0,\\ x+y\\le1\\}$ 上的最大值为______。",
+   "answer": "$\\dfrac{1}{27}$",
+   "analysis": "边界 $x=0$、$y=0$ 或 $x+y=1$ 上均有 $f=0$。区域内部驻点满足 $f_x=y(1-2x-y)=0$、$f_y=x(1-x-2y)=0$。因内部 $x,y>0$，解得 $x=y=1/3$，此时 $f=1/27$。因此闭区域上的最大值为 $1/27$。",
+   "id": "d20261029-数学一-高数-v2-06",
+   "basis_kind": "direct",
+   "basis": "2022年数学一填空题第13题考查有界区域上的二元函数最值；2024年数一题目转录与考后点评也涉及二元函数在有界投影区域上的极值。本题沿用“内部驻点与边界都要检查”的闭区域最值结构，区域与函数为原创。",
+   "basis_sources": [
+    {
+     "label": "2022 数一考后逐题点评（非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/453799437"
+    },
+    {
+     "label": "2024 数一题目 PDF 转录（发布身份未核实）",
+     "url": "http://edu.xaiu.edu.cn/__local/2/44/D5/335CC768F01FC88CDE7A9F247F4_7E8D3961_4C7E6.pdf"
+    },
+    {
+     "label": "2024 数一考后点评（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/676672520"
+    }
+   ],
+   "difficulty_rationale": "中等：需要解内部驻点并检查整个边界；不能只把驻点值当作闭区域最大值。"
   },
   {
    "subject": "数学一",
    "type": "填空",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "曲面 z=x²+xy+y² 在点 (1,0,1) 处的切平面方程为______。",
-   "answer": "z=2x+y−1",
-   "analysis": "令 f(x,y)=x²+xy+y²，则 f_x(1,0)=2，f_y(1,0)=1。切平面为 z−1=2(x−1)+y，整理得 z=2x+y−1。",
-   "id": "d20261029-数学一-7"
+   "source": "真题考法原创改编",
+   "stem": "计算积分 $I=\\displaystyle\\int_{0}^{\\pi}\\dfrac{x\\sin x}{1+\\cos^{2}x}\\,dx$，则 $I=$______。",
+   "answer": "$\\dfrac{\\pi^{2}}{4}$",
+   "analysis": "令 $x=\\pi-t$，利用 $\\sin(\\pi-t)=\\sin t$、$\\cos^{2}(\\pi-t)=\\cos^{2}t$，得 $I=\\int_{0}^{\\pi}\\dfrac{(\\pi-x)\\sin x}{1+\\cos^{2}x}dx$。两式相加：$2I=\\pi\\int_{0}^{\\pi}\\dfrac{\\sin x}{1+\\cos^{2}x}dx$。令 $u=\\cos x$，后一个积分为 $\\int_{-1}^{1}\\dfrac{du}{1+u^{2}}=\\pi/2$，故 $I=\\pi^{2}/4$。",
+   "id": "d20261029-数学一-高数-v2-07",
+   "basis_kind": "migration",
+   "basis": "2022年数学一填空题第12题为定积分计算；2024年数一二重积分点评提到利用区域/被积函数特征并考虑对称性。本题把反射变换 x→π−x 与换元合用；具体积分和步骤组合为原创，并非声称真题原式相同。",
+   "basis_sources": [
+    {
+     "label": "2022 数一考后逐题点评（非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/453799437"
+    },
+    {
+     "label": "2024 数一考后点评（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/676672520"
+    }
+   ],
+   "difficulty_rationale": "中等：直接积分不便，核心在发现区间对称变换后相加消去 x 权重，再完成换元。"
   },
   {
    "subject": "数学一",
    "type": "填空",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "计算二重积分 I=∬_(x²+y²≤1) (x²+y²) dxdy，I=______。",
-   "answer": "π/2",
-   "analysis": "改用极坐标，x²+y²=r²，dxdy=r dr dθ。故 I=∫_0^(2π)∫_0^1 r³ dr dθ=2π·1/4=π/2。",
-   "id": "d20261029-数学一-8"
+   "source": "跨卷同型考法改编",
+   "stem": "曲线 $y=\\ln(\\cos x)$（$-\\pi/4\\le x\\le\\pi/4$）的弧长为______。",
+   "answer": "$2\\ln(1+\\sqrt{2})$",
+   "analysis": "弧长 $L=\\int_{-\\pi/4}^{\\pi/4}\\sqrt{1+(y')^{2}}dx$。因 $y'=-\\tan x$，被积函数为 $\\sqrt{1+\\tan^{2}x}=\\sec x$。故 $L=[\\ln(\\sec x+\\tan x)]_{-\\pi/4}^{\\pi/4}=\\ln\\dfrac{\\sqrt2+1}{\\sqrt2-1}=2\\ln(1+\\sqrt2)$。",
+   "id": "d20261029-数学一-高数-v2-08",
+   "basis_kind": "cross_exam_same_type",
+   "basis": "同型参照为2013年考研数学（二）解答题第21题第（1）问：求显函数曲线 y=x^2/4−(1/2)ln x（1≤x≤e）的弧长；同题第（2）问继续求平面图形形心横坐标。高校域名托管的试题PDF转录可读到第21题原题，中国教育在线同期评述也指出当年数二考到弧长、形心等几何应用。本题同样由显函数弧长公式出发，但曲线、区间和化简方式均为原创，且只保留弧长单问；这是数二同型参照，不是数一原题。2025年数学一大纲PDF转录把平面曲线弧长列为定积分应用（该PDF为非官方托管副本）。",
+   "basis_sources": [
+    {
+     "label": "2013 数二试题 PDF 转录（闽南师范大学域名托管，原始发布身份未核实）",
+     "url": "https://math.mnnu.edu.cn/__local/0/DD/DA/7B17670B57B6E3ED5E2F7FA6C5E_EB0EA6F1_60D14.pdf?e=.pdf"
+    },
+    {
+     "label": "2013 数二第21题逐题解析（荒原之梦考研数学；非官方解析）",
+     "url": "https://zhaokaifeng.com/8595/"
+    },
+    {
+     "label": "2013 数学考试特点评述（中国教育在线转载；提及数二弧长与形心）",
+     "url": "https://kaoyan.eol.cn/fu_xi/shuxue/201301/t20130107_890681.shtml"
+    },
+    {
+     "label": "2025 数一考试大纲 PDF 转录（聚创考研托管副本；非官方原件）",
+     "url": "https://m.juyingonline.com/upload/202409/11/202409111455369795.pdf"
+    }
+   ],
+   "difficulty_rationale": "基础至中等：与2013数二第21题第（1）问同用显函数弧长公式；真题还要求形心，组成11分综合题。本题删去形心部分，仅需求导、化简为 sec x 积分并处理端点，整体明显更短、更基础。"
   },
   {
    "subject": "数学一",
    "type": "大题",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "设 C 为单位圆 x²+y²=1 的正向边界。用格林公式计算曲线积分 I=∮_C (−y/2)dx+(x/2)dy。",
-   "answer": "I=π。",
-   "analysis": "取 P=−y/2，Q=x/2。格林公式给出 I=∬_D(∂Q/∂x−∂P/∂y)dxdy=∬_D(1/2−(−1/2))dxdy=∬_D1 dxdy。D 为单位圆盘，面积为 π，故 I=π。正向表示逆时针方向。",
-   "id": "d20261029-数学一-9"
+   "source": "真题考法原创改编",
+   "stem": "空间曲线 $C$ 由 $x=\\cos t,\\ y=\\sin t,\\ z=t$（$0\\le t\\le2\\pi$，$t$ 增大方向为正向）给出。计算曲线积分 $I=\\displaystyle\\int_C y\\,dx+z\\,dy+x\\,dz$。",
+   "answer": "$I=-\\pi$",
+   "analysis": "直接按参数方程计算。$dx=-\\sin t\\,dt$、$dy=\\cos t\\,dt$、$dz=dt$，所以 $I=\\int_{0}^{2\\pi}[-\\sin^{2}t+t\\cos t+\\cos t]dt$。三项积分依次为 $-\\pi$、$0$、$0$，故 $I=-\\pi$。曲线是空间螺旋线而非平面闭曲线，不能把它直接当作平面区域边界套用格林公式；本题用参数化直接计算。",
+   "id": "d20261029-数学一-高数-v2-09",
+   "basis_kind": "direct",
+   "basis": "2022年数学一解答题第19题是空间曲线积分，考后点评特别提醒要核对曲线/曲面条件后再选参数法或适用的斯托克斯公式；2024年数一转录与点评也涉及第二类曲线积分和空间方向。本题用空间螺旋线直接参数化，重点是认清它不是平面闭曲线，避免误套格林公式。",
+   "basis_sources": [
+    {
+     "label": "2022 数一考后逐题点评（非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/453799437"
+    },
+    {
+     "label": "2024 数一考后点评（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/676672520"
+    }
+   ],
+   "difficulty_rationale": "中等偏难：要逐项参数化并积分，同时根据空间曲线的几何条件排除不适用的平面格林公式。"
   },
   {
    "subject": "数学一",
    "type": "大题",
    "topic": "高数",
-   "source": "数学一真题风格改编",
-   "stem": "设 x>0。(1) 利用拉格朗日中值定理证明 x/(1+x)<ln(1+x)<x；(2) 由此给出 ln2 的一个上下界。",
-   "answer": "对任意 x>0，有 x/(1+x)<ln(1+x)<x；特别地，1/2<ln2<1。",
-   "analysis": "在区间[0,x]上对 f(t)=ln(1+t) 使用拉格朗日中值定理，存在 ξ∈(0,x)，使 ln(1+x)−ln1=f'(ξ)(x−0)=x/(1+ξ)。因 0<ξ<x，故 1<1+ξ<1+x，取倒数并乘以正数x，得 x/(1+x)<x/(1+ξ)<x，即所证不等式。令 x=1 即得 1/2<ln2<1。",
-   "id": "d20261029-数学一-10"
+   "source": "真题考法原创改编",
+   "stem": "设 $f\\in C^{2}([a,b])$。证明下列三个命题等价：\n（i）$f''(x)\\ge0$（$a<x<b$）；\n（ii）对任意 $x_{0}\\in(a,b)$ 及 $x\\in[a,b]$，有 $f(x)\\ge f(x_{0})+f'(x_{0})(x-x_{0})$；\n（iii）$f$ 在 $[a,b]$ 上为凸函数。",
+   "answer": "（i）、（ii）、（iii）等价。",
+   "analysis": "（i）$\\Rightarrow$（ii）：由 $f''\\ge0$ 知 $f'$ 单调不减。若 $x>x_0$，拉格朗日中值定理给出 $f(x)-f(x_0)=f'(\\xi)(x-x_0)\\ge f'(x_0)(x-x_0)$；若 $x<x_0$，则 $f'(\\xi)\\le f'(x_0)$ 且 $x-x_0<0$，同样得到所需不等式。\n（ii）$\\Rightarrow$（iii）：任取 $u,v\\in[a,b]$、$0\\le t\\le1$，令 $z=(1-t)u+tv$。在内点 $z$ 处分别对 $x=u,v$ 使用（ii），再乘以 $1-t,t$ 相加，含 $f'(z)$ 的项抵消，得到 $f(z)\\le(1-t)f(u)+tf(v)$，即凸性；端点情形由连续性成立。\n（iii）$\\Rightarrow$（i）：凸性蕴含中点不等式 $f(x+h)+f(x-h)-2f(x)\\ge0$。除以 $h^{2}$ 并令 $h\\to0$，由 $f\\in C^{2}$ 得极限为 $f''(x)$，故 $f''(x)\\ge0$。三者等价。",
+   "id": "d20261029-数学一-高数-v2-10",
+   "basis_kind": "direct",
+   "basis": "2022年数学一解答题第20题围绕凹凸性/二阶导数条件组织充分必要性证明；2025年数学一解答题第19题考导函数严格递增的充要条件并以中值定理组织两方向。本题延续“拆分等价命题、逐向证明”的综合证明风格，结论改为 f≥0、切线支撑与凸性。",
+   "basis_sources": [
+    {
+     "label": "2022 数一考后逐题点评（非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/453799437"
+    },
+    {
+     "label": "2025 数一题目/答案 PDF 转录（非官方）",
+     "url": "https://images.eduego.com/Uploads/file/20250408/6d87e5497e2cbdbed8e7bac770512948.pdf"
+    },
+    {
+     "label": "2025 数一高数逐题解析（个人解析，非官方）",
+     "url": "https://zhuanlan.zhihu.com/p/14067805626"
+    }
+   ],
+   "difficulty_rationale": "偏难：三条命题需完成双向推理，并在凸性推切线支撑、端点处理及二阶导数极限处保持逻辑完整。"
   },
   {
    "subject": "数学一",
@@ -3277,8 +3427,8 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
  {
   "date": "2026-10-29",
   "label": "第2天",
-  "subject": "英语一",
-  "title": "旧版英语题（历史回看，不计入每日题数）",
+  "subject": "历史题",
+  "title": "替换前题目（历史回看，只读；不计入每日题数）",
   "questions": [
    {
     "subject": "英语一",
@@ -3359,6 +3509,130 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
     "answer": "A",
     "analysis": "文中指出设备本身不足以解决问题，访客还需要指导、帮助和容许犯错的环境，因此单纯借出设备可能不够。",
     "id": "d20261029-英语一-5"
+   },
+   {
+    "subject": "数学一",
+    "type": "选择",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "设 f(x)=x e^(-x)。下列结论正确的是（　）",
+    "options": [
+     "A. f 在 (-∞,1) 上递增，在 (1,+∞) 上递减",
+     "B. f 在全体实数上递增",
+     "C. f 在 (-∞,0) 上递减",
+     "D. f 在 x=0 处取得极大值"
+    ],
+    "answer": "A",
+    "analysis": "f'(x)=e^(-x)(1-x)。因 e^(-x)>0，故 f 在 (-∞,1) 上递增、在 (1,+∞) 上递减，并在 x=1 处取极大值 e^(-1)。",
+    "id": "d20261029-数学一-1"
+   },
+   {
+    "subject": "数学一",
+    "type": "选择",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "反常积分 ∫_1^∞ 1/x^p dx 收敛的充要条件是（　）",
+    "options": [
+     "A. p≥0",
+     "B. p>0",
+     "C. p>1",
+     "D. 对任意实数 p 均收敛"
+    ],
+    "answer": "C",
+    "analysis": "这是 p-积分判别：当 p>1 时，积分值为 1/(p-1)，有限；当 p≤1 时发散。",
+    "id": "d20261029-数学一-2"
+   },
+   {
+    "subject": "数学一",
+    "type": "选择",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "微分方程 y'=xy，满足 y(0)=1 的解为（　）",
+    "options": [
+     "A. y=e^x",
+     "B. y=e^(x²/2)",
+     "C. y=1+x²/2",
+     "D. y=e^(-x²/2)"
+    ],
+    "answer": "B",
+    "analysis": "分离变量得 dy/y=x dx，积分后 ln|y|=x²/2+C。由 y(0)=1 得 C=0，故 y=e^(x²/2)。",
+    "id": "d20261029-数学一-3"
+   },
+   {
+    "subject": "数学一",
+    "type": "选择",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "在约束条件 x+y=2 下，函数 f(x,y)=x²+y² 的最小值为（　）",
+    "options": [
+     "A. 0",
+     "B. 1",
+     "C. 4",
+     "D. 2"
+    ],
+    "answer": "D",
+    "analysis": "由 x²+y²≥(x+y)²/2=2，等号当且仅当 x=y=1 时成立，故最小值为2。",
+    "id": "d20261029-数学一-4"
+   },
+   {
+    "subject": "数学一",
+    "type": "填空",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "设 F(x)=∫_x^(x²) e^t dt，则 F'(1)=______。",
+    "answer": "e",
+    "analysis": "由变限积分求导公式，F'(x)=e^(x²)·2x−e^x。代入 x=1 得 F'(1)=2e−e=e。",
+    "id": "d20261029-数学一-5"
+   },
+   {
+    "subject": "数学一",
+    "type": "填空",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "微分方程 y'−y=e^(2x)，y(0)=0 的解为 y(x)=______。",
+    "answer": "e^(2x)−e^x",
+    "analysis": "乘积分因子 e^(−x)，得 (e^(−x)y)'=e^x。由0到x积分并用 y(0)=0，得 e^(−x)y=e^x−1，因此 y=e^(2x)−e^x。",
+    "id": "d20261029-数学一-6"
+   },
+   {
+    "subject": "数学一",
+    "type": "填空",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "曲面 z=x²+xy+y² 在点 (1,0,1) 处的切平面方程为______。",
+    "answer": "z=2x+y−1",
+    "analysis": "令 f(x,y)=x²+xy+y²，则 f_x(1,0)=2，f_y(1,0)=1。切平面为 z−1=2(x−1)+y，整理得 z=2x+y−1。",
+    "id": "d20261029-数学一-7"
+   },
+   {
+    "subject": "数学一",
+    "type": "填空",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "计算二重积分 I=∬_(x²+y²≤1) (x²+y²) dxdy，I=______。",
+    "answer": "π/2",
+    "analysis": "改用极坐标，x²+y²=r²，dxdy=r dr dθ。故 I=∫_0^(2π)∫_0^1 r³ dr dθ=2π·1/4=π/2。",
+    "id": "d20261029-数学一-8"
+   },
+   {
+    "subject": "数学一",
+    "type": "大题",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "设 C 为单位圆 x²+y²=1 的正向边界。用格林公式计算曲线积分 I=∮_C (−y/2)dx+(x/2)dy。",
+    "answer": "I=π。",
+    "analysis": "取 P=−y/2，Q=x/2。格林公式给出 I=∬_D(∂Q/∂x−∂P/∂y)dxdy=∬_D(1/2−(−1/2))dxdy=∬_D1 dxdy。D 为单位圆盘，面积为 π，故 I=π。正向表示逆时针方向。",
+    "id": "d20261029-数学一-9"
+   },
+   {
+    "subject": "数学一",
+    "type": "大题",
+    "topic": "高数",
+    "source": "数学一真题风格改编",
+    "stem": "设 x>0。(1) 利用拉格朗日中值定理证明 x/(1+x)<ln(1+x)<x；(2) 由此给出 ln2 的一个上下界。",
+    "answer": "对任意 x>0，有 x/(1+x)<ln(1+x)<x；特别地，1/2<ln2<1。",
+    "analysis": "在区间[0,x]上对 f(t)=ln(1+t) 使用拉格朗日中值定理，存在 ξ∈(0,x)，使 ln(1+x)−ln1=f'(ξ)(x−0)=x/(1+ξ)。因 0<ξ<x，故 1<1+ξ<1+x，取倒数并乘以正数x，得 x/(1+x)<x/(1+ξ)<x，即所证不等式。令 x=1 即得 1/2<ln2<1。",
+    "id": "d20261029-数学一-10"
    }
   ]
  }
@@ -4686,7 +4960,7 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
           var archive = QUESTION_ARCHIVE.find(function (a) { return a.date === day.date; });
           var archiveQs = archive && Array.isArray(archive.questions) ? archive.questions : [];
           var archiveMode = pSubj === "__archive__";
-          $("pInfo").textContent = archiveMode ? ("旧版英语历史回看（只读；不计入每日 " + all.length + " 题）") : ("共 " + all.length + " 题，答错的自动进错题本 · 旧版英语可在历史区回看");
+          $("pInfo").textContent = archiveMode ? ("替换前题目历史回看（只读；不计入每日 " + all.length + " 题）") : ("共 " + all.length + " 题，答错的自动进错题本 · 替换前题目可在历史区回看");
           $("pTot").textContent = done + "/" + all.length;
           $("pTotBar").style.width = (all.length ? done / all.length * 100 : 0) + "%";
           var subs = PSUBJ.filter(function (s) { return all.some(function (q) { return q.subject === s; }); });
@@ -4695,7 +4969,7 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
             var l = all.filter(function (q) { return q.subject === s; });
             return '<button type="button" aria-pressed="' + (s === pSubj) + '" data-v="' + s + '">' + s + "<small>" + l.filter(pDone).length + "/" + l.length + "</small></button>";
           }).join("");
-          if (archiveQs.length) chips += '<button type="button" aria-pressed="' + archiveMode + '" data-v="__archive__" aria-label="旧版英语题历史回看">历史英语<small>' + archiveQs.filter(pDone).length + '/' + archiveQs.length + '</small></button>';
+          if (archiveQs.length) chips += '<button type="button" aria-pressed="' + archiveMode + '" data-v="__archive__" aria-label="替换前题目历史回看">历史题<small>' + archiveQs.filter(pDone).length + '/' + archiveQs.length + '</small></button>';
           $("pChips").innerHTML = chips;
           var list = pList(), k = pKey();
           if (pPos[k] == null) { var f = list.findIndex(function (q) { return !pDone(q); }); pPos[k] = f < 0 ? 0 : f; }
@@ -4707,7 +4981,7 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
           $("pSum").hidden = dn.length < list.length;
           if (dn.length === list.length) {
             if (archiveMode) {
-              $("pSum").innerHTML = '<h3>旧版英语题已回看</h3><p class="x-sub">原题、原 ID 与旧作答时间线保留；历史题不计入每日题数。</p>';
+              $("pSum").innerHTML = '<h3>替换前题目已回看</h3><p class="x-sub">原题、原 ID 与旧作答时间线保留；历史题不计入每日题数。</p>';
             } else {
               var ns = subs.find(function (s) { return all.some(function (q) { return q.subject === s && !pDone(q); }); });
               $("pSum").innerHTML = "<h3>" + pSubj + " 已做完</h3>" + '<section class="stats"><div class="stat"><span class="stat__fig">' + Math.round(ok / list.length * 100) + '%</span><span class="stat__label">正确率</span></div><div class="stat"><span class="stat__fig">' + ok + '</span><span class="stat__label">做对</span></div><div class="stat"><span class="stat__fig">' + (list.length - ok) + '</span><span class="stat__label">做错 · 已进错题本</span></div></section>' +
@@ -4715,6 +4989,15 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
             }
           }
           showQ();
+        }
+        function basisHtml(q) {
+          if (!q.basis) return "";
+          var labels = { direct: "同类真题考法", migration: "相邻考法迁移", cross_exam_same_type: "跨数学二真题同型参照", skill_gap: "同型出处未核实 · 课程技能补位" };
+          var label = labels[q.basis_kind] || "考法参考";
+          var refs = Array.isArray(q.basis_sources) ? q.basis_sources.map(function (s) {
+            return '<a class="link" href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer">' + esc(s.label) + '</a>';
+          }).join(" · ") : "";
+          return '<div class="x-basis" style="margin-top:12px;padding:10px 12px;border-left:3px solid var(--stroke-primary);background:var(--fill-tertiary);border-radius:8px"><p class="x-sub" style="margin-bottom:5px"><b style="color:var(--text-primary)">命题依据</b> <span class="pill">' + esc(label) + '</span></p><p class="x-sub">' + esc(q.basis) + '</p>' + (q.difficulty_rationale ? '<p class="x-sub" style="margin-top:5px"><b style="color:var(--text-primary)">难度定位：</b>' + esc(q.difficulty_rationale) + '</p>' : "") + (refs ? '<p class="x-sub" style="margin-top:5px">来源：' + refs + '</p>' : "") + '</div>';
         }
         function showQ() {
           var list = pList(), i = pPos[pKey()], q = list[i]; if (!q) return;
@@ -4728,7 +5011,7 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
             return '<button type="button" class="x-opt ' + st + '" data-k="' + key + '"' + ((r.pick || isArchive) ? " disabled" : "") + "><span>" + md(fixTxt(o)) + "</span>" + (st ? "<b>" + (st === "is-right" ? "✓ 正确" : "✗ 你的选择") + "</b>" : "") + "</button>";
           }).join("") + "</div>" : "";
           var questionHeading = isArchive ? (q.subject + " · 历史题 · " + (i + 1) + " / " + list.length) : (q.subject + " · 第 " + (i + 1) + " / " + list.length + " 题");
-          $("pCard").innerHTML = '<div class="x-meta"><b style="color:var(--text-primary)">' + questionHeading + '</b><span class="pill">' + esc(q.type) + '</span><span class="pill">' + esc(q.source) + "</span>" + (q.topic ? esc(q.topic) : "") + '</div><div class="x-q">' + md(fixTxt(q.stem)) + "</div>" + opts;
+          $("pCard").innerHTML = '<div class="x-meta"><b style="color:var(--text-primary)">' + questionHeading + '</b><span class="pill">' + esc(q.type) + '</span><span class="pill">' + esc(q.source) + "</span>" + (q.topic ? esc(q.topic) : "") + '</div><div class="x-q">' + md(fixTxt(q.stem)) + "</div>" + opts + basisHtml(q);
           var res = done ? '<p style="margin-bottom:12px">' + (r.ok && r.unclear ? '<span class="chip x-mid">做对但没想明白 · 已加入错题本</span>' : r.ok ? '<span class="chip x-ok">做对了</span>' : '<span class="chip x-bad">做错了 · 已加入错题本</span>') + "</p>" : "";
           if (isArchive) {
             $("pAns").hidden = false;
