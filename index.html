@@ -1365,10 +1365,1040 @@
   }
  ]
 }</script>
+    <script type="application/json" id="bank-day2">{
+ "date": "2026-10-29",
+ "label": "第2天",
+ "questions": [
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "设 f(x)=x e^(-x)。下列结论正确的是（　）",
+   "options": [
+    "A. f 在 (-∞,1) 上递增，在 (1,+∞) 上递减",
+    "B. f 在全体实数上递增",
+    "C. f 在 (-∞,0) 上递减",
+    "D. f 在 x=0 处取得极大值"
+   ],
+   "answer": "A",
+   "analysis": "f'(x)=e^(-x)(1-x)。因 e^(-x)>0，故 f 在 (-∞,1) 上递增、在 (1,+∞) 上递减，并在 x=1 处取极大值 e^(-1)。",
+   "id": "d20261029-数学一-1"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "反常积分 ∫_1^∞ 1/x^p dx 收敛的充要条件是（　）",
+   "options": [
+    "A. p≥0",
+    "B. p>0",
+    "C. p>1",
+    "D. 对任意实数 p 均收敛"
+   ],
+   "answer": "C",
+   "analysis": "这是 p-积分判别：当 p>1 时，积分值为 1/(p-1)，有限；当 p≤1 时发散。",
+   "id": "d20261029-数学一-2"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "微分方程 y'=xy，满足 y(0)=1 的解为（　）",
+   "options": [
+    "A. y=e^x",
+    "B. y=e^(x²/2)",
+    "C. y=1+x²/2",
+    "D. y=e^(-x²/2)"
+   ],
+   "answer": "B",
+   "analysis": "分离变量得 dy/y=x dx，积分后 ln|y|=x²/2+C。由 y(0)=1 得 C=0，故 y=e^(x²/2)。",
+   "id": "d20261029-数学一-3"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "在约束条件 x+y=2 下，函数 f(x,y)=x²+y² 的最小值为（　）",
+   "options": [
+    "A. 0",
+    "B. 1",
+    "C. 4",
+    "D. 2"
+   ],
+   "answer": "D",
+   "analysis": "由 x²+y²≥(x+y)²/2=2，等号当且仅当 x=y=1 时成立，故最小值为2。",
+   "id": "d20261029-数学一-4"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "设 F(x)=∫_x^(x²) e^t dt，则 F'(1)=______。",
+   "answer": "e",
+   "analysis": "由变限积分求导公式，F'(x)=e^(x²)·2x−e^x。代入 x=1 得 F'(1)=2e−e=e。",
+   "id": "d20261029-数学一-5"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "微分方程 y'−y=e^(2x)，y(0)=0 的解为 y(x)=______。",
+   "answer": "e^(2x)−e^x",
+   "analysis": "乘积分因子 e^(−x)，得 (e^(−x)y)'=e^x。由0到x积分并用 y(0)=0，得 e^(−x)y=e^x−1，因此 y=e^(2x)−e^x。",
+   "id": "d20261029-数学一-6"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "曲面 z=x²+xy+y² 在点 (1,0,1) 处的切平面方程为______。",
+   "answer": "z=2x+y−1",
+   "analysis": "令 f(x,y)=x²+xy+y²，则 f_x(1,0)=2，f_y(1,0)=1。切平面为 z−1=2(x−1)+y，整理得 z=2x+y−1。",
+   "id": "d20261029-数学一-7"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "计算二重积分 I=∬_(x²+y²≤1) (x²+y²) dxdy，I=______。",
+   "answer": "π/2",
+   "analysis": "改用极坐标，x²+y²=r²，dxdy=r dr dθ。故 I=∫_0^(2π)∫_0^1 r³ dr dθ=2π·1/4=π/2。",
+   "id": "d20261029-数学一-8"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "设 C 为单位圆 x²+y²=1 的正向边界。用格林公式计算曲线积分 I=∮_C (−y/2)dx+(x/2)dy。",
+   "answer": "I=π。",
+   "analysis": "取 P=−y/2，Q=x/2。格林公式给出 I=∬_D(∂Q/∂x−∂P/∂y)dxdy=∬_D(1/2−(−1/2))dxdy=∬_D1 dxdy。D 为单位圆盘，面积为 π，故 I=π。正向表示逆时针方向。",
+   "id": "d20261029-数学一-9"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "高数",
+   "source": "数学一真题风格改编",
+   "stem": "设 x>0。(1) 利用拉格朗日中值定理证明 x/(1+x)<ln(1+x)<x；(2) 由此给出 ln2 的一个上下界。",
+   "answer": "对任意 x>0，有 x/(1+x)<ln(1+x)<x；特别地，1/2<ln2<1。",
+   "analysis": "在区间[0,x]上对 f(t)=ln(1+t) 使用拉格朗日中值定理，存在 ξ∈(0,x)，使 ln(1+x)−ln1=f'(ξ)(x−0)=x/(1+ξ)。因 0<ξ<x，故 1<1+ξ<1+x，取倒数并乘以正数x，得 x/(1+x)<x/(1+ξ)<x，即所证不等式。令 x=1 即得 1/2<ln2<1。",
+   "id": "d20261029-数学一-10"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "线代",
+   "source": "数学一真题风格改编",
+   "stem": "设 |A|=4。矩阵 B 由 A 交换第1、3行，再将第2行乘以3得到，则 |B|=（　）",
+   "options": [
+    "A. −12",
+    "B. −4",
+    "C. 12",
+    "D. 4"
+   ],
+   "answer": "A",
+   "analysis": "交换两行使行列式变号，某一行乘以3使行列式乘3，因此 |B|=−3|A|=−12。",
+   "id": "d20261029-数学一-11"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "线代",
+   "source": "数学一真题风格改编",
+   "stem": "可逆矩阵 A 满足 A²−3A+2I=0，则 A^(-1)=（　）",
+   "options": [
+    "A. (A−3I)/2",
+    "B. (3A−I)/2",
+    "C. (3I−A)/2",
+    "D. 2A−3I"
+   ],
+   "answer": "C",
+   "analysis": "等式左乘 A^(-1)，得 A−3I+2A^(-1)=0，故 A^(-1)=(3I−A)/2。",
+   "id": "d20261029-数学一-12"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "线代",
+   "source": "数学一真题风格改编",
+   "stem": "子空间 W={(x1,x2,x3,x4)∈R⁴:x1+x2=0，x3+x4=0} 的维数为______。",
+   "answer": "2",
+   "analysis": "两个线性无关的齐次约束方程定义 R⁴ 中的子空间，秩为2。由维数公式 dim(W)=4−2=2。",
+   "id": "d20261029-数学一-13"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "线代",
+   "source": "数学一真题风格改编",
+   "stem": "线性映射 T:R³→R² 定义为 T(x,y,z)=(x+y,y+z)，则 dim ker(T)=______。",
+   "answer": "1",
+   "analysis": "矩阵为 [[1,1,0],[0,1,1]]，两行线性无关，秩为2。由 dim ker(T)+rank(T)=3，得 dim ker(T)=1。",
+   "id": "d20261029-数学一-14"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "线代",
+   "source": "数学一真题风格改编",
+   "stem": "设 A=[[2,1],[1,1]]。(1)求 A^(-1)；(2)求方程 Ax=(5,3)^T 的解，并说明解是否唯一。",
+   "answer": "A^(-1)=[[1,−1],[−1,2]]；x=(2,1)^T，且解唯一。",
+   "analysis": "|A|=2·1−1·1=1≠0，故 A 可逆。按二阶逆矩阵公式，A^(-1)=[[1,−1],[−1,2]]。因此 x=A^(-1)(5,3)^T=(5−3,−5+6)^T=(2,1)^T。可逆矩阵对应的线性方程组有唯一解。",
+   "id": "d20261029-数学一-15"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "概率",
+   "source": "数学一真题风格改编",
+   "stem": "某疾病在人群中的患病率为1%。检测灵敏度为90%，未患病者的假阳性率为5%。随机抽取一人，检测结果为阳性，则其患病的概率为（　）",
+   "options": [
+    "A. 0.05",
+    "B. 2/13",
+    "C. 0.50",
+    "D. 0.90"
+   ],
+   "answer": "B",
+   "analysis": "由贝叶斯公式，P(患病|阳性)=0.01×0.90/[0.01×0.90+0.99×0.05]=0.009/0.0585=2/13≈0.1538。",
+   "id": "d20261029-数学一-16"
+  },
+  {
+   "subject": "数学一",
+   "type": "选择",
+   "topic": "概率",
+   "source": "数学一真题风格改编",
+   "stem": "总体均值为50、标准差为10，抽取容量 n=100 的简单随机样本。由中心极限定理，样本均值近似服从 N(50,1)。P(样本均值>52) 约为（　）",
+   "options": [
+    "A. 0.0228",
+    "B. 0.1587",
+    "C. 0.5000",
+    "D. 0.9772"
+   ],
+   "answer": "A",
+   "analysis": "样本均值标准差为10/√100=1，标准化后 P(Z>2)≈0.0228。",
+   "id": "d20261029-数学一-17"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "概率",
+   "source": "数学一真题风格改编",
+   "stem": "离散随机变量 (X,Y) 以相同概率取值 (0,0) 与 (1,1)，则 Cov(X,Y)=______。",
+   "answer": "1/4",
+   "analysis": "E(X)=E(Y)=1/2，E(XY)=1/2，故 Cov(X,Y)=E(XY)−E(X)E(Y)=1/2−1/4=1/4。",
+   "id": "d20261029-数学一-18"
+  },
+  {
+   "subject": "数学一",
+   "type": "填空",
+   "topic": "概率",
+   "source": "数学一真题风格改编",
+   "stem": "二维随机变量密度 f(x,y)=2（0<y<x<1），其他处为0。其边缘密度 f_X(1/2)=______。",
+   "answer": "1",
+   "analysis": "对固定 x∈(0,1)，f_X(x)=∫_0^x 2dy=2x。因此 f_X(1/2)=1。",
+   "id": "d20261029-数学一-19"
+  },
+  {
+   "subject": "数学一",
+   "type": "大题",
+   "topic": "概率",
+   "source": "数学一真题风格改编",
+   "stem": "总体服从正态分布 N(μ,4²)，抽取容量16的样本。检验 H₀:μ=10 对 H₁:μ>10，显著性水平 α=0.05，已知标准正态分布上侧0.05分位数为1.645。(1)写出拒绝域；(2)若样本均值为11.8，作出检验结论。",
+   "answer": "拒绝域为 X̄>11.645；样本均值11.8落入拒绝域，故在5%显著性水平下拒绝 H₀，认为有证据支持 μ>10。",
+   "analysis": "因总体方差已知，统计量 Z=(X̄−10)/(4/√16)=(X̄−10)。右侧检验的拒绝条件为 Z>1.645，即 X̄>11.645。观测到 X̄=11.8，统计量 z=1.8>1.645，故拒绝原假设。",
+   "id": "d20261029-数学一-20"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "AVL树",
+   "source": "408真题风格改编",
+   "stem": "向一棵空AVL树依次插入关键字 30、20、10，平衡后根结点为（　）",
+   "options": [
+    "A. 10",
+    "B. 20",
+    "C. 30",
+    "D. 需要双旋后根为10"
+   ],
+   "answer": "B",
+   "analysis": "插入10后，根30的左子树高度比右子树高2，且左孩子20的左子树较高，是LL型失衡。对30作一次右旋，得到根20，左右孩子分别为10和30。",
+   "id": "d20261029-数据结构-1"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "KMP字符串匹配",
+   "source": "408真题风格改编",
+   "stem": "KMP算法在模式串第 j 个字符失配时，利用 next[j] 信息的主要目的是什么？（　）",
+   "options": [
+    "A. 让主串指针回退到本轮起点",
+    "B. 每次失配都将模式串右移一位",
+    "C. 重新比较已经确认相同的全部字符",
+    "D. 保留已匹配前后缀信息，避免主串指针回退"
+   ],
+   "answer": "D",
+   "analysis": "next信息给出已匹配前缀的最长相等真前缀/真后缀长度，从而让模式串回退到仍可能匹配的位置，主串指针无需回退。",
+   "id": "d20261029-数据结构-2"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "快速排序",
+   "source": "408真题风格改编",
+   "stem": "对已经升序排列的 n 个互异关键字，若快速排序每次都选当前子表的第一个元素作枢轴，则比较次数的量级为（　）",
+   "options": [
+    "A. Θ(n²)",
+    "B. Θ(n log n)",
+    "C. Θ(log n)",
+    "D. Θ(n)"
+   ],
+   "answer": "A",
+   "analysis": "每次划分都得到规模为0和 n−1 的子表，比较次数满足 T(n)=T(n−1)+Θ(n)，故为 Θ(n²)。",
+   "id": "d20261029-数据结构-3"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "归并排序",
+   "source": "408真题风格改编",
+   "stem": "关于稳定的自底向上二路归并排序，下列说法正确的是（　）",
+   "options": [
+    "A. 必须原地排序且辅助空间为 O(1)",
+    "B. 对任意输入都只比较 n−1 次",
+    "C. 相等关键字先取左段元素时可保持稳定",
+    "D. 最坏时间复杂度为 O(n²)"
+   ],
+   "answer": "C",
+   "analysis": "稳定归并在两个有序段当前关键字相等时优先取左段元素，可保持相等元素原有先后次序；归并通常需要 O(n) 辅助空间。",
+   "id": "d20261029-数据结构-4"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "有向无环图拓扑排序",
+   "source": "408真题风格改编",
+   "stem": "对有向无环图进行拓扑排序时，能够保证拓扑序唯一的条件是（　）",
+   "options": [
+    "A. 图中恰有一个入度为0的顶点",
+    "B. 每一步都恰有一个入度为0的顶点可选",
+    "C. 所有顶点的出度均不相同",
+    "D. 图中不存在入度为0的顶点"
+   ],
+   "answer": "B",
+   "analysis": "每一步若恰好只有一个入度为0的顶点可选，则顶点次序被唯一确定。若某一步同时有两个入度为0的顶点，它们可交换，拓扑序不唯一。",
+   "id": "d20261029-数据结构-5"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "最小生成树",
+   "source": "408真题风格改编",
+   "stem": "设 G 为连通带权无向图，某割的所有跨割边中有一条边 e 是唯一最轻边。下列结论正确的是（　）",
+   "options": [
+    "A. e 属于 G 的每一棵最小生成树",
+    "B. e 不可能属于任何最小生成树",
+    "C. e 只可能在图有唯一最小生成树时出现",
+    "D. 仅凭该条件不能保证存在包含 e 的最小生成树"
+   ],
+   "answer": "A",
+   "analysis": "割性质说明唯一最轻的跨割边必属于每一棵最小生成树。",
+   "id": "d20261029-数据结构-6"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "B树",
+   "source": "408真题风格改编",
+   "stem": "一棵 m 阶 B 树中，除根结点外的非叶结点至少有多少个孩子？当 m=5 时，其最少关键字数为（　）",
+   "options": [
+    "A. 2个孩子、1个关键字",
+    "B. 2个孩子、2个关键字",
+    "C. 3个孩子、2个关键字",
+    "D. 3个孩子、3个关键字"
+   ],
+   "answer": "C",
+   "analysis": "m阶B树非根结点至少有⌈m/2⌉个孩子，因此至少有⌈m/2⌉−1个关键字。m=5时至少3个孩子、2个关键字。",
+   "id": "d20261029-数据结构-7"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "并查集",
+   "source": "408真题风格改编",
+   "stem": "并查集采用路径压缩和按秩合并后，路径压缩的作用是（　）",
+   "options": [
+    "A. 保证树始终为完全二叉树",
+    "B. 使每次查找都必须遍历所有结点",
+    "C. 将集合拆分为多个子集",
+    "D. 缩短结点到代表元的路径"
+   ],
+   "answer": "D",
+   "analysis": "路径压缩在查找代表元时，把沿途结点直接或间接挂到根上，使后续查找更快；与按秩合并结合时，单次操作均摊复杂度近似为反阿克曼函数。",
+   "id": "d20261029-数据结构-8"
+  },
+  {
+   "subject": "数据结构",
+   "type": "选择",
+   "topic": "稀疏矩阵三元组",
+   "source": "408真题风格改编",
+   "stem": "将一个 m×n 稀疏矩阵转置后，用三元组表存储。下列说法正确的是（　）",
+   "options": [
+    "A. 非零元个数仍为 k，行列下标互换",
+    "B. 非零元个数变为 m+n−k",
+    "C. 矩阵维数仍为 m×n，所有元素取相反数",
+    "D. 转置后必然成为稠密矩阵"
+   ],
+   "answer": "A",
+   "analysis": "转置只需交换每个非零元素三元组中的行、列下标，非零元数仍为 k，矩阵维数由 m×n 变为 n×m。",
+   "id": "d20261029-数据结构-9"
+  },
+  {
+   "subject": "数据结构",
+   "type": "大题",
+   "topic": "Dijkstra单源最短路径",
+   "source": "408真题风格改编",
+   "stem": "给定带权有向图，边及权值为 S→A(2)、S→B(5)、A→B(1)、A→C(4)、B→C(1)、B→D(7)、C→D(2)，所有权值非负。以 S 为源点，使用 Dijkstra 算法求各顶点的最短距离及一棵最短路径树。",
+   "answer": "d(S)=0，d(A)=2，d(B)=3，d(C)=4，d(D)=6。最短路径树可取 S→A、A→B、B→C、C→D。",
+   "analysis": "初始化 d(S)=0，其余为∞。确定 S 后松弛得 A=2、B=5；确定 A 后更新 B=3、C=6；确定 B 后更新 C=4、D=10；确定 C 后更新 D=6；确定 D 后结束。所有边权非负，故每次取当前最小暂定距离顶点即可。",
+   "id": "d20261029-数据结构-10"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "Amdahl定律",
+   "source": "408真题风格改编",
+   "stem": "某程序的40%执行时间可通过改进部件加速5倍，其余部分不变。改进后整个程序的加速比约为（　）",
+   "options": [
+    "A. 1.25",
+    "B. 1.40",
+    "C. 1.47",
+    "D. 5.00"
+   ],
+   "answer": "C",
+   "analysis": "Amdahl定律给出 S=1/[(1−0.4)+0.4/5]=1/0.68≈1.47。",
+   "id": "d20261029-计组-1"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "基址寻址",
+   "source": "408真题风格改编",
+   "stem": "某指令采用基址加位移寻址，基址寄存器 R2 的内容为 1000，指令位移量为 12。按字节编址，则有效地址为（　）",
+   "options": [
+    "A. 988",
+    "B. 1012",
+    "C. 1000",
+    "D. 12000"
+   ],
+   "answer": "B",
+   "analysis": "基址加位移方式的有效地址 EA=基址寄存器内容+位移量=1000+12=1012。",
+   "id": "d20261029-计组-2"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "DMA传送方式",
+   "source": "408真题风格改编",
+   "stem": "DMA采用周期窃取方式传送一个字时，通常发生的情况是（　）",
+   "options": [
+    "A. CPU必须逐字执行输入输出指令",
+    "B. DMA独占总线直到整块传完",
+    "C. 每传一个字都必须执行一次中断服务程序",
+    "D. DMA占用一个总线周期，CPU暂时让出总线"
+   ],
+   "answer": "D",
+   "analysis": "周期窃取是DMA控制器在需要时占用一个总线周期传送数据，CPU在该周期暂时不能使用总线；它并非每传一个字都必须由CPU执行中断服务程序。",
+   "id": "d20261029-计组-3"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "流水线数据相关",
+   "source": "408真题风格改编",
+   "stem": "经典五段流水线中，指令 I1 为 R1←R2+R3，紧接着的 I2 使用 R1 作为一个源操作数。若有从 EX/MEM 到 ALU 的前递通路且无其他相关，则（　）",
+   "options": [
+    "A. 可通过前递消除该数据相关造成的暂停",
+    "B. 必须等待I1写回后I2才可译码",
+    "C. 必须清空整个流水线",
+    "D. 只能通过改变程序结果解决"
+   ],
+   "answer": "A",
+   "analysis": "I1的ALU结果可在I2需要时经前递通路送到ALU输入，普通ALU-ALU紧邻相关不需要插入暂停周期。",
+   "id": "d20261029-计组-4"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "控制器实现",
+   "source": "408真题风格改编",
+   "stem": "与硬布线控制器相比，微程序控制器通常具有的特点是（　）",
+   "options": [
+    "A. 控制逻辑完全由组合电路实现且不可修改",
+    "B. 一定比硬布线控制器速度更快",
+    "C. 便于修改和扩充控制功能",
+    "D. 不需要任何控制存储部件"
+   ],
+   "answer": "C",
+   "analysis": "微程序控制器通过控制存储器中的微指令产生控制信号，设计和修改较灵活，但通常比硬布线控制器慢。",
+   "id": "d20261029-计组-5"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "多体交叉存储器",
+   "source": "408真题风格改编",
+   "stem": "按字编址的二体低位交叉存储器中，主存字地址 10、11、12 分别映射到哪一体？体号按地址最低位确定。",
+   "options": [
+    "A. 体1、体1、体1",
+    "B. 体0、体1、体0",
+    "C. 体0、体0、体1",
+    "D. 体1、体0、体1"
+   ],
+   "answer": "B",
+   "analysis": "二体低位交叉存储器的体号为地址对2取模。因此地址10映射体0，11映射体1，12映射体0。",
+   "id": "d20261029-计组-6"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "大小端存储",
+   "source": "408真题风格改编",
+   "stem": "按字节编址的计算机把32位数 0x12345678 存放在地址 A 至 A+3。采用小端方式时，从低地址到高地址的字节顺序为（　）",
+   "options": [
+    "A. 12、34、56、78",
+    "B. 56、78、12、34",
+    "C. 34、12、78、56",
+    "D. 78、56、34、12"
+   ],
+   "answer": "D",
+   "analysis": "小端方式将最低有效字节放在最低地址，所以依次为 0x78、0x56、0x34、0x12。",
+   "id": "d20261029-计组-7"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "数据对齐与结构填充",
+   "source": "408真题风格改编",
+   "stem": "假设 char 占1字节、short占2字节、int占4字节，且每个成员按自身大小对齐、结构体按最大成员对齐。结构体 {char a; int b; short c;} 的大小为（　）",
+   "options": [
+    "A. 7字节",
+    "B. 10字节",
+    "C. 12字节",
+    "D. 16字节"
+   ],
+   "answer": "C",
+   "analysis": "a位于偏移0。b须4字节对齐，位于偏移4，占到7；c位于偏移8，占到9。结构体按4字节对齐，末尾补2字节，大小为12字节。",
+   "id": "d20261029-计组-8"
+  },
+  {
+   "subject": "计组",
+   "type": "选择",
+   "topic": "汉明码",
+   "source": "408真题风格改编",
+   "stem": "采用标准汉明码保护8位数据，要求能够定位并纠正任意一个比特错误。至少需要多少个校验位？",
+   "options": [
+    "A. 4",
+    "B. 3",
+    "C. 5",
+    "D. 8"
+   ],
+   "answer": "A",
+   "analysis": "校验位数 r 需满足 2^r≥m+r+1。m=8时，r=3不满足8<12，r=4满足16≥13，故至少需要4位。",
+   "id": "d20261029-计组-9"
+  },
+  {
+   "subject": "计组",
+   "type": "大题",
+   "topic": "指令微操作与寄存器传送",
+   "source": "408真题风格改编",
+   "stem": "某CPU取指过程规定：每条指令长4字节，主存读出由 MAR 指定单元的内容到 MDR；寄存器传送操作均在时钟边沿完成。指令为 ADD R3,R1,R2，语义为 R3←R1+R2。写出从取指到执行完成的一种清晰微操作序列，说明PC何时更新。",
+   "answer": "一种序列：T0：MAR←PC，Read；T1：MDR←M[MAR]，PC←PC+4；T2：IR←MDR；T3：A←R1，B←R2；T4：Z←A+B；T5：R3←Z。",
+   "analysis": "T0给主存地址并启动读；读延迟结束后在T1取得指令，同时PC前移到下一条指令；T2将指令装入IR。译码后取出两个源操作数到暂存寄存器A、B，ALU计算和写入Z，最后把结果写回目的寄存器R3。题目未规定总线复用与存储器延迟，故相邻操作可按所述时序执行。",
+   "id": "d20261029-计组-10"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "进程状态转换",
+   "source": "408真题风格改编",
+   "stem": "进程因等待磁盘I/O而由运行态离开CPU，之后I/O完成。该进程通常经历的状态转换是（　）",
+   "options": [
+    "A. 运行态→就绪态→运行态",
+    "B. 运行态→阻塞态→就绪态",
+    "C. 阻塞态→运行态→就绪态",
+    "D. 就绪态→阻塞态→运行态"
+   ],
+   "answer": "B",
+   "analysis": "进程因等待事件从运行态转为阻塞态；事件完成后变为就绪态，等待重新获得CPU，而不是直接变为运行态。",
+   "id": "d20261029-操作系统-1"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "可变分区与外部碎片",
+   "source": "408真题风格改编",
+   "stem": "可变分区存储管理中，所有空闲分区总和足以满足某进程请求，但没有任何一个连续空闲分区足够大。该现象称为（　）",
+   "options": [
+    "A. 外部碎片",
+    "B. 内部碎片",
+    "C. 页面抖动",
+    "D. 访问局部性"
+   ],
+   "answer": "A",
+   "analysis": "可变分区中空闲空间分散在多个不连续区域，无法满足需要连续空间的大请求，称为外部碎片。",
+   "id": "d20261029-操作系统-2"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "分段存储管理",
+   "source": "408真题风格改编",
+   "stem": "某段表中第1段的基址为12000、段长为800。逻辑地址(1,300)对应的物理地址为（　）",
+   "options": [
+    "A. 300",
+    "B. 12000",
+    "C. 12300",
+    "D. 越界中断"
+   ],
+   "answer": "C",
+   "analysis": "段内偏移300小于段长800，地址合法，物理地址=12000+300=12300。",
+   "id": "d20261029-操作系统-3"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "工作集与抖动",
+   "source": "408真题风格改编",
+   "stem": "在工作集模型中，若系统同时驻留的进程所需工作集总量远大于可用物理页框，最可能出现（　）",
+   "options": [
+    "A. 缺页率必然降为零",
+    "B. 磁盘寻道距离必然缩短",
+    "C. 进程执行时间不受影响",
+    "D. 缺页率急剧上升并可能发生抖动"
+   ],
+   "answer": "D",
+   "analysis": "工作集不能驻留会导致频繁缺页、进程大量等待换页，形成抖动。系统可减少多道程序度或增加可用页框。",
+   "id": "d20261029-操作系统-4"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "文件分配方式",
+   "source": "408真题风格改编",
+   "stem": "下列关于文件物理分配方式的说法正确的是（　）",
+   "options": [
+    "A. 链接分配天然支持高效随机直接访问",
+    "B. 索引分配可支持直接访问且不要求连续空闲块",
+    "C. 连续分配不存在外部碎片",
+    "D. 所有分配方式都不需要维护物理地址"
+   ],
+   "answer": "B",
+   "analysis": "索引分配用索引块记录文件各数据块地址，支持直接访问和顺序访问，且不要求连续空闲块；代价是索引块空间。",
+   "id": "d20261029-操作系统-5"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "位示图",
+   "source": "408真题风格改编",
+   "stem": "某磁盘有4096个可分配数据块，使用1位表示1个空闲块状态。表示全部块的位示图至少需要多少字节？",
+   "options": [
+    "A. 512",
+    "B. 1024",
+    "C. 4096",
+    "D. 32768"
+   ],
+   "answer": "A",
+   "analysis": "共需4096位，换算为字节为4096/8=512字节。",
+   "id": "d20261029-操作系统-6"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "硬链接与符号链接",
+   "source": "408真题风格改编",
+   "stem": "关于文件硬链接和符号链接，下列说法正确的是（　）",
+   "options": [
+    "A. 硬链接保存目标路径字符串",
+    "B. 符号链接与目标文件必定共享同一个inode",
+    "C. 符号链接可因目标被删除而成为悬空链接",
+    "D. 硬链接必定能跨文件系统建立"
+   ],
+   "answer": "C",
+   "analysis": "硬链接增加同一文件系统中同一inode的目录项；符号链接保存目标路径，目标删除后符号链接可能失效，且可指向其他文件系统。",
+   "id": "d20261029-操作系统-7"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "RAID",
+   "source": "408真题风格改编",
+   "stem": "4块容量均为2 TB的磁盘组成RAID 5，忽略格式化开销。可用容量及可容忍的同时失效磁盘数分别为（　）",
+   "options": [
+    "A. 8 TB，0块",
+    "B. 6 TB，1块",
+    "C. 4 TB，2块",
+    "D. 2 TB，3块"
+   ],
+   "answer": "B",
+   "analysis": "RAID5以一块磁盘容量等价空间存放分布式校验，可用容量为(n−1)C=3×2=6 TB；可容忍任意一块磁盘失效。",
+   "id": "d20261029-操作系统-8"
+  },
+  {
+   "subject": "操作系统",
+   "type": "选择",
+   "topic": "目录访问权限",
+   "source": "408真题风格改编",
+   "stem": "类Unix目录权限中，目录的执行权限 x 通常允许用户（　）",
+   "options": [
+    "A. 修改目录中所有文件的内容",
+    "B. 仅列出目录项名称",
+    "C. 自动取得目录内所有文件的读权限",
+    "D. 搜索或遍历目录中的路径"
+   ],
+   "answer": "D",
+   "analysis": "目录x权限表示可搜索/遍历目录，允许在已知名称等条件下访问其中条目；r用于列出目录项，w通常与x结合才能增删目录项。",
+   "id": "d20261029-操作系统-9"
+  },
+  {
+   "subject": "操作系统",
+   "type": "大题",
+   "topic": "fork进程创建",
+   "source": "408真题风格改编",
+   "stem": "在支持fork()且子进程从fork()返回值为0、父进程返回值为正数的系统中，执行下列程序片段后，每个存活进程都执行一次 printf：\nfork();\nif (fork() == 0) fork();\n问最终共执行多少次 printf？请说明进程数的变化。",
+   "answer": "共执行6次 printf。",
+   "analysis": "第一次fork后有2个进程。此后每个进程都执行条件中的第二次fork，因此产生4个进程；其中第二次fork产生的两个子进程返回0，各自再执行一次fork，最终增加2个进程，共6个。每个存活进程执行一次printf，故共输出6次。",
+   "id": "d20261029-操作系统-10"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "ARP地址解析",
+   "source": "408真题风格改编",
+   "stem": "主机在以太网中需要向同一子网内的目标IPv4地址发送数据，但ARP缓存中没有对应表项。通常首先采取的操作是（　）",
+   "options": [
+    "A. 在本地链路广播ARP请求",
+    "B. 向所有路由器广播TCP SYN",
+    "C. 发送DNS递归查询",
+    "D. 直接把IPv4地址写入以太网目的MAC字段"
+   ],
+   "answer": "A",
+   "analysis": "主机广播ARP请求询问目标IPv4地址对应的MAC地址，目标主机用ARP应答返回自己的MAC地址。",
+   "id": "d20261029-计网-1"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "DNS查询",
+   "source": "408真题风格改编",
+   "stem": "DNS客户端向本地域名服务器发起递归查询，本地域名服务器本地无缓存时，通常会（　）",
+   "options": [
+    "A. 只返回本机 hosts 文件内容",
+    "B. 要求客户端自行联系每台权威服务器",
+    "C. 代表客户端继续查询并返回最终结果",
+    "D. 将查询改为ARP广播"
+   ],
+   "answer": "C",
+   "analysis": "递归查询要求被询问的服务器代表客户端继续完成解析并返回最终结果；本地域名服务器会联系根、顶级域和权威服务器等，或按其配置查询。",
+   "id": "d20261029-计网-2"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "DHCP",
+   "source": "408真题风格改编",
+   "stem": "DHCP客户端采用常见的首次获取地址过程时，报文交互顺序为（　）",
+   "options": [
+    "A. Request、Discover、ACK、Offer",
+    "B. Discover、Offer、Request、ACK",
+    "C. Offer、ACK、Discover、Request",
+    "D. Discover、Request、Offer、ACK"
+   ],
+   "answer": "B",
+   "analysis": "经典DORA顺序为 Discover、Offer、Request、Acknowledgment，即发现、提供、请求、确认。",
+   "id": "d20261029-计网-3"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "以太网交换机自学习",
+   "source": "408真题风格改编",
+   "stem": "交换机收到一个帧，源MAC地址尚未出现在转发表中，目的MAC地址也未知。交换机通常会（　）",
+   "options": [
+    "A. 丢弃帧且不更新转发表",
+    "B. 只向入端口转发",
+    "C. 广播到所有端口，包括入端口",
+    "D. 学习源MAC所在端口，并向其他端口泛洪未知目的帧"
+   ],
+   "answer": "D",
+   "analysis": "交换机先将源MAC与入端口关联并学习；未知单播帧随后向除入端口外的其他适当端口泛洪。",
+   "id": "d20261029-计网-4"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "CRC循环冗余校验",
+   "source": "408真题风格改编",
+   "stem": "发送方使用生成多项式 G(x) 对数据进行CRC编码。接收方对收到的数据帧（含CRC余数）作模2除法，若无传输错误，通常期望得到的余数为（　）",
+   "options": [
+    "A. 全0",
+    "B. 全1",
+    "C. 与生成多项式相同",
+    "D. 由目的IP地址决定"
+   ],
+   "answer": "A",
+   "analysis": "CRC码字由生成多项式整除构造，接收端再次除以同一生成多项式时，合法码字的余数为0。",
+   "id": "d20261029-计网-5"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "OSPF链路状态路由",
+   "source": "408真题风格改编",
+   "stem": "OSPF路由器收到链路状态通告后，建立链路状态数据库并运行最短路径算法。其核心算法是（　）",
+   "options": [
+    "A. Bellman-Ford距离向量算法",
+    "B. Kruskal最小生成树算法",
+    "C. Dijkstra最短路径算法",
+    "D. KMP字符串匹配算法"
+   ],
+   "answer": "C",
+   "analysis": "OSPF属于链路状态路由协议，各路由器基于链路状态数据库运行Dijkstra算法，计算以自身为根的最短路径树。",
+   "id": "d20261029-计网-6"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "NAT/PAT",
+   "source": "408真题风格改编",
+   "stem": "一个局域网内多台主机共享同一公网IPv4地址访问外网，网关通过改写传输层端口号区分不同内部连接。这种技术通常称为（　）",
+   "options": [
+    "A. ARP代理",
+    "B. PAT/NAPT",
+    "C. DNS递归",
+    "D. VLAN标记"
+   ],
+   "answer": "B",
+   "analysis": "PAT是端口地址转换，网关利用公网地址与不同端口映射内部地址和端口，从而使多个内部主机共享公网地址。",
+   "id": "d20261029-计网-7"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "TCP连接释放",
+   "source": "408真题风格改编",
+   "stem": "TCP连接释放中，主动关闭方在发送最后一个ACK后进入TIME_WAIT状态。设置该状态的主要目的之一是（　）",
+   "options": [
+    "A. 允许任意旧连接报文直接进入新连接",
+    "B. 保证对端永远不再发送数据",
+    "C. 提高拥塞窗口到最大值",
+    "D. 可靠重发最后ACK并等待旧报文从网络消失"
+   ],
+   "answer": "D",
+   "analysis": "TIME_WAIT使主动关闭方保留一段时间，以便重传最后的ACK（若对方未收到）并让旧连接报文在网络中消逝。",
+   "id": "d20261029-计网-8"
+  },
+  {
+   "subject": "计网",
+   "type": "选择",
+   "topic": "TTL与ICMP差错报告",
+   "source": "408真题风格改编",
+   "stem": "某IPv4数据报在路由器转发时TTL减为0，且不属于禁止发送差错报文的情形。路由器通常如何处理？（　）",
+   "options": [
+    "A. 返回ICMP目的不可达端口错误",
+    "B. 继续转发并将TTL置为255",
+    "C. 丢弃该数据报并向源主机发送ICMP超时报文",
+    "D. 向局域网广播ARP请求"
+   ],
+   "answer": "C",
+   "analysis": "TTL耗尽的数据报不能继续转发，路由器将其丢弃，并通常向源主机发送ICMP超时报文（Time Exceeded）。",
+   "id": "d20261029-计网-9"
+  },
+  {
+   "subject": "计网",
+   "type": "大题",
+   "topic": "IPv4分片与重组",
+   "source": "408真题风格改编",
+   "stem": "一个IPv4数据报总长度为4000字节，首部长度为20字节，经最大传送单元MTU为1500字节的链路转发，无IPv4选项。计算分片数，并给出各片的数据长度、总长度、片偏移字段值及MF标志。",
+   "answer": "分3片。各片数据长度为1480、1480、1020字节；总长度为1500、1500、1040字节；片偏移字段为0、185、370；MF分别为1、1、0。",
+   "analysis": "原始数据区长度为4000−20=3980字节。每个非末片最多携带1500−20=1480字节，且1480是8的倍数。剩余数据为3980−2960=1020字节，故共3片。偏移以8字节为单位，依次为0、1480/8=185、2960/8=370。每片总长度为数据长度加20字节首部。除最后一片外MF=1，最后一片MF=0。",
+   "id": "d20261029-计网-10"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "马原",
+   "source": "考研政治真题风格改编",
+   "stem": "矛盾的主要方面和次要方面关系的原理要求我们（　）",
+   "options": [
+    "A. 只看到矛盾次要方面而忽略主要方面",
+    "B. 把握主要方面，同时注意其在条件变化下可能转化",
+    "C. 认为主要方面和次要方面永远不变",
+    "D. 用一个矛盾的主要方面取代事物的全部矛盾"
+   ],
+   "answer": "B",
+   "analysis": "事物的性质主要由取得支配地位的矛盾主要方面规定，但主要方面与次要方面在一定条件下可以相互转化，不能把主次关系绝对化。",
+   "id": "d20261029-政治-1"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "马原",
+   "source": "考研政治真题风格改编",
+   "stem": "商品的价值量从根本上由什么决定？（　）",
+   "options": [
+    "A. 个别劳动者实际耗费的任意时间",
+    "B. 商品的自然属性",
+    "C. 商品在市场上的偶然价格",
+    "D. 生产商品的社会必要劳动时间"
+   ],
+   "answer": "D",
+   "analysis": "商品价值由生产商品的社会必要劳动时间决定；具体劳动创造使用价值，抽象劳动形成价值。",
+   "id": "d20261029-政治-2"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "毛中特",
+   "source": "考研政治真题风格改编",
+   "stem": "中国式现代化区别于西方现代化道路的重要特征之一是（　）",
+   "options": [
+    "A. 人口规模巨大并致力于全体人民共同富裕",
+    "B. 以少数人先富为唯一目标",
+    "C. 以对外扩张为必要条件",
+    "D. 只追求物质增长而排斥精神文明"
+   ],
+   "answer": "A",
+   "analysis": "中国式现代化是人口规模巨大的现代化，强调全体人民共同富裕、物质文明和精神文明相协调、人与自然和谐共生、走和平发展道路。",
+   "id": "d20261029-政治-3"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "史纲",
+   "source": "考研政治真题风格改编",
+   "stem": "中国共产党第一次全国代表大会于1921年召开，其成立的历史意义主要在于（　）",
+   "options": [
+    "A. 标志着中国新民主主义革命开端",
+    "B. 标志着抗日战争全面爆发",
+    "C. 使中国革命有了坚强的领导力量",
+    "D. 标志着社会主义基本制度在中国确立"
+   ],
+   "answer": "C",
+   "analysis": "中国共产党的成立是开天辟地的大事变，使中国革命有了坚强领导力量，并深刻改变近代中国历史进程。",
+   "id": "d20261029-政治-4"
+  },
+  {
+   "subject": "政治",
+   "type": "选择",
+   "topic": "思修法治",
+   "source": "考研政治真题风格改编",
+   "stem": "我国宪法规定公民在法律面前一律平等。下列理解正确的是（　）",
+   "options": [
+    "A. 平等意味着所有公民在任何具体情形下权利义务完全相同",
+    "B. 平等仅要求公民履行义务，不涉及权利",
+    "C. 特定组织和个人可以享有超越法律的特权",
+    "D. 公民平等适用法律，任何人不得有超越法律的特权"
+   ],
+   "answer": "D",
+   "analysis": "法律面前人人平等要求平等适用法律、平等享有权利并平等履行义务，不允许任何组织或个人享有超越宪法法律的特权。",
+   "id": "d20261029-政治-5"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "词汇",
+   "source": "英语一真题风格改编",
+   "stem": "The report does not call for a total ban; it asks cities to ______ car use in the most crowded districts.（　）",
+   "options": [
+    "A. curb",
+    "B. expose",
+    "C. inherit",
+    "D. compose"
+   ],
+   "answer": "A",
+   "analysis": "curb表示“限制、抑制”，与前文not a total ban构成“适度限制”语义；其他选项分别为暴露、继承、组成，不合语境。",
+   "id": "d20261029-英语一-1"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "完形",
+   "source": "英语一真题风格改编",
+   "stem": "Rather than treating disagreement as a threat, the research team welcomed it. Each member was asked to explain the evidence behind a claim, ______ colleagues could see where their assumptions differed.（　）",
+   "options": [
+    "A. even if",
+    "B. unless",
+    "C. so that",
+    "D. whereas"
+   ],
+   "answer": "C",
+   "analysis": "前后是“解释证据”与“让同事看清假设差异”的目的关系，so that表示“以便”。",
+   "id": "d20261029-英语一-2"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "完形",
+   "source": "英语一真题风格改编",
+   "stem": "When residents help plan a neighborhood park, the result is more likely to reflect everyday needs. Not every request can be accepted; planners must ______ competing uses of limited space.（　）",
+   "options": [
+    "A. postpone",
+    "B. balance",
+    "C. resemble",
+    "D. inherit"
+   ],
+   "answer": "B",
+   "analysis": "competing uses需要被“平衡”，balance与语义搭配；其他选项不能表达协调不同用途。",
+   "id": "d20261029-英语一-3"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "阅读",
+   "source": "英语一真题风格改编",
+   "stem": "Passage: In one district, an unused lot was turned into a small community garden. At first, officials expected volunteers to focus on planting. Instead, residents organized a schedule for watering, repaired a nearby bench, and invited a local school to use the space for science lessons. The garden did not solve every shortage of public space, and its harvest was modest. Yet the project gave neighbors a reason to meet regularly and a practical way to discuss what the area needed next. The city later found that maintenance costs were lower than expected because residents reported broken tools early and shared responsibility for routine work. The most important outcome, however, was not financial. People who had rarely spoken began planning other small improvements together.\nQ: What is the passage mainly about?（　）",
+   "options": [
+    "A. Why cities should replace schools with gardens",
+    "B. How community gardens can produce large commercial harvests",
+    "C. How a small garden encouraged residents to cooperate on local needs",
+    "D. Why public projects should be managed only by officials"
+   ],
+   "answer": "C",
+   "analysis": "文章重点不在产量或节省资金，而在居民共同参与花园后建立联系，并继续合作改善社区。",
+   "id": "d20261029-英语一-4"
+  },
+  {
+   "subject": "英语一",
+   "type": "选择",
+   "topic": "阅读",
+   "source": "英语一真题风格改编",
+   "stem": "Passage: A public library in a small town began lending digital devices after staff noticed that some residents could not complete online forms or attend remote training. The program was not designed to replace books or face-to-face help. Instead, librarians offered short appointments where visitors could practice basic tasks, ask questions, and borrow a tablet for a limited period. Attendance was uneven at first. The library adjusted its hours after speaking with shift workers and added simple guides written in plain language. Over time, more visitors used the service, but librarians still emphasized that access to a device alone was not enough. People also needed reliable guidance and a place where mistakes did not feel embarrassing. The program therefore combined equipment, instruction, and patient support.\nQ: Which of the following can be inferred from the passage?（　）",
+   "options": [
+    "A. Providing devices alone may not remove all barriers to digital participation.",
+    "B. The library stopped lending books after introducing tablets.",
+    "C. The program succeeded immediately without changes to its schedule.",
+    "D. Librarians believed visitors should learn without asking questions."
+   ],
+   "answer": "A",
+   "analysis": "文中指出设备本身不足以解决问题，访客还需要指导、帮助和容许犯错的环境，因此单纯借出设备可能不够。",
+   "id": "d20261029-英语一-5"
+  }
+ ]
+}</script>
     <script>
-      // 刷题题库：每天一组，新的一天直接追加到数组末尾；第 1 天来自 day1.json（id="bank-day1"）
+      // 刷题题库：每天一组，独立追加；旧记录仍以原题目 ID 和本地存储键保存
       function bankDay(id) { try { return JSON.parse(document.getElementById(id).textContent); } catch (e) { return null; } }
-      const QUESTION_BANK = [bankDay("bank-day1")].filter(Boolean);
+      const QUESTION_BANK = [bankDay("bank-day1"), bankDay("bank-day2")].filter(Boolean);
     </script>
     <script src="hark.js"></script>
     <script>
@@ -2414,7 +3444,7 @@
         $("quitRev").addEventListener("click", finish);
 
         /* ---------- 刷题 ---------- */
-        var PSUBJ = ["数学一", "数据结构", "计组", "操作系统", "计网"];
+        var PSUBJ = ["数学一", "数据结构", "计组", "操作系统", "计网", "政治", "英语一"];
         var BANK = (typeof QUESTION_BANK !== "undefined" ? QUESTION_BANK : []).slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
         var pDayI = BANK.length - 1, pSubj = PSUBJ[0], pPos = {}, pPad = null, pPadQ = null;
         // bank text → md: restore "\t" eaten by JSON (\times), literal "\n" → newline, drop ``` fences
