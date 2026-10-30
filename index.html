@@ -805,7 +805,8 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
       .x-prev { display: grid; gap: 4px; padding: 10px 12px; border-radius: var(--r-s); border: 1px dashed var(--stroke-primary); background: var(--fill-primary-on); }
       .x-prev .x-q { font: var(--type-body); min-height: 1.4em; overflow-x: auto; }
       .x-prev .x-q:empty::before { content: "输入后在此预览公式"; color: var(--text-secondary); }
-      .x-m { white-space: normal; }
+      .x-q { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+      .x-m { white-space: normal; vertical-align: middle; }
       .x-fb { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Times New Roman", serif; font-size: 1.08em; }
       .x-fb i { font-style: italic; }
       .x-up { font-style: normal; }
@@ -824,7 +825,19 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
       .x-fb sup, .x-fb sub { font-size: 0.8em; line-height: 0; }
       .x-ss { display: inline-flex; flex-direction: column; vertical-align: middle; font-size: 0.8em; line-height: 1.05; }
       .x-rel { margin: 0 0.22em; }
-      .x-md { display: block; text-align: center; margin: 0.4em 0; overflow-x: auto; overflow-y: hidden; }
+      .x-md { display: block; box-sizing: border-box; max-width: 100%; text-align: center; margin: 0.4em 0; overflow-x: auto; overflow-y: hidden; }
+      .x-under { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.12em; }
+      .x-over { text-decoration: overline; text-decoration-thickness: 1px; }
+      .x-basis { min-width: 0; margin-top: 12px; padding: 10px 12px; border-left: 3px solid var(--stroke-primary); border-radius: 8px; background: var(--fill-tertiary); }
+      .x-basis > summary { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 4px 6px; align-items: start; min-height: var(--tap); cursor: pointer; list-style: none; }
+      .x-basis > summary::-webkit-details-marker { display: none; }
+      .x-basis > summary::before { content: "›"; grid-row: 1 / span 2; transition: transform var(--dur-quick) var(--ease-out); }
+      .x-basis[open] > summary::before { transform: rotate(90deg); }
+      .x-basis__label { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; color: var(--text-primary); }
+      .x-basis__preview { display: -webkit-box; grid-column: 2; overflow: hidden; overflow-wrap: anywhere; color: var(--text-secondary); font: var(--type-small); -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+      .x-basis__body { display: grid; gap: 6px; min-width: 0; padding-top: 8px; }
+      .x-basis__body > p { margin: 0; overflow-wrap: anywhere; }
+      .x-basis__body .link { overflow-wrap: anywhere; word-break: break-word; }
       /* 手写草稿板 */
       .x-pad { display: grid; gap: 10px; min-width: 0; }
       .x-padbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -13219,6 +13232,8 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
               if (/^(text|textrm|mathrm|operatorname|mbox)$/.test(name)) return { h: '<span class="x-up">' + esc(raw()) + "</span>" };
               if (/^(mathbf|boldsymbol|bf)$/.test(name)) return { h: "<b>" + arg() + "</b>" };
               if (name === "mathbb") { var t = raw(); return { h: BB[t] || esc(t) }; }
+              if (name === "underline") return { h: '<span class="x-under">' + arg() + "</span>" };
+              if (name === "overline") return { h: '<span class="x-over">' + arg() + "</span>" };
               if (name === "left" || name === "right") { ws(); if (s[i] === ".") { i++; return { h: "" }; } return atom(); }
               if (/^(big|Big|bigg|Bigg|bigl|bigr|Bigl|Bigr|displaystyle|textstyle|limits|nolimits)$/.test(name)) return { h: "" };
               if (name === "\\") return { h: "<br />" };
@@ -13248,12 +13263,17 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
             if (sup != null && sub != null) return b.h + '<span class="x-ss"><span>' + sup + "</span><span>" + sub + "</span></span>";
             return b.h + (sup != null ? "<sup>" + sup + "</sup>" : "<sub>" + sub + "</sub>");
           }
-          try { return seq(null); } catch (e) { return esc(s); }
+          try { return seq(null); } catch (e) {
+            return esc(s.replace(/\\\\/g, "\n").replace(/\\(?:displaystyle|textstyle|limits|nolimits)\b/g, "")
+              .replace(/\\(?:i?i?int|oint)\b/g, "∫").replace(/\\(?:sum|prod)\b/g, "∑").replace(/\\(?:quad|qquad)\b/g, " ")
+              .replace(/\\([A-Za-z]+)\s*/g, function (_m, name) { return SYM[name] || REL[name] || name; })
+              .replace(/\\(.)/g, "$1").replace(/[{}]/g, ""));
+          }
         }
         var kReady = false;
-        // display style keeps fractions' scripts readable; html output only (label carries the TeX); drop KaTeX's 1px spacer text
+        // Throw to the visual fallback rather than emitting KaTeX's red raw-TeX error string.
         function kx(tex, display) {
-          return katex.renderToString("\\displaystyle " + tex, { displayMode: display, throwOnError: false, output: "html" })
+          return katex.renderToString("\\displaystyle " + tex, { displayMode: display, throwOnError: true, output: "html" })
             .replace(/(<span class="vlist-s">)\u200b(<\/span>)/g, "$1$2");
         }
         function texHtml(tex, display) {
@@ -13261,17 +13281,33 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
           if (kReady) { try { return '<span class="' + cls + '" role="math" aria-label="' + esc(tex) + '">' + kx(tex, display) + "</span>"; } catch (e) {} }
           return '<span class="' + cls + ' x-fb" data-tex="' + esc(tex) + '">' + fallbackTex(tex) + "</span>";
         }
-        // text with $...$ / $$...$$ → HTML; inline=true renders block math inline (previews)
+        function plainMathLine(line, inline) {
+          var command = /\\(?:displaystyle|textstyle|frac|dfrac|tfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|cdot|times|left|right|mathrm|operatorname|overline|underline|mathbb|pi|infty|alpha|beta|theta|to|le|ge|neq|quad|qquad)\b|\\[,;!]/.exec(line);
+          if (!command) return esc(line);
+          var start = command.index, before = line.slice(0, start);
+          var lhs = /(?:[A-Za-z][A-Za-z0-9]*(?:\([^)]*\))?\s*=\s*)$/.exec(before);
+          if (lhs) start -= lhs[0].length;
+          var end = line.length, tail = line.slice(command.index), punctuation = /[。；！？]/.exec(tail);
+          if (punctuation) end = command.index + punctuation.index;
+          var tex = line.slice(start, end).trim();
+          if (!tex) return esc(line);
+          var display = !inline && ((!line.slice(0, start).trim() && !line.slice(end).replace(/^[。；！？\s]+/, "").trim()));
+          return esc(line.slice(0, start)) + texHtml(tex, display) + esc(line.slice(end));
+        }
+        function renderPlain(text, inline) {
+          return text.split("\n").map(function (line) { return plainMathLine(line, inline); }).join("\n");
+        }
+        // Supports dollar and TeX-parenthesis delimiters, plus unambiguous raw TeX used by imported question data.
         function md(text, inline) {
-          text = String(text || ""); var out = "", last = 0, re = /\$\$([\s\S]+?)\$\$|\$((?:\\\$|[^$])+?)\$/g, m;
+          text = String(text || ""); var out = "", last = 0, re = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\\\(([\s\S]+?)\\\)|\$((?:\\\$|[^$])+?)\$/g, m;
           while ((m = re.exec(text))) {
-            var pre = text.slice(last, m.index), disp = m[1] != null && !inline;
+            var pre = text.slice(last, m.index), disp = (m[1] != null || m[2] != null) && !inline;
             if (disp) pre = pre.replace(/\n$/, "");
-            out += esc(pre) + texHtml(m[1] != null ? m[1] : m[2], disp);
+            out += renderPlain(pre, inline) + texHtml(m[1] != null ? m[1] : m[2] != null ? m[2] : m[3] != null ? m[3] : m[4], disp);
             last = re.lastIndex;
             if (disp && text[last] === "\n") last++;
           }
-          return out + esc(text.slice(last));
+          return out + renderPlain(text.slice(last), inline);
         }
         function upgradeMath() {
           document.querySelectorAll(".x-fb").forEach(function (el) {
@@ -14363,10 +14399,18 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
           var labels = { direct: "同类真题考法", migration: "相邻考法迁移", cross_exam_same_type: "跨卷种参照（非当前卷种直接来源）", skill_gap: "同型出处未核实 · 课程技能补位", verified_past_exam: "已核实真题题号", verified_mock: "已核实模拟卷题号", similar_exam_method_only: "相邻考法参照（非同题型）", no_reliable_source_found: "尚无可靠逐题出处" };
           labels.format_reference = "真题格式参照 · 原创材料";
           var label = labels[q.basis_kind] || "考法参考";
+          var preview = String(q.basis).split(/\r?\n/)[0].trim();
+          if (preview.length > 144) preview = preview.slice(0, 140).replace(/\s+$/, "") + "…";
           var refs = Array.isArray(q.basis_sources) ? q.basis_sources.map(function (s) {
             return '<a class="link" href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer">' + esc(s.label) + '</a>';
           }).join(" · ") : "";
-          return '<div class="x-basis" style="margin-top:12px;padding:10px 12px;border-left:3px solid var(--stroke-primary);background:var(--fill-tertiary);border-radius:8px"><p class="x-sub" style="margin-bottom:5px"><b style="color:var(--text-primary)">命题依据</b> <span class="pill">' + esc(label) + '</span></p><p class="x-sub">' + esc(q.basis) + '</p>' + (q.difficulty_rationale ? '<p class="x-sub" style="margin-top:5px"><b style="color:var(--text-primary)">难度定位：</b>' + esc(q.difficulty_rationale) + '</p>' : "") + (refs ? '<p class="x-sub" style="margin-top:5px">来源：' + refs + '</p>' : "") + (q.scope_note ? '<p class="x-sub" style="margin-top:5px"><b style="color:var(--text-primary)">考纲核对：</b>' + esc(q.scope_note) + '</p>' : "") + (q.textbook_reference ? '<p class="x-sub" style="margin-top:5px"><b style="color:var(--text-primary)">教材对照：</b>' + esc(q.textbook_reference) + '</p>' : "") + (q.source_identity_note ? '<p class="x-sub" style="margin-top:5px"><b style="color:var(--text-primary)">来源限制：</b>' + esc(q.source_identity_note) + '</p>' : "") + '</div>';
+          var body = '<p class="x-sub">' + esc(q.basis) + '</p>' +
+            (q.difficulty_rationale ? '<p class="x-sub"><b style="color:var(--text-primary)">难度定位：</b>' + esc(q.difficulty_rationale) + '</p>' : "") +
+            (refs ? '<p class="x-sub">来源：' + refs + '</p>' : "") +
+            (q.scope_note ? '<p class="x-sub"><b style="color:var(--text-primary)">考纲核对：</b>' + esc(q.scope_note) + '</p>' : "") +
+            (q.textbook_reference ? '<p class="x-sub"><b style="color:var(--text-primary)">教材对照：</b>' + esc(q.textbook_reference) + '</p>' : "") +
+            (q.source_identity_note ? '<p class="x-sub"><b style="color:var(--text-primary)">来源限制：</b>' + esc(q.source_identity_note) + '</p>' : "");
+          return '<details class="x-basis"><summary><span class="x-basis__label"><b>命题依据</b><span class="pill">' + esc(label) + '</span></span><span class="x-basis__preview">' + esc(preview) + '</span></summary><div class="x-basis__body">' + body + '</div></details>';
         }
         function showQ() {
           var list = pList(), i = pPos[pKey()], q = list[i]; if (!q) return;
