@@ -156,9 +156,12 @@
     .scratch-canvas-wrap { flex:1; min-height:0; position:relative; overflow:hidden; background:#fff; }
     .scratch-canvas {
       display:block; width:100%; height:100%; touch-action:none; cursor:crosshair;
+      transform-origin:0 0; will-change:transform; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none;
       background-color:#fff;
       background-image:repeating-linear-gradient(to bottom,#fff 0,#fff 30px,#e7edf6 31px,#e7edf6 32px);
     }
+    .scratch-panel.pencil-only .scratch-canvas { touch-action:pan-x pan-y pinch-zoom; }
+    .scratch-panel.pencil-only.is-zoomed .scratch-canvas { touch-action:none; }
     .scratch-foot { min-height:26px; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:3px 9px; color:#748095; font-size:10px; background:#fbfcfe; border-top:1px solid #edf0f5; }
     .scratch-foot span:last-child { white-space:nowrap; }
     .resize-grip { position:absolute; width:22px; height:22px; right:0; bottom:0; z-index:4; cursor:nwse-resize; touch-action:none; opacity:.55; }
@@ -298,7 +301,7 @@
         <strong>正在加载原站试卷…</strong>
         <p>首次打开稍等片刻。可拖动试卷，或双指捏合缩放。</p>
       </div>
-      <div class="stage-tip" id="stageTip">单指拖动 · 双指缩放 · 触控笔/手指在草稿纸上书写</div>
+      <div class="stage-tip" id="stageTip">试卷：单指拖动/双指缩放 · 草稿纸可切换仅触控笔书写</div>
       <button class="scratch-launcher" id="scratchLauncher" type="button" hidden>打开草稿纸</button>
 
       <section class="scratch-panel" id="scratchPanel" aria-label="可移动和调整大小的手写草稿纸">
@@ -315,9 +318,11 @@
           <input class="pen-size" id="penSize" type="range" min="1" max="8" value="3" aria-label="画笔粗细" title="画笔粗细" />
           <button class="quiet" id="undoButton" type="button" disabled>撤销</button>
           <button class="quiet" id="clearButton" type="button">清空</button>
+          <button class="quiet" id="pencilOnlyButton" type="button" aria-pressed="false" title="开启后只有触控笔书写，手指可移动或缩放草稿">仅笔写</button>
+          <button class="quiet" id="fitScratchButton" type="button" disabled title="恢复草稿纸原始大小">1:1</button>
         </div>
-        <div class="scratch-canvas-wrap"><canvas class="scratch-canvas" id="scratch" aria-label="可用鼠标、触控笔或手指书写的草稿纸">当前浏览器不支持画布。</canvas></div>
-        <div class="scratch-foot"><span id="draftStatus">草稿仅保存在当前设备</span><span>拖标题移动 · 拖右下角调大小</span></div>
+        <div class="scratch-canvas-wrap"><canvas class="scratch-canvas" id="scratch" aria-label="手写草稿纸画布">当前浏览器不支持画布。</canvas></div>
+        <div class="scratch-foot"><span id="draftStatus">草稿仅保存在当前设备</span><span id="scratchInteractionHint">拖标题移动 · 拖右下角调大小</span></div>
         <div class="resize-grip" id="scratchResizeGrip" aria-label="拖动调整草稿纸大小" title="拖动调整大小"></div>
       </section>
     </div>
@@ -347,7 +352,9 @@
       var startButton = $("startButton"), workspace = $("workspace"), clock = $("clock");
       var check = $("finishedCheck"), submit = $("submitButton"), answer = $("answerSection");
       var status = $("submitStatus"), restart = $("restartButton"), runState = $("runState");
-      var canvas = $("scratch"), ctx = canvas.getContext("2d"), drawing = false, last = null, tool = "pen";
+      var canvas = $("scratch"), ctx = canvas.getContext("2d"), drawing = false, last = null, tool = "pen", activePointerId = null;
+      var pencilOnly = false;
+      try { pencilOnly = localStorage.getItem("cuotiben-pencil") === "1"; } catch (e) {}
       var pdfDoc = null, currentPage = 1, pageCount = 5, zoom = 1, fitScale = 1, panX = 0, panY = 0;
       var renderTask = null, renderVersion = 0, renderDelay = 0, baseWidth = 0, baseHeight = 0;
       var pointers = new Map(), dragPoint = null, pinchStart = null, pinchChanged = false;
@@ -669,7 +676,8 @@
       function clearCanvas(save) { if (!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); if (save) saveDrawing(); }
       function canvasPoint(event) {
         var rect = canvas.getBoundingClientRect();
-        return { x:(event.clientX-rect.left) * (canvas.clientWidth / rect.width), y:(event.clientY-rect.top) * (canvas.clientHeight / rect.height) };
+        var scale = scratchZoom.s || 1;
+        return { x:(event.clientX-rect.left) / scale, y:(event.clientY-rect.top) / scale };
       }
       function rememberCanvas() {
         try { undoStack.push(canvas.toDataURL("image/png")); if (undoStack.length > 12) undoStack.shift(); $("undoButton").disabled = false; } catch (e) {}
@@ -684,19 +692,137 @@
         ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(pointNow.x,pointNow.y); ctx.stroke();
         ctx.restore(); last = pointNow;
       }
+      var scratchZoom = { s:1, x:0, y:0 }, scratchZoomRaf = 0, scratchZoomed = false, scratchGesture = null, scratchInertia = 0;
+      var scratchWrap = document.querySelector(".scratch-canvas-wrap"), fitScratchButton = $("fitScratchButton");
+      function setPencilOnly(enabled) {
+        pencilOnly = !!enabled;
+        try { localStorage.setItem("cuotiben-pencil", pencilOnly ? "1" : "0"); } catch (e) {}
+        scratchPanel.classList.toggle("pencil-only", pencilOnly);
+        $("pencilOnlyButton").setAttribute("aria-pressed", String(pencilOnly));
+        $("scratchInteractionHint").textContent = pencilOnly ? "仅触控笔书写 · 手指双指缩放，放大后单指移动" : "手指/鼠标/触控笔可书写 · 拖标题移动 · 拖右下角调大小";
+      }
+      function clampScratchZoom() {
+        var width = scratchWrap.clientWidth, height = scratchWrap.clientHeight;
+        scratchZoom.s = Math.max(1, Math.min(3, scratchZoom.s));
+        scratchZoom.x = Math.min(0, Math.max(width - width * scratchZoom.s, scratchZoom.x));
+        scratchZoom.y = Math.min(0, Math.max(height - height * scratchZoom.s, scratchZoom.y));
+      }
+      function applyScratchZoom() {
+        scratchZoomRaf = 0;
+        canvas.style.transform = scratchZoom.s === 1 ? "" : "translate3d(" + scratchZoom.x + "px," + scratchZoom.y + "px,0) scale(" + scratchZoom.s + ")";
+        var zoomed = scratchZoom.s > 1;
+        if (zoomed !== scratchZoomed) {
+          scratchZoomed = zoomed;
+          scratchPanel.classList.toggle("is-zoomed", zoomed);
+          fitScratchButton.disabled = !zoomed;
+        }
+      }
+      function scheduleScratchZoom() { if (!scratchZoomRaf) scratchZoomRaf = window.requestAnimationFrame(applyScratchZoom); }
+      function stopScratchInertia() { if (scratchInertia) { window.cancelAnimationFrame(scratchInertia); scratchInertia = 0; } }
+      function resetScratchZoom() {
+        stopScratchInertia(); scratchGesture = null;
+        scratchZoom.s = 1; scratchZoom.x = 0; scratchZoom.y = 0;
+        scheduleScratchZoom();
+      }
+      function startScratchInertia(vx, vy) {
+        if (Math.hypot(vx, vy) < .05) return;
+        var previous = performance.now();
+        function step(now) {
+          var dt = Math.min(32, now - previous), oldX = scratchZoom.x, oldY = scratchZoom.y, decay = Math.pow(.95, dt / 16);
+          previous = now; scratchZoom.x += vx * dt; scratchZoom.y += vy * dt; clampScratchZoom();
+          if (scratchZoom.x === oldX) vx = 0;
+          if (scratchZoom.y === oldY) vy = 0;
+          vx *= decay; vy *= decay; applyScratchZoom();
+          scratchInertia = Math.hypot(vx, vy) > .02 ? window.requestAnimationFrame(step) : 0;
+        }
+        scratchInertia = window.requestAnimationFrame(step);
+      }
+      function scratchMidpoint(a, b) { return { x:(a.x+b.x)/2, y:(a.y+b.y)/2 }; }
+      function scratchFingers(event) {
+        var result = [];
+        for (var i=0; i<event.touches.length; i++) if (event.touches[i].touchType !== "stylus") result.push(event.touches[i]);
+        return result;
+      }
+      function hasStylusTouch(event) {
+        for (var i=0; i<event.changedTouches.length; i++) if (event.changedTouches[i].touchType === "stylus") return true;
+        return false;
+      }
+      function scratchLocalTouch(touch) {
+        var rect = scratchWrap.getBoundingClientRect();
+        return { x:touch.clientX-rect.left-scratchWrap.clientLeft, y:touch.clientY-rect.top-scratchWrap.clientTop };
+      }
+      function startScratchGesture(event) {
+        var fingers = scratchFingers(event);
+        if (fingers.length >= 2) {
+          var a=scratchLocalTouch(fingers[0]), b=scratchLocalTouch(fingers[1]), mid=scratchMidpoint(a,b);
+          scratchGesture = { pinch:true, distance:Math.hypot(a.x-b.x,a.y-b.y)||1, scale:scratchZoom.s, pointX:(mid.x-scratchZoom.x)/scratchZoom.s, pointY:(mid.y-scratchZoom.y)/scratchZoom.s };
+        } else if (fingers.length === 1 && scratchZoom.s > 1) {
+          var point=scratchLocalTouch(fingers[0]);
+          scratchGesture = { pinch:false, id:fingers[0].identifier, x:point.x, y:point.y, time:event.timeStamp, vx:0, vy:0 };
+        } else scratchGesture = null;
+      }
+      canvas.addEventListener("touchstart", function (event) {
+        if (!pencilOnly || hasStylusTouch(event)) { event.preventDefault(); return; }
+        stopScratchInertia(); startScratchGesture(event);
+        if (scratchGesture && scratchGesture.pinch) event.preventDefault();
+      }, { passive:false });
+      canvas.addEventListener("touchmove", function (event) {
+        if (!pencilOnly || hasStylusTouch(event)) { event.preventDefault(); return; }
+        if (!scratchGesture) return;
+        var fingers=scratchFingers(event);
+        if (scratchGesture.pinch) {
+          if (fingers.length < 2) return;
+          event.preventDefault();
+          var a=scratchLocalTouch(fingers[0]), b=scratchLocalTouch(fingers[1]), mid=scratchMidpoint(a,b);
+          scratchZoom.s=Math.max(1,Math.min(3,scratchGesture.scale*Math.hypot(a.x-b.x,a.y-b.y)/scratchGesture.distance));
+          scratchZoom.x=mid.x-scratchGesture.pointX*scratchZoom.s; scratchZoom.y=mid.y-scratchGesture.pointY*scratchZoom.s;
+          clampScratchZoom(); scheduleScratchZoom(); return;
+        }
+        var touch=null;
+        for (var i=0; i<fingers.length; i++) if (fingers[i].identifier === scratchGesture.id) touch=fingers[i];
+        if (!touch) return;
+        var point=scratchLocalTouch(touch), dt=Math.max(1,event.timeStamp-scratchGesture.time), dx=point.x-scratchGesture.x, dy=point.y-scratchGesture.y;
+        scratchZoom.x+=dx; scratchZoom.y+=dy; clampScratchZoom(); scheduleScratchZoom();
+        scratchGesture.vx=scratchGesture.vx*.2+(dx/dt)*.8; scratchGesture.vy=scratchGesture.vy*.2+(dy/dt)*.8;
+        scratchGesture.x=point.x; scratchGesture.y=point.y; scratchGesture.time=event.timeStamp;
+      }, { passive:false });
+      function endScratchGesture(event) {
+        if (!pencilOnly) return;
+        var fingers=scratchFingers(event);
+        if (!fingers.length) {
+          if (scratchGesture && !scratchGesture.pinch && event.timeStamp-scratchGesture.time<80) startScratchInertia(scratchGesture.vx,scratchGesture.vy);
+          scratchGesture=null;
+        } else startScratchGesture(event);
+      }
+      canvas.addEventListener("touchend", endScratchGesture);
+      canvas.addEventListener("touchcancel", endScratchGesture);
+      ["gesturestart","gesturechange"].forEach(function (name) {
+        scratchWrap.addEventListener(name,function (event) { if (pencilOnly) event.preventDefault(); },{ passive:false });
+      });
       canvas.addEventListener("pointerdown", function (event) {
         event.stopPropagation();
+        if (event.pointerType === "pen" && !pencilOnly) setPencilOnly(true);
+        if (pencilOnly && event.pointerType !== "pen") return;
         if (event.button !== undefined && event.button !== 0) return;
         sizeScratchCanvas(false);
         rememberCanvas();
-        drawing = true; last = canvasPoint(event);
+        drawing = true; activePointerId = event.pointerId; last = canvasPoint(event);
         try { canvas.setPointerCapture(event.pointerId); } catch (e) {}
         event.preventDefault();
       });
-      canvas.addEventListener("pointermove", function (event) { if (drawing) { strokeTo(canvasPoint(event),event.pressure); event.preventDefault(); } });
-      function stopDrawing() { if (!drawing) return; drawing=false; last=null; saveDrawing(); }
+      canvas.addEventListener("pointermove", function (event) {
+        if (!drawing || event.pointerId !== activePointerId) return;
+        strokeTo(canvasPoint(event),event.pressure); event.preventDefault();
+      });
+      function stopDrawing(event) {
+        if (!drawing || (event && event.pointerId !== activePointerId)) return;
+        drawing=false; activePointerId=null; last=null; saveDrawing();
+      }
       canvas.addEventListener("pointerup", stopDrawing);
       canvas.addEventListener("pointercancel", stopDrawing);
+      canvas.addEventListener("lostpointercapture", stopDrawing);
+      $("pencilOnlyButton").addEventListener("click", function () { setPencilOnly(!pencilOnly); });
+      fitScratchButton.addEventListener("click", resetScratchZoom);
       $("penButton").addEventListener("click", function () { tool="pen"; $("penButton").classList.add("selected"); $("eraserButton").classList.remove("selected"); $("penButton").setAttribute("aria-pressed","true"); $("eraserButton").setAttribute("aria-pressed","false"); });
       $("eraserButton").addEventListener("click", function () { tool="eraser"; $("eraserButton").classList.add("selected"); $("penButton").classList.remove("selected"); $("eraserButton").setAttribute("aria-pressed","true"); $("penButton").setAttribute("aria-pressed","false"); });
       $("undoButton").addEventListener("click", function () {
@@ -760,6 +886,7 @@
       $("scratchResizeGrip").addEventListener("pointercancel", stopScratchResize);
 
       state = getAttempt();
+      setPencilOnly(pencilOnly);
       if (state && !state.submitted && state.deadline <= Date.now()) { state.submitted=true; state.timedOut=true; state.submittedAt=Date.now(); saveAttempt(); }
       render();
       sizeScratchCanvas(false);
