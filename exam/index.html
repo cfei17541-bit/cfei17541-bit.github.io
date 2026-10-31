@@ -381,8 +381,9 @@
       var annotationMode = false, annotationTool = "pen", annotationDrawing = false, annotationPointerId = null;
       var currentAnnotationStroke = null, currentAnnotationPage = null, pageAnnotations = {};
       try { pageAnnotations = JSON.parse(read(ANNOTATION_KEY) || "{}"); if (!pageAnnotations || typeof pageAnnotations !== "object" || Array.isArray(pageAnnotations)) pageAnnotations = {}; } catch (e) { pageAnnotations = {}; }
-      var pencilOnly = false;
-      try { pencilOnly = localStorage.getItem("cuotiben-pencil") === "1"; } catch (e) {}
+      // Same input rule as Daily Question makePad's pencil-only mode, from first touch.
+      // A previously saved finger-writing preference must never create ink here.
+      var pencilOnly = true;
       var pdfDoc = null, currentPage = 1, pageCount = 5, zoom = 1, fitScale = 1, panX = 0, panY = 0;
       var renderTask = null, renderVersion = 0, renderDelay = 0, baseWidth = 0, baseHeight = 0;
       var pointers = new Map(), dragPoint = null, pinchStart = null, pinchChanged = false;
@@ -411,13 +412,14 @@
         document.body.classList.toggle("exam-active", active);
       }
       function setAnnotationMode(enabled) {
+        if (annotationDrawing) finishAnnotationStroke();
         annotationMode = !!enabled && !!pdfDoc;
         pageSheet.classList.toggle("annotating", annotationMode);
         $("annotationToggleButton").classList.toggle("selected", annotationMode);
         $("annotationToggleButton").setAttribute("aria-pressed", String(annotationMode));
         $("annotationToggleButton").textContent = annotationMode ? "结束书写" : "写在试卷上";
         $("annotationTools").hidden = !annotationMode;
-        $("stageTip").textContent = annotationMode ? "书写模式：直接在试卷上批注 · 点“结束书写”后可拖动或缩放" : "点“写在试卷上”后可直接批注；批注逐页保存在本机";
+        $("stageTip").textContent = annotationMode ? "Apple Pencil 书写 · 手指拖动 / 双指缩放，不留笔迹" : "点“写在试卷上”后用 Apple Pencil 批注；手指始终只拖动或缩放";
         if (annotationMode && !scratchPanel.classList.contains("minimized")) {
           scratchPanel.classList.add("minimized");
           $("minimizeScratchButton").textContent = "+";
@@ -621,6 +623,7 @@
       }
       function setPage(nextPage) {
         if (!pdfDoc) return;
+        if (annotationDrawing) finishAnnotationStroke();
         currentPage = Math.max(1, Math.min(pageCount, Math.round(Number(nextPage) || 1)));
         panX = 0; panY = 0;
         updatePageControls();
@@ -656,6 +659,9 @@
       function midpoint(a,b) { return { x:(a.x+b.x)/2, y:(a.y+b.y)/2 }; }
       stage.addEventListener("pointerdown", function (event) {
         if (event.target.closest(".scratch-panel, .scratch-launcher, .answer")) return;
+        // As in makePad, the pen takes priority over a resting finger/palm.
+        if (annotationDrawing || (annotationMode && event.pointerType === "pen")) return;
+        if (event.pointerType === "mouse" && event.button !== 0) return;
         stage.setPointerCapture(event.pointerId);
         pointers.set(event.pointerId, { x:event.clientX, y:event.clientY });
         if (pointers.size === 1) {
@@ -704,6 +710,7 @@
       }
       stage.addEventListener("pointerup", releaseReaderPointer);
       stage.addEventListener("pointercancel", releaseReaderPointer);
+      stage.addEventListener("lostpointercapture", releaseReaderPointer);
       var resizeObserver = new ResizeObserver(function () { if (pdfDoc && !workspace.hidden) renderCurrentPage(); sizeScratchCanvas(true); });
       resizeObserver.observe(stage);
       window.addEventListener("resize", function () { if (pdfDoc && !workspace.hidden) renderCurrentPage(); sizeScratchCanvas(true); });
@@ -764,8 +771,14 @@
       }
       annotationCanvas.addEventListener("pointerdown", function (event) {
         if (!annotationMode || !pdfDoc || (event.button !== undefined && event.button !== 0)) return;
+        // Daily Question makePad's pencil-only filter: never prevent, stop, or
+        // capture fingers here; the existing reader owns their pan/pinch gestures.
+        if (pencilOnly && event.pointerType !== "pen") return;
         event.preventDefault(); event.stopPropagation();
         if (annotationDrawing) return;
+        pointers.forEach(function (_, id) { try { stage.releasePointerCapture(id); } catch (e) {} });
+        pointers.clear(); dragPoint = null; pinchStart = null; pinchChanged = false;
+        stage.classList.remove("is-dragging");
         var point = annotationPoint(event), strokes = annotationsFor(currentPage);
         currentAnnotationStroke = {
           tool: annotationTool,
@@ -967,6 +980,7 @@
         event.stopPropagation();
         if (event.pointerType === "pen" && !pencilOnly) setPencilOnly(true);
         if (pencilOnly && event.pointerType !== "pen") return;
+        if (drawing) return;
         if (event.button !== undefined && event.button !== 0) return;
         sizeScratchCanvas(false);
         rememberCanvas();
@@ -985,7 +999,9 @@
       canvas.addEventListener("pointerup", stopDrawing);
       canvas.addEventListener("pointercancel", stopDrawing);
       canvas.addEventListener("lostpointercapture", stopDrawing);
-      $("pencilOnlyButton").addEventListener("click", function () { setPencilOnly(!pencilOnly); });
+      $("pencilOnlyButton").disabled = true;
+      $("pencilOnlyButton").textContent = "仅 Apple Pencil 书写";
+      $("pencilOnlyButton").title = "Apple Pencil 书写；手指只移动和缩放，不留下笔迹";
       fitScratchButton.addEventListener("click", resetScratchZoom);
       $("penButton").addEventListener("click", function () { tool="pen"; $("penButton").classList.add("selected"); $("eraserButton").classList.remove("selected"); $("penButton").setAttribute("aria-pressed","true"); $("eraserButton").setAttribute("aria-pressed","false"); });
       $("eraserButton").addEventListener("click", function () { tool="eraser"; $("eraserButton").classList.add("selected"); $("penButton").classList.remove("selected"); $("eraserButton").setAttribute("aria-pressed","true"); $("penButton").setAttribute("aria-pressed","false"); });
