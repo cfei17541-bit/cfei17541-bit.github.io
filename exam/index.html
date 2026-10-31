@@ -91,6 +91,13 @@
       min-height:52px; display:flex; align-items:center; justify-content:space-between; gap:10px;
       padding:6px clamp(10px,1.8vw,22px); background:#fff; border-bottom:1px solid var(--line); z-index:7;
     }
+    .annotation-tools {
+      min-height:44px; display:flex; align-items:center; gap:6px; padding:5px clamp(10px,1.8vw,22px);
+      background:#fff; border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:thin; z-index:6;
+    }
+    .annotation-tools .quiet { min-height:32px; padding:5px 9px; font-size:12px; }
+    .annotation-tools .selected { background:var(--blue-soft); color:var(--blue); border-color:#c8d7ff; }
+    .annotation-note { margin-left:auto; color:var(--muted); font-size:11px; white-space:nowrap; }
     .reader-controls, .reader-utilities { display:flex; align-items:center; gap:7px; min-width:0; }
     .reader-toolbar button { min-height:34px; }
     .page-control { display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--muted); font-size:12px; }
@@ -112,6 +119,9 @@
       will-change:transform; pointer-events:none;
     }
     .page-sheet canvas { display:block; width:100%; height:100%; }
+    .page-sheet #annotationCanvas { position:absolute; inset:0; z-index:1; width:100%; height:100%; pointer-events:none; touch-action:none; }
+    .page-sheet.annotating { pointer-events:auto; cursor:crosshair; }
+    .page-sheet.annotating #annotationCanvas { pointer-events:auto; cursor:crosshair; }
     .pdf-status {
       position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(440px,calc(100% - 36px));
       padding:22px; border:1px solid #d8e0ea; border-radius:16px; background:rgba(255,255,255,.96);
@@ -121,7 +131,7 @@
     .pdf-status p { margin:0 0 13px; font-size:13px; }
     .pdf-status.error { border-color:#f1d1c9; background:#fffaf8; }
     .stage-tip { position:absolute; left:14px; bottom:12px; z-index:3; color:#647187; background:rgba(255,255,255,.83); border:1px solid rgba(220,226,235,.8); border-radius:999px; padding:5px 9px; font-size:11px; pointer-events:none; }
-    .scratch-launcher { position:absolute; right:14px; bottom:14px; z-index:12; border:0; border-radius:999px; background:#152338; color:#fff; padding:10px 15px; box-shadow:0 8px 24px rgba(15,30,50,.24); font-weight:700; }
+    .scratch-launcher { position:absolute; right:14px; bottom:14px; z-index:16; border:0; border-radius:999px; background:#152338; color:#fff; padding:10px 15px; box-shadow:0 8px 24px rgba(15,30,50,.24); font-weight:700; }
     .scratch-launcher:hover { background:#243c5f; }
 
     /* Movable, resizable scratch sheet */
@@ -199,6 +209,8 @@
       .top-actions .primary { min-height:35px; padding:6px 9px; font-size:11px; }
       .top-actions .quiet { min-height:35px; padding:5px 8px; font-size:11px; }
       .reader-toolbar { min-height:47px; padding:5px 8px; gap:5px; overflow-x:auto; }
+      .annotation-tools { min-height:40px; padding:4px 8px; gap:4px; }
+      .annotation-note { margin-left:0; }
       .reader-controls, .reader-utilities { gap:4px; }
       .reader-toolbar button { min-height:32px; }
       .page-button { width:32px; }
@@ -248,7 +260,7 @@
         <div>
           <div class="subject">数学 · 数学一</div>
           <h2 id="paper-title">2018 年考研数学一 · 完整卷</h2>
-          <p class="catalog-copy">完整试题采用新东方网整理版（非官方扫描原卷）。PDF 由原发布方托管；本页不复制或保存试卷文件。开始后进入全屏式试卷工作台：可翻页、缩放和拖动画面，右下角附有能移动和调大小的手写草稿纸。</p>
+          <p class="catalog-copy">完整试题采用新东方网整理版（非官方扫描原卷）。PDF 由原发布方托管；本页不复制或保存试卷文件。开始后进入全屏式试卷工作台：可翻页、缩放和拖动画面，也可直接在每页试卷上手写批注，或使用独立草稿纸。</p>
         </div>
         <button class="primary" id="startButton" type="button">开始作答，立即计时</button>
       </div>
@@ -291,17 +303,28 @@
         <button class="quiet" id="zoomOutButton" type="button" aria-label="缩小" title="缩小">−</button>
         <button class="quiet" id="zoomInButton" type="button" aria-label="放大" title="放大">＋</button>
         <button class="quiet" id="fitButton" type="button">适合页面</button>
+        <button class="quiet" id="annotationToggleButton" type="button" aria-pressed="false" disabled title="在当前试卷页直接手写批注">写在试卷上</button>
         <a class="original-link" href="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf" target="_blank" rel="noopener noreferrer">在新页面打开原 PDF ↗</a>
       </div>
     </nav>
 
-    <div class="reader-stage" id="readerStage" aria-label="试卷阅读区：单指拖动页面，两指捏合缩放">
-      <div class="page-sheet" id="pageSheet" hidden><canvas id="pdfCanvas" aria-label="试卷当前页"></canvas></div>
+    <div class="annotation-tools" id="annotationTools" role="toolbar" aria-label="试卷批注工具" hidden>
+      <button class="quiet selected" id="annotationPenButton" type="button" aria-pressed="true">笔</button>
+      <button class="quiet" id="annotationEraserButton" type="button" aria-pressed="false">橡皮</button>
+      <input class="ink-picker" id="annotationInkPicker" type="color" value="#182230" aria-label="批注颜色" title="批注颜色" />
+      <input class="pen-size" id="annotationPenSize" type="range" min="1" max="8" value="3" aria-label="批注粗细" title="批注粗细" />
+      <button class="quiet" id="annotationUndoButton" type="button" disabled>撤销</button>
+      <button class="quiet" id="annotationClearButton" type="button" disabled>清空本页</button>
+      <span class="annotation-note" id="annotationStatus">批注按页保存在本机</span>
+    </div>
+
+    <div class="reader-stage" id="readerStage" aria-label="试卷阅读区：可切换手写批注，或拖动页面、两指捏合缩放">
+      <div class="page-sheet" id="pageSheet" hidden><canvas id="pdfCanvas" aria-label="试卷当前页"></canvas><canvas id="annotationCanvas" aria-label="当前页手写批注层"></canvas></div>
       <div class="pdf-status" id="pdfStatus" role="status" aria-live="polite">
         <strong>正在加载原站试卷…</strong>
         <p>首次打开稍等片刻。可拖动试卷，或双指捏合缩放。</p>
       </div>
-      <div class="stage-tip" id="stageTip">试卷：单指拖动/双指缩放 · 草稿纸可切换仅触控笔书写</div>
+      <div class="stage-tip" id="stageTip">点“写在试卷上”后可直接批注；批注逐页保存在本机</div>
       <button class="scratch-launcher" id="scratchLauncher" type="button" hidden>打开草稿纸</button>
 
       <section class="scratch-panel" id="scratchPanel" aria-label="可移动和调整大小的手写草稿纸">
@@ -346,6 +369,7 @@
       var DURATION = 180 * 60 * 1000;
       var ATTEMPT_KEY = "study-site-exam-2018-math1-attempt-v1";
       var DRAWING_KEY = "study-site-exam-2018-math1-draft-v1";
+      var ANNOTATION_KEY = "study-site-exam-2018-math1-annotations-v1";
       var PDF_URL = "https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf";
       var $ = function (id) { return document.getElementById(id); };
       var state = null, timerId = null;
@@ -353,6 +377,10 @@
       var check = $("finishedCheck"), submit = $("submitButton"), answer = $("answerSection");
       var status = $("submitStatus"), restart = $("restartButton"), runState = $("runState");
       var canvas = $("scratch"), ctx = canvas.getContext("2d"), drawing = false, last = null, tool = "pen", activePointerId = null;
+      var annotationCanvas = $("annotationCanvas"), annotationCtx = annotationCanvas.getContext("2d");
+      var annotationMode = false, annotationTool = "pen", annotationDrawing = false, annotationPointerId = null;
+      var currentAnnotationStroke = null, currentAnnotationPage = null, pageAnnotations = {};
+      try { pageAnnotations = JSON.parse(read(ANNOTATION_KEY) || "{}"); if (!pageAnnotations || typeof pageAnnotations !== "object" || Array.isArray(pageAnnotations)) pageAnnotations = {}; } catch (e) { pageAnnotations = {}; }
       var pencilOnly = false;
       try { pencilOnly = localStorage.getItem("cuotiben-pencil") === "1"; } catch (e) {}
       var pdfDoc = null, currentPage = 1, pageCount = 5, zoom = 1, fitScale = 1, panX = 0, panY = 0;
@@ -365,11 +393,38 @@
       function write(key, value) { try { localStorage.setItem(key, value); return true; } catch (e) { return false; } }
       function getAttempt() { try { var raw = read(ATTEMPT_KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
       function saveAttempt() { if (state) write(ATTEMPT_KEY, JSON.stringify(state)); }
+      function annotationsFor(page) {
+        var key = String(page);
+        if (!Array.isArray(pageAnnotations[key])) pageAnnotations[key] = [];
+        return pageAnnotations[key];
+      }
+      function updateAnnotationControls() {
+        var strokes = annotationsFor(currentPage);
+        $("annotationUndoButton").disabled = !strokes.length || annotationDrawing;
+        $("annotationClearButton").disabled = !strokes.length || annotationDrawing;
+        $("annotationStatus").textContent = "第 " + currentPage + " 页批注 · 仅保存在本机";
+      }
       function pad(value) { return String(value).padStart(2, "0"); }
       function format(ms) { var seconds = Math.max(0, Math.ceil(ms / 1000)); return pad(Math.floor(seconds / 3600)) + ":" + pad(Math.floor(seconds % 3600 / 60)) + ":" + pad(seconds % 60); }
       function setActive(active) {
         workspace.classList.toggle("exam-fullscreen", active);
         document.body.classList.toggle("exam-active", active);
+      }
+      function setAnnotationMode(enabled) {
+        annotationMode = !!enabled && !!pdfDoc;
+        pageSheet.classList.toggle("annotating", annotationMode);
+        $("annotationToggleButton").classList.toggle("selected", annotationMode);
+        $("annotationToggleButton").setAttribute("aria-pressed", String(annotationMode));
+        $("annotationToggleButton").textContent = annotationMode ? "结束书写" : "写在试卷上";
+        $("annotationTools").hidden = !annotationMode;
+        $("stageTip").textContent = annotationMode ? "书写模式：直接在试卷上批注 · 点“结束书写”后可拖动或缩放" : "点“写在试卷上”后可直接批注；批注逐页保存在本机";
+        if (annotationMode && !scratchPanel.classList.contains("minimized")) {
+          scratchPanel.classList.add("minimized");
+          $("minimizeScratchButton").textContent = "+";
+          $("minimizeScratchButton").setAttribute("aria-label", "展开草稿纸");
+          $("scratchLauncher").hidden = false;
+        }
+        updateAnnotationControls();
       }
       function render() {
         if (!state) {
@@ -445,10 +500,12 @@
         }
       }
       function resetAttempt() {
-        if (!window.confirm((state && state.submitted ? "重新开始练习？" : "放弃本次作答并重新计时？") + "这也会清空本机草稿纸。")) return;
+        if (!window.confirm((state && state.submitted ? "重新开始练习？" : "放弃本次作答并重新计时？") + "这也会清空本机草稿纸和试卷批注。")) return;
         state = null;
         clearInterval(timerId);
-        try { localStorage.removeItem(ATTEMPT_KEY); localStorage.removeItem(DRAWING_KEY); } catch (e) {}
+        try { localStorage.removeItem(ATTEMPT_KEY); localStorage.removeItem(DRAWING_KEY); localStorage.removeItem(ANNOTATION_KEY); } catch (e) {}
+        pageAnnotations = {};
+        setAnnotationMode(false);
         clearCanvas(false);
         undoStack = [];
         $("undoButton").disabled = true;
@@ -459,6 +516,7 @@
       }
       startButton.addEventListener("click", function () { if (state) showWorkspace(); else begin(); });
       $("exitButton").addEventListener("click", function () {
+        setAnnotationMode(false);
         workspace.hidden = true;
         setActive(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -519,6 +577,7 @@
           var page = await pdfDoc.getPage(currentPage);
           if (version !== renderVersion) return;
           layoutForPage(page);
+          drawPageAnnotations();
           var viewport = page.getViewport({ scale:fitScale * zoom });
           var ratio = Math.min(window.devicePixelRatio || 1, 2);
           pdfCanvas.width = Math.max(1, Math.floor(viewport.width * ratio));
@@ -533,6 +592,7 @@
           if (version !== renderVersion) return;
           renderTask = null;
           pageSheet.hidden = false;
+          $("annotationToggleButton").disabled = false;
           box.hidden = true;
           updateZoomLabel();
         } catch (error) {
@@ -564,6 +624,7 @@
         currentPage = Math.max(1, Math.min(pageCount, Math.round(Number(nextPage) || 1)));
         panX = 0; panY = 0;
         updatePageControls();
+        updateAnnotationControls();
         renderCurrentPage();
       }
       function setZoom(nextZoom, rerender) {
@@ -582,6 +643,7 @@
       $("zoomInButton").addEventListener("click", function () { setZoom(zoom * 1.2, true); });
       $("zoomOutButton").addEventListener("click", function () { setZoom(zoom / 1.2, true); });
       $("fitButton").addEventListener("click", function () { zoom = 1; panX = 0; panY = 0; updateZoomLabel(); applySheetTransform(); renderCurrentPage(); });
+      $("annotationToggleButton").addEventListener("click", function () { setAnnotationMode(!annotationMode); });
       $("fullscreenButton").addEventListener("click", async function () {
         try {
           if (!document.fullscreenElement && workspace.requestFullscreen) await workspace.requestFullscreen();
@@ -646,11 +708,113 @@
       resizeObserver.observe(stage);
       window.addEventListener("resize", function () { if (pdfDoc && !workspace.hidden) renderCurrentPage(); sizeScratchCanvas(true); });
 
+      function drawAnnotationSegment(stroke, from, to) {
+        if (!annotationCtx || !baseWidth || !baseHeight) return;
+        var x1 = from.x * baseWidth, y1 = from.y * baseHeight, x2 = to.x * baseWidth, y2 = to.y * baseHeight;
+        annotationCtx.save();
+        annotationCtx.globalCompositeOperation = stroke.tool === "eraser" ? "destination-out" : "source-over";
+        annotationCtx.strokeStyle = stroke.color || "#182230";
+        annotationCtx.fillStyle = stroke.color || "#182230";
+        annotationCtx.lineWidth = Math.max(1, (Number(stroke.width) || .005) * baseWidth);
+        annotationCtx.lineCap = "round"; annotationCtx.lineJoin = "round";
+        if (x1 === x2 && y1 === y2) {
+          annotationCtx.beginPath(); annotationCtx.arc(x1, y1, annotationCtx.lineWidth / 2, 0, Math.PI * 2); annotationCtx.fill();
+        } else {
+          annotationCtx.beginPath(); annotationCtx.moveTo(x1, y1); annotationCtx.lineTo(x2, y2); annotationCtx.stroke();
+        }
+        annotationCtx.restore();
+      }
+      function drawPageAnnotations() {
+        if (!baseWidth || !baseHeight) return;
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        var width = Math.max(1, Math.round(baseWidth * ratio)), height = Math.max(1, Math.round(baseHeight * ratio));
+        if (annotationCanvas.width !== width) annotationCanvas.width = width;
+        if (annotationCanvas.height !== height) annotationCanvas.height = height;
+        annotationCanvas.style.width = baseWidth + "px"; annotationCanvas.style.height = baseHeight + "px";
+        annotationCtx = annotationCanvas.getContext("2d");
+        annotationCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        annotationCtx.clearRect(0, 0, baseWidth, baseHeight);
+        annotationsFor(currentPage).forEach(function (stroke) {
+          if (!stroke || !Array.isArray(stroke.points) || !stroke.points.length) return;
+          if (stroke.points.length === 1) drawAnnotationSegment(stroke, stroke.points[0], stroke.points[0]);
+          else for (var i = 1; i < stroke.points.length; i++) drawAnnotationSegment(stroke, stroke.points[i - 1], stroke.points[i]);
+        });
+      }
+      function savePageAnnotations(page) {
+        var key = String(page), strokes = annotationsFor(page);
+        if (!strokes.length) delete pageAnnotations[key];
+        var ok = write(ANNOTATION_KEY, JSON.stringify(pageAnnotations));
+        $("annotationStatus").textContent = ok ? "第 " + page + " 页批注已保存 · 仅本机" : "存储空间不足，批注可能未保存";
+        return ok;
+      }
+      function annotationPoint(event) {
+        var rect = annotationCanvas.getBoundingClientRect();
+        return {
+          x: Math.max(0, Math.min(1, (event.clientX - rect.left) / Math.max(1, rect.width))),
+          y: Math.max(0, Math.min(1, (event.clientY - rect.top) / Math.max(1, rect.height)))
+        };
+      }
+      function finishAnnotationStroke(event) {
+        if (!annotationDrawing || (event && event.pointerId !== annotationPointerId)) return;
+        var page = currentAnnotationPage;
+        annotationDrawing = false; annotationPointerId = null; currentAnnotationStroke = null; currentAnnotationPage = null;
+        if (page === currentPage) drawPageAnnotations();
+        savePageAnnotations(page);
+        updateAnnotationControls();
+      }
+      annotationCanvas.addEventListener("pointerdown", function (event) {
+        if (!annotationMode || !pdfDoc || (event.button !== undefined && event.button !== 0)) return;
+        event.preventDefault(); event.stopPropagation();
+        if (annotationDrawing) return;
+        var point = annotationPoint(event), strokes = annotationsFor(currentPage);
+        currentAnnotationStroke = {
+          tool: annotationTool,
+          color: $("annotationInkPicker").value,
+          width: (annotationTool === "eraser" ? 24 : Number($("annotationPenSize").value)) / Math.max(1, baseWidth),
+          points: [point]
+        };
+        strokes.push(currentAnnotationStroke);
+        currentAnnotationPage = currentPage; annotationDrawing = true; annotationPointerId = event.pointerId;
+        try { annotationCanvas.setPointerCapture(event.pointerId); } catch (e) {}
+        drawAnnotationSegment(currentAnnotationStroke, point, point);
+        updateAnnotationControls();
+      });
+      annotationCanvas.addEventListener("pointermove", function (event) {
+        if (!annotationDrawing || event.pointerId !== annotationPointerId || !currentAnnotationStroke) return;
+        event.preventDefault(); event.stopPropagation();
+        var point = annotationPoint(event), points = currentAnnotationStroke.points, previous = points[points.length - 1];
+        if (Math.hypot(point.x - previous.x, point.y - previous.y) < .0005) return;
+        points.push(point); drawAnnotationSegment(currentAnnotationStroke, previous, point);
+      });
+      annotationCanvas.addEventListener("pointerup", finishAnnotationStroke);
+      annotationCanvas.addEventListener("pointercancel", finishAnnotationStroke);
+      annotationCanvas.addEventListener("lostpointercapture", finishAnnotationStroke);
+      $("annotationPenButton").addEventListener("click", function () {
+        annotationTool = "pen"; this.classList.add("selected"); $("annotationEraserButton").classList.remove("selected");
+        this.setAttribute("aria-pressed", "true"); $("annotationEraserButton").setAttribute("aria-pressed", "false");
+      });
+      $("annotationEraserButton").addEventListener("click", function () {
+        annotationTool = "eraser"; this.classList.add("selected"); $("annotationPenButton").classList.remove("selected");
+        this.setAttribute("aria-pressed", "true"); $("annotationPenButton").setAttribute("aria-pressed", "false");
+      });
+      $("annotationUndoButton").addEventListener("click", function () {
+        if (annotationDrawing) finishAnnotationStroke();
+        var strokes = annotationsFor(currentPage);
+        if (!strokes.length) return;
+        strokes.pop(); drawPageAnnotations(); savePageAnnotations(currentPage); updateAnnotationControls();
+      });
+      $("annotationClearButton").addEventListener("click", function () {
+        if (!annotationsFor(currentPage).length || !window.confirm("清空第 " + currentPage + " 页批注？此操作无法撤销。")) return;
+        pageAnnotations[String(currentPage)] = []; drawPageAnnotations(); savePageAnnotations(currentPage); updateAnnotationControls();
+      });
+
       function sizeScratchCanvas(preserve) {
         if (!canvas || !canvas.isConnected) return;
         var rect = canvas.getBoundingClientRect();
-        var width = Math.max(10, Math.floor(rect.width)), height = Math.max(10, Math.floor(rect.height));
-        if (!width || !height || (width === scratchCanvasWidth && height === scratchCanvasHeight)) return;
+        var width = Math.floor(rect.width), height = Math.floor(rect.height);
+        if (width <= 0 || height <= 0) return;
+        width = Math.max(10, width); height = Math.max(10, height);
+        if (width === scratchCanvasWidth && height === scratchCanvasHeight) return;
         var saved = null;
         if (preserve && canvas.width && canvas.height) { try { saved = canvas.toDataURL("image/png"); } catch (e) {} }
         else saved = read(DRAWING_KEY);
