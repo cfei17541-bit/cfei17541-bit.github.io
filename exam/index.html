@@ -6,25 +6,42 @@
   <meta name="theme-color" content="#f5f6f8" />
   <title>考研真题｜2018 数学一</title>
   <style>
-    :root { color-scheme: light; --ink:#182230; --muted:#657084; --line:#e4e8ef; --paper:#fff; --wash:#f5f6f8; --blue:#2458d3; --blue-soft:#edf3ff; --orange:#cb5b20; --green:#16845a; --shadow:0 14px 42px rgba(21,36,66,.08); --radius:22px; --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+    :root {
+      color-scheme: light;
+      --ink:#182230;
+      --muted:#687386;
+      --line:#e2e7ef;
+      --paper:#fff;
+      --wash:#f4f6f9;
+      --blue:#2458d3;
+      --blue-dark:#1749bd;
+      --blue-soft:#edf3ff;
+      --green:#16845a;
+      --red:#c83f35;
+      --shadow:0 16px 44px rgba(21,36,66,.12);
+      --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    }
     * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--wash); color:var(--ink); font:15px/1.55 var(--sans); }
-    button, a { font:inherit; }
+    html { min-width:320px; background:var(--wash); }
+    body { margin:0; background:var(--wash); color:var(--ink); font:15px/1.5 var(--sans); }
+    button, input, a { font:inherit; }
     button { cursor:pointer; }
     a { color:inherit; }
+    [hidden] { display:none !important; }
+    :focus-visible { outline:3px solid #83a7ff; outline-offset:2px; }
+
     .shell { width:min(1320px,100%); margin:0 auto; padding:18px clamp(14px,3vw,36px) 48px; }
     .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:22px; }
-    .back { display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-weight:600; padding:9px 12px; border-radius:999px; }
+    .back { display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-weight:650; padding:9px 12px; border-radius:999px; }
     .back:hover { background:#e9edf4; color:var(--ink); }
     .site-mark { color:var(--muted); font-size:13px; }
     .hero { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin:10px 0 22px; }
-    .eyebrow { color:var(--blue); font-weight:750; font-size:12px; letter-spacing:.09em; text-transform:uppercase; }
+    .eyebrow { color:var(--blue); font-weight:750; font-size:12px; letter-spacing:.09em; }
     h1 { margin:6px 0 8px; font-size:clamp(28px,4vw,42px); line-height:1.14; letter-spacing:-.035em; }
     .hero p { max-width:68ch; color:var(--muted); margin:0; }
     .scope { display:inline-flex; align-items:center; gap:8px; flex:none; border:1px solid var(--line); background:var(--paper); padding:9px 13px; border-radius:999px; color:var(--muted); font-size:13px; }
     .scope::before { content:""; width:8px; height:8px; background:var(--blue); border-radius:50%; }
-    .catalog { border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); padding:clamp(18px,3vw,28px); box-shadow:var(--shadow); }
+    .catalog { border:1px solid var(--line); border-radius:22px; background:var(--paper); padding:clamp(18px,3vw,28px); box-shadow:var(--shadow); }
     .catalog-head { display:flex; justify-content:space-between; align-items:start; gap:20px; }
     .subject { color:var(--blue); font-size:13px; font-weight:700; }
     .catalog h2 { margin:5px 0 7px; font-size:clamp(20px,3vw,27px); line-height:1.25; }
@@ -32,62 +49,183 @@
     .stats { display:flex; flex-wrap:wrap; gap:9px; margin:18px 0 20px; }
     .stat { border:1px solid var(--line); background:#fafbfc; padding:8px 12px; border-radius:12px; font-size:13px; }
     .stat b { color:var(--ink); margin-right:4px; }
-    .primary, .secondary, .quiet { min-height:44px; border:0; border-radius:13px; padding:10px 16px; font-weight:700; }
-    .primary { background:var(--blue); color:#fff; box-shadow:0 8px 18px rgba(36,88,211,.18); }
-    .primary:hover { background:#1749bd; }
+    .primary, .secondary, .quiet { min-height:42px; border:0; border-radius:12px; padding:9px 14px; font-weight:700; white-space:nowrap; }
+    .primary { background:var(--blue); color:#fff; box-shadow:0 7px 18px rgba(36,88,211,.18); }
+    .primary:hover { background:var(--blue-dark); }
     .primary:disabled { opacity:.46; cursor:not-allowed; box-shadow:none; }
     .secondary { background:var(--blue-soft); color:var(--blue); }
     .secondary:hover { background:#dfeaff; }
-    .quiet { min-height:38px; padding:7px 11px; color:var(--muted); background:transparent; border:1px solid var(--line); font-size:13px; }
+    .quiet { min-height:36px; padding:6px 10px; color:var(--muted); background:#fff; border:1px solid var(--line); font-size:13px; }
     .quiet:hover { color:var(--ink); background:#f7f8fa; }
     .source-note { margin-top:14px; color:var(--muted); font-size:12px; }
     .workspace { margin-top:22px; }
-    .workspace-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
-    .workspace-head h2 { margin:0; font-size:20px; }
-    .live-label { display:inline-flex; align-items:center; gap:7px; color:var(--green); font-size:13px; font-weight:700; }
-    .live-label::before { content:""; width:8px; height:8px; border-radius:50%; background:currentColor; box-shadow:0 0 0 4px #e5f5ee; }
-    .layout { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(300px,.8fr); align-items:start; gap:16px; }
-    .card { border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); box-shadow:var(--shadow); overflow:hidden; }
-    .paper-card { padding:14px; }
-    .card-head { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:2px 2px 12px; }
-    .card-head h3 { margin:0; font-size:16px; }
-    .preview-help { padding:18px; border:1px dashed #cfd9eb; border-radius:14px; background:#f8faff; color:var(--muted); margin-bottom:12px; }
-    .preview-help p { margin:0 0 12px; }
-    .paper-frame { width:100%; height:min(88vh,1120px); min-height:700px; border:1px solid var(--line); border-radius:14px; background:#edf0f4; }
-    .aside { display:grid; gap:14px; min-width:0; }
-    .timer-card { position:sticky; top:10px; z-index:3; padding:18px; }
-    .timer-title { display:flex; align-items:center; justify-content:space-between; gap:10px; color:var(--muted); font-size:13px; font-weight:650; }
-    .clock { margin:6px 0 4px; font-size:clamp(36px,5vw,50px); line-height:1.08; letter-spacing:.04em; font-variant-numeric:tabular-nums; font-weight:750; }
-    .clock.urgent { color:#c83f35; }
-    .timer-hint { color:var(--muted); font-size:12px; }
-    .timer-rule { height:1px; background:var(--line); margin:14px 0; }
-    .finish-label { display:flex; align-items:flex-start; gap:9px; color:#465167; font-size:13px; line-height:1.45; cursor:pointer; }
-    .finish-label input { width:18px; height:18px; margin:1px 0 0; accent-color:var(--blue); flex:none; }
-    .submit-row { display:grid; gap:8px; margin-top:12px; }
-    .submit-row .primary { width:100%; }
-    .submit-status { min-height:18px; color:var(--muted); font-size:12px; }
-    .paper-tools { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
-    .paper-tools button[aria-pressed="true"] { color:var(--blue); border-color:#bdd0ff; background:var(--blue-soft); }
-    .canvas-wrap { padding:0 12px 12px; }
-    .scratch { display:block; width:100%; height:520px; border:1px solid #e7eaf0; border-radius:12px; background-color:#fff; background-image:repeating-linear-gradient(to bottom,#fff 0,#fff 31px,#e8edf5 32px); touch-action:none; cursor:crosshair; }
-    .scratch-hint { margin:9px 2px 0; color:var(--muted); font-size:12px; }
-    .answer { margin-top:16px; border:1px solid #b9e4d0; border-radius:var(--radius); background:#f1fbf6; padding:clamp(18px,3vw,26px); }
+
+    /* Full-window exam workspace */
+    body.exam-active { overflow:hidden; }
+    .workspace.exam-fullscreen {
+      position:fixed; inset:0; z-index:50; display:flex; flex-direction:column;
+      width:100%; height:100vh; height:100dvh; min-height:0; margin:0;
+      background:#e8edf3; overflow:hidden; isolation:isolate;
+    }
+    .exam-topline {
+      min-height:58px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:7px clamp(10px,1.8vw,22px); background:#fff; border-bottom:1px solid var(--line);
+      box-shadow:0 2px 10px rgba(24,34,48,.04); z-index:8;
+    }
+    .brand-cluster { display:flex; align-items:center; min-width:0; gap:12px; }
+    .exit-button { width:38px; height:38px; border:1px solid var(--line); border-radius:11px; background:#fff; color:var(--muted); font-size:19px; flex:none; }
+    .exit-button:hover { color:var(--ink); background:#f6f8fb; }
+    .exam-title { min-width:0; }
+    .exam-title strong { display:block; font-size:14px; line-height:1.2; white-space:nowrap; }
+    .exam-title span { color:var(--muted); font-size:11px; }
+    .top-actions { display:flex; align-items:center; gap:9px; min-width:0; }
+    .timer-chip { display:flex; align-items:baseline; gap:7px; padding:7px 10px; border:1px solid #e7ebf1; border-radius:11px; background:#f8fafc; white-space:nowrap; }
+    .timer-chip span { color:var(--muted); font-size:11px; }
+    .clock { font-variant-numeric:tabular-nums; font-size:18px; line-height:1; font-weight:800; letter-spacing:.025em; }
+    .clock.urgent { color:var(--red); }
+    .finish-label { display:flex; align-items:center; gap:6px; color:#4d586a; font-size:12px; white-space:nowrap; cursor:pointer; }
+    .finish-label input { width:16px; height:16px; margin:0; accent-color:var(--blue); flex:none; }
+    .top-actions .primary { min-height:38px; padding:7px 12px; font-size:13px; }
+    .top-actions .quiet { min-height:38px; }
+    .reader-toolbar {
+      min-height:52px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:6px clamp(10px,1.8vw,22px); background:#fff; border-bottom:1px solid var(--line); z-index:7;
+    }
+    .reader-controls, .reader-utilities { display:flex; align-items:center; gap:7px; min-width:0; }
+    .reader-toolbar button { min-height:34px; }
+    .page-control { display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--muted); font-size:12px; }
+    .page-input { width:48px; height:34px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); text-align:center; font-variant-numeric:tabular-nums; }
+    .zoom-label { min-width:47px; text-align:center; color:#4d586a; font-variant-numeric:tabular-nums; font-size:12px; }
+    .page-button { width:36px; padding:0; font-size:16px; }
+    .original-link { text-decoration:none; display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:6px 10px; border:1px solid var(--line); border-radius:10px; color:#586477; font-size:12px; font-weight:650; white-space:nowrap; }
+    .original-link:hover { background:#f7f8fa; color:var(--ink); }
+    .reader-stage {
+      position:relative; flex:1; min-height:0; overflow:hidden; touch-action:none; user-select:none;
+      background-color:#e8edf3;
+      background-image:radial-gradient(#cbd3df .75px,transparent .75px); background-size:18px 18px;
+      cursor:grab;
+    }
+    .reader-stage.is-dragging { cursor:grabbing; }
+    .page-sheet {
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+      transform-origin:center center; background:#fff; box-shadow:0 8px 30px rgba(31,45,67,.22); overflow:hidden;
+      will-change:transform; pointer-events:none;
+    }
+    .page-sheet canvas { display:block; width:100%; height:100%; }
+    .pdf-status {
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(440px,calc(100% - 36px));
+      padding:22px; border:1px solid #d8e0ea; border-radius:16px; background:rgba(255,255,255,.96);
+      box-shadow:var(--shadow); text-align:center; color:var(--muted); z-index:2;
+    }
+    .pdf-status strong { display:block; color:var(--ink); font-size:16px; margin-bottom:6px; }
+    .pdf-status p { margin:0 0 13px; font-size:13px; }
+    .pdf-status.error { border-color:#f1d1c9; background:#fffaf8; }
+    .stage-tip { position:absolute; left:14px; bottom:12px; z-index:3; color:#647187; background:rgba(255,255,255,.83); border:1px solid rgba(220,226,235,.8); border-radius:999px; padding:5px 9px; font-size:11px; pointer-events:none; }
+    .scratch-launcher { position:absolute; right:14px; bottom:14px; z-index:12; border:0; border-radius:999px; background:#152338; color:#fff; padding:10px 15px; box-shadow:0 8px 24px rgba(15,30,50,.24); font-weight:700; }
+    .scratch-launcher:hover { background:#243c5f; }
+
+    /* Movable, resizable scratch sheet */
+    .scratch-panel {
+      position:absolute; z-index:15; right:18px; bottom:18px; width:340px; height:420px;
+      min-width:276px; min-height:250px; max-width:min(760px,calc(100vw - 18px)); max-height:calc(100% - 18px);
+      display:flex; flex-direction:column; overflow:hidden; resize:both; touch-action:auto;
+      border:1px solid #cbd4e0; border-radius:15px; background:#fff; box-shadow:0 12px 40px rgba(19,35,57,.27);
+    }
+    .scratch-panel.minimized { height:52px !important; min-height:52px; resize:none; }
+    .scratch-head {
+      min-height:46px; display:flex; align-items:center; justify-content:space-between; gap:8px;
+      padding:6px 8px 6px 12px; background:#f9fbfe; border-bottom:1px solid #e6eaf0; cursor:move; touch-action:none; user-select:none;
+    }
+    .scratch-heading { display:flex; align-items:center; gap:7px; min-width:0; }
+    .scratch-heading strong { font-size:13px; white-space:nowrap; }
+    .save-dot { width:7px; height:7px; border-radius:50%; background:#36a877; flex:none; }
+    .scratch-heading small { color:#748095; font-size:10px; white-space:nowrap; }
+    .scratch-head-actions { display:flex; align-items:center; gap:5px; }
+    .icon-button { width:31px; height:31px; padding:0; border:1px solid #e2e7ef; border-radius:9px; background:#fff; color:#536075; font-size:16px; line-height:1; }
+    .icon-button:hover { background:#edf3ff; color:var(--blue); }
+    .scratch-tools {
+      min-height:43px; display:flex; align-items:center; gap:5px; padding:5px 8px;
+      border-bottom:1px solid #e6eaf0; background:#fff; overflow-x:auto; scrollbar-width:thin;
+    }
+    .scratch-tools .quiet { min-height:30px; padding:4px 8px; font-size:11px; }
+    .scratch-tools .selected { background:var(--blue-soft); color:var(--blue); border-color:#c8d7ff; }
+    .ink-picker { width:27px; height:27px; padding:0; border:1px solid #dbe1ea; border-radius:8px; background:#fff; overflow:hidden; flex:none; }
+    .ink-picker::-webkit-color-swatch-wrapper { padding:3px; }
+    .ink-picker::-webkit-color-swatch { border:0; border-radius:4px; }
+    .pen-size { width:57px; accent-color:var(--blue); flex:none; }
+    .scratch-canvas-wrap { flex:1; min-height:0; position:relative; overflow:hidden; background:#fff; }
+    .scratch-canvas {
+      display:block; width:100%; height:100%; touch-action:none; cursor:crosshair;
+      background-color:#fff;
+      background-image:repeating-linear-gradient(to bottom,#fff 0,#fff 30px,#e7edf6 31px,#e7edf6 32px);
+    }
+    .scratch-foot { min-height:26px; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:3px 9px; color:#748095; font-size:10px; background:#fbfcfe; border-top:1px solid #edf0f5; }
+    .scratch-foot span:last-child { white-space:nowrap; }
+    .resize-grip { position:absolute; width:22px; height:22px; right:0; bottom:0; z-index:4; cursor:nwse-resize; touch-action:none; opacity:.55; }
+    .resize-grip::after { content:""; position:absolute; width:10px; height:10px; right:4px; bottom:4px; border-right:2px solid #718096; border-bottom:2px solid #718096; }
+    .scratch-panel.minimized .scratch-tools, .scratch-panel.minimized .scratch-canvas-wrap, .scratch-panel.minimized .scratch-foot, .scratch-panel.minimized .resize-grip { display:none; }
+
+    .answer {
+      position:absolute; z-index:20; top:118px; right:18px; width:min(500px,calc(100vw - 30px));
+      max-height:calc(100% - 136px); overflow:auto; border:1px solid #b9e4d0; border-radius:18px;
+      background:#f1fbf6; padding:20px; box-shadow:0 20px 60px rgba(22,48,37,.25);
+    }
     .answer h2 { margin:0 0 6px; font-size:20px; }
     .answer p { margin:0 0 13px; color:#426454; }
     .answer-links { display:flex; flex-wrap:wrap; gap:9px; }
-    .answer-links a { display:inline-flex; align-items:center; gap:7px; padding:10px 13px; border-radius:12px; background:#fff; border:1px solid #d3ebdf; color:#146c49; text-decoration:none; font-weight:700; font-size:13px; }
+    .answer-links a { display:inline-flex; align-items:center; padding:10px 12px; border-radius:11px; background:#fff; border:1px solid #d3ebdf; color:#146c49; text-decoration:none; font-weight:700; font-size:12px; }
     .answer-links a:hover { background:#e7f8ef; }
-    .sources { margin-top:22px; padding-top:15px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
-    .sources a { color:inherit; }
-    .sources p + p { margin-top:5px; }
-    [hidden] { display:none !important; }
-    :focus-visible { outline:3px solid #83a7ff; outline-offset:3px; }
-    @media (max-width:900px) { .layout { grid-template-columns:minmax(0,1fr); } .aside { grid-template-columns:minmax(0,1fr); } .timer-card { position:sticky; top:6px; } .paper-frame { height:78vh; min-height:540px; } }
-    @media (max-width:600px) { .shell { padding:12px 12px 32px; } .topbar { margin-bottom:14px; } .hero { align-items:flex-start; flex-direction:column; gap:12px; } .catalog-head { flex-direction:column; } .paper-card { padding:9px; } .paper-frame { height:72vh; min-height:500px; } .timer-card { padding:14px; } .clock { font-size:39px; } .scratch { height:420px; } .workspace-head { align-items:flex-start; flex-direction:column; } }
+    .answer-close { position:absolute; top:12px; right:12px; }
+    .answer .source-note { margin:12px 0 0; }
+
+    @media (max-width:760px) {
+      .shell { padding:12px 12px 32px; }
+      .topbar { margin-bottom:14px; }
+      .hero { align-items:flex-start; flex-direction:column; gap:12px; }
+      .catalog-head { flex-direction:column; }
+      .exam-topline { min-height:52px; gap:7px; padding:6px 8px; }
+      .brand-cluster { gap:7px; }
+      .exam-title strong { font-size:12px; }
+      .exam-title span { display:none; }
+      .top-actions { gap:5px; }
+      .timer-chip { gap:4px; padding:6px 7px; }
+      .timer-chip span { display:none; }
+      .clock { font-size:16px; }
+      .finish-label { gap:4px; font-size:10px; max-width:86px; white-space:normal; line-height:1.1; }
+      .finish-label input { width:15px; height:15px; }
+      .top-actions .primary { min-height:35px; padding:6px 9px; font-size:11px; }
+      .top-actions .quiet { min-height:35px; padding:5px 8px; font-size:11px; }
+      .reader-toolbar { min-height:47px; padding:5px 8px; gap:5px; overflow-x:auto; }
+      .reader-controls, .reader-utilities { gap:4px; }
+      .reader-toolbar button { min-height:32px; }
+      .page-button { width:32px; }
+      .page-input { width:39px; height:32px; }
+      .zoom-label { min-width:40px; font-size:11px; }
+      .original-link { min-height:32px; padding:5px 7px; font-size:10px; }
+      .reader-toolbar .quiet { font-size:11px; padding:5px 8px; }
+      .scratch-panel { width:260px; height:320px; right:10px; bottom:10px; min-width:230px; min-height:220px; max-width:calc(100vw - 16px); max-height:calc(100% - 12px); }
+      .scratch-heading small { display:none; }
+      .stage-tip { max-width:calc(100% - 30px); font-size:10px; }
+      .scratch-launcher { right:10px; bottom:10px; }
+      .answer { top:108px; right:10px; padding:18px 15px; }
+    }
+    @media (max-width:390px) {
+      .exam-title { display:none; }
+      .exit-button { width:34px; height:34px; }
+      .finish-label { max-width:70px; font-size:9px; }
+      .original-link { font-size:0; width:34px; padding:0; }
+      .original-link::before { content:"原站"; font-size:10px; }
+      .reader-utilities #fitButton { display:none; }
+    }
+    @media (orientation:landscape) and (max-height:520px) {
+      .exam-topline { min-height:44px; padding-block:3px; }
+      .reader-toolbar { min-height:40px; padding-block:3px; }
+      .scratch-panel { height:calc(100% - 64px); width:275px; }
+    }
   </style>
 </head>
 <body>
-  <main class="shell">
+  <main class="shell" id="catalogShell">
     <div class="topbar">
       <a class="back" href="../" aria-label="返回错题本首页">← <span>错题本</span></a>
       <span class="site-mark">个人学习区 · 真题专栏</span>
@@ -107,7 +245,7 @@
         <div>
           <div class="subject">数学 · 数学一</div>
           <h2 id="paper-title">2018 年考研数学一 · 完整卷</h2>
-          <p class="catalog-copy">完整试题采用新东方网整理版（非官方扫描原卷）。PDF 由原发布方托管；本页不复制或保存试卷文件。开始后限时 180 分钟，旁边提供手写草稿纸；整卷交卷或到时收卷后统一开放答案入口，不会逐题弹答案。</p>
+          <p class="catalog-copy">完整试题采用新东方网整理版（非官方扫描原卷）。PDF 由原发布方托管；本页不复制或保存试卷文件。开始后进入全屏式试卷工作台：可翻页、缩放和拖动画面，右下角附有能移动和调大小的手写草稿纸。</p>
         </div>
         <button class="primary" id="startButton" type="button">开始作答，立即计时</button>
       </div>
@@ -117,64 +255,75 @@
         <span class="stat"><b>时长</b>180 分钟</span>
         <span class="stat"><b>作答方式</b>整卷作答</span>
       </div>
-      <p class="source-note">试卷 PDF 来源：新东方网原发布文件（5 页）。开始后提供原站 PDF 直达与可选预览；本网站不保存题目或答案副本。</p>
+      <p class="source-note">试卷 PDF 来源：新东方网原发布文件（5 页）。试卷只从原站读取；本网站不保存题目或答案副本。</p>
     </section>
 
-    <section class="workspace" id="workspace" hidden aria-labelledby="workspace-title">
-      <div class="workspace-head">
-        <h2 id="workspace-title">2018 数学一 · 正在作答</h2>
-        <span class="live-label" id="runState">限时练习进行中</span>
-      </div>
-      <div class="layout">
-        <section class="card paper-card" aria-label="完整试卷">
-          <div class="card-head">
-            <h3>完整试卷</h3>
-            <a class="secondary" href="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none">打开原站完整 PDF</a>
-          </div>
-          <div class="preview-help">
-            <p>使用上方入口打开原站完整试卷。若当前浏览器支持 PDF 嵌入，也可尝试在本页阅读；不支持时请使用原站链接，计时仍会在本页按真实时间继续。</p>
-            <button class="secondary" id="previewButton" type="button" aria-expanded="false" aria-controls="paperFrame">尝试站内预览</button>
-          </div>
-          <iframe class="paper-frame" id="paperFrame" hidden title="2018 年考研数学一完整试卷，新东方网原站 PDF" loading="lazy" referrerpolicy="no-referrer" data-src="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf"></iframe>
-          <p class="source-note">PDF 由新东方网托管；本页仅嵌入或链接原站文件，不在本学习网站中另存试卷。</p>
-        </section>
+    <footer class="source-note">试卷来源：<a href="https://kaoyan.xdf.cn/201712/10745620.html" target="_blank" rel="noopener noreferrer">新东方网《2018 年考研数学一真题完整版（带下载）》</a>。计时状态与草稿只保存在本设备浏览器，不会上传。</footer>
+  </main>
 
-        <aside class="aside" aria-label="计时与草稿">
-          <section class="card timer-card" aria-labelledby="timer-title">
-            <div class="timer-title"><span id="timer-title">剩余时间</span><span id="timerMode">180 分钟</span></div>
-            <div class="clock" id="clock" role="timer" aria-live="off">03:00:00</div>
-            <div class="timer-hint" id="timerHint">开始作答后按真实时间倒计时，刷新或离开页面后仍继续；到时自动收卷。</div>
-            <div class="timer-rule"></div>
-            <label class="finish-label" id="finishLabel" for="finishedCheck">
-              <input id="finishedCheck" type="checkbox" />
-              <span>我已完成整套试卷作答（选择、填空和解答题）。</span>
-            </label>
-            <div class="submit-row">
-              <button class="primary" id="submitButton" type="button" disabled>交卷并查看答案</button>
-              <div class="submit-status" id="submitStatus" aria-live="polite">请先完成整卷，再勾选确认。</div>
-              <button class="quiet" id="restartButton" type="button" hidden>放弃本次并重新计时</button>
-            </div>
-          </section>
-
-          <section class="card" aria-labelledby="scratch-title">
-            <div class="card-head" style="padding:14px 14px 9px">
-              <h3 id="scratch-title">草稿纸</h3>
-              <div class="paper-tools" role="group" aria-label="草稿纸工具">
-                <button class="quiet" id="penButton" type="button" aria-pressed="true">画笔</button>
-                <button class="quiet" id="eraserButton" type="button" aria-pressed="false">橡皮</button>
-                <button class="quiet" id="clearButton" type="button">清空</button>
-              </div>
-            </div>
-            <div class="canvas-wrap">
-              <canvas class="scratch" id="scratch" aria-label="可手写的草稿纸区域">当前浏览器不支持画布。</canvas>
-              <p class="scratch-hint" id="saveHint">可用鼠标、触控笔或手指书写；草稿自动保存在当前设备的浏览器中。</p>
-            </div>
-          </section>
-        </aside>
+  <section class="workspace" id="workspace" hidden aria-label="2018 数学一限时练习工作台">
+    <header class="exam-topline">
+      <div class="brand-cluster">
+        <button class="exit-button" id="exitButton" type="button" aria-label="退出试卷工作台，保留当前进度" title="返回专栏（计时继续）">←</button>
+        <div class="exam-title"><strong>2018 数学一</strong><span id="runState">限时练习进行中</span></div>
       </div>
-    </section>
+      <div class="top-actions">
+        <div class="timer-chip"><span>剩余时间</span><strong class="clock" id="clock" role="timer" aria-live="off">03:00:00</strong></div>
+        <label class="finish-label" id="finishLabel" for="finishedCheck"><input id="finishedCheck" type="checkbox" /><span>我已完成整卷</span></label>
+        <button class="primary" id="submitButton" type="button" disabled>交卷</button>
+        <button class="quiet" id="restartButton" type="button" hidden>重练</button>
+        <button class="quiet" id="answerButton" type="button" hidden>答案</button>
+        <button class="quiet" id="fullscreenButton" type="button" title="切换浏览器全屏">全屏</button>
+      </div>
+    </header>
+
+    <nav class="reader-toolbar" aria-label="试卷阅读控制">
+      <div class="reader-controls">
+        <button class="quiet page-button" id="prevPageButton" type="button" aria-label="上一页" title="上一页">‹</button>
+        <label class="page-control"><input class="page-input" id="pageInput" type="number" min="1" value="1" aria-label="当前页码" /><span id="pageTotal">/ 5 页</span></label>
+        <button class="quiet page-button" id="nextPageButton" type="button" aria-label="下一页" title="下一页">›</button>
+        <span class="zoom-label" id="zoomLabel">适合页面</span>
+      </div>
+      <div class="reader-utilities">
+        <button class="quiet" id="zoomOutButton" type="button" aria-label="缩小" title="缩小">−</button>
+        <button class="quiet" id="zoomInButton" type="button" aria-label="放大" title="放大">＋</button>
+        <button class="quiet" id="fitButton" type="button">适合页面</button>
+        <a class="original-link" href="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf" target="_blank" rel="noopener noreferrer">在新页面打开原 PDF ↗</a>
+      </div>
+    </nav>
+
+    <div class="reader-stage" id="readerStage" aria-label="试卷阅读区：单指拖动页面，两指捏合缩放">
+      <div class="page-sheet" id="pageSheet" hidden><canvas id="pdfCanvas" aria-label="试卷当前页"></canvas></div>
+      <div class="pdf-status" id="pdfStatus" role="status" aria-live="polite">
+        <strong>正在加载原站试卷…</strong>
+        <p>首次打开稍等片刻。可拖动试卷，或双指捏合缩放。</p>
+      </div>
+      <div class="stage-tip" id="stageTip">单指拖动 · 双指缩放 · 触控笔/手指在草稿纸上书写</div>
+      <button class="scratch-launcher" id="scratchLauncher" type="button" hidden>打开草稿纸</button>
+
+      <section class="scratch-panel" id="scratchPanel" aria-label="可移动和调整大小的手写草稿纸">
+        <header class="scratch-head" id="scratchDragHandle">
+          <div class="scratch-heading"><span class="save-dot" aria-hidden="true"></span><strong>手写草稿纸</strong><small id="saveHint">自动保存在本机</small></div>
+          <div class="scratch-head-actions">
+            <button class="icon-button" id="minimizeScratchButton" type="button" aria-label="收起草稿纸" title="收起">−</button>
+          </div>
+        </header>
+        <div class="scratch-tools" role="toolbar" aria-label="手写工具">
+          <button class="quiet selected" id="penButton" type="button" aria-pressed="true">笔</button>
+          <button class="quiet" id="eraserButton" type="button" aria-pressed="false">擦</button>
+          <input class="ink-picker" id="inkPicker" type="color" value="#182230" aria-label="笔迹颜色" title="笔迹颜色" />
+          <input class="pen-size" id="penSize" type="range" min="1" max="8" value="3" aria-label="画笔粗细" title="画笔粗细" />
+          <button class="quiet" id="undoButton" type="button" disabled>撤销</button>
+          <button class="quiet" id="clearButton" type="button">清空</button>
+        </div>
+        <div class="scratch-canvas-wrap"><canvas class="scratch-canvas" id="scratch" aria-label="可用鼠标、触控笔或手指书写的草稿纸">当前浏览器不支持画布。</canvas></div>
+        <div class="scratch-foot"><span id="draftStatus">草稿仅保存在当前设备</span><span>拖标题移动 · 拖右下角调大小</span></div>
+        <div class="resize-grip" id="scratchResizeGrip" aria-label="拖动调整草稿纸大小" title="拖动调整大小"></div>
+      </section>
+    </div>
 
     <section class="answer" id="answerSection" hidden aria-labelledby="answer-title" tabindex="-1">
+      <button class="icon-button answer-close" id="closeAnswerButton" type="button" aria-label="关闭答案面板">×</button>
       <h2 id="answer-title">已交卷，整卷答案已开放</h2>
       <p id="answerMessage">下面是原发布页面的答案解析入口。答案不会按题逐个弹出。</p>
       <div class="answer-links">
@@ -183,71 +332,70 @@
       </div>
       <p class="source-note">答案为第三方参考解析，非官方评分标准；此处只开放原站链接，不复制解析正文。</p>
     </section>
-
-    <footer class="sources">
-      <p>试卷来源：<a href="https://kaoyan.xdf.cn/201712/10745620.html" target="_blank" rel="noopener noreferrer">新东方网《2018 年考研数学一真题完整版（带下载）》</a></p>
-      <p>此专栏目前仅提供数学一，不含其他年份或科目。计时状态和草稿只保存在本设备浏览器，不会上传。</p>
-    </footer>
-  </main>
+  </section>
 
   <script>
     (function () {
       "use strict";
+      var pdfjsLib = null;
       var DURATION = 180 * 60 * 1000;
       var ATTEMPT_KEY = "study-site-exam-2018-math1-attempt-v1";
       var DRAWING_KEY = "study-site-exam-2018-math1-draft-v1";
+      var PDF_URL = "https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf";
       var $ = function (id) { return document.getElementById(id); };
-      var state = null;
-      var timerId = null;
+      var state = null, timerId = null;
       var startButton = $("startButton"), workspace = $("workspace"), clock = $("clock");
       var check = $("finishedCheck"), submit = $("submitButton"), answer = $("answerSection");
       var status = $("submitStatus"), restart = $("restartButton"), runState = $("runState");
       var canvas = $("scratch"), ctx = canvas.getContext("2d"), drawing = false, last = null, tool = "pen";
+      var pdfDoc = null, currentPage = 1, pageCount = 5, zoom = 1, fitScale = 1, panX = 0, panY = 0;
+      var renderTask = null, renderVersion = 0, renderDelay = 0, baseWidth = 0, baseHeight = 0;
+      var pointers = new Map(), dragPoint = null, pinchStart = null, pinchChanged = false;
+      var undoStack = [], scratchCanvasWidth = 0, scratchCanvasHeight = 0;
+      var scratchPanel = $("scratchPanel"), stage = $("readerStage"), pageSheet = $("pageSheet"), pdfCanvas = $("pdfCanvas");
 
       function read(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
       function write(key, value) { try { localStorage.setItem(key, value); return true; } catch (e) { return false; } }
-      function getAttempt() {
-        try { var raw = read(ATTEMPT_KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; }
-      }
+      function getAttempt() { try { var raw = read(ATTEMPT_KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
       function saveAttempt() { if (state) write(ATTEMPT_KEY, JSON.stringify(state)); }
       function pad(value) { return String(value).padStart(2, "0"); }
-      function format(ms) {
-        var seconds = Math.max(0, Math.ceil(ms / 1000));
-        return pad(Math.floor(seconds / 3600)) + ":" + pad(Math.floor(seconds % 3600 / 60)) + ":" + pad(seconds % 60);
+      function format(ms) { var seconds = Math.max(0, Math.ceil(ms / 1000)); return pad(Math.floor(seconds / 3600)) + ":" + pad(Math.floor(seconds % 3600 / 60)) + ":" + pad(seconds % 60); }
+      function setActive(active) {
+        workspace.classList.toggle("exam-fullscreen", active);
+        document.body.classList.toggle("exam-active", active);
       }
       function render() {
         if (!state) {
           clock.textContent = "03:00:00";
           startButton.textContent = "开始作答，立即计时";
           workspace.hidden = true;
+          setActive(false);
           answer.hidden = true;
           return;
         }
-        workspace.hidden = false;
         startButton.textContent = state.submitted ? "查看本次练习" : "继续当前练习";
         restart.hidden = false;
-        restart.textContent = state.submitted ? "重新练习（重置计时与草稿）" : "放弃本次并重新计时";
+        restart.textContent = state.submitted ? "重练" : "放弃并重练";
         check.disabled = !!state.submitted;
         check.checked = !!state.confirmed;
+        check.closest(".finish-label").hidden = !!state.submitted;
+        submit.hidden = !!state.submitted;
         submit.disabled = !!state.submitted || !state.confirmed;
+        $("answerButton").hidden = !state.submitted;
+        answer.hidden = true;
         if (state.submitted) {
           clock.textContent = state.timedOut ? "00:00:00" : format(Math.max(0, state.deadline - state.submittedAt));
           runState.textContent = state.timedOut ? "时间到 · 已自动收卷" : "整卷已交卷";
           runState.style.color = "var(--green)";
-          $("timerHint").textContent = state.timedOut ? "180 分钟已结束，答案解析已开放。" : "本次练习已结束；答案解析已开放。";
-          $("timerMode").textContent = "已结束";
-          status.textContent = "答案解析入口已开放。";
-          answer.hidden = false;
           $("answerMessage").textContent = state.timedOut ? "180 分钟已到，系统已自动收卷。下面是原发布页面的答案解析入口。" : "下面是原发布页面的答案解析入口。答案不会按题逐个弹出。";
         } else {
-          answer.hidden = true;
           runState.textContent = "限时练习进行中";
           runState.style.color = "var(--green)";
-          $("timerMode").textContent = "180 分钟限时";
-          $("timerHint").textContent = "开始后按真实时间倒计时；刷新或离开页面后仍继续，到时自动收卷。";
-          status.textContent = state.confirmed ? "确认后交卷将统一开放答案。" : "请先完成整卷，再勾选确认。";
           updateClock();
         }
+        workspace.hidden = false;
+        setActive(true);
+        window.requestAnimationFrame(function () { sizeScratchCanvas(true); if (pdfDoc) renderCurrentPage(); });
       }
       function updateClock() {
         if (!state || state.submitted) return;
@@ -256,15 +404,14 @@
         clock.classList.toggle("urgent", left <= 5 * 60 * 1000);
         if (left <= 0) finish(true);
       }
-      function startTimer() {
-        clearInterval(timerId);
-        updateClock();
-        timerId = setInterval(updateClock, 1000);
-      }
+      function startTimer() { clearInterval(timerId); updateClock(); timerId = setInterval(updateClock, 1000); }
       function showWorkspace() {
         workspace.hidden = false;
-        window.requestAnimationFrame(function () { canvasSize(false); });
-        workspace.scrollIntoView({ behavior: "smooth", block: "start" });
+        setActive(true);
+        window.requestAnimationFrame(function () {
+          sizeScratchCanvas(true);
+          if (pdfDoc) renderCurrentPage();
+        });
       }
       function begin() {
         if (!state) {
@@ -272,7 +419,6 @@
           state = { startedAt: now, deadline: now + DURATION, submitted: false, confirmed: false };
           saveAttempt();
           startTimer();
-          render();
         }
         showWorkspace();
       }
@@ -286,8 +432,10 @@
         clearInterval(timerId);
         clock.classList.remove("urgent");
         render();
-        answer.scrollIntoView({ behavior: "smooth", block: "center" });
-        answer.focus({ preventScroll: true });
+        if (timeout) {
+          $("answerSection").hidden = false;
+          window.setTimeout(function () { answer.hidden = false; }, 250);
+        }
       }
       function resetAttempt() {
         if (!window.confirm((state && state.submitted ? "重新开始练习？" : "放弃本次作答并重新计时？") + "这也会清空本机草稿纸。")) return;
@@ -295,80 +443,328 @@
         clearInterval(timerId);
         try { localStorage.removeItem(ATTEMPT_KEY); localStorage.removeItem(DRAWING_KEY); } catch (e) {}
         clearCanvas(false);
+        undoStack = [];
+        $("undoButton").disabled = true;
         check.checked = false;
         clock.classList.remove("urgent");
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      $("previewButton").addEventListener("click", function () {
-        var frame = $("paperFrame"), opening = frame.hidden;
-        if (opening && !frame.getAttribute("src")) frame.setAttribute("src", frame.getAttribute("data-src"));
-        frame.hidden = !opening;
-        $("previewButton").textContent = opening ? "收起站内预览" : "尝试站内预览";
-        $("previewButton").setAttribute("aria-expanded", opening ? "true" : "false");
+      startButton.addEventListener("click", function () { if (state) showWorkspace(); else begin(); });
+      $("exitButton").addEventListener("click", function () {
+        workspace.hidden = true;
+        setActive(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
-      startButton.addEventListener("click", function () { if (state && state.submitted) { showWorkspace(); return; } begin(); });
-      check.addEventListener("change", function () { if (!state || state.submitted) return; state.confirmed = check.checked; saveAttempt(); submit.disabled = !state.confirmed; status.textContent = state.confirmed ? "确认后交卷将统一开放答案。" : "请先完成整卷，再勾选确认。"; });
+      check.addEventListener("change", function () {
+        if (!state || state.submitted) return;
+        state.confirmed = check.checked;
+        saveAttempt();
+        submit.disabled = !state.confirmed;
+      });
       submit.addEventListener("click", function () { finish(false); });
       restart.addEventListener("click", resetAttempt);
+      $("answerButton").addEventListener("click", function () { if (state && state.submitted) answer.hidden = !answer.hidden; });
+      $("closeAnswerButton").addEventListener("click", function () { answer.hidden = true; });
 
-      function canvasSize(preserve) {
-        var saved = preserve ? canvas.toDataURL("image/png") : read(DRAWING_KEY);
-        var width = Math.max(260, Math.floor(canvas.getBoundingClientRect().width));
-        var height = Math.max(320, Math.floor(canvas.getBoundingClientRect().height));
+      function updatePageControls() {
+        $("pageInput").value = String(currentPage);
+        $("pageInput").max = String(pageCount);
+        $("pageTotal").textContent = "/ " + pageCount + " 页";
+        $("prevPageButton").disabled = currentPage <= 1;
+        $("nextPageButton").disabled = currentPage >= pageCount;
+      }
+      function updateZoomLabel() { $("zoomLabel").textContent = Math.round(zoom * 100) + "%"; }
+      function stageSize() {
+        var rect = stage.getBoundingClientRect();
+        return { width: Math.max(100, rect.width), height: Math.max(100, rect.height) };
+      }
+      function layoutForPage(page) {
+        var size = stageSize(), natural = page.getViewport({ scale:1 });
+        var margin = window.innerWidth <= 760 ? 18 : 38;
+        fitScale = Math.min((size.width - margin) / natural.width, (size.height - margin) / natural.height);
+        fitScale = Math.max(.18, Math.min(fitScale, 3));
+        baseWidth = natural.width * fitScale;
+        baseHeight = natural.height * fitScale;
+        pageSheet.style.width = baseWidth + "px";
+        pageSheet.style.height = baseHeight + "px";
+        applySheetTransform();
+        return { fitScale:fitScale, baseWidth:baseWidth, baseHeight:baseHeight };
+      }
+      function applySheetTransform() {
+        pageSheet.style.transform = "translate(calc(-50% + " + panX + "px), calc(-50% + " + panY + "px)) scale(" + zoom + ")";
+      }
+      function showPdfError(message) {
+        var box = $("pdfStatus");
+        box.classList.add("error");
+        box.innerHTML = "<strong>站内试卷暂时无法显示</strong><p>" + message + " 计时和本机草稿仍会继续保存。</p><a class=\"secondary\" style=\"display:inline-flex;text-decoration:none\" href=\"" + PDF_URL + "\" target=\"_blank\" rel=\"noopener noreferrer\">打开原站完整 PDF ↗</a>";
+      }
+      async function renderCurrentPage() {
+        if (!pdfDoc || workspace.hidden) return;
+        var version = ++renderVersion;
+        if (renderTask) { try { renderTask.cancel(); } catch (e) {} renderTask = null; }
+        updatePageControls();
+        var box = $("pdfStatus");
+        box.hidden = false;
+        box.classList.remove("error");
+        box.innerHTML = "<strong>正在显示第 " + currentPage + " 页…</strong><p>原站 PDF 正在本机浏览器中渲染。</p>";
+        try {
+          var page = await pdfDoc.getPage(currentPage);
+          if (version !== renderVersion) return;
+          layoutForPage(page);
+          var viewport = page.getViewport({ scale:fitScale * zoom });
+          var ratio = Math.min(window.devicePixelRatio || 1, 2);
+          pdfCanvas.width = Math.max(1, Math.floor(viewport.width * ratio));
+          pdfCanvas.height = Math.max(1, Math.floor(viewport.height * ratio));
+          pdfCanvas.style.width = baseWidth + "px";
+          pdfCanvas.style.height = baseHeight + "px";
+          var context = pdfCanvas.getContext("2d", { alpha:false });
+          context.fillStyle = "#fff";
+          context.fillRect(0, 0, pdfCanvas.width, pdfCanvas.height);
+          renderTask = page.render({ canvasContext:context, viewport:viewport, transform:[ratio,0,0,ratio,0,0], background:"#ffffff" });
+          await renderTask.promise;
+          if (version !== renderVersion) return;
+          renderTask = null;
+          pageSheet.hidden = false;
+          box.hidden = true;
+          updateZoomLabel();
+        } catch (error) {
+          if (error && error.name === "RenderingCancelledException") return;
+          showPdfError("请使用下面的原站 PDF 入口继续阅读。");
+        }
+      }
+      async function loadPdf() {
+        var loadTimeout = window.setTimeout(function () {
+          if (!pdfDoc) showPdfError("首次加载时间较长。可以先点右上角的原站 PDF 入口继续阅读；本页计时和草稿不会受影响。");
+        }, 30000);
+        try {
+          pdfjsLib = await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs");
+          pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+          var loadingTask = pdfjsLib.getDocument({ url:PDF_URL, withCredentials:false });
+          pdfDoc = await loadingTask.promise;
+          window.clearTimeout(loadTimeout);
+          pageCount = pdfDoc.numPages || 5;
+          updatePageControls();
+          $("pdfStatus").hidden = true;
+          await renderCurrentPage();
+        } catch (error) {
+          window.clearTimeout(loadTimeout);
+          showPdfError("可能是网络或原发布站暂时不可用。");
+        }
+      }
+      function setPage(nextPage) {
+        if (!pdfDoc) return;
+        currentPage = Math.max(1, Math.min(pageCount, Math.round(Number(nextPage) || 1)));
+        panX = 0; panY = 0;
+        updatePageControls();
+        renderCurrentPage();
+      }
+      function setZoom(nextZoom, rerender) {
+        zoom = Math.max(.5, Math.min(4, nextZoom));
+        updateZoomLabel();
+        applySheetTransform();
+        if (rerender !== false) {
+          clearTimeout(renderDelay);
+          renderDelay = setTimeout(function () { renderCurrentPage(); }, 120);
+        }
+      }
+      $("prevPageButton").addEventListener("click", function () { setPage(currentPage - 1); });
+      $("nextPageButton").addEventListener("click", function () { setPage(currentPage + 1); });
+      $("pageInput").addEventListener("change", function () { setPage(this.value); });
+      $("pageInput").addEventListener("keydown", function (event) { if (event.key === "Enter") { setPage(this.value); this.blur(); } });
+      $("zoomInButton").addEventListener("click", function () { setZoom(zoom * 1.2, true); });
+      $("zoomOutButton").addEventListener("click", function () { setZoom(zoom / 1.2, true); });
+      $("fitButton").addEventListener("click", function () { zoom = 1; panX = 0; panY = 0; updateZoomLabel(); applySheetTransform(); renderCurrentPage(); });
+      $("fullscreenButton").addEventListener("click", async function () {
+        try {
+          if (!document.fullscreenElement && workspace.requestFullscreen) await workspace.requestFullscreen();
+          else if (document.exitFullscreen) await document.exitFullscreen();
+        } catch (e) { $("stageTip").textContent = "当前浏览器不支持额外全屏；工作台已铺满页面。"; }
+      });
+      document.addEventListener("fullscreenchange", function () { $("fullscreenButton").textContent = document.fullscreenElement ? "退出全屏" : "全屏"; });
+
+      function distance(a,b) { var dx=a.x-b.x, dy=a.y-b.y; return Math.sqrt(dx*dx+dy*dy); }
+      function midpoint(a,b) { return { x:(a.x+b.x)/2, y:(a.y+b.y)/2 }; }
+      stage.addEventListener("pointerdown", function (event) {
+        if (event.target.closest(".scratch-panel, .scratch-launcher, .answer")) return;
+        stage.setPointerCapture(event.pointerId);
+        pointers.set(event.pointerId, { x:event.clientX, y:event.clientY });
+        if (pointers.size === 1) {
+          dragPoint = { x:event.clientX, y:event.clientY };
+          stage.classList.add("is-dragging");
+        } else if (pointers.size === 2) {
+          var pts = Array.from(pointers.values()), mid = midpoint(pts[0],pts[1]);
+          pinchStart = { distance:Math.max(1,distance(pts[0],pts[1])), zoom:zoom, midpoint:mid, panX:panX, panY:panY };
+          pinchChanged = false;
+          dragPoint = null;
+        }
+        event.preventDefault();
+      });
+      stage.addEventListener("pointermove", function (event) {
+        if (!pointers.has(event.pointerId)) return;
+        pointers.set(event.pointerId, { x:event.clientX, y:event.clientY });
+        if (pointers.size >= 2 && pinchStart) {
+          var pts = Array.from(pointers.values()), mid = midpoint(pts[0],pts[1]);
+          var nextZoom = Math.max(.5, Math.min(4, pinchStart.zoom * distance(pts[0],pts[1]) / pinchStart.distance));
+          var rect = stage.getBoundingClientRect(), centerX = rect.left + rect.width/2, centerY = rect.top + rect.height/2;
+          var localX = (pinchStart.midpoint.x - centerX - pinchStart.panX) / pinchStart.zoom;
+          var localY = (pinchStart.midpoint.y - centerY - pinchStart.panY) / pinchStart.zoom;
+          panX = mid.x - centerX - localX * nextZoom;
+          panY = mid.y - centerY - localY * nextZoom;
+          zoom = nextZoom;
+          pinchChanged = true;
+          applySheetTransform();
+          updateZoomLabel();
+        } else if (pointers.size === 1 && dragPoint) {
+          panX += event.clientX - dragPoint.x;
+          panY += event.clientY - dragPoint.y;
+          dragPoint = { x:event.clientX, y:event.clientY };
+          applySheetTransform();
+        }
+        event.preventDefault();
+      });
+      function releaseReaderPointer(event) {
+        if (!pointers.has(event.pointerId)) return;
+        pointers.delete(event.pointerId);
+        if (pointers.size < 2 && pinchStart) {
+          if (pinchChanged) { clearTimeout(renderDelay); renderDelay = setTimeout(renderCurrentPage, 80); }
+          pinchStart = null;
+        }
+        if (pointers.size === 1) dragPoint = Array.from(pointers.values())[0];
+        else { dragPoint = null; stage.classList.remove("is-dragging"); }
+      }
+      stage.addEventListener("pointerup", releaseReaderPointer);
+      stage.addEventListener("pointercancel", releaseReaderPointer);
+      var resizeObserver = new ResizeObserver(function () { if (pdfDoc && !workspace.hidden) renderCurrentPage(); sizeScratchCanvas(true); });
+      resizeObserver.observe(stage);
+      window.addEventListener("resize", function () { if (pdfDoc && !workspace.hidden) renderCurrentPage(); sizeScratchCanvas(true); });
+
+      function sizeScratchCanvas(preserve) {
+        if (!canvas || !canvas.isConnected) return;
+        var rect = canvas.getBoundingClientRect();
+        var width = Math.max(10, Math.floor(rect.width)), height = Math.max(10, Math.floor(rect.height));
+        if (!width || !height || (width === scratchCanvasWidth && height === scratchCanvasHeight)) return;
+        var saved = null;
+        if (preserve && canvas.width && canvas.height) { try { saved = canvas.toDataURL("image/png"); } catch (e) {} }
+        else saved = read(DRAWING_KEY);
         var ratio = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = Math.round(width * ratio);
-        canvas.height = Math.round(height * ratio);
+        scratchCanvasWidth = width; scratchCanvasHeight = height;
+        canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
         ctx = canvas.getContext("2d");
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
+        ctx.setTransform(ratio,0,0,ratio,0,0);
+        ctx.lineCap = "round"; ctx.lineJoin = "round";
         if (saved && saved !== "data:,") {
           var image = new Image();
-          image.onload = function () { ctx.drawImage(image, 0, 0, width, height); };
+          image.onload = function () { ctx.drawImage(image,0,0,width,height); };
           image.src = saved;
         }
       }
       function saveDrawing() {
-        var ok = write(DRAWING_KEY, canvas.toDataURL("image/png"));
-        $("saveHint").textContent = ok ? "草稿已自动保存在当前设备的浏览器中。" : "当前浏览器无法保存草稿，请在离开页面前自行留存。";
+        try {
+          var ok = write(DRAWING_KEY, canvas.toDataURL("image/png"));
+          $("draftStatus").textContent = ok ? "草稿已自动保存" : "浏览器存储空间不足，暂无法保存";
+          $("saveHint").textContent = ok ? "已保存" : "未保存";
+        } catch (e) { $("draftStatus").textContent = "当前浏览器无法保存草稿"; }
       }
-      function clearCanvas(save) {
-        if (!ctx) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (save) saveDrawing();
-      }
-      function point(event) {
+      function clearCanvas(save) { if (!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); if (save) saveDrawing(); }
+      function canvasPoint(event) {
         var rect = canvas.getBoundingClientRect();
-        return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        return { x:(event.clientX-rect.left) * (canvas.clientWidth / rect.width), y:(event.clientY-rect.top) * (canvas.clientHeight / rect.height) };
       }
-      function strokeTo(pointNow) {
+      function rememberCanvas() {
+        try { undoStack.push(canvas.toDataURL("image/png")); if (undoStack.length > 12) undoStack.shift(); $("undoButton").disabled = false; } catch (e) {}
+      }
+      function strokeTo(pointNow, pressure) {
         if (!last) return;
         ctx.save();
         ctx.globalCompositeOperation = tool === "eraser" ? "destination-out" : "source-over";
-        ctx.strokeStyle = "#182230";
-        ctx.lineWidth = tool === "eraser" ? 23 : 2.6;
-        ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(pointNow.x, pointNow.y); ctx.stroke();
-        ctx.restore();
-        last = pointNow;
+        ctx.strokeStyle = $("inkPicker").value;
+        var selectedWidth = Number($("penSize").value);
+        ctx.lineWidth = tool === "eraser" ? 24 : selectedWidth * (.7 + Math.max(.2,pressure || .5));
+        ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(pointNow.x,pointNow.y); ctx.stroke();
+        ctx.restore(); last = pointNow;
       }
-      canvas.addEventListener("pointerdown", function (event) { drawing = true; last = point(event); canvas.setPointerCapture(event.pointerId); event.preventDefault(); });
-      canvas.addEventListener("pointermove", function (event) { if (drawing) { strokeTo(point(event)); event.preventDefault(); } });
-      function stopDrawing() { if (!drawing) return; drawing = false; last = null; saveDrawing(); }
+      canvas.addEventListener("pointerdown", function (event) {
+        event.stopPropagation();
+        if (event.button !== undefined && event.button !== 0) return;
+        sizeScratchCanvas(false);
+        rememberCanvas();
+        drawing = true; last = canvasPoint(event);
+        try { canvas.setPointerCapture(event.pointerId); } catch (e) {}
+        event.preventDefault();
+      });
+      canvas.addEventListener("pointermove", function (event) { if (drawing) { strokeTo(canvasPoint(event),event.pressure); event.preventDefault(); } });
+      function stopDrawing() { if (!drawing) return; drawing=false; last=null; saveDrawing(); }
       canvas.addEventListener("pointerup", stopDrawing);
       canvas.addEventListener("pointercancel", stopDrawing);
-      $("penButton").addEventListener("click", function () { tool = "pen"; $("penButton").setAttribute("aria-pressed", "true"); $("eraserButton").setAttribute("aria-pressed", "false"); });
-      $("eraserButton").addEventListener("click", function () { tool = "eraser"; $("eraserButton").setAttribute("aria-pressed", "true"); $("penButton").setAttribute("aria-pressed", "false"); });
-      $("clearButton").addEventListener("click", function () { if (window.confirm("清空草稿纸？此操作无法撤销。")) clearCanvas(true); });
-      window.addEventListener("resize", function () { canvasSize(true); });
+      $("penButton").addEventListener("click", function () { tool="pen"; $("penButton").classList.add("selected"); $("eraserButton").classList.remove("selected"); $("penButton").setAttribute("aria-pressed","true"); $("eraserButton").setAttribute("aria-pressed","false"); });
+      $("eraserButton").addEventListener("click", function () { tool="eraser"; $("eraserButton").classList.add("selected"); $("penButton").classList.remove("selected"); $("eraserButton").setAttribute("aria-pressed","true"); $("penButton").setAttribute("aria-pressed","false"); });
+      $("undoButton").addEventListener("click", function () {
+        if (!undoStack.length) return;
+        var image = new Image(), snapshot = undoStack.pop();
+        image.onload = function () { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(image,0,0,canvas.clientWidth,canvas.clientHeight); saveDrawing(); $("undoButton").disabled = !undoStack.length; };
+        image.src = snapshot;
+      });
+      $("clearButton").addEventListener("click", function () { if (window.confirm("清空草稿纸？此操作无法撤销。")) { rememberCanvas(); clearCanvas(true); } });
+
+      $("minimizeScratchButton").addEventListener("click", function () {
+        var wasMinimized = scratchPanel.classList.toggle("minimized");
+        this.textContent = wasMinimized ? "+" : "−";
+        this.setAttribute("aria-label", wasMinimized ? "展开草稿纸" : "收起草稿纸");
+        $("scratchLauncher").hidden = !wasMinimized;
+        if (!wasMinimized) window.requestAnimationFrame(function () { sizeScratchCanvas(true); });
+      });
+      $("scratchLauncher").addEventListener("click", function () {
+        scratchPanel.classList.remove("minimized");
+        $("minimizeScratchButton").textContent = "−";
+        $("minimizeScratchButton").setAttribute("aria-label","收起草稿纸");
+        this.hidden = true;
+        window.requestAnimationFrame(function () { sizeScratchCanvas(true); });
+      });
+      var dragScratch = null;
+      $("scratchDragHandle").addEventListener("pointerdown", function (event) {
+        if (event.target.closest("button")) return;
+        var rect = scratchPanel.getBoundingClientRect();
+        dragScratch = { id:event.pointerId, x:event.clientX, y:event.clientY, left:rect.left, top:rect.top };
+        scratchPanel.style.left = rect.left + "px"; scratchPanel.style.top = rect.top + "px";
+        scratchPanel.style.right = "auto"; scratchPanel.style.bottom = "auto";
+        this.setPointerCapture(event.pointerId);
+        event.preventDefault();
+      });
+      $("scratchDragHandle").addEventListener("pointermove", function (event) {
+        if (!dragScratch || dragScratch.id !== event.pointerId) return;
+        var maxLeft = Math.max(0, window.innerWidth - scratchPanel.offsetWidth);
+        var maxTop = Math.max(0, window.innerHeight - scratchPanel.offsetHeight);
+        scratchPanel.style.left = Math.max(0,Math.min(maxLeft,dragScratch.left + event.clientX - dragScratch.x)) + "px";
+        scratchPanel.style.top = Math.max(0,Math.min(maxTop,dragScratch.top + event.clientY - dragScratch.y)) + "px";
+      });
+      function stopScratchDrag() { dragScratch = null; }
+      $("scratchDragHandle").addEventListener("pointerup", stopScratchDrag);
+      $("scratchDragHandle").addEventListener("pointercancel", stopScratchDrag);
+      var resizeScratch = null;
+      $("scratchResizeGrip").addEventListener("pointerdown", function (event) {
+        var rect = scratchPanel.getBoundingClientRect();
+        resizeScratch = { id:event.pointerId, x:event.clientX, y:event.clientY, width:rect.width, height:rect.height };
+        try { this.setPointerCapture(event.pointerId); } catch (e) {}
+        event.preventDefault(); event.stopPropagation();
+      });
+      $("scratchResizeGrip").addEventListener("pointermove", function (event) {
+        if (!resizeScratch || resizeScratch.id !== event.pointerId) return;
+        var maxW = Math.min(window.innerWidth - scratchPanel.getBoundingClientRect().left - 8,760);
+        var maxH = window.innerHeight - scratchPanel.getBoundingClientRect().top - 8;
+        scratchPanel.style.width = Math.max(248,Math.min(maxW,resizeScratch.width + event.clientX - resizeScratch.x)) + "px";
+        scratchPanel.style.height = Math.max(230,Math.min(maxH,resizeScratch.height + event.clientY - resizeScratch.y)) + "px";
+      });
+      function stopScratchResize() { resizeScratch = null; }
+      $("scratchResizeGrip").addEventListener("pointerup", stopScratchResize);
+      $("scratchResizeGrip").addEventListener("pointercancel", stopScratchResize);
 
       state = getAttempt();
+      if (state && !state.submitted && state.deadline <= Date.now()) { state.submitted=true; state.timedOut=true; state.submittedAt=Date.now(); saveAttempt(); }
       render();
-      canvasSize(false);
-      if (state && !state.submitted) {
-        if (state.deadline <= Date.now()) finish(true);
-        else startTimer();
-      }
+      sizeScratchCanvas(false);
+      if (state && !state.submitted) startTimer();
+      loadPdf();
     })();
   </script>
 </body>
