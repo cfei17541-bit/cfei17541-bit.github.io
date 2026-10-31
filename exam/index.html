@@ -51,6 +51,8 @@
     .paper-card { padding:14px; }
     .card-head { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:2px 2px 12px; }
     .card-head h3 { margin:0; font-size:16px; }
+    .preview-help { padding:18px; border:1px dashed #cfd9eb; border-radius:14px; background:#f8faff; color:var(--muted); margin-bottom:12px; }
+    .preview-help p { margin:0 0 12px; }
     .paper-frame { width:100%; height:min(88vh,1120px); min-height:700px; border:1px solid var(--line); border-radius:14px; background:#edf0f4; }
     .aside { display:grid; gap:14px; min-width:0; }
     .timer-card { position:sticky; top:10px; z-index:3; padding:18px; }
@@ -115,7 +117,7 @@
         <span class="stat"><b>时长</b>180 分钟</span>
         <span class="stat"><b>作答方式</b>整卷作答</span>
       </div>
-      <p class="source-note">试卷 PDF 来源：新东方网原发布文件（5 页）。如果预览未显示，可在开始后使用“新标签打开 PDF”。</p>
+      <p class="source-note">试卷 PDF 来源：新东方网原发布文件（5 页）。开始后提供原站 PDF 直达与可选预览；本网站不保存题目或答案副本。</p>
     </section>
 
     <section class="workspace" id="workspace" hidden aria-labelledby="workspace-title">
@@ -127,10 +129,14 @@
         <section class="card paper-card" aria-label="完整试卷">
           <div class="card-head">
             <h3>完整试卷</h3>
-            <a class="quiet" href="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf" target="_blank" rel="noopener noreferrer">新标签打开 PDF</a>
+            <a class="secondary" href="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none">打开原站完整 PDF</a>
           </div>
-          <iframe class="paper-frame" id="paperFrame" title="2018 年考研数学一完整试卷，新东方网整理版兼容阅读视图" loading="lazy" referrerpolicy="no-referrer" src="https://docs.google.com/gview?embedded=1&amp;url=https%3A%2F%2Ffile.xdf.cn%2Fuploads%2F171224%2F157_171224142923CqFO3k2OEzblHWJn.pdf"></iframe>
-          <p class="source-note">PDF 由新东方网托管；此兼容视图通过 Google 文档查看器读取公开文件，不在本学习网站中另存试卷。</p>
+          <div class="preview-help">
+            <p>使用上方入口打开原站完整试卷。若当前浏览器支持 PDF 嵌入，也可尝试在本页阅读；不支持时请使用原站链接，计时仍会在本页按真实时间继续。</p>
+            <button class="secondary" id="previewButton" type="button" aria-expanded="false" aria-controls="paperFrame">尝试站内预览</button>
+          </div>
+          <iframe class="paper-frame" id="paperFrame" hidden title="2018 年考研数学一完整试卷，新东方网原站 PDF" loading="lazy" referrerpolicy="no-referrer" data-src="https://file.xdf.cn/uploads/171224/157_171224142923CqFO3k2OEzblHWJn.pdf"></iframe>
+          <p class="source-note">PDF 由新东方网托管；本页仅嵌入或链接原站文件，不在本学习网站中另存试卷。</p>
         </section>
 
         <aside class="aside" aria-label="计时与草稿">
@@ -294,6 +300,13 @@
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
+      $("previewButton").addEventListener("click", function () {
+        var frame = $("paperFrame"), opening = frame.hidden;
+        if (opening && !frame.getAttribute("src")) frame.setAttribute("src", frame.getAttribute("data-src"));
+        frame.hidden = !opening;
+        $("previewButton").textContent = opening ? "收起站内预览" : "尝试站内预览";
+        $("previewButton").setAttribute("aria-expanded", opening ? "true" : "false");
+      });
       startButton.addEventListener("click", function () { if (state && state.submitted) { showWorkspace(); return; } begin(); });
       check.addEventListener("change", function () { if (!state || state.submitted) return; state.confirmed = check.checked; saveAttempt(); submit.disabled = !state.confirmed; status.textContent = state.confirmed ? "确认后交卷将统一开放答案。" : "请先完成整卷，再勾选确认。"; });
       submit.addEventListener("click", function () { finish(false); });
